@@ -1,0 +1,141 @@
+id: armasuisse:element/geschossvolumen
+sort_order: 11
+status: active
+name:
+  de: Geschossvolumen
+  fr: Volume de l’étage
+  it: Volume del piano
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+definition:
+  de: "Das Geschossvolumen dient zur Berechnung des Gebäudevolumens gemäss SIA 416 sowie städtebaulichen Visualisierungen.\n\n**Modellierungshinweise:**\n* Es ist ein Volumen als IfcSpace geschossweise\
+    \ zu modellieren. \n- Im UG von UK Fundament bis zu UK Rohdecke\n- In den Geschossen UK Rohdecke bis zu UK Rohdecke\n- Im obersten Geschoss UK Rohdecke bis OK Dachhaut\n* Das Geschossvolumen ist mit\
+    \ IfcSpace PredefindedType: GFA zu modellieren."
+  fr: "Le volume de l’étage permet de calculer les surfaces de plancher de l'étage (SP), le volume de l’étage (VE) et les visualisations de l’urbanisme.   \n\n**Note pour la modélisation.**\n* Un volume\
+    \ doit être modélisé pour chaque étage comme un IfcSpace. \n- Au sous-sol, au-dessous des fondations jusque au-dessous de la dalle brute supérieure \n- Aux étages depuis le dessous de la dalle brute\
+    \ jusque au-dessous de la dalle brute du niveau supérieur \n- Au dernier étage, depuis le dessous de la dalle brute jusque au-dessus de la couverture du toit  Les structures de grenier, les auvents\
+    \ et les panneaux en porte-à-faux sont sur-mesurés.  \n* L'espace brut est à modéliser avec IfcSpace PredefinedType : GFA.  Le bord extérieur du volume de plancher se trouve sur le bord extérieur de\
+    \ la façade."
+  it: "Il volume dei piani serve a calcolare il volume dell’edificio secondo la SIA416 nonché le visualizzazioni urbanistiche. \n\n**Indicazioni per la modellazione.**\n* Un volume deve essere modellato\
+    \ piano per piano come IfcSpace.\n- Nel seminterrato dal bordo inferiore della sottostruttura fino al bordo inferiore del soffitto grezzo    \n- Ai piani dal bordo inferiore del soffitto grezzo fino\
+    \ al bordo inferiore del soffitto grezzo    \n- All’ultimo piano, dal bordo inferiore del soffitto grezzo al bordo superiore della copertura del tetto  \n* Il volume dei piani deve essere modellato\
+    \ con IfcSpace PredefindedType: GFA."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcSpace
+entity_ifc4_3: null
+picture_link: geschossvolumen.jpg
+model_link: null
+applicability: entity_ifc4=IfcSpace
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: Definiert, dass es sich bei diesem Element um ein Geschossvolumen gemäss SIA 416 (GV) handelt.
+    fr: Definisce se con questo elemento si tratta del volume di un piano secondo la norma SIA 416 (GV).
+    it: Définit que cet élément est un volume d’étage selon SIA 416 (GV).
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/predefinedtype-gfa
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  is_applicability: true
+  status: active
+  sort_order: 1
+- name: GrossFloorArea
+  pset: Qto_SpaceBaseQuantities
+  definition:
+    de: Raumfläche brutto.
+    fr: Surface brute du local.
+    it: Superficie lorda del locale.
+    en: ''
+  datatype: IfcAreaMeasure
+  allowed_values: null
+  link_uid: '{59CB9503-67DA-41EA-B084-303DF1E49872}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: GrossVolume
+  pset: Qto_SpaceBaseQuantities
+  definition:
+    de: Bruttovolumen, z.B. 430.98
+    fr: Volume brut, p. ex. 430.98
+    it: Volume lordo, ad es. 430.98
+    en: ''
+  datatype: IfcVolumeMeasure
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  is_applicability: false
+  status: active
+  sort_order: 3

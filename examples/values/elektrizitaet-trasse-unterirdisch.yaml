@@ -1,0 +1,22 @@
+id: armasuisse:value/elektrizitaet-trasse-unterirdisch
+name:
+  de: Elektrizitaet Trasse unterirdisch
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Elektrizitaet Trasse unterirdisch
+  fr:
+  - Électricité Tracé souterrain
+  it:
+  - Elettricità Tracciato interrato
+  en: []

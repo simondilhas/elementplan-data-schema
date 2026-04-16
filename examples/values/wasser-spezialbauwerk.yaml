@@ -1,0 +1,22 @@
+id: armasuisse:value/wasser-spezialbauwerk
+name:
+  de: Wasser Spezialbauwerk
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Wasser Spezialbauwerk
+  fr:
+  - Eau ouvrage spécial
+  it:
+  - Opera speciale acqua
+  en: []

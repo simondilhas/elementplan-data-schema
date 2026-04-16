@@ -1,0 +1,322 @@
+id: https://pragmaticbim.ch/id/
+name: elementplan
+prefixes:
+  pragmaticbim: https://pragmaticbim.ch/id/
+default_prefix: pragmaticbim
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+  StatusEnum:
+    permissible_values:
+      wip: {}
+      active: {}
+      deprecated: {}
+  IFCVersionEnum:
+    permissible_values:
+      ifc2x3: {}
+      ifc4: {}
+      ifc4x3: {}
+  IFCDatatypeEnum:
+    permissible_values:
+      IfcLabel: {}
+      IfcText: {}
+      IfcIdentifier: {}
+      IfcLengthMeasure: {}
+      IfcAreaMeasure: {}
+      IfcVolumeMeasure: {}
+      IfcPositiveLengthMeasure: {}
+      IfcCountMeasure: {}
+      IfcBoolean: {}
+      IfcDate: {}
+      IfcReal: {}
+
+slots:
+  id:
+    identifier: true
+    required: true
+  de:
+    range: string
+  fr:
+    range: string
+  it:
+    range: string
+  en:
+    range: string
+  code:
+    range: string
+  sort_order:
+    range: integer
+  status:
+    range: StatusEnum
+  name:
+    required: true
+    range: LocalizedText
+  definition:
+    range: LocalizedText
+  description:
+    range: LocalizedText
+  file_name:
+    range: LocalizedText
+  picture_link:
+    range: string
+  model_link:
+    range: string
+  applicability:
+    range: string
+  comment:
+    range: string
+  workflow_group:
+    range: string
+  parent_workflow:
+    range: Workflow
+    inlined: false
+  year:
+    range: integer
+  norm_reference:
+    range: string
+  values:
+    multivalued: true
+    range: string
+  needed_in_domain:
+    multivalued: true
+    range: Domain
+    inlined: false
+  entity_ifc2x3:
+    range: string
+  entity_ifc4:
+    range: string
+  entity_ifc4_3:
+    range: string
+  attributes:
+    multivalued: true
+    range: Attribute
+    inlined_as_list: true
+  custom_psets:
+    multivalued: true
+    range: CustomPset
+    inlined: false
+  pset:
+    range: string
+  datatype:
+    range: IFCDatatypeEnum
+  allowed_values:
+    range: ValueSet
+    inlined: false
+    description: Optional reference to a ValueSet for enumerated constraints.
+  regex:
+    range: string
+    description: Optional regex pattern for free-text validation when ValueSet is not used.
+  ifc_versions:
+    multivalued: true
+    range: IFCVersionEnum
+  needed_for_workflows:
+    multivalued: true
+    range: Workflow
+    inlined: false
+  is_applicability:
+    range: boolean
+  domains:
+    multivalued: true
+    range: Domain
+    inlined_as_list: true
+  workflows:
+    multivalued: true
+    range: Workflow
+    inlined_as_list: true
+  valuesets:
+    multivalued: true
+    range: ValueSet
+    inlined_as_list: true
+  elements:
+    multivalued: true
+    range: Element
+    inlined_as_list: true
+  custom_pset_entities:
+    multivalued: true
+    range: CustomPset
+    inlined_as_list: true
+  phase_schemes:
+    multivalued: true
+    range: PhaseScheme
+    inlined_as_list: true
+  phases:
+    multivalued: true
+    range: Phase
+    inlined_as_list: true
+  phase_subphases:
+    multivalued: true
+    range: PhaseSubphase
+    inlined_as_list: true
+  scheme:
+    range: PhaseScheme
+    inlined: false
+  phase:
+    range: Phase
+    inlined: false
+  subphases:
+    multivalued: true
+    range: PhaseSubphase
+    inlined: false
+  needed_in_phases:
+    multivalued: true
+    range: string
+
+classes:
+  LocalizedText:
+    slots:
+      - de
+      - fr
+      - it
+      - en
+    slot_usage:
+      de:
+        required: true
+
+  LocalizedStringList:
+    slots:
+      - de
+      - fr
+      - it
+      - en
+    slot_usage:
+      de:
+        required: true
+        multivalued: true
+      fr:
+        multivalued: true
+      it:
+        multivalued: true
+      en:
+        multivalued: true
+
+  ElementplanDataset:
+    tree_root: true
+    slots:
+      - domains
+      - workflows
+      - valuesets
+      - phase_schemes
+      - phases
+      - phase_subphases
+      - custom_pset_entities
+      - elements
+
+  Domain:
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - file_name
+      - status
+
+  Workflow:
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - description
+      - workflow_group
+      - parent_workflow
+      - picture_link
+      - status
+      - needed_in_domain
+      - comment
+
+  ValueSet:
+    slots:
+      - id
+      - code
+      - name
+      - description
+      - year
+      - norm_reference
+      - status
+      - values
+    slot_usage:
+      values:
+        range: LocalizedStringList
+        multivalued: false
+
+  PhaseScheme:
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - status
+
+  Phase:
+    slots:
+      - id
+      - name
+      - values
+
+  PhaseSubphase:
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - status
+      - phase
+
+  CustomPset:
+    slots:
+      - id
+      - code
+      - name
+      - attributes
+    slot_usage:
+      attributes:
+        required: true
+        minimum_cardinality: 1
+
+  Element:
+    slots:
+      - id
+      - code
+      - sort_order
+      - status
+      - name
+      - definition
+      - needed_in_domain
+      - entity_ifc2x3
+      - entity_ifc4
+      - entity_ifc4_3
+      - picture_link
+      - model_link
+      - applicability
+      - custom_psets
+      - attributes
+
+  Attribute:
+    slots:
+      - name
+      - sort_order
+      - pset
+      - definition
+      - datatype
+      - allowed_values
+      - regex
+      - needed_in_phases
+      - ifc_versions
+      - needed_for_workflows
+      - is_applicability
+      - status
+    slot_usage:
+      name:
+        required: true
+      ifc_versions:
+        required: true
+        minimum_cardinality: 1
+      needed_in_phases:
+        required: true
+        minimum_cardinality: 1

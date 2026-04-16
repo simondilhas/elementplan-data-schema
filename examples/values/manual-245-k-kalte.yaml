@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-245-k-kalte
+name:
+  de: RelationToSystem_Cust_Element_Kältemaschine LUFT-WASSER
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 245-K_Kalte
+  fr:
+  - 245-F_Froid
+  it:
+  - 245-F_Freddo
+  en: []

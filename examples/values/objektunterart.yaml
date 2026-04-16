@@ -1,0 +1,316 @@
+id: armasuisse:value/objektunterart
+name:
+  de: Objektunterart
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 1113/01 Fahrzeuge
+  - 1113/02 Flugzeuge
+  - 1113/03 Boot
+  - 1116/01 allgemein
+  - 1116/02 Werkhof
+  - 1116/03 Flugbetriebsbaute
+  - 1116/04 Bahnbetriebsbaute
+  - 1116/05 Dienst- /Betriebsgebäude zu ui-Felsanlage
+  - 1320/01 allgemein
+  - 1320/02 Flugzeugbereitstellungsgebäude
+  - 1330/01 allgemein
+  - 1330/02 Pz Bar Magazin
+  - 2130/01 Naturbelag
+  - 2130/02 Asphalt-/Betonbelag
+  - 2160/01 Naturbelag
+  - 2160/02 Asphalt-/Betonbelag
+  - 2641/01 erdverlegt
+  - 2641/02 Freileitung
+  - 2650/01 Kupferkabel Campus-Netz
+  - 2650/02 Glasfaserkabel Campus-Netz
+  - 2651/01 C-Netz
+  - 2651/02 Fhr Netz CH
+  - 2652/01 C-Netz
+  - 2652/02 Fhr Netz CH
+  - 3381/01 Sprengbunker unterirdisch
+  - 3381/02 Sprengbunker oberirdisch
+  - 3381/03 Zugs-Unterstand
+  - 3381/04 Kp KP-Unterstand
+  - 3381/05 Bat KP-Unterstand
+  - 3381/06 Gebirgs-Unterstand
+  - 3381/07 Übermittlungsunterstand
+  - 3381/08 Kleinunterstand
+  - 3381/09 Permanente Waffenstellung
+  - 3381/10 Halbzugsunterstand
+  - 3381/11 Infanteriebunker
+  - 3382/01 Zivilschutzanlage
+  - KDO-Posten
+  - 3382/02 KP Gs Vb 1-stöckig (MSB/HE-KP)
+  - 3382/03 KP Gs Vb 2-stöckig (Monoblock)
+  - 3382/04 Schutzbau KP Rgt Typ 6x6
+  - 3382/05 Schutzbau KP Rgt Typ 76
+  - 3382/06 Schutzbau KP Rgt Typ 90
+  - 3382/07 Schutzbau BK
+  - 3382/08 Schutzbau GST
+  - 3382/09 Geb Ukft
+  - 3382/10 TSR 100
+  - 3382/11 KP Gs Vb Fels
+  - 3382/12 KP Rgt Fels
+  - 3382/13 KP Gs Vb spez Anlage
+  - 3382/14 KP Rgt spez Anlage
+  - 3382/15 ALST-Anlage
+  - 3382/16 KP Kanton
+  - 3382/17 Luftwaffenkaverne
+  - 3382/18 Fabrikationsanlage Pharma
+  - 3382/19 Fabrikationsanlage Gasgewinnung
+  - 3383/01 Munitionsanlage unterfels
+  - 3383/02 Munitionsanlage unterflur
+  - 3385/01 Materialanlage unterfels
+  - 3385/02 Materialanlage unterflur
+  - 3388/01 aviatisch genutzt
+  - 3388/02 aviatisch nicht genutzt
+  - 4182/01 Schiessstand 25 - 300 m
+  - 4182/02 KD-Anlage
+  - 4220/01 Treibstoff
+  - 4220/02 Elektroladestation
+  - 4241/01 Telefonzentrale
+  - 4241/02 Schaltstelle
+  - 4241/03 Feldanschlusskasten
+  - 4241/04 Verteilkasten
+  - 4242/01 Kommunikationsrack
+  - 4242/02 IKT-Raum
+  - 4250/01 Funkanlage
+  - 4250/02 Botschaftsfunk
+  - 4250/03 IFASS
+  - 4250/04 Flugfunk
+  - 4250/05 IMFS
+  - 4250/06 Radaranlage
+  - 4250/07 Kurzwellen Notfunk
+  - 4250/08 Sammel-Auswertzentrale
+  - 4250/09 Regionale Auswertzentrale
+  - 4250/10 IBBK
+  - 4250/11 Kurzwellensender
+  - 4250/12 Permanenter Telekom Knoten
+  - 4250/13 Uem ASU
+  - 4250/14 Permanente Militär Zentrale (PMZ)
+  - 4250/15 Höhenanlage
+  - 4250/16 Elektronischer Aufklärungsposten
+  - 4250/17 Relais
+  - 4660/01 in Strasse
+  - 4660/02 in Bahnlinie
+  - 4660/03 kombiniert (Strasse / Bahn)
+  - 4670/01 mit Einsteckelement
+  - 4670/02 mit Stahlspinne
+  - 4670/03 kombiniert
+  - 4670/04 perm. Minensperre
+  - 4670/05 übrige
+  - 4680/01 GPH66 / Stahlspinne
+  - 4680/02 Bachsperre
+  - 4680/03 übrige
+  fr:
+  - 1113/01 Véhicules
+  - 3381/02 Abri de surface
+  - 2130/01 Revêtement naturel
+  - 3385/01 Dépôt de matériel sous roche
+  - 4660/01 dans route
+  - 3383/01 Installation pour munitions sous roche
+  - 2652/01 Réseau C
+  - 4680/02 Barrage sur rivière
+  - 4680/03 Autre
+  - 4182/01 Stand 25 - 300 m
+  - 1320/02 Bâtiment de préparation des avions
+  - 3382/13 PC GU ouvrage spécial
+  - 3382/18 Installation de fabrication pharma
+  - 2130/02 Revêtement en asphalte/béton
+  - 4670/02 avec araignée
+  - 1116/04 Ouvrage d'exploitation ferroviaire
+  - 3382/14 PC rgt ouvrage spécial
+  - 3382/09 Cantonnement de montagne
+  - 1116/03 Ouvrage de service de vol
+  - 3381/01 Abri souterrain
+  - 3382/16 PC cantonal
+  - 4250/12 Noeuds permanents de télécom
+  - 2641/02 Ligne aérienne
+  - 1330/02 Magasin de barrage antichar
+  - 4250/07 Radio de secours ondes courtes
+  - 4241/01 Central téléphonique
+  - 4660/02 dans voie ferrée
+  - 3382/11 PC GU rocher
+  - 3388/02 Non utilisés par l'aviation
+  - 3382/12 PC rgt rocher
+  - 3382/15 Installation ALST
+  - 2641/01 enterré
+  - 3382/05 Ouvrage de protection PC rgt type 76
+  - 3385/02 Dépôt de matériel souterrain
+  - 4250/04 Radiocommunications aériennes
+  - 4250/16 Poste d'exploration électronique
+  - 3382/01 Ouvrage de protection civile
+  - poste de cdmt
+  - 4250/03 IFASS
+  - 4670/01 avec éléments à enficher
+  - 1116/01 Général
+  - 2651/02 Réseau de conduite CH
+  - 4182/02 Stand tir courte distance
+  - 2650/01 Câble en cuivre réseau campus
+  - 4670/05 Autre
+  - 4242/02 Salle de TIC
+  - 4241/04 Boîte de distribution télécom
+  - 1113/03 Bateau
+  - 1113/02 Avions
+  - 1116/05 Bâtiment d'exploitation pour ouvrage sous roche
+  - 3382/08 Ouvrage de protection EMG
+  - 1116/02 Centres d'entretien
+  - 3382/06 Ouvrage de protection PC rgt type 90
+  - 2652/02 Réseau de conduite CH
+  - 3382/04 Ouvrage de protection PC rgt type 6x6
+  - 4220/02 Station de recharge électrique
+  - 4250/17 Relais
+  - 4250/01 Installation radio
+  - 3382/19 Installation de fabrication production de gaz
+  - 3381/05 Abri PC bat
+  - 4250/08 Centrale collectrice d'analyse
+  - 3382/07 Ouvrage de protection ChF
+  - 4250/14 Central militaire permanent
+  - 3381/09 Position d'arme permanent
+  - 3381/03 Abri pour section
+  - 4241/03 Boîtes de raccordement de campagne
+  - 4250/09 Centrale d'analyse régionale
+  - 3383/02 Installation pour munitions souterrain
+  - 4670/04 Barrage de mines perm.
+  - 3382/02 PC GU 1 niveau (MSB/HE-KP)
+  - 3381/04 Abri PC cp
+  - 3381/10 Abri pour demi-section
+  - 2160/01 Revêtement naturel
+  - 4680/01 GPH66 / araignée
+  - 2160/02 Revêtement en asphalte/béton
+  - 4250/11 Emetteur ondes courtes
+  - 4250/02 Radio des ambassades
+  - 1330/01 Général
+  - 4250/06 Installation radar
+  - 1320/01 Général
+  - 4250/15 Station en altitude
+  - 3381/11 Bunker d'infanterie
+  - 3381/08 Petit abri
+  - 3388/01 Utilisés par l'aviation
+  - 4250/05 IMFS
+  - 4220/01 Carburant
+  - 3382/10 TSR 100
+  - 3381/07 Abri de transmission
+  - 2651/01 Réseau C
+  - 4241/02 Poste de commutation
+  - 4670/03 Combiné
+  - 4242/01 Râtelier de communication
+  - 2650/02 Câble fibre optique réseau campus
+  - 3381/06 Abri de montagne
+  - 4250/13 Abri trm
+  - 3382/17 Caverne des Forces aériennes
+  - 4250/10 IPCC-Radio
+  - 3382/03 PC GU 2 niveaux (monobloc)
+  - 4660/03 Combiné (route / voie ferrée)
+  it:
+  - 1113/01 Veicoli
+  - 3381/02 Bunker esplosivi di superficie
+  - 2130/01 Rivestimento naturale
+  - 3385/01 Deposito di materiale sotto roccia
+  - 4660/01 in strada
+  - 3383/01 Impianto per munizioni sotto roccia
+  - 2652/01 Rete C
+  - 4680/02 Sbarramento su fiume
+  - 4680/03 Altri
+  - 4182/01 Poligono di tiro 25 - 300 m
+  - 1320/02 Edificio di preparazione aerei
+  - 3382/13 PC GU opera speciale
+  - 3382/18 Impianto di fabbricazione farmaceutica
+  - 2130/02 Rivestimento in asfalto/beton
+  - 4670/02 con riccio ceco
+  - 1116/04 Struttura operativa ferroviaria
+  - 3382/14 PC rgt opera speciale
+  - 3382/09 Alloggiamento di montagna
+  - 1116/03 Struttura operativa di volo
+  - 3381/01 Bunker esplosivi sotterraneo
+  - 3382/16 PC cantonale
+  - 4250/12 Nodi permanenti di telecom
+  - 2641/02 Linea aerea
+  - 1330/02 Magazzino di sbarramento anticarro
+  - 4250/07 Radio d’emergenza a onde corte
+  - 4241/01 Centrale telefonica
+  - 4660/02 in linea ferroviaria
+  - 3382/11 PC GU roccia
+  - 3388/02 Non utilizzati dall’aviazione
+  - 3382/12 PC rgt roccia
+  - 3382/15 Installazione ALST
+  - 2641/01 interrato
+  - 3382/05 Opera di protezione PC rgt tipo 76
+  - 3385/02 Deposito di materiale sotterraneo
+  - 4250/04 Radio aeronautica
+  - 4250/16 Postazione di ricognizione elettronica
+  - 3382/01 Impianto di protezione civile
+  - posto comando
+  - 4250/03 IFASS
+  - 4670/01 con elemento inseribile
+  - 1116/01 Generico
+  - 2651/02 Rete di condotta CH
+  - 4182/02 Stand tiro corta distanza
+  - 2650/01 Cavo di rame rete campus
+  - 4670/05 Altri
+  - 4242/02 Sala TIC
+  - 4241/04 Scatola di distribuzione telecom
+  - 1113/03 Barca
+  - 1113/02 Aerei
+  - 1116/05 Edificio operativo per opera sotterranea sotto roccia
+  - 3382/08 Opera di protezione EMG
+  - 1116/02 Centri di manutenzione
+  - 3382/06 Opera di protezione PC rgt tipo 90
+  - 2652/02 Rete di condotta CH
+  - 3382/04 Opera di protezione PC rgt tipo 6x6
+  - 4220/02 Stazione di ricarica elettrica
+  - 4250/17 Relè
+  - 4250/01 Installazione radio
+  - 3382/19 Impianto di fabbricazione produzione di gas
+  - 3381/05 Rifugio PC bat
+  - 4250/08 Centrale collettrice di analisi
+  - 3382/07 Opera di protezione ChF
+  - 4250/14 Centrale militare permanente
+  - 3381/09 Posizione d’arma permanente
+  - 3381/03 Rifugio per sezione
+  - 4241/03 Scatole di collegamento da campo
+  - 4250/09 Centrale collettrice di analisi
+  - 3383/02 Impianto per munizioni sotterraneo
+  - 4670/04 Sbarramento mine permanente
+  - 3382/02 PC GU 1 livello (MSB/HE-KP)
+  - 3381/04 Rifugio PC cp
+  - 3381/10 Rifugio per mezza sezione
+  - 2160/01 Rivestimento naturale
+  - 4680/01 GPH66 / riccio ceco
+  - 2160/02 Rivestimento in asfalto/beton
+  - 4250/11 Trasmettitore a onde corte
+  - 4250/02 Radio ambasciata
+  - 1330/01 Generico
+  - 4250/06 Installazione radar
+  - 1320/01 Generico
+  - 4250/15 Impianto ad alta quota
+  - 3381/11 Bunker di fanteria
+  - 3381/08 Piccolo riparo
+  - 3388/01 Utilizzati dall’aviazione
+  - 4250/05 IMFS
+  - 4220/01 Carburante
+  - 3382/10 TSR 100
+  - 3381/07 Rifugio di trasmissione
+  - 2651/01 Rete C
+  - 4241/02 Posto di commutazione
+  - 4670/03 Combinato (strada/ferrovia)
+  - 4242/01 Rack di comunicazione
+  - 2650/02 Cavo in fibra ottica rete campus
+  - 3381/06 Rifugio di montagna
+  - 4250/13 Rifugio trm
+  - 3382/17 Caverna delle Forze Aeree
+  - 4250/10 IPCC-Radio
+  - 3382/03 PC GU 2 livelli (monoblocco)
+  - 4660/03 Combinato (strada/ferrovia)
+  en: []

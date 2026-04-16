@@ -1,0 +1,98 @@
+id: armasuisse:element/kaltemaschine-luft-wasser
+sort_order: 135
+status: active
+name:
+  de: Kältemaschine LUFT-WASSER
+  fr: Machine chauffage-refroidissement AIR-EAU
+  it: Macchina riscaldamento-raffreddamento ARIA-ACQUA
+  en: ''
+needed_in_domain:
+- armasuisse:domain/nachweismodell-heizung-kalte
+- armasuisse:domain/gebaudetechnik
+definition:
+  de: Es handelt sich um eine Maschine, die durch den Austausch von Luft und Wasser Kaltwasser zur Kühlung erzeugt.
+  fr: Il s’agit d’une machine qui produit de l’eau froide pour le refroidissement grâce à un échange entre l’air et l’eau.
+  it: Si tratta di una macchina che produce acqua refrigerata per il raffrescamento tramite uno scambio tra aria e acqua.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcChiller
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcChiller
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-aircooled
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  is_applicability: true
+  status: active
+  sort_order: 1
+- name: RelationToSystem
+  pset: Cust_Element
+  definition:
+    de: Jedes gebäudetechnische Bauteil muss einem technischen System zugeordnet werden. Die Zuordnung stellt sicher, dass Funktionen, Abhängigkeiten und Verantwortlichkeiten eindeutig definiert sind und
+      ermöglicht eine konsistente Auswertung über Planung, Ausführung und Betrieb hinweg.
+    fr: Ogni componente tecnico dell’edificio deve essere assegnato a un sistema tecnico. Questa assegnazione garantisce una definizione chiara delle funzioni, delle dipendenze e delle responsabilità, e
+      consente una valutazione coerente durante la pianificazione, l’esecuzione e la gestione operativa.
+    it: Chaque élément technique du bâtiment doit être attribué à un système technique. Cette attribution garantit une définition claire des fonctions, des dépendances et des responsabilités, et permet
+      une analyse cohérente tout au long de la planification, de l’exécution et de l’exploitation.
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/manual-245-k-kalte
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  is_applicability: false
+  status: active
+  sort_order: 2

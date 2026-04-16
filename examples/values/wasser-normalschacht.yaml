@@ -1,0 +1,22 @@
+id: armasuisse:value/wasser-normalschacht
+name:
+  de: Wasser Normalschacht
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Wasser Normalschacht
+  fr:
+  - Eau regard normal
+  it:
+  - Pozzo per acqua standard
+  en: []

@@ -1,0 +1,21 @@
+id: armasuisse:element/ebkp-name-der-klassifizierung
+sort_order: 21
+status: active
+name:
+  de: eBKP Name der Klassifizierung
+  fr: Classification eCCC
+  it: Classificazione eCCC
+  en: ''
+needed_in_domain: []
+definition:
+  de: 'Bezeichnung der verwendeten Klassifikation: eBKP'
+  fr: 'Nom de la classification utilisée: eCCC'
+  it: 'Denominazione delle classificazioni utilizzate: eCCC'
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcClassification
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcClassification
+attributes: []

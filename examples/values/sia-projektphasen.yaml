@@ -1,0 +1,55 @@
+id: armasuisse:value/sia-projektphasen
+name:
+  de: SIA Projektphasen
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - '11'
+  - '21'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '22'
+  - '62'
+  fr:
+  - '11'
+  - '21'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '22'
+  - '62'
+  it:
+  - '11'
+  - '21'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '22'
+  - '62'
+  en: []

@@ -1,0 +1,77 @@
+id: armasuisse:workflow/awf-04-a-issuemanagement
+sort_order: 32
+code: AWF-04-a
+name:
+  de: Issuemanagement
+  fr: Issue-Management base cas d’application 04 selon KBOB
+  it: Issue management
+  en: ''
+description:
+  de: '**Beschrieb**
+
+    Im Verlauf von Planung und Realisation treten Konflikte, Frage- und Problemstellungen auf, die sich bei deren Eintritt nicht eindeutig zuordnen lassen. Dieser Koordinationsbedarf wird systematisch erfasst
+    und abgearbeitet. Zu diesem Zweck werden die Fachmodelle vom BIM-Verantwortlichen des Projektteams regelmässig zu einem Koordinationsmodell zusammengeführt, einer Kollisionsprüfung unterzogen und die
+    Kollisionen als Issues (Aufgaben) erfasst. 
+
+
+    Mit regelmässigen inhaltlichen Prüfungen stellt der BIM-Verantwortliche des Projektteams ausserdem sicher, dass sämtliche weiteren, offenen Punkte ebenso als Issues erfasst werden und in den Planungsprozess
+    einfliessen.
+
+
+    Die so identifizierten Issues werden an Sitzungen (gemäss Planerhandbuch) analysiert. An diesen Sitzungen werden das weitere Vorgehen sowie die mit der Behebung verbundenen Verantwortlichkeiten und
+    Pendenzen geklärt, den jeweils fachverantwortlichen Beauftragten mit einer Frist zur Behebung zugewiesen und bauteil- oder objektbezogen im Modell eingepflegt.
+
+
+    Erfassung, Austausch und das an Koordinationssitzungen beschlossenen weitere Vorgehen zur Behebung und Erledigung der Issues werden dokumentiert und im Anschluss im Anwendungsfall AWF-07 «Auftrags-,
+    Pendenzen- und Mängelmanagement» weiterbearbeitet. 
+
+
+    **Ziele:**
+
+    - Erhöhung der Planungssicherheit, des Projektverständnisses und der Transparenz durch integrale Zusammenarbeit mit einem koordinierten Gesamtmodell.
+
+
+    **Mehrwerte:**
+
+    - interdisziplinäre Planung
+
+    - effiziente und direkte Kommunikation
+
+    - Bauherr kann in den Planungsprozess stärker eingebunden werden
+
+
+    **Lieferobjekte:**
+
+    - BIM-Modell(e)
+
+    - Dokumentationen der Issues im BCF-Format sowie in Berichtsform (PDF oder Excel)'
+  fr: "**Description:**\nAu fur et à mesure de la planification et de la réalisation, des conflits, des problématiques et des questions surgissent, qui ne peuvent pas être clairement attribués lors de leur
+    survenance. Ce besoin de coordination est saisi de façon systématique et traité point par point. Dans cette optique, le responsable BIM de l’équipe de projet fusionne régulièrement les modèles spécialisés
+    en un modèle de coordination, les soumet à un contrôle des collisions, qui sont saisies en tant qu’Issues (problématiques).  En effectuant régulièrement des contrôles de contenu, le responsable BIM
+    de l’équipe de projet garantit en outre que tous les autres points en suspens sont également saisis en tant qu’Issues et intégrés dans le processus de planification. Les Issues ainsi identifiées sont
+    analysées lors des séances (selon le manuel de planification). Lors de ces séances, la suite à donner est clarifiée, tout comme les responsabilités et les points en suspens liés à la résolution des
+    problèmes ; les tâches correspondantes sont attribuées aux mandataires assumant la responsabilité technique avec un délai d’exécution et la mise à jour est assurée dans le modèle par rapport aux parties
+    d’ouvrage ou aux ouvrages. La saisie, les échanges et la suite à donner discutée lors des séances de coordination afin de remédier aux Issues et de les régler sont documentées puis leur traitement se
+    poursuit dans le cas d’application « Gestion des mandats, des points en suspens et des défauts ». \n\n**Objectif.**\n- Accroissement de la sécurité de la planification, de la compréhension du projet
+    et de la transparence grâce à une collaboration intégrale avec un modèle global coordonné.  \n\n**Plus-value.**\n- Planification interdisciplinaire\n- Communication efficace et directe\n- Le maître
+    d’ouvrage peut être mieux intégré au processus de planification \n\n**Objets à livrer**\n- Modèle BIM\n- Documentations des points en suspens (Issues) au format BCF et sous forme de rapport (PDF ou
+    Excel)"
+  it: "**Descrizione:**\nNel corso della pianificazione e della realizzazione emergono conflitti, questioni e problemi che non possono essere classificati in modo univoco nel momento in cui si verificano.
+    Questa esigenza di coordinamento viene registrata ed elaborata in modo sistematico. A tal fine, i modelli specialistici vengono riuniti regolarmente dal responsabile BIM del team di progetto in un modello
+    di coordinazione, viene effettuato un controllo finalizzato a individuare i conflitti e i conflitti vengono registrati come issue (compiti).   \n\nCon controlli regolari a livello contenutistico, il
+    responsabile BIM del team di progetto assicura inoltre che anche tutti gli altri punti in sospeso vengano registrati come issue e che convergano nel processo di pianificazione.  \n\nGli issue così identificati
+    vengono analizzati nell’ambito di riunioni (secondo il manuale per le prestazioni del mandatario). durante le quali vengono chiariti i passi successivi nonché le responsabilità e le pendenze correlate
+    alla risoluzione delle criticità. Inoltre, al mandatario specializzato viene assegnato un termine per la relativa risoluzione e si procede con l’inserimento nel modello in funzione dell’elemento strutturale
+    o della parte dell’opera.  \n\nLa registrazione, lo scambio e la procedura successiva stabilita nell’ambito delle riunioni di coordinamento per la risoluzione degli issue vengono documentati e poi ulteriormente
+    elaborati nel caso d’uso-07 «Gestione di mandati, pendenze e difetti».   \n\n**Obiettivi:**\n- Aumento della sicurezza della pianificazione, della comprensione del progetto e della trasparenza attraverso
+    una collaborazione completa con un modello globale coordinato.  \n\n**Valori aggiunti:**\n- Pianificazione interdisciplinare\n- Comunicazione efficiente e diretta\n- Il committente può essere coinvolto
+    in misura superiore nel processo di pianificazione  \n\n**Oggetti della fornitura:**\n- Modello/i BIM\n- Documentazione degli issue in formato BCF e come relazione (PDF o Excel)"
+  en: ''
+workflow_group: BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-04-issuemanagement
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

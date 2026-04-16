@@ -1,0 +1,22 @@
+id: armasuisse:value/elektrizitaet-schacht
+name:
+  de: Elektrizitaet Schacht
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Elektrizitaet Schacht
+  fr:
+  - Électricité Chambre de regard
+  it:
+  - Elettricità Pozzetto
+  en: []

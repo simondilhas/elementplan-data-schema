@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-aircooled
+name:
+  de: PredefinedType_Kältemaschine LUFT-WASSER
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - AIRCOOLED
+  fr:
+  - AIRCOOLED
+  it:
+  - AIRCOOLED
+  en: []

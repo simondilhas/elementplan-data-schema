@@ -1,0 +1,98 @@
+id: armasuisse:element/gitter
+sort_order: 138
+status: active
+name:
+  de: Gitter
+  fr: Grille
+  it: Griglia
+  en: ''
+needed_in_domain:
+- armasuisse:domain/nachweismodell-luftung-klima
+- armasuisse:domain/gebaudetechnik
+definition:
+  de: Ein Lüftungsgitter ist eine Vorrichtung, die die Luftzufuhr in einen Raum ermöglicht. Sie kann Luft einblasen oder absaugen.
+  fr: Une grille de ventilation est un équipement qui permet la diffusion de l'air dans un local. Elle peut pulser ou extraire de l'air.
+  it: Una griglia di ventilazione è un'apparecchiatura che permette la diffusione dell'aria in un locale. Può immettere o estrarre aria.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcAirTerminal
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcAirTerminal
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-grille
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-d-nachweismodell-luftung-klimaanlagen
+  is_applicability: true
+  status: active
+  sort_order: 1
+- name: RelationToSystem
+  pset: Cust_Element
+  definition:
+    de: Jedes gebäudetechnische Bauteil muss einem technischen System zugeordnet werden. Die Zuordnung stellt sicher, dass Funktionen, Abhängigkeiten und Verantwortlichkeiten eindeutig definiert sind und
+      ermöglicht eine konsistente Auswertung über Planung, Ausführung und Betrieb hinweg.
+    fr: Ogni componente tecnico dell’edificio deve essere assegnato a un sistema tecnico. Questa assegnazione garantisce una definizione chiara delle funzioni, delle dipendenze e delle responsabilità, e
+      consente una valutazione coerente durante la pianificazione, l’esecuzione e la gestione operativa.
+    it: Chaque élément technique du bâtiment doit être attribué à un système technique. Cette attribution garantit une définition claire des fonctions, des dépendances et des responsabilités, et permet
+      une analyse cohérente tout au long de la planification, de l’exécution et de l’exploitation.
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/manual-244-v-luftung-zone-1-244-v-luftung-zone-2
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-d-nachweismodell-luftung-klimaanlagen
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  is_applicability: false
+  status: active
+  sort_order: 2

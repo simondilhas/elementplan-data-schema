@@ -1,0 +1,22 @@
+id: armasuisse:value/gas-leitung
+name:
+  de: Gas Leitung
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Gas Leitung
+  fr:
+  - Gaz conduite
+  it:
+  - Condotta gas
+  en: []

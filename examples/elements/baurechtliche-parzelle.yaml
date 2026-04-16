@@ -1,0 +1,24 @@
+id: armasuisse:element/baurechtliche-parzelle
+sort_order: 7
+status: active
+name:
+  de: Baurechtliche Parzelle
+  fr: Parcelle de terrain
+  it: Particella del terreno
+  en: ''
+needed_in_domain: []
+definition:
+  de: "Die Parzelle wird durch den Bauherr geliefert. Jede Parzelle wird als modelliertes Element als Projektion von oben übergeben und einer Dicke von 1 Meter. \n\n** Modellierungshinweis:**\n- Höhe =\
+    \ 1m extrudiert von Höhe Modell-Einfügepunkt"
+  fr: "La parcelle est fournie par le maître d'ouvrage. Chaque parcelle est remise sous forme d'un élément modélisé en une projection depuis le haut et avec une épaisseur d'1 mètre.   \n\n** Note de modélisation:**\n\
+    - Hauteur = 1m extrudé à partir de la hauteur du point d'insertion du modèle"
+  it: "La particella viene fornita dal committente. \nOgni particella viene consegnata come elemento modellato sotto forma di proiezione dall'alto e con uno spessore di 1 metro.   \n\n** Indicazione per\
+    \ la modellazione:**\n - Altezza = 1 m estruso dall'altezza del punto del modello"
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcSpace
+entity_ifc4_3: null
+picture_link: baurechtliche-parzelle.jpg
+model_link: null
+applicability: entity_ifc4=IfcSpace
+attributes: []

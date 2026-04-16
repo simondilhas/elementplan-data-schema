@@ -1,0 +1,65 @@
+id: armasuisse:element/sia416-werte-fur-klassifizierung
+sort_order: 20
+status: active
+name:
+  de: SIA416 Werte für Klassifizierung
+  fr: SIA 416 types de surfaces
+  it: SIA416 tipo di superfici
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+definition:
+  de: 'Klassifizierung für die Flächenberechnung gemäss SIA 416:2003 - Flächen und Volumen von Gebäuden.
+
+
+    **Modellierungshinweis:**
+
+    - Die modelierten Raum Elemente (ifcSpace) sind den SIA416 Zonen zuzuordnen und zu exportieren.'
+  fr: "Classification pour le calcul de surfaces selon SIA 416:2003 - Surfaces et volumes de bâtiments.   \n\n**Note pour la modélisation.**\n- Les éléments de l'espace modélisé (ifcSpace) doivent être\
+    \ affectés aux zones SIA416 et exportés."
+  it: "Classificazione per il calcolo delle superfici secondo la norma SIA 416:2003 - Superfici e volumi di edifici.  \n\n**Indicazione per la modellazione.**\n- Gli elementi dello spazio modellati (ifcSpace)\
+    \ devono essere assegnati alle zone SIA416 ed esportati."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcClassificationReference
+entity_ifc4_3: null
+picture_link: sia416-werte-fur-klassifizierung.jpg
+model_link: null
+applicability: entity_ifc4=IfcClassificationReference
+attributes:
+- name: Identification
+  pset: null
+  definition:
+    de: Namen der Inhalte, die der Klassifikation SIA416 zugeordnet werden. z.B. "HNF1"
+    fr: Noms des contenus qui sont affectés à la classification SIA 416, p. ex. "SUP1"
+    it: Nomi dei contenuti assegnati alla classificazione della norma SIA 416. Ad es. "SUP1"
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/sia416-innenraum
+  link_uid: ''
+  regex:
+    de: ^(HNF[1-6]|NNF|FF|VF|BUF|UUF|ANF|AVF|AFF)$
+    fr: ^(SUP[1-6]|SUS|SI|SD|SAA|SAN|SEU|SED|SEI)$
+    it: ^(SUP[1-6]|SUS|SI|SCIR|SLES|SLEN|SUE|SCIRE|SIE)$
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 1

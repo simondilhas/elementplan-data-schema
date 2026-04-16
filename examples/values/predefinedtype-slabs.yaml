@@ -1,0 +1,28 @@
+id: armasuisse:value/predefinedtype-slabs
+name:
+  de: PredefinedType:Slabs
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - FLOOR
+  - ROOF
+  - BASESLAB
+  fr:
+  - FLOOR
+  - ROOF
+  - BASESLAB
+  it:
+  - FLOOR
+  - ROOF
+  - BASESLAB
+  en: []

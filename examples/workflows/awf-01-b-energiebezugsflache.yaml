@@ -1,0 +1,27 @@
+id: armasuisse:workflow/awf-01-b-energiebezugsflache
+sort_order: 7
+code: AWF-01-b
+name:
+  de: Qualitätssicherung Energiebezugsfläche
+  fr: Surface de référence énergétique
+  it: Superficie riscaldata
+  en: ''
+description:
+  de: "**Ziel**\nDie vom Fachplaner ermittelte Energiebezugsfläche kann im Modell nachvollzogen und plausibilisiert werden. Grundlage dafür ist eine einheitliche Raumzuordnung, die projektübergreifend transparent
+    macht, welche Räume als EBF gelten — anstatt dass jedes Gewerk eine eigene Zuordnung vornimmt.\n\n**Nutzen für den Auftraggeber**\n- Einheitliche EBF-Basis über alle Gewerke reduziert Koordinationsaufwand
+    erheblich\n- Plausibilitätsprüfung der vom Fachplaner ermittelten Energiebezugsfläche wird möglich\n- Widersprüche zwischen Planung und Energieausweis werden frühzeitig erkannt\n\n**Umsetzung im Projekt**\n
+    Zuweisung durch Architekt in Zusammenarbeit mit Fachplaner\nEin beauftragter Fachplaner (z.B. Energieplaner) definiert, welche Räume zur Energiebezugsfläche gehören, und gibt diese Daten/Skizze dem
+    Architekten weiter. Die Sonderausmassregeln nach SIA 380 werden in diesem Workflow nicht berücksichtigt!\n\n\n **Ergebnis**\nEin IFC-Modell mit eindeutig klassifizierten Energiebezugsflächen steht zur
+    Verfügung und bildet die gemeinsame Berechnungsgrundlage für alle Gewerke."
+  fr: Dans les phases de projet, y compris de la phase 31, la surface de référence énergétique doit être inférée des surfaces de base des locaux nets. A partir de la phase 32, il faut établir et utiliser
+    un modèle de local de surface de référence énergétique.
+  it: Nelle fasi di progetto fino alla numero 31 compresa, la superficie riscaldata deve essere ricavata dalle superfici di base degli spazi netti; a partire dalla fase 32 è necessario elaborare e utilizzare
+    un modello dei locali in riferimento alla superficie riscaldata.
+  en: ''
+workflow_group: BIM 3d full,BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-01-raumflachen-und-volumina
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

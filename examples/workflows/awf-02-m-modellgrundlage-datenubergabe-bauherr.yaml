@@ -1,0 +1,27 @@
+id: armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+sort_order: 21
+code: AWF-02-m
+name:
+  de: Bereitstellung Modellgrundlage
+  fr: Base du modèle et remise des données mandant
+  it: Base del modello e trasmissione dei dati da parte del committente
+  en: ''
+description:
+  de: "**Ziel**\nZu Projektbeginn steht dem gesamten Planungsteam eine verbindliche Modellgrundlage mit einheitlichen Referenzpunkten, Gebäudekennzahlen und Bestandsgeometrie zur Verfügung. \n\n**Nutzen
+    für den Auftraggeber**\n- Koordinaten, Referenzpunkte und Gebäudebezeichnungen sind einmalig und verbindlich definiert\n- Alle Planer arbeiten von Beginn an auf derselben Grundlage\n- Häufige Fehlerquelle
+    bei Projektstart wird eliminiert\n\n**Umsetzung im Projekt**\nDie Erstellung der Modellgrundlage erfolgt in einer der folgenden Varianten:\n\n- *Variante A — Erstellung durch Fachspezialisten:* Der
+    Auftraggeber beauftragt einen Vermesser oder Spezialisten mit der Erstellung der Modellgrundlage und stellt diese dem Planungsteam bereit.\n- *Variante B — Erstellung durch Lead-Auftragnehmer:* Der
+    Lead-Auftragnehmer (z.B. Generalplaner oder Architekt) erstellt die Modellgrundlage und stellt sie den übrigen Auftragnehmern zur Verfügung.\n\nIn beiden Varianten umfasst die Modellgrundlage:\n- *Arealmodell:*
+    Grundstücksgrenzen, Arealgeometrie und Referenzpunkte auf Arealebene.\n- *Gebäudemodell:* Bestandsgeometrie (As-built), gebäudebezogene Referenzpunkte sowie Gebäudekennzahlen (GKZ) und Bezeichnungen.\n
+    \n**Ergebnis**\n- IFC-Arealmodell mit Georeferenzierten Referenzpunkten\n- IFC-Gebäudemodell Referenzpunkten und Gebäudekennzahlen/Planungsrelevanten Metadaten"
+  fr: Le mandant met à disposition le fondement du modèle ainsi que les points à insérer pour le site et dans le modèle en conformité avec le plan des éléments.
+  it: Il mandante mette a disposizione la base del modello, i punti di aree e modelli conformemente al piano degli elementi.
+  en: ''
+workflow_group: BIM 3d light,BIM 3d full,BIM 3d full 10Mio+,BIM 2d light,BIM 2d full
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/referenz-perimeter
+- armasuisse:domain/referenz-bauwerk
+comment: ''

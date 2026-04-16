@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-254-1-s-warmwasser
+name:
+  de: RelationToSystem_Cust_Element_Zirkulationspumpe
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 254-1_S_Warmwasser
+  fr:
+  - 254-1_S_Eau-chaude-sanitaire
+  it:
+  - 254-1_S_Acqua-calda-sanitaria
+  en: []

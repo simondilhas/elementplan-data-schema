@@ -1,0 +1,23 @@
+id: armasuisse:value/fernwarme-bauwerk-spezialbauwerk
+name:
+  de: Fernwärme Bauwerk Spezialbauwerk
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Fernwärme Bauwerk Spezialbauwerk
+  fr:
+  - Chauff. dist. ouvrage ouvrage spécial
+  it:
+  - Opera teleriscaldamento
+  - opera speciale
+  en: []

@@ -1,0 +1,98 @@
+id: armasuisse:element/konvektor-mit-ventilator
+sort_order: 134
+status: active
+name:
+  de: Konvektor mit Ventilator
+  fr: Convecteur avec ventilateur
+  it: Convettore con ventola
+  en: ''
+needed_in_domain:
+- armasuisse:domain/nachweismodell-heizung-kalte
+- armasuisse:domain/gebaudetechnik
+definition:
+  de: Ein Gebläsekonvektor ist ein Gerät, das mit einem Ventilator und einem Wärmetauscher ausgestattet ist, um die Temperatur in einem Raum zu regulieren. Er verteilt heiße oder kalte Luft.
+  fr: Un ventilo-convecteur est un appareil équipé d'un ventilateur et d'un échangeur de chaleur permettant de réguler la température dans un espace. Il distribue de l'air chaud ou froid.
+  it: Un ventilconvettore è un dispositivo dotato di un ventilatore e di uno scambiatore di calore per regolare la temperatura in un spazio, distribuendo aria calda o fredda.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcUnitaryEquipment
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcUnitaryEquipment
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: PredefinedType dient dazu, ein Element innerhalb seiner IFC-Klasse weiter zu spezifizieren und funktional genauer einzuordnen.
+    fr: Il PredefinedType serve a specificare in modo più dettagliato un elemento all’interno della sua classe IFC e a definirne con maggiore precisione la funzione.
+    it: Le PredefinedType sert à spécifier plus précisément un élément au sein de sa classe IFC et à en définir plus clairement la fonction.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-airhandler
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  is_applicability: true
+  status: active
+  sort_order: 1
+- name: RelationToSystem
+  pset: Cust_Element
+  definition:
+    de: Jedes gebäudetechnische Bauteil muss einem technischen System zugeordnet werden. Die Zuordnung stellt sicher, dass Funktionen, Abhängigkeiten und Verantwortlichkeiten eindeutig definiert sind und
+      ermöglicht eine konsistente Auswertung über Planung, Ausführung und Betrieb hinweg.
+    fr: Ogni componente tecnico dell’edificio deve essere assegnato a un sistema tecnico. Questa assegnazione garantisce una definizione chiara delle funzioni, delle dipendenze e delle responsabilità, e
+      consente una valutazione coerente durante la pianificazione, l’esecuzione e la gestione operativa.
+    it: Chaque élément technique du bâtiment doit être attribué à un système technique. Cette attribution garantit une définition claire des fonctions, des dépendances et des responsabilités, et permet
+      une analyse cohérente tout au long de la planification, de l’exécution et de l’exploitation.
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/manual-243-h-heizung
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  is_applicability: false
+  status: active
+  sort_order: 2

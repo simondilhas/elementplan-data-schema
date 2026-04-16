@@ -1,0 +1,22 @@
+id: armasuisse:value/elektrizitaet-trasse-oberirdisch
+name:
+  de: Elektrizitaet Trasse oberirdisch
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Elektrizitaet Trasse oberirdisch
+  fr:
+  - Électricité tracé en surface
+  it:
+  - Elettricità Tracciato fuori terra
+  en: []

@@ -1,0 +1,22 @@
+id: armasuisse:value/wasser-absperrorgan
+name:
+  de: Wasser Absperrorgan
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Wasser Absperrorgan
+  fr:
+  - Eau commande de fermeture
+  it:
+  - Organo di intercettazione dell'acqua
+  en: []

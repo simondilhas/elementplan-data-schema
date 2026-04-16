@@ -1,0 +1,195 @@
+id: armasuisse:element/luftraum
+sort_order: 9
+status: active
+name:
+  de: Luftraum
+  fr: Vide d'étage
+  it: Vuoto del piano
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/nachweismodell-architektur
+definition:
+  de: 'Um keine Hohlräume im Gebäude zu haben und verschiedene Flächenberechnungen (SIA 416) automatisiert ausführen zu können, ist der Luftraum in mehrgeschossigen Räumen als eigener Raum geschossweise
+    zu modellieren.
+
+
+    **Hinweis:** Installationsschächte und Liftschächte sind keine Lufträume sondern müssen gemäss SIA416 pro Geschoss modelliert werden.
+
+
+    **Modellierungshinweis:**
+
+    Lufträume sind als eigener Raum von Oberkante des unteren Raumes bis Unterkante Rohdecke (UKRD) und geschossweise zu modellieren.'
+  fr: "Afin de ne pas avoir d'espaces vides dans le bâtiment et de pouvoir exécuter de façon automatique les différents calculs de surfaces (SIA 416), le vide d'étage doit être modélisé en tant qu’espace\
+    \ spécifique étage par étage.\n\n**Remarque:** Les gaines techniques et les cages d'ascenseur ne sont pas des espaces aériens mais doivent être modélisés par étage selon SIA416.   \n\n**Note pour la\
+    \ modélisation:**\nLes vides d'étage doivent être modélisés comme des espaces séparés depuis le bord supérieur de la pièce jusqu'au bord inférieur du plafond nu, et étage par étage."
+  it: "Per non avere vuoti nell’edificio e poter svolgere i calcoli delle diverse superfici (SIA 416) in maniera automatizzata, lo spazio a tutta altezza nei locali che si estendono su più piani deve essere\
+    \ modellato come spazio a sé per piano.  \n\n**Nota.** I pozzi delle installazioni e degli ascensori non sono spazi a tutta altezza ma devono essere modellati per ciascun piano secondo la SIA416.  \n\
+    \n**Indicazione per la modellazione.**\nGli spazi a tutta altezza devono essere modellati come uno spazio a sé dal bordo superiore del locale inferiore al bordo inferiore del soffitto grezzo, e piano\
+    \ per piano."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcSpace
+entity_ifc4_3: null
+picture_link: luftraum.png
+model_link: null
+applicability: entity_ifc4=IfcSpace
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: Der Wert PredefinedType muss auf USERDEFINED gesetzt werden, damit der individuelle Objekttyp über das Attribut ObjectType ausgelesen werden kann.
+    fr: La valeur PredefinedType doit être définie sur USERDEFINED afin que le type d’objet individuel puisse être lu via l’attribut ObjectType.
+    it: Il valore PredefinedType deve essere impostato su USERDEFINED affinché il tipo di oggetto individuale possa essere letto tramite l’attributo ObjectType.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-userdefined
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: ObjectType
+  pset: null
+  definition:
+    de: Raumbezeichnung ist Luftraum.
+    fr: La désignation du local est espace aérien.
+    it: Designazione del locale come spazio aereo.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-luftraum
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  is_applicability: true
+  status: active
+  sort_order: 2
+- name: NetFloorArea
+  pset: Qto_SpaceBaseQuantities
+  definition:
+    de: Raumfläche netto gemäss SIA 416
+    fr: Surface nette du local selon SIA 416
+    it: Superficie netta del locale secondo la norma SIA 416
+    en: ''
+  datatype: IfcAreaMeasure
+  allowed_values: null
+  link_uid: '{88B4F10B-9414-4D3D-89E1-279C51621935},{B2A07439-AAA6-49C6-BBE8-0FE752E91BFF},{7680740E-4B46-4B58-91E1-C229D5B13375},{1D1074A7-A641-4565-B2B7-B07B4B448798},{562039B4-6387-4A7C-81D5-4E0FD9DF20C1},{225C0D41-24AA-456B-BF91-ED1E2F334065},{3E3EF195-90F1-4EC7-BBDF-7BCF3777ED5F},{4EA99743-8356-40D0-94D5-DDE4FBB7EB8A},{6C99D079-383C-47A1-B85B-36E32B841F38},{BD937E7F-B98B-4F65-9915-B87FDDDE89EC},{CA633065-7E85-4620-A08E-80EC53DB2B43}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: NetVolume
+  pset: Qto_SpaceBaseQuantities
+  definition:
+    de: Raumvolumen Brutto gemäss SIA 416
+    fr: Volume brut selon SIA 416
+    it: Volume lordo secondo SIA 416
+    en: ''
+  datatype: IfcVolumeMeasure
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  is_applicability: false
+  status: active
+  sort_order: 4

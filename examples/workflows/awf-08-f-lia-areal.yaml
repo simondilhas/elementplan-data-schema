@@ -1,0 +1,19 @@
+id: armasuisse:workflow/awf-08-f-lia-areal
+sort_order: 47
+code: AWF-08-f
+name:
+  de: LIA-Areal
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: wip
+needed_in_domain: []
+comment: ''

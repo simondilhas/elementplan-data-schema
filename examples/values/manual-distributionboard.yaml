@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-distributionboard
+name:
+  de: PredefinedType_Verteilerkasten
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - DISTRIBUTIONBOARD
+  fr:
+  - DISTRIBUTIONBOARD
+  it:
+  - DISTRIBUTIONBOARD
+  en: []

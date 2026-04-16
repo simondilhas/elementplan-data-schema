@@ -1,0 +1,57 @@
+id: armasuisse:workflow/flachenauswertung-nach-sia416-dn265
+code: AWF-01-a
+name:
+  de: Flächenauswertung von Nettoräumen nach SIA416 / dn265
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: '**Ziel**
+
+    Raum- und Gebäudeflächen werden nach SIA 416 und DN 265 klassifiziert und maschinenlesbar bereitgestellt. Dies ermöglicht eine projektübergreifende Vergleichbarkeit sowie eine direkte Übernahme der
+    Flächendaten in die Bewirtschaftung.
+
+    Nutzen für den Auftraggeber
+
+
+    **Mehrwert im Projekt**
+
+    - Einheitliche Flächenbasis für Benchmarking über alle Projekte. Auf Basis der Benchmarks kann das Projekt optimiert werden.
+
+    - Transparente Prüfgrundlage für Projektleitung und Flächenmanagement
+
+    - Flächen stehen nach Projektabschluss ohne manuelle Nachbearbeitung für die Bewirtschaftung bereit.
+
+
+
+    **Umsetzung im Projekt**
+
+    Die projektspezifische Umsetzung erfolgt in einer der folgenden Varianten:
+
+    - Variante A — Klassifizierung in der Planungssoftware
+
+    Die Räume werden direkt in der Planungssoftware (z.B. Revit, Archicad) nach SIA 416 / DN 265 klassifiziert und als IFC oder strukturierte Liste exportiert.
+
+
+    - Variante B — Anreicherung über Elementplan-Action
+
+    Durch das Pflegen der Raumnamen im Elementplan werden die SIA-Klassifikationen automatisiert im IFC-Modell angereichert. Das angereicherte Modell kann anschliessend in IFC-Viewern angezeigt und ausgewertet
+    werden.
+
+    - Variante C — Auswertung über Elementplan Action-Dashboard
+
+    Das Modell wird über das Action-Dashboard hochgeladen. Die Flächen werden klassifiziert visualisiert und können direkt im Dashboard ausgewertet werden.
+
+
+    **Ergebnis**
+
+    Ein nach SIA 416 / DN 265 klassifiziertes IFC-Modell steht zur Verfügung. Die Flächenauswertung ist vollständig, visualisierbar und kann ohne Nachbearbeitung für Benchmarking und Bewirtschaftung weiterverwendet
+    werden.'
+  fr: ''
+  it: ''
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-01-raumflachen-und-volumina
+picture_link: null
+status: active
+comment: ''

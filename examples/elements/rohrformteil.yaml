@@ -1,0 +1,53 @@
+id: armasuisse:element/rohrformteil
+sort_order: 166
+status: active
+name:
+  de: Rohrformteil
+  fr: Raccord de tuyauterie
+  it: Raccordo tubazione
+  en: ''
+needed_in_domain:
+- armasuisse:domain/gebaudetechnik
+definition:
+  de: Rohrformteil ist ein technisches Element der Gebäudetechnik (MEP), das in mechanischen, elektrischen oder sanitärtechnischen Anlagen eingesetzt wird.
+  fr: Raccord de tuyauterie est un élément technique du bâtiment (MEP) utilisé dans des installations mécaniques, électriques ou sanitaires.
+  it: Raccordo tubazione è un elemento tecnico impiantistico (MEP) utilizzato in sistemi meccanici, elettrici o sanitari.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcPipeFitting
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcPipeFitting
+attributes:
+- name: RelationToSystem
+  pset: Cust_Element
+  definition:
+    de: Jedes gebäudetechnische Bauteil muss einem technischen System zugeordnet werden. Die Zuordnung stellt sicher, dass Funktionen, Abhängigkeiten und Verantwortlichkeiten eindeutig definiert sind und
+      ermöglicht eine konsistente Auswertung über Planung, Ausführung und Betrieb hinweg.
+    fr: Ogni componente tecnico dell’edificio deve essere assegnato a un sistema tecnico. Questa assegnazione garantisce una definizione chiara delle funzioni, delle dipendenze e delle responsabilità, e
+      consente una valutazione coerente durante la pianificazione, l’esecuzione e la gestione operativa.
+    it: Chaque élément technique du bâtiment doit être attribué à un système technique. Cette attribution garantit une définition claire des fonctions, des dépendances et des responsabilités, et permet
+      une analyse cohérente tout au long de la planification, de l’exécution et de l’exploitation.
+    en: ''
+  datatype: IfcText
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  is_applicability: false
+  status: active
+  sort_order: 1

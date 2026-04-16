@@ -1,0 +1,31 @@
+id: armasuisse:value/status
+name:
+  de: Status
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - NEW
+  - EXISTING
+  - DEMOLISH
+  - TEMPORARY
+  fr:
+  - NEW
+  - EXISTING
+  - DEMOLISH
+  - TEMPORARY
+  it:
+  - NEW
+  - EXISTING
+  - DEMOLISH
+  - TEMPORARY
+  en: []

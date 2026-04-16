@@ -1,0 +1,121 @@
+id: armasuisse:value/raumliste-aussen
+name:
+  de: Raumliste Aussen
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Flugplatz
+  - Übrige befestigte Fläche
+  - Übrige bestockte Flächen
+  - Übrige humusierte Fläche
+  - Übrige vegetationslose Fläche
+  - Balkon
+  - Wasserbecken
+  - Fliessendes Gewässer
+  - Intensivkultur
+  - Abbau/Deponie
+  - Gewässer
+  - Aussenliegende Fahrzeugabstellflächen
+  - Geschlossener Wald
+  - Gletscher/Firn
+  - Hoch-/Flachmoor
+  - Verkehrsinsel
+  - Aussenanlagen Ausbildung
+  - Aussenanlagen Sport
+  - Gartenanlage
+  - Wytweide
+  - Geröll/Sand
+  - Aussenliegende Entsorgungsplätze
+  - Aussenliegende Reinigungsplätze
+  - Stehendes Gewässer
+  - Wiese/Acker/Weide
+  - Fels
+  - Schilfgürtel
+  - Strasse/Weg
+  - Bestockte Fläche
+  - Humusierte Fläche
+  - Vegetationslose Fläche
+  - Terrasse
+  - Bahn
+  - Trottoir
+  fr:
+  - Aérodrome
+  - Autre surface en dur
+  - Autres surfaces boisées
+  - Autres surfaces recouvertes d’humus
+  - Autres surfaces sans végétation
+  - Balcon
+  - Bassin artificiel
+  - Cours d’eau
+  - Cultures intensives
+  - Démontage/décharge
+  - Eaux
+  - Espaces de stationnement extérieurs des véhicules
+  - Forêt dense
+  - Glacier/névé
+  - Haut-marais/bas-marais
+  - Îlot
+  - Installations extérieures instruction
+  - Installations extérieures sport
+  - Jardin
+  - Pâturage boisé
+  - Pierrier/sable
+  - Places d’élimination extérieures
+  - Places de nettoyage extérieures
+  - Plan d’eau
+  - Pré/champ/pâturage
+  - Rochers
+  - Roselière
+  - Rue/voie
+  - Surface boisée
+  - Surface recouverte d’humus
+  - Surface sans végétation
+  - Terrasse
+  - Train
+  - Trottoir
+  it:
+  - Aerodromo
+  - Altra superficie pavimentata
+  - Altre superfici boschive
+  - Altre superfici con humus
+  - Altre superfici prive di vegetazione
+  - Balcone
+  - Bacino artificiale
+  - Corso d’acqua
+  - Coltivazioni intensive
+  - Area di scavo / discarica
+  - Acque
+  - Area di parcheggio esterna
+  - Foresta fitta
+  - Ghiacciaio / nevaio
+  - Torbiera alta / bassa
+  - Isola di traffico
+  - Area esterna di formazione
+  - Area sportiva esterna
+  - Giardino
+  - Pascolo alberato
+  - Ghiaione / sabbia
+  - Area esterna di smaltimento
+  - Area esterna di lavaggio
+  - Specchio d’acqua
+  - Prato / campo / pascolo
+  - Rocce
+  - Cannaia
+  - Strada / via
+  - Superficie boschiva
+  - Superficie con humus
+  - Superficie priva di vegetazione
+  - Terrazza
+  - Ferrovia
+  - Marciapiede
+  en: []

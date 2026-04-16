@@ -1,0 +1,19 @@
+id: armasuisse:workflow/awf-00-nachweismodelle
+sort_order: 52
+code: AWF-00
+name:
+  de: Nachweismodelle
+  fr: Modèle justificatif
+  it: Modello di giustificazione
+  en: ''
+description:
+  de: Das Nachweismodell dient der Bewertung der BIM-Kompetenz des Anbieters.
+  fr: Le modèle de justification sert à évaluer les compétences BIM du prestataire.
+  it: Il modello di evidenza serve a valutare la competenza BIM del fornitore.
+  en: ''
+workflow_group: null
+parent_workflow: null
+picture_link: null
+status: active
+needed_in_domain: []
+comment: ''

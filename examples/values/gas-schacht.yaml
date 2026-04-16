@@ -1,0 +1,22 @@
+id: armasuisse:value/gas-schacht
+name:
+  de: Gas Schacht
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Gas Schacht
+  fr:
+  - Gaz regard
+  it:
+  - Pozzetto gas
+  en: []

@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-06-a-simulation-kritischer-bauablaufe-in-modell
+sort_order: 36
+code: AWF-06-a
+name:
+  de: Simulation kritischer Bauabläufe in Modell
+  fr: Simulation de déroulements des travaux critiques dans le modèle
+  it: Simulazione di svolgimenti dei lavori critici nel modello
+  en: ''
+description:
+  de: "**Ziel**\nKritische Bauabläufe werden bauteilbezogen im Modell simuliert und visualisiert. Dies ermöglicht eine frühzeitige Identifikation von Risiken und schafft eine fundierte Grundlage für das
+    Risikomanagement.\n\n**Nutzen für den Auftraggeber**\n- Risiken in der Bauausführung werden frühzeitig erkannt und bewertet\n- Massnahmen zur Risikominimierung können modellbasiert entwickelt und kommuniziert
+    werden\n- Gemeinsame Grundlage für Terminkoordination zwischen Planung und Ausführung\n\n**Umsetzung im Projekt**\nDie zu simulierenden Bauabläufe werden durch den zuständigen Fachplaner projektspezifisch
+    definiert. Bauteile werden den jeweiligen Bauphasen zugeordnet und die Abläufe im Modell simuliert.\n\n**Ergebnis**\n- IFC-Modell mit bauteilbezogener Phasenzuordnung\n- Simulierte Bauabläufe als Grundlage
+    für Risikobewertung und -kommunikation\n- Konzeptbeschrieb mit dokumentierter Ablauflogik"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-06-bauablaufplanung-und-baufortschritt
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

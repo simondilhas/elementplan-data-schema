@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-tubeaxial
+name:
+  de: PredefinedType_Ventilator
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - TUBEAXIAL
+  fr:
+  - TUBEAXIAL
+  it:
+  - TUBEAXIAL
+  en: []

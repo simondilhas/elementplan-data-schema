@@ -1,0 +1,23 @@
+id: armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+sort_order: 43
+code: AWF-08-c
+name:
+  de: Modellbasierte Informationen auf Bauteilebene 3D - Architektur
+  fr: Informations modélisées au niveau des parties d’ouvrage - architecture
+  it: Informazioni a livello di parte dell’opera di costruzione basate sul modello 3D - Architettura
+  en: ''
+description:
+  de: TBD
+  fr: Il faut se servir des attributs requis pour les parties d’ouvrage / composants en se basant sur le modèle. Des directives de modélisation complémentaires doivent être définies par le concepteur de
+    façon spécifique au projet.
+  it: In base al modello devono essere impiegati gli attributi richiesti relativi alle parti dell’opera di costruzione/ai componenti. Ulteriori disposizioni di modellazione devono essere definite dal progettista
+    per il progetto specifico.
+  en: ''
+workflow_group: BIM 3d light,BIM 3d full,BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

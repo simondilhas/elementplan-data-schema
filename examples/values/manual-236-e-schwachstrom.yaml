@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-236-e-schwachstrom
+name:
+  de: RelationToSystem_Cust_Element_Zentrale und Brandmeldezentralen
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 236_E_Schwachstrom
+  fr:
+  - 236_E_Courant-faible
+  it:
+  - 236_E_Corrente-bassa
+  en: []

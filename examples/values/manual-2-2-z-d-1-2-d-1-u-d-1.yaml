@@ -1,0 +1,31 @@
+id: armasuisse:value/manual-2-2-z-d-1-2-d-1-u-d-1
+name:
+  de: Name_Geschoss / Stockwerk
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - ^(?:U\d{1
+  - 2}|Z\d{1
+  - 2}|\d{1
+  - 2})$
+  fr:
+  - ^(?:U\d{1
+  - 2}|Z\d{1
+  - 2}|\d{1
+  - 2})$
+  it:
+  - ^(?:U\d{1
+  - 2}|Z\d{1
+  - 2}|\d{1
+  - 2})$
+  en: []

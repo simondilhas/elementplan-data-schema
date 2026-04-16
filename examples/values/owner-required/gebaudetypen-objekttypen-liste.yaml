@@ -1,0 +1,476 @@
+id: armasuisse:value/gebaudetypen-objekttypen-liste
+name:
+  de: Gebäudetypen (Objekttypen) Liste
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 1 GEBÄUDE
+  - 4.5 REINIGUNG UND ENTSORGUNG
+  - 1.8 KULTUR
+  - 2.2.50 Bahnverladerampe
+  - 2.6.80 Fernwärmeleitung
+  - 1.11.30 Depotgebäude*
+  - 3.3.82 Schutzbau gross*
+  - 1.6 FÜRSORGE UND GESUNDHEIT
+  - 4.1.83 Ortskampfanlage
+  - 2.3.10 Luftseilbahn
+  - 2.6.91 Leitungskanal begehbar
+  - 4.6.50 Lärmschutz
+  - 2.4.20 Rollweg
+  - 2.1.60 Rast- und Parkplatz*
+  - 1.3.20 Werkstatt- und Gewerbegebäude*
+  - 1.5 JUSTIZ
+  - POLIZEI
+  - MILITÄR UND SICHERHEIT
+  - 4.2.41 Verteilanlage Telecom*
+  - 1.4.30 Stallung
+  - 3.2.30 Stützmauer
+  - 3.3.83 Munitionsanlage unterirdisch*
+  - 1.7.10 Sakralgebäude
+  - 4.1.85 Übungsleitstand
+  - 4.1.30 Freibad
+  - 1.11.10 Hochgarage
+  - 1.2 UNTERRICHT
+  - BILDUNG UND FORSCHUNG
+  - 2.1 STRASSE UND WEG
+  - 4.2.50 Sende- und Empfangsstation*
+  - 4.6 SCHUTZVERBAU
+  - 1.3.10 Industriegebäude
+  - 4.1.84 Gefechtsanlage
+  - 2.6.50 Kommunikationsleitung*
+  - 3.3.86 Unterirdische Tankanlage
+  - 3.3.81 Schutzbau klein*
+  - 3.3.93 Centi Bunker
+  - 1.7 KULTUS
+  - 2.2.40 Normal- und Schmalspurbahn
+  - 4 ANLAGEN
+  - 1.4.60 Bauernhaus
+  - 2.3.30 Standseilbahn
+  - 4.4 ROHSTOFFGEWINNUNG -UND AUFBEREITUNG
+  - 1.10.20 Mehrzweckhalle
+  - 2.4.30 Abstellfläche
+  - 3.1.70 Übersetzstelle
+  - 4.2.42 Übergabepunkt Telecom*
+  - 2.6.41 Stromleitung*
+  - 4.1.90 Allgemeine Objektumgebung
+  - 1.6.40 Sanitätsposten
+  - Sanitätshilfestelle
+  - MZR
+  - 3.3.85 Materialanlage unterirdisch*
+  - 1.4 LAND- UND FORSTWIRTSCHAFT
+  - 1.3.80 Datacenter / RZ
+  - 1.1.20 Mehrfamilienhaus
+  - 1.3.32 Lagergebäude für Gefahrengut
+  - 4.2.43 Messstation
+  - 1.5.40 Feuer- und Rettungswache
+  - 4.2.20 Betankungsanlage*
+  - 1.3.31 Lagergebäude für Munition und Sprengmittel
+  - 2.6.10 Wasserleitung
+  - 1.2.90 Simulatorengebäude
+  - 4.3 WASSERVERSORGUNG
+  - 1.1.40 Baracke/Container
+  - 1.3.41 Logistikgebäude
+  - 4.1.81 Ausbildungsgelände
+  - 3.1 BRÜCKE
+  - 2.1.30 Sammel- und Erschliessungsstrasse*
+  - 4.3.50 Wasserversorgung (exkl. Leitungen)
+  - 4.5.10 Rückhaltebecken
+  - 2.4 LUFTFAHRT
+  - 3.3.87 Artilleriefort
+  - 1.9.80 Unterkunftsgebäude
+  - 4.6.10 Fluss- und Bachverbau
+  - 3.1.50 Unterführung
+  - 2.6 TRANSPORTLEITUNG
+  - 2.6.52 Glasfaserkabel*
+  - 3.3.30 Tunnel
+  - 1.4.10 Scheune
+  - 2.2 SCHIENE
+  - 1.11 VERKEHR
+  - 3.2 STÜTZBAUWERKT
+  - 4.2.32 Abfüllstation
+  - Umschlaginstallation
+  - 4.3.60 Brandschutzbau (Löschwasserbecken
+  - Verteilung etc.)
+  - 4.5.30 Sammelstelle
+  - 1.3.70 Büro- und Verwaltungsgebäude
+  - 2.6.71 Pipeline (div. Medien)
+  - 3.3.91 Festungsminenwerfer
+  - 1.9.50 Restaurationsbetrieb / Kantine
+  - 1.9.70 Kaserne
+  - 1.5.50 Wache und Portierloge
+  - 1.1.10 Einfamilienhaus
+  - 2.6.90 Leitungskanal nicht begehbar
+  - 4.1.20 Sportplatz
+  - 1.10.10 Sporthalle
+  - 2 VERKEHRSBAUTEN
+  - 2.3 SEILBAHN
+  - 1.10.60 Gedeckter Unterstand
+  - 1.2.50 Labor- und Forschungsgebäude
+  - 4.2.60 Installation / Sockel für System
+  - 1.9.60 Verpflegungsgebäude
+  - 4.6.91 Sicherheitsanlagen
+  - 2.6.20 Abwasserleitung
+  - 2.4.10 Start- und Landebahn
+  - 3.1.60 Brücke
+  - 4.5.20 Kläranlage
+  - 4.6.90 Umzäunung
+  - 1.10 SPORT
+  - FREIZEIT UND ERHOLUNG
+  - 2.1.50 Rad- und Gehweg
+  - 4.1.70 Ausbildungsanlage Schutz und Rettung
+  - 2.1.80 Lagerplatz
+  - 1.1 WOHNEN
+  - 4.2.10 Energieerzeugung
+  - 4.1.82 Schiessanlage (inkl. Scheibenstand)*
+  - 3.3 TAG- UND UNTERTAGBAU
+  - 2.6.51 Kupferkabel*
+  - 4.6.30 Steinschlagverbau
+  - 4.6.60 Sprengobjekt*
+  - 1.10.50 Garderobengebäude
+  - 4.2.31 Brennstoffpumpwerk
+  - 3.3.92 Bison
+  - 4.6.40 Hangsicherung
+  - 3 KUNSTBAUTEN
+  - 4.2.30 Tanklager
+  - 3.3.84 Kombinierte Anlage unterirdisch
+  - 3.3.89 Militärspital
+  - 1.3 INDUSTRIE
+  - HANDEL UND VERWALTUNG
+  - 3.3.88 Flugzeugunterstand*
+  - 4.6.80 Gelände- Panzerhindernis*
+  - 4.5.70 Waschplatz
+  - 1.4.50 Alphütte
+  - 4.2 ENERGIE- UND KOMMUNIKATIONSANLAGE
+  - 1.9 RESTAURATION UND HOTELLERIE
+  - 1.2.80 Ausbildungshalle
+  - 1.3.30 Lagergebäude*
+  - 1.11.60 Betriebsgebäude*
+  - 4.6.20 Lawinenverbau
+  - 4.6.70 Panzerbarrikade*
+  - 4.1 SPORT- UND FREIZEITANLAGE
+  - 1.2.70 Ausbildungsgebäude
+  fr:
+  - 1 BÂTIMENT
+  - 4.5 NETTOYAGE ET ÉVACUATION
+  - 1.8 CULTURE
+  - 2.2.50 Quai de chargement
+  - 2.6.80 Conduite de chauffage à distance
+  - 1.11.30 Dépôt*
+  - 3.3.82 Ouvrage de protection grand*
+  - 1.6 ASSISTANCE SOCIALE ET SANTÉ
+  - 4.1.83 Site de combat local
+  - 2.3.10 Téléphérique
+  - 2.6.91 Canal de conduite accessible
+  - 4.6.50 Protection contre le bruit
+  - 2.4.20 Voie de circulation
+  - 2.1.60 Aire de repos
+  - place de stationnement*
+  - 1.3.20 Atelier et bâtiment artisanal*
+  - 1.5 JUSTICE
+  - POLICE
+  - ARMÉE ET SÉCURITÉ
+  - 4.2.41 Installation de distribution télécom*
+  - 1.4.30 Ecurie
+  - étable
+  - 3.2.30 Mur de soutènement
+  - 3.3.83 Magasin de munitions souterrain*
+  - 1.7.10 Etablissement cultuel
+  - 4.1.85 Poste de direction d'exercice
+  - 4.1.30 Piscine de plein air
+  - 1.11.10 Garage à étages
+  - 1.2 ENSEIGNEMENT
+  - FORMATION ET RECHERCHE
+  - 2.1 ROUTES ET CHEMINS
+  - 4.2.50 Station émettrice
+  - réceptrice*
+  - 4.6 OUVRAGES DE PROTECTION
+  - 1.3.10 Bâtiment industriel
+  - 4.1.84 Place d'exercice de combat
+  - 2.6.50 Ligne de communication*
+  - 3.3.86 Entrepôt de carburant souterrain
+  - 3.3.81 Ouvrage de protection petit*
+  - 3.3.93 Centi bunker
+  - 1.7 CULTE
+  - 2.2.40 Chemin de fer à voie normale et à voie étroite
+  - 4 INSTALLATIONS
+  - 1.4.60 Ferme
+  - 2.3.30 Funiculaire
+  - 4.4 EXTRACTION ET TRAITEMENT DE MATIÈRES PREMIÈRES
+  - 1.10.20 Salle polyvalente
+  - 2.4.30 Aire de stationnement
+  - 3.1.70 Point de franchissement
+  - 4.2.42 Point de transfert télécom*
+  - 2.6.41 Câble électrique*
+  - 4.1.90 Environnement général d'un ouvrage
+  - 1.6.40 Poste sanitaire
+  - poste de secours sanitaire
+  - hôpital de fortune
+  - 3.3.85 Dépôt de matériel
+  - souterrain*
+  - 1.4 AGRICULTURE ET SYLVICULTURE
+  - 1.3.80 Datacenter / RZ
+  - 1.1.20 Immeuble collectif
+  - 1.3.32 Entrepôt produits dangereux
+  - 4.2.43 Station de mesure
+  - 1.5.40 Caserne de pompiers et poste de sauvetage
+  - 4.2.20 Station service*
+  - 1.3.31 Entrepôt munitions et explosifs
+  - 2.6.10 Conduite d'eau
+  - 1.2.90 Bâtiment des simulateurs
+  - 4.3 ALIMENTATION EN EAU
+  - 1.1.40 Baraque/conteneur
+  - 1.3.41 Bâtiment logistique
+  - 4.1.81 Terrain de formation
+  - 3.1 PONTS
+  - 2.1.30 Route collectrice
+  - route de desserte*
+  - 4.3.50 Approvisionnement en eau (excl. conduits )
+  - 4.5.10 Bassin de décantation
+  - 2.4 AVIATION
+  - 3.3.87 Fort d'artillerie
+  - 1.9.80 Cantonnement
+  - 4.6.10 Aménagement de cours d'eau
+  - 3.1.50 Passage souterrain
+  - 2.6 CONDUITES
+  - 2.6.52 Câble fibre optique*
+  - 3.3.30 Tunnel
+  - 1.4.10 Grange
+  - 2.2 RAILS
+  - 1.11 TRAFIC
+  - 3.2 OUVRAGES DE SOUTÈNEMENT
+  - 4.2.32 Station de remplissage
+  - installation de transbordement
+  - 4.3.60 Construction de protection d'incendie (bassin)
+  - 4.5.30 Place de collecte
+  - 1.3.70 Bâtiment administratif
+  - 2.6.71 Pipeline (div. médias)
+  - 3.3.91 Lance-mines de forteresse
+  - 1.9.50 Établissement de restauration / cantine
+  - 1.9.70 Caserne
+  - 1.5.50 Garde et loge de portier
+  - 1.1.10 Maison individuelle
+  - 2.6.90 Canal de conduite non accessible
+  - 4.1.20 Terrain de sport
+  - 1.10.10 Halle de sport
+  - 2 TRANSPORT
+  - 2.3 TRANSPORT PAR CÂBLE
+  - 1.10.60 Abri couvert
+  - 1.2.50 Laboratoire et bâtiment de recherche
+  - 4.2.60 Bâtiment de la sécurité aérienne (météo au sol
+  - radar
+  - guideline)
+  - 1.9.60 Bâtiment de restauration
+  - 4.6.91 Installation de sécurité (barrières
+  - poteaux de signalisation
+  - etc.)
+  - 2.6.20 Canalisation
+  - 2.4.10 Piste de décollage et d'atterrissage
+  - 3.1.60 Ponts
+  - 4.5.20 Installation d'épuration
+  - 4.6.90 Clôture
+  - 1.10 LOISIRS
+  - SPORT
+  - DÉTENTE
+  - 2.1.50 Piste cyclable
+  - trottoir
+  - 4.1.70 Place de formation
+  - protection et sauvetage
+  - 2.1.80 Lieu de stockage
+  - 1.1 HABITATION
+  - 4.2.10 Production d'énergie
+  - 4.1.82 Installation de tir (y compris cible)*
+  - 3.3 OUVRAGES À CIEL OUVERT OU SOUTERRAINS
+  - 2.6.51 Câble en cuivre*
+  - 4.6.30 Ouvrage de protection contre les chutes de pierres
+  - 4.6.60 Ouvrage miné*
+  - 1.10.50 Vestiaire
+  - 4.2.31 Station de pompage de carburant
+  - 3.3.92 Bison
+  - 4.6.40 Stabilisation de versants
+  - 3 OUVRAGES D'ART
+  - 4.2.30 Citerne
+  - tank
+  - 3.3.84 Ouvrage combiné souterrain
+  - 3.3.89 Hôpital militaire
+  - 1.3 INDUSTRIE
+  - COMMERCE ET ADMINISTRATION
+  - 3.3.88 Abri pour avions*
+  - 4.6.80 Obstacle antichar terrain*
+  - 4.5.70 Poste de lavage
+  - 1.4.50 Chalet d'alpage
+  - 4.2 INSTALLATIONS D'ÉNERGIE ET DE TÉLÉCOMMUNICATION
+  - 1.9 RESTAURATION ET HÔTELLERIE
+  - 1.2.80 Halle de formation
+  - 1.3.30 Entrepôt*
+  - 1.11.60 Bâtiment d'exploitation*
+  - 4.6.20 Paravalanche
+  - 4.6.70 Barrage antichar*
+  - 4.1 INSTALLATIONS SPORTIVES
+  - INSTALLATIONS DE LOISIRS
+  - 1.2.70 Bâtiment de formation
+  it:
+  - 1 EDIFICIO
+  - 4.5 PULIZIA E SMALTIMENTO
+  - 1.8 CULTURA
+  - 2.2.50 Rampa di carico ferroviario
+  - 2.6.80 Condotta di teleriscaldamento
+  - 1.11.30 Rimessa*
+  - 3.3.82 Rifugio grande*
+  - 1.6 ASSISTENZA E SANITÀ
+  - 4.1.83 Installatione per il combattimento di località
+  - 2.3.10 Teleferica
+  - 2.6.91 Canale d'installazione percorribile
+  - 4.6.50 Protezione fonica
+  - 2.4.20 Pista di rullaggio
+  - 2.1.60 Area di sosta
+  - posteggio*
+  - 1.3.20 Officina
+  - edificio per attività artigianali*
+  - 1.5 GIUSTIZIA
+  - POLIZIA
+  - ESERCITO E SICUREZZA
+  - 4.2.41 Impianto di distribuzione telecom*
+  - 1.4.30 Ricovero per animali
+  - 3.2.30 Muro di sostegno
+  - 3.3.83 Deposito munizioni sotterraneo*
+  - 1.7.10 Edificio sacro
+  - 4.1.85 Posto di direzione esercizio
+  - 4.1.30 Piscina all'aperto
+  - 1.11.10 Autorimessa fuori terra
+  - 1.2 ISTRUZIONE
+  - FORMAZIONE E RICERCA
+  - 2.1 STRADE E PERCORSI
+  - 4.2.50 Stazione emittente
+  - ricevente*
+  - 4.6 OPERE DI PROTEZIONE
+  - 1.3.10 Edificio per l'industria
+  - 4.1.84 Piazza di esercizio di combattimento
+  - 2.6.50 Linea di telecomunicazione*
+  - 3.3.86 Deposito carburante sotterraneo
+  - 3.3.81 Rifugio piccolo*
+  - 3.3.93 Bunker Centi
+  - 1.7 CULTO
+  - 2.2.40 Binario a scartamento normale e Binario a scartamento ridotto
+  - 4 IMPIANTI
+  - 1.4.60 Fattoria
+  - 2.3.30 Funicolare
+  - 4.4 ESTRAZIONE E TRATTAMENTO DI MATERIE PRIME
+  - 1.10.20 Sala polivalente
+  - 2.4.30 Area di sosta
+  - 3.1.70 Punto di attraversamento
+  - 4.2.42 Punto di trasferimento telecom*
+  - 2.6.41 Linea elettrica*
+  - 4.1.90 Ambiente circostante
+  - 1.6.40 Posto sanitario
+  - posto di primo soccorso
+  - ospedale da campo
+  - 3.3.85 Deposito materiale sotterraneo*
+  - 1.4 AGRICOLTURA E SELVICOLTURA
+  - 1.3.80 Datacenter / Centro dati
+  - 1.1.20 Casa plurifamiliare
+  - 1.3.32 Magazzino materiale pericoloso
+  - 4.2.43 Stazione di misurazione
+  - 1.5.40 Caserma dei pompieri
+  - stazione di soccorso
+  - 4.2.20 Impianto di rifornimento*
+  - 1.3.31 Magazzino munizioni ed esplosivi
+  - 2.6.10 Acquedotto
+  - 1.2.90 Edificio dei simulatori
+  - 4.3 APPROVVIGIONAMENTO IDRICO
+  - 1.1.40 Baracca/Container
+  - 1.3.41 Edificio logistico
+  - 4.1.81 Area di addestramento
+  - 3.1 PONTI
+  - 2.1.30 Strada secondaria
+  - strada di raccordo*
+  - 4.3.50 Approvvigionamento idrico (escluso condotte)
+  - 4.5.10 Bacino di ritenuta
+  - 2.4 AVIAZIONE
+  - 3.3.87 Forte di artiglieria
+  - 1.9.80 Alloggiamento
+  - 4.6.10 Sistemazione di corsi d'acqua
+  - 3.1.50 Sottopasso
+  - 2.6 CONDOTTE
+  - 2.6.52 Cavo in fibra ottica*
+  - 3.3.30 Tunnel sotterraneo
+  - 1.4.10 Deposito agricolo
+  - forestale
+  - 2.2 BINARI
+  - 1.11 TRAFFICO
+  - 3.2 OPERE DI SOSTEGNO
+  - 4.2.32 Stazione di riempimento
+  - impianto di trasbordo
+  - 4.3.60 Costruzione di protezione antincendio (vasca)
+  - 4.5.30 Centro di raccolta
+  - 1.3.70 Edificio amministrativo
+  - 2.6.71 Pipeline (vari media)
+  - 3.3.91 Lanciamine da fortezza
+  - 1.9.50 Ristorante / mensa
+  - 1.9.70 Caserma
+  - 1.5.50 Guardiola e portineria
+  - 1.1.10 Casa unifamiliare
+  - 2.6.90 Canale d'installazione non percorribile
+  - 4.1.20 Campo sportivo
+  - 1.10.10 Struttura sportiva coperta
+  - 2 VIE DI TRAFFICO
+  - 2.3 IMPIANTI DI TRASPORTO A FUNE
+  - 1.10.60 Riparo coperto
+  - 1.2.50 Laboratorio
+  - istituto di ricerca
+  - 4.2.60 Installazione / base per sistema
+  - 1.9.60 Edificio di ristorazione
+  - 4.6.91 Impianti di sicurezza
+  - 2.6.20 Canalizzazione
+  - 2.4.10 Pista di decollo e atterraggio
+  - 3.1.60 Ponti
+  - 4.5.20 Impianto di depurazione
+  - 4.6.90 Recinzione
+  - 1.10 SPORT
+  - TEMPO LIBERO E RICREAZIONE
+  - 2.1.50 Pista ciclabile
+  - percorso pedonale
+  - 4.1.70 Centro di formazione
+  - per la protezione
+  - per il salvataggio
+  - 2.1.80 Luogo di stoccaggio
+  - 1.1 ABITAZIONE
+  - 4.2.10 Impianto per la produzione di energia
+  - 4.1.82 Poligono di tiro (incluso bersaglio)*
+  - 3.3 COSTRUZIONI A CIELO APERTO E IN SOTTERRANEO
+  - 2.6.51 Cavo di rame*
+  - 4.6.30 Premunizione contro la caduta di sassi
+  - 4.6.60 Opera minata*
+  - 1.10.50 Spogliatoio
+  - 4.2.31 Impianto di pompaggio carburante
+  - 3.3.92 Bison
+  - 4.6.40 Assicurazione di scarpate
+  - 3 MANUFATTI
+  - 4.2.30 Serbatoio di stoccaggio
+  - 3.3.84 Installazione combinata sotterranea
+  - 3.3.89 Ospedale militare
+  - 1.3 INDUSTRIA
+  - COMMERCIO E AMMINISTRAZIONE
+  - 3.3.88 Riparo per aerei*
+  - 4.6.80 Ostacolo anticarro*
+  - 4.5.70 Area di lavaggio
+  - 1.4.50 Capanna alpina
+  - 4.2 IMPIANTI PER L'ENERGIA E LA TELECOMUNICAZIONE
+  - 1.9 RISTORAZIONE E ALLOGGIO
+  - 1.2.80 Sala di formazione
+  - 1.3.30 Magazzino*
+  - 1.11.60 Edificio d'esercizio*
+  - 4.6.20 Premunizione contro le valanghe
+  - 4.6.70 Sbarramento anticarro*
+  - 4.1 IMPIANTI SPORTIVI E PER IL TEMPO LIBERO
+  - 1.2.70 Edificio di formazione
+  en: []

@@ -1,0 +1,22 @@
+id: armasuisse:value/gas-siphon
+name:
+  de: Gas Siphon
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Gas Siphon
+  fr:
+  - Gaz siphon
+  it:
+  - Sifone gas
+  en: []

@@ -1,0 +1,203 @@
+id: armasuisse:element/unter-uberzuge
+sort_order: 15
+status: active
+name:
+  de: Unter- & Überzüge
+  fr: Poutres retombantes & relevées
+  it: Travi ribassate & rialzate
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+definition:
+  de: Lineares tragendes Bauteil zur Aufnahme und Weiterleitung von Lasten.
+  fr: Element lineaire porteur servant a transmettre des charges.
+  it: Elemento lineare portante che trasferisce carichi. I
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcBeam
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcBeam
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: 'Der PredefinedType definiert die Art des Tragers genauer.
+
+
+      BEAM … Trager
+
+      JOIST … Balken
+
+      LINTEL … Sturz
+
+      SPANDREL … Randtrager
+
+      T_BEAM … T-Traeger'
+    fr: 'Le PredefinedType definit plus precisement le type de poutre.
+
+
+      BEAM … Poutre
+
+      JOIST … Solive
+
+      LINTEL … Linteau
+
+      SPANDREL … Poutre de rive
+
+      T_BEAM … Poutre en T'
+    it: 'l PredefinedType definisce in modo piu preciso il tipo di trave.
+
+
+      BEAM … Trave
+
+      JOIST … Travetto
+
+      LINTEL … Architrave
+
+      SPANDREL … Trave di bordo
+
+      T_BEAM … Trave a T'
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/predefinedtype-beam
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: FireRating
+  pset: Pset_BeamCommon
+  definition:
+    de: Klassifizierung des Feuerwiderstands eines Bauteils. Gibt an, wie lange ein Element im Brandfall seine Funktion (Tragfaehigkeit, Raumabschluss, Waermedaemmung) aufrechterhaelt. Ueblicherweise in
+      Minuten angegeben (z. B. EI30, REI60).
+    fr: Classification de la resistance au feu d’un element. Indique la duree pendant laquelle il conserve ses performances (stabilite, etancheite, isolation) en cas d’incendie. Generalement exprimee en
+      minutes (p. ex. EI30, REI60).
+    it: Classificazione della resistenza al fuoco di un elemento. Indica per quanto tempo mantiene le proprie prestazioni (portanza, tenuta, isolamento) in caso di incendio. Generalmente espressa in minuti
+      (es. EI30, REI60).
+    en: ''
+  datatype: IfcLabel
+  allowed_values: armasuisse:value/brandschutz-gemass-vkf
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: LoadBearing
+  pset: Pset_BeamCommon
+  definition:
+    de: Boolesches Attribut (Ja/Nein), das angibt, ob ein Bauteil tragend ist, also Lasten aus Eigengewicht oder anderen Bauteilen aufnimmt und weiterleitet.
+    fr: Attribut booleen (Oui/Non) indiquant si un element est porteur, c’est-a-dire s’il supporte et transmet des charges propres ou d’autres elements.
+    it: Attributo booleano (Si/No) che indica se un elemento e portante, ossia se sostiene e trasmette carichi propri o di altri elementi.
+    en: ''
+  datatype: IfcBoolean
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: Status
+  pset: Pset_BeamCommon
+  definition:
+    de: "Status des Bauteils insbesondere beim Bauen im Bestand. \n- New: \"Neu\" - neues Bauteil als Ergänzung\n- Existing: \"Bestand\" -  bestehendes Bauteil, dass erhalten bleibt\n- Demolish: \"Abbruch\"\
+      \ - Bauteil, das abgebrochen wird\n- Temporary: \"Temporär\" -  Bauteil und andere Bauelemente, die vorübergehend eingebaut werden (wie Abstützungen, etc.)"
+    fr: "Statut de l’élément de construction, notamment pour la construction dans l’existant.  \n- New : \"Nouveau\" - nouvel élément de construction en complément \n- Existing : \"Existant\" - élément\
+      \ existant qui est maintenu \n- Demolish : \" Démolition \" - élément existant qui est démoli \n- Temporary : \"Temporaire\" - élément de construction et autres éléments qui sont intégrés provisoirement\
+      \ (comme des étayages, etc.)"
+    it: "Stato di un componente, in particolare per costruire nella sostanza edilizia esistente.  \n- New: \"Nuovo\" - nuovo componente come aggiunta \n- Existing: \"Esistente\" -  componente esistente\
+      \ che viene mantenuto \n- Demolish: \"Demolizione\" - componente che viene demolito\n- Temporary: \"Temporaneo\" -  Componente e altri elementi costitutivi installati temporaneamente (come i supporti,\
+      \ ecc.)"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: armasuisse:value/status
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 4

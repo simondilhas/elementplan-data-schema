@@ -1,0 +1,28 @@
+id: armasuisse:value/cust-gta-heating-supply-fuelsupply
+name:
+  de: Cust_GTA_Heating_supply.FuelSupply
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Keine Versorgung notwendig
+  - Leitungsnetz Energielieferant
+  - Lieferung auf Bestellung
+  fr:
+  - Aucun approvisionnement nécessaire
+  - Réseau de distribution Fournisseur d'énergie
+  - Livraison sur commande
+  it:
+  - Non è necessaria alcuna alimentazione
+  - Rete di distribuzione Fornitore di energia
+  - Consegna su ordinazione
+  en: []

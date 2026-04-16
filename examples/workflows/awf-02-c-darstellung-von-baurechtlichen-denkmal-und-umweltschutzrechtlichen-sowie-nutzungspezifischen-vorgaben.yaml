@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-02-c-darstellung-von-baurechtlichen-denkmal-und-umweltschutzrechtlichen-sowie-nutzungspezifischen-vorgaben
+sort_order: 12
+code: AWF-02-c
+name:
+  de: Modellierung Planungsgrundlagen und Rahmenbedingungen
+  fr: Présentation de directives relevant du droit de la construction, de la protection des bâtiments et de l’environnement ainsi que propres à l’utilisation
+  it: Rappresentazione delle disposizioni in materia di diritto di superficie, di diritto della protezione dei monumenti storici e dell’ambiente, nonché specifiche per l’utilizzazione
+  en: ''
+description:
+  de: "**Ziel**\nBaurechtliche, denkmal- und umweltschutzrechtliche sowie nutzungsspezifische Vorgaben werden modelliert und maschinenlesbar bereitgestellt. Dies ermöglicht einerseits eine bessere Kommunikation
+    der Planungsgrundlagen, andererseits können Planungslösungen automatisiert gegen diese Rahmenbedingungen geprüft werden.\n\n**Nutzen für den Auftraggeber**\n- Rahmenbedingungen sind für alle Projektbeteiligten
+    einheitlich und nachvollziehbar dokumentiert\n- Planungslösungen können automatisiert auf Konformität mit den Vorgaben geprüft werden\n- Reduktion von Missverständnissen durch explizit modellierte statt
+    nur textlich beschriebene Anforderungen\n\n**Umsetzung im Projekt**\nDie Modellierungsanforderungen werden durch den zuständigen Fachplaner projektspezifisch definiert. Dieser AWF befindet sich in der
+    Konzeptphase — Ziel ist das Sammeln von Best Practices als Grundlage für später zu definierende Anwendungsfälle.\n\n**Ergebnis**\n- IFC-Modell mit modellierten Planungsgrundlagen und Rahmenbedingungen\n
+    - Prüfregeln für automatisierte Konformitätsprüfung von Planungslösungen"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

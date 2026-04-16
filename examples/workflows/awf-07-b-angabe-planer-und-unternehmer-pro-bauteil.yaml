@@ -1,0 +1,21 @@
+id: armasuisse:workflow/awf-07-b-angabe-planer-und-unternehmer-pro-bauteil
+sort_order: 39
+code: AWF-07-b
+name:
+  de: Angabe Planer und Unternehmer pro Bauteil
+  fr: Indication du concepteur et de l’entrepreneur par partie d’ouvrage
+  it: Indicazione mandatario e imprenditore per componente
+  en: ''
+description:
+  de: Prozesse und Modellierungsvorgaben sind durch den Planer projektspezfisch zu definieren.
+  fr: Les directives de modélisation et liées aux processus doivent être définies par le concepteur de façon spécifique au projet.
+  it: I processi e le disposizioni di modellazione devono essere definiti dal progettista per il progetto specifico.
+  en: ''
+workflow_group: BIM 3d full 10Mio+,BIM 3d light,BIM 3d full
+parent_workflow: armasuisse:workflow/awf-07-auftrags-pendenzen-und-magelmanagement
+picture_link: null
+status: deprecated
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

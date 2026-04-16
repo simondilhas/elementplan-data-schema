@@ -1,0 +1,629 @@
+id: armasuisse:element/innenraum
+sort_order: 8
+status: active
+name:
+  de: Innenraum
+  fr: Espace intérieur
+  it: Spazio interno
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/nachweismodell-architektur
+definition:
+  de: 'Innenräume repräsentieren die Nutzflächen gemäss SIA 416 (Bruttoräume sind separat beschrieben) und sind geschossweise modelliert. Innenräume werden für jeden Raum entsprechend den raumbildenden
+    Elementen angelegt.
+
+
+    Gemäss SIA, d0165 sind lichte Querschnitte von Schächten, Kaminen und Installationskanälen unter 0.25 m2 der Konstruktionsfläche zuzuweisen. Treppenaugen unter 0.25 m2 sind dem Treppenraum zuzuweisen.
+
+
+    **Modellierungshinweis:**
+
+    - Sämtliche Flächen/Volumen sind mit dem Raumwerkzeug der CAD-Software als Volumen zu modellieren.
+
+    - Es muss jeder Hohlraum modelliert werden. Zum Beispiel  Technik-,  Aufzugsschächte und Lufträume.
+
+    - Damit die Flächenauszüge korrekt sind, darf es zu keinen Raumüberschneidungen und Raumdoppelungen kommen.
+
+    - Die Räume sollten beim Architekturmodell von der Oberkante des fertigen Bodens bis zur Unterkante der fertigen Decke und beim TGA-Modell von der Mitte der unteren bis zur Mitte der oberen Decke modelliert
+    werden, damit die technischen Komponenten des Gebäudes den Räumen eindeutig zugeordnet werden können.'
+  fr: "Les espaces intérieurs représentent les surfaces utiles selon SIA 416 (les surfaces bruts sont décrits séparément) et sont modélisés par étage. Les surfaces nettes sont créées pour chaque local selon\
+    \ les éléments constitutifs du local. \n\nSelon SIA, d0165, les sections intérieures des gaines, cheminées et canaux d'installation inférieures à 0,25 m2 doivent être attribuées à la surface de construction.\
+    \ Les jours (vides) d'escalier de moins de 0,25 m2 doivent être attribués à la cage d'escalier.  \n\n**Note pour la modélisation.** \n- Toutes les surfaces/volumes doivent être modélisés sous forme\
+    \ de volumes à l'aide de l'outil spatial du logiciel CAO. \n- Chaque espace doit être modélisé. Par exemple, les gaines techniques, les cages d’ascenseur et les espaces vides. \n- Pour que les extractions\
+    \ de surfaces soient correctes, il ne doit y avoir aucun chevauchement ou duplication de locaux. \n- Les locaux doivent être modélisés à partir du bord supérieur du sol fini jusqu'au bord inférieur\
+    \ du plafond fini pour la maquette architecturale et du milieu du plafond inférieur jusqu'au milieu du plafond supérieur pour les maquettes GTA, afin que les composants techniques du bâtiment puissent\
+    \ être clairement attribués aux locaux."
+  it: "Gli spazi chiusi rappresentano le superfici utili secondo la SIA 416 (i locali lordi sono descritti separatamente) e sono modellati per piano. \nGli spazi chiusi vengono creati per ciascun locale\
+    \ in base agli elementi costitutivi dello stesso.  \n\nSecondo la norma SIA, d0165, le sezioni trasversali libere di pozzetti, camini e condotti di installazione inferiori a 0,25 m2 devono essere assegnate\
+    \ alla superficie di costruzione. Le aperture dei vani scala inferiori a 0,25 m2 devono essere assegnate all’area del vano scala.  \n\n**Indicazione per la modellazione.**\n- Tutte le superfici/tutti\
+    \ i volumi devono essere modellati come volumi utilizzando lo strumento spaziale del software CAD. \n- Ogni cavità deve essere modellata, ad esempio impianti tecnici, pozzi degli ascensori e spazi a\
+    \ tutta altezza.  \n- Affinché le sezioni delle superfici siano corrette non devono esserci sovrapposizioni o duplicazioni di locali. \n- Nel plastico architettonico, i locali devono essere modellati\
+    \ dal bordo superiore del pavimento finito fino al bordo inferiore del soffitto finito e nel modello TGA dal centro del soffitto inferiore al centro del soffitto superiore, in modo che i componenti\
+    \ tecnici dell’edificio possano essere chiaramente assegnati ai locali."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcSpace
+entity_ifc4_3: null
+picture_link: innenraum.jpg
+model_link: null
+applicability: entity_ifc4=IfcSpace
+attributes:
+- name: Name
+  pset: null
+  definition:
+    de: Nummer gemäss Nummerierungskonzept armasuisse
+    fr: Numéro selon concept de numérotation d’armasuisse
+    it: Numero secondo il concetto di numerazione di armasuisse
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '22'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: PredefinedType
+  pset: null
+  definition:
+    de: Definiert, dass es sich bei dem Raum um einen Innenraum handelt.
+    fr: Définit que le local est un espace intérieur.
+    it: Definisce se il locale è uno spazio interno.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-internal
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  is_applicability: true
+  status: active
+  sort_order: 2
+- name: LongName
+  pset: null
+  definition:
+    de: Raumbezeichnung nach Projektdefinition.
+    fr: Désignation du local selon la définition du projet.
+    it: Designazione del locale secondo la definizione di progetto.
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: AreaLoad
+  pset: Cust_Space
+  definition:
+    de: zulässige Flächenlast, z.B. 5.0
+    fr: Charge surfacique admissible, p. ex. 5.0
+    it: Carico superficiale ammissibile, ad es. 5.0
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  is_applicability: false
+  status: active
+  sort_order: 4
+- name: IsEnergyReferenceArea
+  pset: Cust_Space
+  definition:
+    de: TRUE wenn der Raum für die Energiebezugsflächenberechnung herangezogen wird.
+    fr: TRUE si le local est pris en compte pour le calcul de la surface de référence pour la consommation énergétique.
+    it: TRUE se lo spazio viene utilizzato per il calcolo della superficie di riferimento energetico.
+    en: ''
+  datatype: IfcBoolean
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '33'
+  - '53'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  is_applicability: false
+  status: active
+  sort_order: 5
+- name: RoomTag
+  pset: Cust_Space
+  definition:
+    de: Raumbeschriftung vor Ort (Raumbeschilderung) gemäss Raumbezeichnungskonzept armasuisse Immobilien. z.B. "01.08 Konferenzraum Rhone"
+    fr: Marquage du local sur place (marquage local) selon concept de désignation des locaux d’armasuisse Immobilier, p. ex. "01.08 Salle de conférences Rhône"
+    it: Etichette per locali sul posto (segnaletica per locali) secondo il  concetto di designazione dei locali di armasuisse Immobili. Ad es. "01.08 Sala conferenze Rodano"
+    en: ''
+  datatype: IfcText
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  is_applicability: false
+  status: active
+  sort_order: 6
+- name: IsExternal
+  pset: Pset_SpaceCommon
+  definition:
+    de: Definiert, dass es sich bei dem Raum um einen Innenraum handelt.
+    fr: Définit que la pièce est un espace intérieur.
+    it: Definisce che la stanza è uno spazio interno.
+    en: ''
+  datatype: IfcBoolean
+  allowed_values: armasuisse:value/false
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  is_applicability: false
+  status: active
+  sort_order: 7
+- name: NetPlannedArea
+  pset: Pset_SpaceCommon
+  definition:
+    de: SOLL Raumfläche gemäss Bestellung.
+    fr: Surface de local prévue selon la commande (VALEUR CIBLE).
+    it: Superficie del locale EFFETTIVA secondo l'ordine.
+    en: ''
+  datatype: IfcAreaMeasure
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 8
+- name: Reference
+  pset: Pset_SpaceCommon
+  definition:
+    de: Raumbezeichnung gemäss Werteliste. z.B. "Balkon"
+    fr: Désignation du local selon la liste des valeurs, p. ex. "Balcon"
+    it: Designazione del locale secondo la lista di valori. Ad es, "Balcone"
+    en: ''
+  datatype: IfcIdentifier
+  allowed_values: armasuisse:value/raumliste-innen
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  is_applicability: false
+  status: active
+  sort_order: 9
+- name: CeilingCovering
+  pset: Pset_SpaceCoveringRequirements
+  definition:
+    de: Deckenbelagsmaterial
+    fr: Matériau du revêtement de plafond
+    it: Materiale di rivestimento del soffitto
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  is_applicability: false
+  status: active
+  sort_order: 10
+- name: ConcealedFlooring
+  pset: Pset_SpaceCoveringRequirements
+  definition:
+    de: "Angabe, ob dieser Raum für einen verdeckten Fussboden hat (TRUE) oder nicht (FALSE). \n\nUnter einem verdeckten Fussboden versteht man den Raum unter einem Doppelboden oder einem Hohlboden."
+    fr: "Indication déterminant si ce local est (TRUE) ou non (FALSE) prévu pour un sol masqué.  \n\nPar sol masqué, on entend l’espace sous un double plancher ou un faux plancher."
+    it: "Indicazione se per il locale è previsto o meno un pavimento nascosto (TRUE) o meno (FALSE). \n\nPer pavimento nascosto si intende normalmente lo spazio sotto a un pavimento sopraelevato o flottante."
+    en: ''
+  datatype: IfcBoolean
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  is_applicability: false
+  status: active
+  sort_order: 11
+- name: FloorCovering
+  pset: Pset_SpaceCoveringRequirements
+  definition:
+    de: "Bodenbelag Bezeichnung gemäss Klassifikation Bodenbelagstypen von armasuisse. Diese Information wird in weitere Unterhaltsysteme übernommen. \n\nFür den Bau kann es Sinn machen, Bodenbelag und\
+      \ Unterlagsboden als einzelne Schichten (IfcCovering) zu modellieren. \n\nz.B. \"Sandstein\""
+    fr: "Désignation du revêtement de sol selon classification des types de revêtement de sol d’armasuisse. Cette information est reprise dans d’autres systèmes d’entretien.  \n\nPour la construction, il\
+      \ peut être utile de modéliser le revêtement de sol et la chape comme des couches individuelles (IfcCovering).   \n\nP. ex. \"grès\""
+    it: "Designazione del rivestimento del pavimento secondo la classificazione dei tipi di rivestimento di armasuisse. Questa informazione viene ripresa in altri sistemi di mantenimento.   \n\nPer la costruzione\
+      \ può essere utile modellare il rivestimento e la pavimentazione sottostante come strati singoli (IfcCovering).   \n\nAd es. \"Pietra arenaria\""
+    en: ''
+  datatype: IfcLabel
+  allowed_values: armasuisse:value/bodenbelagarmasuisse
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '32'
+  - '33'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  is_applicability: false
+  status: active
+  sort_order: 12
+- name: FireExit
+  pset: Pset_SpaceFireSafetyRequirements
+  definition:
+    de: Gibt an ob es sich bei dem Raum um einen Fluchtweg handelt, laut Werteliste.
+    fr: Indique si le local est une issue de secours conformément à la liste des valeurs.
+    it: Indica se si tratta di un locale per raggiungere una via di fuga secondo la lista di valori.
+    en: ''
+  datatype: IfcBoolean
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  is_applicability: false
+  status: active
+  sort_order: 13
+- name: OccupancyNumber
+  pset: Pset_SpaceOccupancyRequirements
+  definition:
+    de: Personenbelegung, Anzahl Personen gemäss Planung.
+    fr: Nombre d’occupants, nombre de personnes selon planification.
+    it: Numero d'occupanti, numero di persone secondo la pianificazione.
+    en: ''
+  datatype: IfcInteger
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  is_applicability: false
+  status: active
+  sort_order: 14
+- name: Height
+  pset: Qto_SpaceBaseQuantities
+  definition:
+    de: Höhe des modellierten Volumens.
+    fr: Hauteur du volume modélisé.
+    it: Altezza del volume modellato.
+    en: ''
+  datatype: IfcLengthMeasure
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  is_applicability: false
+  status: active
+  sort_order: 15
+- name: NetFloorArea
+  pset: Qto_SpaceBaseQuantities
+  definition:
+    de: Raumfläche netto gemäss SIA 416
+    fr: Surface nette du local selon SIA 416
+    it: Superficie netta del locale secondo la norma SIA 416
+    en: ''
+  datatype: IfcAreaMeasure
+  allowed_values: null
+  link_uid: '{88B4F10B-9414-4D3D-89E1-279C51621935},{B2A07439-AAA6-49C6-BBE8-0FE752E91BFF},{7680740E-4B46-4B58-91E1-C229D5B13375},{1D1074A7-A641-4565-B2B7-B07B4B448798},{562039B4-6387-4A7C-81D5-4E0FD9DF20C1},{225C0D41-24AA-456B-BF91-ED1E2F334065},{3E3EF195-90F1-4EC7-BBDF-7BCF3777ED5F},{4EA99743-8356-40D0-94D5-DDE4FBB7EB8A},{6C99D079-383C-47A1-B85B-36E32B841F38},{BD937E7F-B98B-4F65-9915-B87FDDDE89EC},{CA633065-7E85-4620-A08E-80EC53DB2B43}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 16
+- name: NetVolume
+  pset: Qto_SpaceBaseQuantities
+  definition:
+    de: Raumvolumen Brutto gemäss SIA 416
+    fr: Volume brut selon SIA 416
+    it: Volume lordo secondo SIA 416
+    en: ''
+  datatype: IfcVolumeMeasure
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  is_applicability: false
+  status: active
+  sort_order: 17

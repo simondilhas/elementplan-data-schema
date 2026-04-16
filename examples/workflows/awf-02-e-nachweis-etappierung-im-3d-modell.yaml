@@ -1,0 +1,26 @@
+id: armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+sort_order: 14
+code: AWF-02-e
+name:
+  de: Etappierungskonzept
+  fr: Justificatif de l’exécution par étapes dans le modèle en 3D
+  it: Prova della sequenza dei lavori nel modello 3D
+  en: ''
+description:
+  de: "**Ziel**\nNutzungsetappen und die projektübergreifende Arealentwicklung werden im Modell räumlich abgebildet. Dies schafft eine gemeinsame Grundlage für die Kommunikation mit Stakeholdern und die
+    Planung der schrittweisen Inbetriebnahme.\n\n**Nutzen für den Auftraggeber**\n- Etappen sind für Nutzer und Betreiber räumlich nachvollziehbar und eindeutig kommunizierbar\n- Grundlage für die Planung
+    der schrittweisen Inbetriebnahme\n- Konflikte zwischen Nutzungsphasen werden frühzeitig sichtbar\n\n**Umsetzung im Projekt**\nDie Etappierungslogik wird durch den zuständigen Fachplaner im Konzept definiert.
+    Geschossvolumen oder Räume werden mit einem Etappen-Attribut versehen und den jeweiligen Nutzungsphasen zugeordnet.\n\n**Ergebnis**\n- *Variante A — Separate Modelle pro Etappe:* Für jede Nutzungsphase
+    steht ein eigenständiges IFC-Modell zur Verfügung.\n- *Variante B — Aufbereitetes Gesamtmodell:* Ein einzelnes Modell enthält alle Etappen, die phasenweise ein- und ausgeblendet werden können.\n\nErgänzend
+    wird ein Konzeptbeschrieb geliefert, der die Etappierungslogik dokumentiert."
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

@@ -1,0 +1,44 @@
+id: armasuisse:workflow/awf-05-planungskoordination-und-fortschritt
+sort_order: 33
+code: AWF-05
+name:
+  de: Planungskoordination und -fortschritt
+  fr: Coordination et avancement de la planification base cas d’application 05 selon KBOB
+  it: Coordinazione e avanzamento della pianificazione
+  en: ''
+description:
+  de: "**Beschrieb:**\nIm Rahmen der Vorgaben des Aufraggebers sowie in Absprache mit diesem erstellt der Beauftragte ein Terminprogramm für die Planung. Der Planungsfortschritt wird anhand der Umsetzung
+    der phasenabhängigen Informationsanforderungen an die Fachmodelle und BIM-Anwendungsfälle verfolgt. Der Beauftragte stellt die digitalen Planungserzeugnisse in den vorgegebenen Strukturen und Formaten
+    fristgerecht zur Verfügung. Die Modelle werden regelmässig auf Konformität zu den gestellten Anforderungen überprüft und die Ergebnisse der Überprüfung dokumentiert. Hierzu gehören auch die Ergebnisse
+    der modellbasierten Koordination, abgeleitete Visualisierungen wie 2D-Pläne oder aber Listen und dergleichen sowie die Berichte der Qualitätssicherung soweit sie im Leitungsumfang des Beauftragten liegen.
+    Für eine automatisierte Verknüpfung von verschiedenen Fachmodellen und Dokumenten sowie eine schnelle Auswertung des aktuellen Planungstandes werden Vorgaben zur Dateibenennung projekt- und situationsbezogen
+    definiert. \n\n**Ziele:**\n- Erhöhung der Planungssicherheit durch methodische Umsetzung einer nachvollziehbaren Dokumentation der Planungskoordination und des Planungsfortschritts inkl. Qualitätsmanagement.\n
+    \n**Mehrwerte:**\n- Ressourcenoptimierung\n- frühzeitiges Erkennen von Planungsverzögerungen\n- bessere Termineinhaltung\n\n**Lieferobjekte:**\n- Termin- und Koordinationsplan\n- Auswertungen zum Stand
+    der Planung"
+  fr: "**Description:**\nDans le cadre des directives du mandant et en accord avec ce dernier, le mandataire établit un calendrier pour la planification. L’avancement de la planification est suivi au moyen
+    de la mise en œuvre des exigences en matière d’informations, en fonction des phases relatives aux modèles spécialisés et aux cas d’application BIM. Le mandataire met à disposition dans les délais impartis
+    les résultats de la planification numérique dans les structures et les formats spécifiés. Les modèles sont vérifiés régulièrement quant à leur conformité aux exigences définies et les résultats de la
+    vérification sont documentés. Cela englobe les résultats de la coordination modélisée, les visualisations inférées comme les plans en 2D, mais aussi les listes et documents similaires ainsi que les
+    rapports de l’assurance qualité, pour autant qu’ils se situent dans l’étendue des prestations du mandataire. Des directives relatives à la dénomination des fichiers sont définies en fonction du projet
+    et de la situation pour associer de façon automatisée les différents modèles spécialisés et documents ainsi que pour analyser rapidement l’état d’avancement actuel de la planification. L’avancement
+    de la planification est mesuré au moyen des informations fournies et du degré de réalisation des cas d’application. \n\n**Objectif:** \n- Accroissement de la sécurité de la planification par la mise
+    en œuvre méthodique d’une documentation traçable de la coordination de la planification et de l’avancement de la planification, y compris la gestion de la qualité \n\n**Plus-value:**  \n- Optimisation
+    des ressources  \n- Détection précoce des retards de planification  \n- Meilleur respect des délais \n\n**Objets à livrer:** \n- Calendrier et plan de coordination  \n- Relevés sur l’état de la planification"
+  it: "**Descrizione:**  \nNel quadro delle specifiche del mandante e in accordo con esso, il mandatario crea un piano delle scadenze per la pianificazione. L’avanzamento della pianificazione viene monitorato
+    applicando i requisiti di scambio delle informazioni dei modelli specialistici e dei casi d’uso BIM in base alle fasi.  Il mandatario mette a disposizione i risultati digitali della pianificazione entro
+    i termini fissati e secondo le strutture e i formati previsti I modelli vengono controllati regolarmente per verificarne la conformità rispetto ai requisiti stabiliti e i risultati vengono documentati.
+    Tra questi rientrano anche i risultati della coordinazione basata su modelli, le visualizzazioni ricavate, i piani in 2D, ma anche gli elenchi e similari nonché le relazioni sulla garanzia della qualità,
+    qualora presenti nel volume delle prestazioni del mandatario.  Per consentire l’associazione automatica di diversi modelli specialistici e documenti nonché una valutazione rapida dello stato attuale
+    di avanzamento della pianificazione, vengono stabilite regole per la denominazione dei file in funzione del progetto e della situazione.   \n\n**Obiettivi:** \n- Aumento della sicurezza della pianificazione
+    attraverso l’adozione metodica di una documentazione tracciabile relative alla coordinazione e all’avanzamento della pianificazione, inclusa la gestione della qualità.  \n\n**Valori aggiunti:** \n-
+    Ottimizzazione delle risorse \n- Individuazione tempestiva di ritardi nella pianificazione \n- Rispetto delle scadenze più efficace  \n\n**Oggetti della fornitura:** \n- Piano delle scadenze e di coordinazione
+    \n- Valutazione dello stato della pianificazione"
+  en: ''
+workflow_group: BIM 3d full 10Mio+
+parent_workflow: null
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

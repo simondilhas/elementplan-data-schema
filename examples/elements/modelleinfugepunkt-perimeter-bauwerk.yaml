@@ -1,0 +1,374 @@
+id: armasuisse:element/modelleinfugepunkt-perimeter-bauwerk
+sort_order: 5
+status: active
+name:
+  de: Modelleinfügepunkt Perimeter & Bauwerk
+  fr: Point d'insertion du modèle périmètre et ouvrage
+  it: Punto di inserimento del modello perimetro e opera di costruzione
+  en: ''
+needed_in_domain:
+- armasuisse:domain/referenz-perimeter
+- armasuisse:domain/referenz-bauwerk
+definition:
+  de: "Die Modelleinfügepunkte Perimeter werden vom Bauherrn definiert und bei Projektstart gemäss folgendem Konzept übergeben:\n\nDie Georeferenzierung der Modelle erfolgt nach dem Prinzip einer Kaskade\
+    \ der Koordinaten gemäss dem dargestellten Beispiel unten. Der Hauptkoordinierungspunkt (rot durch ein physisches Objekt vor Ort) wird von einem Vermesser definiert. \n\nDieser Standorttpunkt ist die\
+    \ Referenz, die allen anderen Modellen (grün mit der Rotation des Gebäudes), unabhängig von ihren Disziplinen, gemeinsam ist."
+  fr: "Les points d'insertion des modèles Périmètre sont définis par le maître d'ouvrage et transmis au démarrage du projet selon le concept suivant :  \n\nLe géoréférencement des modèles repose sur le\
+    \ principe d'une cascade de coordonnées selon l'exemple présenté ci-dessous. Le point de coordination principal (représenté en rouge par un objet physique sur place) est défini par un géomètre.  \n\n\
+    Ce point de localisation est la référence commune à tous les autres modèles (en vert avec la rotation du bâtiment), indépendamment de leurs disciplines."
+  it: "I punti di inserimento del modello perimetro vengono definiti dal committente e consegnati all’avvio del progetto secondo il seguente concetto:  \n\nLa georeferenziazione dei modelli viene effettuata\
+    \ secondo il principio della cascata di coordinate, come mostrato nell’esempio seguente. \nIl punto di coordinamento principale (contrassegnato in rosso da un oggetto fisico in loco) viene definito\
+    \ da un topografo.\n   \nQuesto punto di localizzazione è il riferimento comune a tutti gli altri modelli (in verde con la rotazione dell’edificio), indipendentemente dalle relative discipline."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcBuildingElementProxy
+entity_ifc4_3: null
+picture_link: modelleinfugepunkt-perimeter-bauwerk.jpg
+model_link: null
+applicability: entity_ifc4=IfcBuildingElementProxy
+attributes:
+- name: Name
+  pset: null
+  definition:
+    de: Die Nummer des Vermessungspunktes. z.B. S-9510932
+    fr: Le numéro du point de repère, p. ex. S-9510932
+    it: Il numero del punto di rilevamento. Ad es. S-9510932
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: Description
+  pset: null
+  definition:
+    de: Beschreibung um was für eine Art von Referenzpunkt  es sich handelt. z.B. Topographischer Punkt, Kontrollpunkt, ...
+    fr: Description indiquant de quel genre de point de référence il s’agit, p. ex. point topographique, point de contrôle, ...
+    it: Descrizione di che tipo di punto di riferimento si tratta. Ad es. punto topografico, punto di controllo, ...
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-06-a-simulation-kritischer-bauablaufe-in-modell
+  - armasuisse:workflow/awf-07-a-modellbasiertes-nachtragsmanagement
+  - armasuisse:workflow/awf-07-b-angabe-planer-und-unternehmer-pro-bauteil
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-00-b-nachweismodell-elektroanlagen
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  - armasuisse:workflow/awf-00-d-nachweismodell-luftung-klimaanlagen
+  - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: PredefinedType
+  pset: null
+  definition:
+    de: Der Wert PredefinedType muss auf USERDEFINED gesetzt werden, damit der individuelle Objekttyp über das Attribut ObjectType ausgelesen werden kann.
+    fr: La valeur PredefinedType doit être définie sur USERDEFINED afin que le type d’objet individuel puisse être lu via l’attribut ObjectType.
+    it: Il valore PredefinedType deve essere impostato su USERDEFINED affinché il tipo di oggetto individuale possa essere letto tramite l’attributo ObjectType.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-userdefined
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-06-a-simulation-kritischer-bauablaufe-in-modell
+  - armasuisse:workflow/awf-07-a-modellbasiertes-nachtragsmanagement
+  - armasuisse:workflow/awf-07-b-angabe-planer-und-unternehmer-pro-bauteil
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-00-b-nachweismodell-elektroanlagen
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  - armasuisse:workflow/awf-00-d-nachweismodell-luftung-klimaanlagen
+  - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: ObjectType
+  pset: null
+  definition:
+    de: Das Attribut ObjectType definiert, dass es sich bei dem modellierten Element um einen Referenz-/Einfügepunkt des Projektperimeters handelt.
+    fr: L’attribut ObjectType définit que l’élément modélisé correspond à un point de référence/d’insertion du périmètre du projet.
+    it: L'attributo Tipo di oggetto serve a definire che per elemento di modello si tratta  di un punto di riferimento/inserimento per il perimetro del progetto.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-referencepoint
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-06-a-simulation-kritischer-bauablaufe-in-modell
+  - armasuisse:workflow/awf-07-a-modellbasiertes-nachtragsmanagement
+  - armasuisse:workflow/awf-07-b-angabe-planer-und-unternehmer-pro-bauteil
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-00-b-nachweismodell-elektroanlagen
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  - armasuisse:workflow/awf-00-d-nachweismodell-luftung-klimaanlagen
+  - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  is_applicability: true
+  status: active
+  sort_order: 4
+- name: ElevationLN02
+  pset: Cust_ModelInsertionPoint
+  definition:
+    de: 'Wird durch den Besteller geliefert. Bei Gebäuden ist es üblicherweise die Höhe der Haupteingangstür.
+
+
+      Bei einem Neubau wird dies im Rahmen der Phase 21 erarbeitet.'
+    fr: "Fournie par l’auteur de la commande. Pour les bâtiments, il s’agit généralement de la hauteur de la porte d’entrée principale. \n\nDans le cas d’une nouvelle construction, cela est élaboré dans\
+      \ le cadre de la phase 21."
+    it: "Fornito dal committente. Per gli edifici solitamente è l'altezza della porta d'ingresso principale.  \n\nPer un nuovo edificio questo sarà sviluppato come parte della fase 21."
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: '{4EE0B71D-D8CA-4D9B-930B-BE8C698644A6}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 5
+- name: LV95E
+  pset: Cust_ModelInsertionPoint
+  definition:
+    de: Die **Ostkoordinate** im Schweizer Koordinatensystem LV95. Sie gibt die Position eines Punkts in Bezug auf die Ost-West-Achse an, gemessen in Metern. z.B. 2562221.34
+    fr: La **coordonnée Est** dans le système de coordonnées suisse MN95. Elle indique la position d’un point par rapport à l’axe est-ouest et se mesure en mètres, p. ex. 2562221.34
+    it: La **coordinata est** nel sistema di coordinate svizzero LV95. Indica la posizione di un punto rispetto all'asse est-ovest, misurato in metri. Ad es. 2562221.34
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: '{40E06799-32BF-4D00-848B-6DBFC5A83E85}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 6
+- name: LV95N
+  pset: Cust_ModelInsertionPoint
+  definition:
+    de: Die **Nordkoordinate** im Schweizer Koordinatensystem LV95. Sie gibt die Position eines Punkts relativ zur Nord-Süd-Achse an, gemessen in Metern. z.B. 1186279.43
+    fr: La **coordonnée nord** dans le système de coordonnées suisse MN95. Elle indique la position d’un point par rapport à l’axe nord-sud et se mesure en mètres, p. ex. 1186279.43
+    it: La **coordinata nord** nel sistema di coordinate svizzero LV95. Indica la posizione di un punto rispetto all'asse nord-sud, misurato in metri. Ad es. 1186279.43
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: '{973B614B-CFE4-4376-AD6F-050F41D02E27}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 7

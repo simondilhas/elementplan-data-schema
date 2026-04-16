@@ -1,0 +1,25 @@
+id: armasuisse:value/manual-243-h-heizung-245-k-kalte
+name:
+  de: RelationToSystem_Cust_Element_Regelventil
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 245-K_Kalte
+  - 243-H_Heizung
+  fr:
+  - 245-F_Froid
+  - 243-C_Chauffage
+  it:
+  - 245-F_Freddo
+  - 243-R_Riscaldamento
+  en: []

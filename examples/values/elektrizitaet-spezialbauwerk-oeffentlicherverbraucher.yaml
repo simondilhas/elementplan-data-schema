@@ -1,0 +1,22 @@
+id: armasuisse:value/elektrizitaet-spezialbauwerk-oeffentlicherverbraucher
+name:
+  de: Elektrizitaet Spezialbauwerk OeffentlicherVerbraucher
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Elektrizitaet Spezialbauwerk Oeffentlicher Verbraucher
+  fr:
+  - Électricité ouvrage spécial consommateur public
+  it:
+  - Elettricità Opera speciale utenza pubblica
+  en: []

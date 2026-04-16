@@ -1,0 +1,22 @@
+id: armasuisse:value/wasser-fernwirkkabel
+name:
+  de: Wasser Fernwirkkabel
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Wasser Fernwirkkabel
+  fr:
+  - Eau câble de contrôle à distance
+  it:
+  - Cavo di telecomando per acqua
+  en: []

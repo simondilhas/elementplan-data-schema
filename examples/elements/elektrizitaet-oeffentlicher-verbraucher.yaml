@@ -1,0 +1,21 @@
+id: armasuisse:element/elektrizitaet-oeffentlicher-verbraucher
+sort_order: 119
+status: active
+name:
+  de: Elektrizitaet Oeffentlicher Verbraucher
+  fr: Électricité consommateur public
+  it: Elettricità consumatore pubblico
+  en: ''
+needed_in_domain: []
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDistributionChamberElement
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcDistributionChamberElement
+attributes: []

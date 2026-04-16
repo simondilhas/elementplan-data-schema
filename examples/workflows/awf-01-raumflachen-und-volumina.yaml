@@ -1,0 +1,52 @@
+id: armasuisse:workflow/awf-01-raumflachen-und-volumina
+sort_order: 6
+code: AWF-01
+name:
+  de: Raumflächen und Volumina
+  fr: Surfaces et volumes des locaux, selon le cas d'usage AWF-01 du KBOB
+  it: Superfici e volumi
+  en: ''
+description:
+  de: '**Beschrieb:**
+
+    Bezeichnungen, Flächen und Nutzungszuordnung der Räume werden gemäss Vorgabe des Elementplan im digitalen Modell erfasst. Der Export dieser Informationen als strukturiertes Datenobjekt soll gemäss Vorgabe
+    möglich sein. Jede Raumfläche verfügt über eine eindeutige Raumnummer und Flächenart.
+
+
+    **Ziele:**
+
+    - Das Raumbuch des Projekts kann jederzeit mit der Planung abgeglichen werden
+
+
+    **Mehrwerte:**
+
+    - Auswertbarkeit der Flächen und Volumen inkl. Verfolgbarkeit im Projektverlauf
+
+    - bessere Koordination von Rauminformationen zwischen den verschiedenen Planungsdisziplinen
+
+    - Übersicht durch räumliche Darstellung
+
+
+    **Lieferobjekte:**
+
+    - 3D-Modell(e)
+
+    - Auswertungen im Excel-Format'
+  fr: "**Description:**\nLes désignations, les surfaces et l’attribution de l’utilisation des locaux sont saisies dans le modèle numérique selon les directives du plan des éléments. Il doit être possible
+    d’exporter ces informations en tant qu’objet de données structuré selon la directive. Chaque surface de local dispose d’un numéro de local clair et d’un type de surface selon le catalogue d’armasuisse
+    Immobilier. \n\n**Objectif:\n- Le cahier des charges du projet peut être comparé à tout moment avec la planification\n\n**Plus-value:**\n- Caractère exploitable des surfaces et volumes, y compris traçabilité
+    dans le courant du projet\n- Meilleure coordination des informations sur les locaux entre les disciplines intervenant dans la planification\n- Vue d’ensemble grâce à la représentation spatiale\n\n**Objet
+    de livraison:**\n- Modèle en 3D\n- Relevés au format Excel"
+  it: "**Descrizione:**\nLe denominazioni, le superfici e la destinazione d’uso dei locali sono registrate nel modello digitale secondo le disposizioni del piano degli elementi. Queste informazioni devono
+    poter essere esportate come oggetti dati in base alle disposizioni. Ogni superficie dispone di un numero di locale e di una tipologia di superficie univoci conformemente al catalogo di armasuisse Immobili.\
+    \  \n\n**Obiettivi:** \n- Il registro degli spazi del progetto può essere allineato in qualsiasi momento alla pianificazione  \n\n**Valori aggiunti**: \n- Possibilità di analizzare superfici e volumi
+    e tracciabilità nel corso del progetto \n- Migliore coordinamento delle informazioni relative ai locali tra le varie discipline della pianificazione \n- Panoramica tramite rappresentazione spaziale\
+    \  \n\n**Oggetti della fornitura:** \n- Modello/i 3D \n- Valutazioni in formato Excel"
+  en: ''
+workflow_group: null
+parent_workflow: null
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

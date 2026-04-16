@@ -1,0 +1,27 @@
+id: armasuisse:workflow/awf-07-a-modellbasiertes-nachtragsmanagement
+sort_order: 38
+code: AWF-07-a
+name:
+  de: Modellbasierte Bestellungsänderung
+  fr: Gestion des tâches supplémentaires modélisée
+  it: Gestione delle modifiche basata sul modello
+  en: ''
+description:
+  de: "**Ziel**\nKomplexe Bestellungsänderungen werden vor der Offerte modelliert, sodass Umfang und Auswirkungen für alle Beteiligten räumlich nachvollziehbar sind. Auftraggeber und Auftragnehmer entscheiden
+    und offerieren auf derselben, eindeutigen Grundlage.\n\n**Nutzen für den Auftraggeber**\n- Umfang und Auswirkungen einer Bestellungsänderung sind vor der Offerte räumlich nachvollziehbar\n- Zweistufiges
+    Vorgehen reduziert das Risiko von Fehlofferten bei komplexen Änderungen\n- Modell dient als gemeinsame, eindeutige Grundlage für Auftraggeber und Auftragnehmer\n\n**Umsetzung im Projekt**\nDie Bestellungsänderung
+    erfolgt in zwei Stufen:\n\n- *Stufe 1 — Erste Abschätzung:* Der Umfang der Bestellungsänderung wird grob abgeschätzt und in drei Teile gegliedert: Modellierung für die Bestellungsänderung, detaillierte
+    Planung sowie Ausführung. Diese Abschätzung wird dem Auftraggeber zur Entscheidung vorgelegt.\n- *Stufe 2 — Modellbasierte Ausarbeitung:* Nach positivem Entscheid und Freigabe eines Planungshonorars
+    wird der Umfang der Bestellungsänderung gemäss den im Projekt definierten Datenanforderungen modelliert und auf dieser Basis offeriert.\n\n**Ergebnis**\n- IFC-Modell mit modelliertem Umfang der Bestellungsänderung\n
+    - Nachvollziehbare Grundlage für Offerte und Entscheid"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-07-auftrags-pendenzen-und-magelmanagement
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

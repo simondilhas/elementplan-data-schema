@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-smokesensor
+name:
+  de: PredefinedType_Cust_Element_Rauchmelder
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - SMOKESENSOR
+  fr:
+  - SMOKESENSOR
+  it:
+  - SMOKESENSOR
+  en: []

@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-referencepoint
+name:
+  de: ObjectType_Modelleinfügepunkt Perimeter & Bauwerk
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - REFERENCEPOINT
+  fr:
+  - REFERENCEPOINT
+  it:
+  - REFERENCEPOINT
+  en: []

@@ -1,0 +1,21 @@
+id: armasuisse:element/etappe
+sort_order: 90
+status: active
+name:
+  de: Etappe
+  fr: Étape
+  it: Tappa
+  en: ''
+needed_in_domain: []
+definition:
+  de: Etappen werden mit dem IfcBuilding abgebildet. Im Namensattribut muss eine eindeutige Etappennummer definiert sein.
+  fr: Les étapes sont représentées avec l'IfcBuilding. Un numéro d'étape univoque doit être défini dans l'attribut de nom.
+  it: Le fasi vengono rappresentate con IfcBuilding. Nell’attributo del nome deve essere definito un numero di fase univoco.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcBuilding
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcBuilding
+attributes: []

@@ -1,0 +1,21 @@
+id: armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+sort_order: 20
+code: AWF-02-l
+name:
+  de: Erstellung Varianten im Modell zur Entscheidungsfindung armasuisse
+  fr: Établissement de variantes dans le modèle de prise de décision d’armasuisse
+  it: Allestimento di varianti nel modello per il processo decisionale di armasuisse
+  en: ''
+description:
+  de: Modellierungsvorgaben sind durch den Planer projektspezfisch zu definieren.
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: deprecated
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

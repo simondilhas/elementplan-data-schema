@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-pointsource
+name:
+  de: PredefinedType_Beleuchtung
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - POINTSOURCE
+  fr:
+  - POINTSOURCE
+  it:
+  - POINTSOURCE
+  en: []

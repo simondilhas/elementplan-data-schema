@@ -1,0 +1,21 @@
+id: armasuisse:element/abwasser-spezialbauwerk-oelabscheider-schwimmstoffabscheider
+sort_order: 85
+status: active
+name:
+  de: Abwasser Spezialbauwerk Oelabscheider Schwimmstoffabscheider
+  fr: Eaux usées ouvrage spécial séparateur d’huile séparateur substances flottantes
+  it: Acque di scarico, opera speciale separatore d’olio separatore materiale galleggiante
+  en: ''
+needed_in_domain: []
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcBuilding
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcBuilding
+attributes: []

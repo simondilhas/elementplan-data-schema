@@ -1,0 +1,222 @@
+id: armasuisse:element/i-001-usv
+sort_order: 29
+status: active
+name:
+  de: I-001 USV
+  fr: I-001 ASI
+  it: I-001 ASI
+  en: ''
+needed_in_domain:
+- armasuisse:domain/gebaudetechnik
+definition:
+  de: 'Die Platzhalterelemente der unterbrechungsfreien Stromversorgung USV werden einem GTA-System USV zugeordnet. Die für die armasuisse relevanten Informationen werden auf Systemebene gepflegt.
+
+
+    **Modellierungshinweis:**
+
+    Eine Anlage wird als ein IfcSystem verwaltet.'
+  fr: "Les éléments d'emplacement de l'alimentation sans interruption (coupure) sont attribués à un système GTA ASI. Les informations importantes pour Armasuisse sont gérées au niveau du système.   \n\n\
+    **Note pour la modélisation.**\nUn système est géré comme un IfcSystem."
+  it: "Gli elementi segnaposto dell’alimentazione senza interruzione vengono assegnati a un sistema ITE di alimentazione senza interruzione.  Le informazioni rilevanti per armasuisse vengono aggiornate\
+    \ a livello di sistema.  \n\n**Indicazione per la modellazione.**\nUn impianto è gestito come un IfcSystem."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDistributionSystem
+entity_ifc4_3: null
+picture_link: i-001-usv.jpg
+model_link: null
+applicability: entity_ifc4=IfcDistributionSystem
+attributes:
+- name: Description
+  pset: null
+  definition:
+    de: 'Bezeichnung der Anlage plus fortlaufende Nummer.  
+
+      Freitext gemäss Anlagenliste nach Unternehmerstandard.'
+    fr: Numéro d’installation selon install. tech. et selon directive technique MCRG 70177
+    it: Numero di impianto secondo la lista degli impianti tecnici di esercizio come da tV MSRL 70177
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: Supplier
+  pset: Cust_SupplierOccurence
+  definition:
+    de: 'Prüfstellennummer für vorgeschriebene Prüfungen, z.B. Liftanlagenummer Kantone: "1345"'
+    fr: 'Numéro de l’organisme de contrôle pour les contrôles prescrits, p. ex. numéros ascenseurs cantons : "1345"'
+    it: 'Numero del servizio di controllo per le verifiche prescritte, ad es. numero cantonale per il controllo degli ascensori: "1345"'
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: SpaceID
+  pset: Cust_System
+  definition:
+    de: Angabe Raumnummer (IfcSpace.Name) des Standortes der Anlage. Bei Anlagen welche über mehrere Räume gehen, ist der "logischste" Raum zu wählen.
+    fr: Indication numéro de local (IfcSpace.Name) du site de l’installation. Pour les installations s’étendant sur plusieurs pièces, il faut choisir le local le plus "logique".
+    it: Indicazione del numero di locale (IfcSpace.Name) ubicato nell’impianto. Negli impianti che si estendono su più locali va scelto quello "più logico".
+    en: ''
+  datatype: IfcText
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: SystemCategory
+  pset: Cust_System
+  definition:
+    de: 'Anlageart nach GTA, gemäss Klassifikation Anlagetypen: z.B. "I-066 Wassererwärmer"'
+    fr: 'Type d’installation selon GTA, selon classification des types d’installations : p. ex. "I-066 Chauffe-eau"'
+    it: 'Tipo di impianto secondo GTAT in base alla classificazione degli impianti tecnici: ad es. "I-066 Scaldacqua"'
+    en: ''
+  datatype: IfcLabel
+  allowed_values: armasuisse:value/gtalink
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 4
+- name: AcquisitionDate
+  pset: Pset_ManufacturerOccurrence
+  definition:
+    de: Datum der Inbetriebnahme, im Format TT.MM.JJJJ z.B. 01.04.2024
+    fr: Date de mise en service au format JJ.MM.AAAA p. ex. 01.04.2024
+    it: Data messa in servizio nel formato GG.MM.AAAA, ad es. 01.04.2024
+    en: ''
+  datatype: IfcDate
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 5
+- name: WarrantyEndDate
+  pset: Pset_Warranty
+  definition:
+    de: "Datum an dem die Garantie ausläuft. \nIm Format TT.MM.JJJJ, z.B. 15.10.2024"
+    fr: "Date d’expiration de la garantie.  \nAu format JJ.MM.AAAA, p. ex. 15.10.2024"
+    it: "Data di scadenza della garanzia. \nNel formato GG.MM.AAAA, ad es. 15.10.2024"
+    en: ''
+  datatype: IfcDate
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 6
+- name: WarrantyStartDate
+  pset: Pset_Warranty
+  definition:
+    de: Datum des Garantie-Beginns im Format TT.MM.JJJJ z.B. 01.04.2024
+    fr: Date de début de la garantie au format JJ.MM.AAAA p. ex. 01.04.2024
+    it: Data di inizio della garanzia nel formato GG.MM.AAAA, ad es. 01.04.2024
+    en: ''
+  datatype: IfcDate
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 7

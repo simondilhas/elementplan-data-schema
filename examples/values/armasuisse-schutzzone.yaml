@@ -1,0 +1,31 @@
+id: armasuisse:value/armasuisse-schutzzone
+name:
+  de: Armasuisse Schutzzone
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - keine Schutzzone
+  - Schutzzone 1
+  - Schutzzone 2
+  - Schutzzone 3
+  fr:
+  - pas de zone de protection
+  - Zone de protection 1
+  - Zone de protection 2
+  - Zone de protection 3
+  it:
+  - nessuna zona di protezione
+  - Zona di protezione 1
+  - Zona di protezione 2
+  - Zona di protezione 3
+  en: []

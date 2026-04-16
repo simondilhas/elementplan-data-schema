@@ -1,0 +1,65 @@
+id: armasuisse:element/sicherheitszone-schutzzonen
+sort_order: 18
+status: active
+name:
+  de: Sicherheitszone / Schutzzonen
+  fr: Zone de sécurité / zones de protection
+  it: Zona di sicurezza / zone di protezione
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+definition:
+  de: "Die Schutzzonen werden als IfcZone modelliert. \n\n**Modellierungshinweis:**\n* IfcSpaces mit identischen Funktionen werden zu einer IfcZone gruppiert. Die Zonennamen müssen der Klassifikation entsprechen,\
+    \ z.B. mit \"Schutzzone 1\". Die Gruppierung nach mehrstufiger Hierarchie ist auch für IfcZone-Zuordnungen möglich. \n* Beispiel: Sie können einige Räume (IfcSpaces) in einer IfcZone (Schutzzone 1)\
+    \ gruppieren, die zu einer IfcZone-Gruppe einer höheren Ebene gehört (z.B. Verwaltungs-Raumfläche)."
+  fr: "Les zones de protection sont modélisées comme IfcZone.   \n\n**Note pour la modélisation.**\n* les IfcSpace avec des fonctions identiques sont regroupés dans une IfcZone, par exemple avec le nom\
+    \ \"Security Zone\". Le regroupement par hiérarchie multi-niveaux est également possible pour les affectations IfcZone.  \n* Par exemple: vous pouvez regrouper certaines zones de locaux (IfcSpace) dans\
+    \ une IfcZone (zone de protection 1) qui appartient à un groupe IfcZone de niveau supérieur (par exemple, zone de surfaces administratives)."
+  it: "Le zone di protezione sono modellate come IfcZone.   \n\n**Indicazione per la modellazione.**\n* IfcSpaces con funzioni identiche sono raggruppati in una IfcZone. \nI nomi delle zone devono corrispondere\
+    \ alle classificazioni, ad es. \"zona di protezione 1\".  \nPer le assegnazioni IfcZone è possibile anche il raggruppamento per gerarchia multilivello.  \n* Esempio: è così possibile raggruppare alcuni\
+    \ locali (IfcSpaces) in una IfcZone (zona di protezione 1) che appartiene ad un gruppo IfcZone di livello superiore (ad es. superficie amministrazione)."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcZone
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcZone
+attributes:
+- name: Name
+  pset: null
+  definition:
+    de: Information zu welcher Schutzzone der Raum gehört. z.B. Schutzzone 1
+    fr: Information sur la zone de protection à laquelle le local appartient, p. ex. zone de protection 1
+    it: Informazioni relative in quale zona di protezione rientra il locale. Ad es. zona di protezione 1
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/armasuisse-schutzzone
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 1

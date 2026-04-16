@@ -1,0 +1,20 @@
+id: armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+sort_order: 27
+code: AWF-03-b
+name:
+  de: Liefern von Grundlagen für Lebenszykluskostenberechnungen im Bauprojekt
+  fr: Fourniture des bases de calculs des coûts du cycle de vie
+  it: Fornitura di basi per i calcoli dei costi del ciclo di vita livello 2
+  en: ''
+description:
+  de: TBD
+  fr: Les exigences basées sur le modèle relatives aux informations pour les coûts du cycle de vie selon les exigences d’armasuisse Immobilier figurent dans le plan des éléments.
+  it: I requisiti informativi basati sul modello relativi ai costi del ciclo di vita secondo i requisiti di armasuisse Immobili sono contenuti nel piano degli elementi.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

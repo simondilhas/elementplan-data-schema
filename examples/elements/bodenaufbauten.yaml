@@ -1,0 +1,92 @@
+id: armasuisse:element/bodenaufbauten
+sort_order: 25
+status: active
+name:
+  de: Bodenaufbauten
+  fr: Revêtements de sol
+  it: Rivestimenti dei pavimenti
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+definition:
+  de: Bodenbeläge werden erst als eigenes Element modelliert, wenn es unterschiedliche Bodenbeläge oder Aufbauten innerhalb eines Raumes gibt. Sonst werden die Informationen im Element "Raum" gepflegt.
+  fr: Les revêtements de sol ne sont modélisés en tant qu’élément spécifique que si l’on trouve différents revêtements de sol ou structures à l’intérieur d’une pièce. Sinon, les informations sont gérées
+    dans l'élément "Espace".
+  it: I rivestimenti dei pavimenti vengono modellati come elemento a parte solo se all’interno di un locale vi sono diversi rivestimenti o allestimenti. Altrimenti, le informazioni vengono gestite nell'elemento
+    "Spazio".
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcCovering
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcCovering
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: Definiert, dass es sich bei der Bekleidung um einen Bodenaufbau handelt.
+    fr: Définit que le revêtement est une structure du sol.
+    it: Definisce che il rivestimento è adatto alla struttura del pavimento.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/predefinedtype-flooring
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-07-a-modellbasiertes-nachtragsmanagement
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  is_applicability: true
+  status: active
+  sort_order: 1
+- name: FloorCovering
+  pset: Cust_Element
+  definition:
+    de: Bodenbelagsmaterial gemäss Werteliste.
+    fr: Matériau de revêtement de sol selon la liste des valeurs.
+    it: Materiale di rivestimento per pavimenti secondo la lista di valori.
+    en: ''
+  datatype: IfcLabel
+  allowed_values: armasuisse:value/bodenbelagarmasuisse
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-07-a-modellbasiertes-nachtragsmanagement
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  is_applicability: false
+  status: active
+  sort_order: 2

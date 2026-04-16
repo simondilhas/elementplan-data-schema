@@ -1,0 +1,20 @@
+id: armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+sort_order: 28
+code: AWF-03-c
+name:
+  de: Flächen- und Volumen für Bauwerkskennzahlen
+  fr: Surfaces et volumes pour indices des ouvrages
+  it: Superfici e volumi per indicatori relativi alle opere di costruzione
+  en: ''
+description:
+  de: Mit diesem Anwendungsfall wird die Auswertung oder Kalkulation auf der Grundlage von Flächen- und Volumenkennzahlen (SIA416) ermöglicht.
+  fr: Ce cas d’application permet de procéder à l’évaluation ou au calcul sur la base des indices de surfaces et de volumes (SIA 416).
+  it: Questo caso d’uso consente la valutazione o il calcolo sulla base degli indicatori relativi a superfici e volumi (SIA 416).
+  en: ''
+workflow_group: BIM 3d light,BIM 3d full,BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+picture_link: null
+status: deprecated
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

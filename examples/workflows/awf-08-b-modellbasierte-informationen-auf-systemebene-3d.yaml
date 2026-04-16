@@ -1,0 +1,22 @@
+id: armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+sort_order: 42
+code: AWF-08-b
+name:
+  de: Modellbasierte Informationen auf Bauteilebene 3D - Gebäudetechnik
+  fr: Informations modélisées au niveau du système
+  it: Informazioni a livello di sistema basate sul modello 3D
+  en: ''
+description:
+  de: TBD
+  fr: Il faut se servir des attributs requis pour les installations en se basant sur le modèle. Des directives de modélisation complémentaires doivent être définies par le concepteur de façon spécifique
+    au projet.
+  it: In base al modello devono essere impiegati gli attributi richiesti relativi agli impianti. Ulteriori disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: BIM 3d light,BIM 3d full,BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

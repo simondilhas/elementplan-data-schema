@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+sort_order: 13
+code: AWF-02-d
+name:
+  de: Darstellung Sicherheitsrelevanter Konzepte und Bauteile
+  fr: Présentation d’aspects liés à l’environnement, l’écologie et la sécurité dans le modèle
+  it: Rappresentazione degli aspetti ecologici e di sicurezza nel modello
+  en: ''
+description:
+  de: "**Ziel**\nSicherheitsrelevante Informationen wie Sicherheitszonen, Zutrittskontrolle, Überwachung und physischer Perimeterschutz werden im Modell dargestellt. Dies verbessert das gemeinsame Verständnis
+    und erleichtert die Kommunikation mit Nutzern und Betreibern.\n\n**Nutzen für den Auftraggeber**\n- Sicherheitskonzept ist für Nutzer und Betreiber räumlich nachvollziehbar\n- Abstimmung von Sicherheitsanforderungen
+    auf Basis eines gemeinsamen Modells statt reiner Textdokumentation\n- Frühzeitige Identifikation von Konflikten zwischen Nutzungsanforderungen und Sicherheitsvorgaben\n\n**Umsetzung im Projekt**\nAls
+    Mindestanforderung werden Räume und Sicherheitszonen im Modell klassifiziert und dargestellt. Weitere Massnahmen — wie Perimeterschutz, Zutrittskontrollzonen oder Überwachungsbereiche — werden projektspezifisch
+    durch den zuständigen Sicherheitsplaner definiert.\n\n**Ergebnis**\n- IFC-Modell mit klassifizierten Sicherheitszonen und -bereichen\n- Grundlage für Abstimmung und Kommunikation des Sicherheitskonzepts
+    mit Nutzern und Betreibern"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: deprecated
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

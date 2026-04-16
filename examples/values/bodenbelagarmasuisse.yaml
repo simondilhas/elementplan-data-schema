@@ -1,0 +1,187 @@
+id: armasuisse:value/bodenbelagarmasuisse
+name:
+  de: BodenbelagArmasuisse
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Naturstein allgemein
+  - Granit rauh
+  - Granit glatt
+  - Kalkstein glatt
+  - Marmor
+  - Schiefer
+  - Sandstein
+  - Kunststein allgemein
+  - Vinyl-Platten
+  - Steinteppich
+  - Beton/Zement allgemein
+  - Steinfliesen
+  - Euböolith
+  - Granulat 2k Harz
+  - Beton rauh
+  - Beton gestrichen
+  - Waschbeton
+  - Holzelement
+  - Keramik allgemein
+  - Stampfasphaltplatten
+  - Steinzeug rauh
+  - Steinzeug glatt
+  - Mosaik
+  - Klinker
+  - Holz allgemein
+  - Holz unbehandelt
+  - Parkett geölt
+  - Parkett versiegelt
+  - Laminat
+  - Kork allgemein
+  - Linoleum
+  - Korklinoleum
+  - Korkparkett
+  - Novilon
+  - Kunststoff allgemein
+  - PVC
+  - Cushion-Vinyl
+  - Platten Fliesen
+  - Epoxydharz
+  - Polyurethan
+  - Polyolefine
+  - Gummi glatt
+  - Gumminoppen
+  - Gummi strukturiert
+  - Textil allgemein
+  - Teppich
+  - Nadelfilz
+  - Schmutzschleusenteppich
+  - Andere
+  - Asphalt
+  - Zementplatten
+  - Metall
+  - Glas
+  - Kies/Split/Naturweg
+  - Kunststeinplatten
+  - Gitterrost
+  fr:
+  - Pierre naturelle générale
+  - Granit rugueux
+  - Granit lisse
+  - Calcaire lisse
+  - Marbre
+  - Ardoise
+  - Grès
+  - Pierre artificielle générale
+  - Carreau vinyle
+  - Tapis de pierres
+  - Béton ciment général
+  - Carrelage de pierre
+  - Sol xylolithe
+  - Granulat résine 2k
+  - Béton rugueux
+  - Béton peint
+  - Béton lavé
+  - Bois-ciment
+  - Céramique générale
+  - Carreau d’asphalte pilonné
+  - Pierre reconstituée rugueuse
+  - Pierre reconstituée lisse
+  - Mosaïque
+  - Brique recuite
+  - Bois général
+  - Bois non traité
+  - Parquet huilé
+  - Parquet vitrifié
+  - Stratifié
+  - Liège général
+  - Linoléum
+  - Linoléum de liège
+  - Parquet de liège
+  - Novilon
+  - Matière plastique générale
+  - PVC
+  - Vinyle cushion
+  - Carreaux carrelages
+  - Résine epoxy
+  - Polyuréthane
+  - Polyoléfine
+  - Caoutchouc lisse
+  - Nopes en caoutchouc
+  - Caoutchouc structuré
+  - Textile général
+  - Tapis
+  - Feutre tissé
+  - Tapis anti-salissures
+  - Autres
+  - Asphalte
+  - Carreau de ciment
+  - Métal
+  - Verre
+  - Gravier / gravillon chemin naturel
+  - Carreau de pierre artificielle
+  - Caillebotis
+  it:
+  - Pietra naturale in generale
+  - Granito bocciardato
+  - Granito levigato
+  - Calcare levigato
+  - Marmo
+  - Ardesia
+  - Arenaria
+  - Pietra artificiale in generale
+  - Lastre in vinile
+  - Tappeto in graniglia
+  - Calcestruzzo cemento in generale
+  - Piastrelle in pietra
+  - Xilolite
+  - Granulato resina 2k
+  - Cemento ruvido
+  - Cemento dipinto
+  - Calcestruzzo lavato
+  - Legno-cemento
+  - Ceramica in generale
+  - Lastre di asfalto compresso
+  - Gres ruvido
+  - Gres levigato
+  - Mosaico
+  - Clinker
+  - Legno in generale
+  - Legno non trattato
+  - Parquet oliato
+  - Parquet vetrificato
+  - Laminato
+  - Sughero in generale
+  - Linoleum
+  - Linoleum di sughero
+  - Parquet in sughero
+  - Novilon
+  - Materie sintetiche in generale
+  - PVC
+  - Cushion vinyl
+  - Lastre / piastrelle
+  - Resina epossidica
+  - Poliuretano
+  - Poliolefina
+  - Gomma levigata
+  - Gomma a bolli
+  - Gomma strutturata
+  - Tessili in generale
+  - Tappeto
+  - Feltro agugliato
+  - Tappeto antisporco
+  - Altro
+  - Asfalto
+  - Lastre di cemento
+  - Metallo
+  - Vetro
+  - Ghiaietto/ghiaia/sentiero naturale
+  - Lastre di pietra artificiale
+  - Graticcio
+  en: []

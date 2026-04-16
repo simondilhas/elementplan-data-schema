@@ -1,0 +1,39 @@
+id: armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+sort_order: 29
+code: AWF-03-e
+name:
+  de: BIM2LCC Lebenszykluskosten im Vorprojekt
+  fr: BIM2LCC Coûts du cycle de vie
+  it: Costi del ciclo di vita BIM2LCC
+  en: ''
+description:
+  de: "**Beschrieb:**\nIm Rahmen des pbFM-Prozesses der armasuisse Immobilien werden Lebenszykluskosten von Varianten im Vorprojekt berechnet und gegen einen Benchmark geprüft. Hierzu sollen benötigte Datenfelder,
+    wo sinn-voll, modellbasiert ermittelt und in Listenform vom Auftragnehmer zur Verfügung gestellt wer-den (bspw. die Summen von Flächenarten nach SIA 416 sowie Flächenbaum nach DIN 277 +E/SIAd0165). In
+    Abstimmung mit dem Auftraggeber (FM-Planer, armasuisse Immobilien) sind die Modelle, falls notwendig, anzupassen, damit die Informationen in geeigneter Form zur Verfügung stehen. (Bspw. die Aufteilung
+    der Umgebungsflächen, nach Winter-dienst).\n \n**Ziele:**\n- Verbesserte Datengrundlage für LCC-Berechnung \n- Reduzierung von Aufwänden für das manuelle Zusammentragen von Informationen durch automatisierte
+    Datenauszüge aus den Modellen\n\n**Mehrwerte:**\n - Auswertbarkeit und Überprüfbarkeit der Informationen für die LCC-Ermittlung wird vereinfacht und visuell unterstützt\n- Frühzeitiges Erkennen von
+    Lebenszyklusrelevanten Kostentreibern auf Grundlage strukturierter Daten \n\n**Lieferobjekte:**\n- Daten für die LCC-Berechnung in Listenform (Excel), mindestens 1x pro Phase oder Variante (SIA-Phase
+    21 bis 32, Termin in Absprache mit dem Auftraggeber)"
+  fr: "**Description:**\nDans le cadre du processus FMpc d’armasuisse Immobilier, les coûts du cycle de vie sont calculés et vérifiés à l’aune d’un benchmark. Dans cette optique, il convient de déterminer,
+    en se basant sur des modèles, les champs de données nécessaires, quand cela est pertinent, puis le mandataire doit les mettre à disposition sous forme de listes (p. ex. totaux des genres de surfaces
+    selon SIA 416 et arbre des surfaces selon DIN 277 + SIA D 0165). En accord avec le mandant (planificateur FM, armasuisse Immobilier), il convient si nécessaire d’adapter les modèles pour que les informations
+    soient disponibles sous une forme adéquate (p. ex. répartition des surfaces des abords, après le service hivernal).\n\n**Objectif:** \n- Améliorer la base de données pour les calculs LCC\n- Réduire
+    le travail de collecte manuelle d’informations grâce aux données extraites automati-quement des modèles\n\n**Plus-value:** \n- Le caractère exploitable et vérifiable des informations destinées au calcul
+    LCC est simplifié et soutenu visuellement\n- Détection précoce de facteurs de coûts importants pour le cycle de vie sur la base de don-nées structurées\n\n**Objets à livrer:** \n- Données pour le calcul
+    LCC disponibles sous forme de listes (Excel), au moins une par phase ou par variante (phases SIA 21 à 32, délai en accord avec le mandant)"
+  it: "**Descrizione:**\nNel quadro del processo prFM di armasuisse Immobili vengono calcolati i costi del ciclo di vita, poi verificati a fronte di un benchmark. A tal fine i campi di dati necessari, laddove
+    sia utile devono essere determinati sulla base di modelli e messi a disposizione dal mandatario sotto forma di elenco (ad es. le somme delle tipologie di superficie secondo la SIA 416 nonché il diagramma
+    di superficie secondo la DIN 277 + E/SIAd0165). Previo accordo con il mandante (progettista FM, armasuisse Immobili), laddove necessario i modelli devono essere modificati affinché le informazioni siano
+    messe a disposizione in una forma appropriata (ad es. suddivisione delle superfici libere esterne, dopo il servizio d’inverno).  \n\n**Obiettivi:**\n- Base di dati migliorata per il calcolo LCC\n- Riduzione
+    degli oneri per la raccolta manuale delle informazioni grazie all’estrazione automatica dei dati dai modelli  \n\n**Valori aggiunti:**\n- La possibilità di analizzare e verificare le informazioni per
+    la determinazione LCC viene semplificata e supportata a livello visivo\n- Individuazione tempestiva di fattori di costo rilevanti per il ciclo di vita sulla base di dati strutturati   \n\n**Oggetti
+    della fornitura:**\n- Dati per il calcolo LCC sotto forma di elenco (Excel), almeno 1 per fase o variante (dalla fase SIA 21 alla 32, scadenza previo accordo con il mandante)"
+  en: ''
+workflow_group: BIM 3d full 10Mio+,BIM 3d full
+parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

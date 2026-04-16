@@ -1,0 +1,36 @@
+id: armasuisse:element/test
+sort_order: 17
+status: active
+name:
+  de: Test
+  fr: Test
+  it: Test
+  en: ''
+needed_in_domain: []
+definition:
+  de: 'Jedes Bauteil im HLKSE / TGA Modell muss für eine Geometrische Koordination ausreichend genau modelliert sein und dem passenden GTA Anlage zugeordent sein.
+
+
+    Ein gebäudetechnischer Bauteil ist ein Teil einer gebäudetechnischen Anlage GTA. Ein Bauteil ist im Betrieb und Unterhalt die kleinste Einheit, die instand gehalten wird und daher im Modell "as built"
+    abgebildet ist. Ein Bauteil kann ausgetauscht oder repariert werden. Ein Bauteil kann aus weiteren Teilen bestehen. Die Teile eines Bauteils können als Ersatzteile in einer Liste (Ersatzteilstückliste)
+    geführt werden.'
+  fr: 'Chaque partie d’ouvrage du modèle CVCSE / install. tech. bât. doit être modélisée de façon suffisamment précise pour une coordination géométrique et doit être attribuée à l’installation GTA adaptée.
+
+
+    Une partie d’ouvrage technique fait partie de l’installation technique du bâtiment GTA. Au niveau de l’exploitation et de l’entretien, la partie d’ouvrage est la plus petite unité qui est entretenue
+    et est donc représentée en tant que modèle « as built ». Il est possible d’échanger ou de réparer une partie d’ouvrage. Une partie d’ouvrage peut être composée de plusieurs parties. Les éléments d’une
+    partie d’ouvrage peuvent être gérés comme des pièces de rechange dans une liste (liste de pièces de rechange).'
+  it: 'Ogni parte d’opera del modello RVCSE/ITE deve essere modellata con un sufficiente grado di precisione per un coordinamento geometrico ed essere associata all’ITE corrispondente.
+
+
+    Una parte d’opera dell’impiantistica fa parte di un impianto tecnico dell’edificio (ITE). Durante esercizio e mantenimento, una parte d’opera è l’unità minima che viene sottoposta a manutenzione e pertanto
+    è rappresentata nel modello «as built». Una parte d’opera può essere sostituita o riparata. Una parte d’opera può essere composta da ulteriori parti. Le parti di una parte d’opera possono essere registrate
+    come ricambi in una lista (lista dei pezzi di ricambio).'
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcFlowSegment
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcFlowSegment
+attributes: []

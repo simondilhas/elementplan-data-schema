@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-heizungsanlage
+name:
+  de: ObjectType_
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - ^Heizungsanlage$
+  fr:
+  - ^Installation chauffage$
+  it:
+  - ^Impianto di riscaldamento$
+  en: []

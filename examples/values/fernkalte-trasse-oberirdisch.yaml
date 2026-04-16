@@ -1,0 +1,22 @@
+id: armasuisse:value/fernkalte-trasse-oberirdisch
+name:
+  de: Fernkälte Trasse oberirdisch
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Fernkälte Trasse oberirdisch
+  fr:
+  - Réseau de froid tracé en surface
+  it:
+  - Tracciato teleraffreddamento superficiale
+  en: []

@@ -1,0 +1,22 @@
+id: armasuisse:value/false
+name:
+  de: 'FALSE'
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 'FALSE'
+  fr:
+  - 'FALSE'
+  it:
+  - 'FALSE'
+  en: []

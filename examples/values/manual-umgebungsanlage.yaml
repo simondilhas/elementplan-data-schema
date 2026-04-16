@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-umgebungsanlage
+name:
+  de: ObjectType_
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - ^Umgebungsanlage$
+  fr:
+  - ^Installation des aménagements extérieurs$
+  it:
+  - ^Installation des aménagements extérieurs$
+  en: []

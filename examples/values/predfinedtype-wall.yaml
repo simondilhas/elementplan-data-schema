@@ -1,0 +1,43 @@
+id: armasuisse:value/predfinedtype-wall
+name:
+  de: PredfinedType:Wall
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - MOVABLE
+  - PARAPET
+  - PARTITIONING
+  - PLUMBINGWALL
+  - SHEAR
+  - SOLIDWALL
+  - STANDARD
+  - NOTDEFINED
+  fr:
+  - MOVABLE
+  - PARAPET
+  - PARTITIONING
+  - PLUMBINGWALL
+  - SHEAR
+  - SOLIDWALL
+  - STANDARD
+  - NOTDEFINED
+  it:
+  - MOVABLE
+  - PARAPET
+  - PARTITIONING
+  - PLUMBINGWALL
+  - SHEAR
+  - SOLIDWALL
+  - STANDARD
+  - NOTDEFINED
+  en: []

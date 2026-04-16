@@ -1,0 +1,46 @@
+id: armasuisse:domain/gebaudetechnik
+sort_order: 9
+name:
+  de: Gebäudetechnik
+  fr: Techniques du bâtiment
+  it: Tecnologia degli edifici
+  en: ''
+definition:
+  de: "Beispiel: `APB-000311_1233-NB_31_TGA-KO_Freitext`\n(\"/\" muss durch ein \"-\" ersetzt werden)\n\nDie Fachmodelle der Gebäudetechnik umfassen alle Planungsinhalte von HLKSE. Sie müssen projektspezifisch\
+    \ in Teilmodelle unterteilt werden, um die Planungsverantwortlichkeiten klar darzustellen.\n\nDer Dateiname setzt sich zusammen aus:\n\n- **Auftrags-Nr Bauherr** (Projektnummer) gem. armasuisse Immobilien\n\
+    - **Gebäude ID** gem. armasuisse Immobilien\n- **Projektphase**\n    - 00: Bestandsaufnahme\n    - 11: Bedürfnisformulierung\n    - 21: Projektdefinition, Machbarkeit\n    - 22: Auswahlverfahren\n \
+    \   - 31: Vorprojekt\n    - 32: Bauprojekt\n    - 33: Bewilligungsverfahren, Auflageprojekt\n    - 41: Ausschreibung\n    - 51: Ausführungsprojekt\n    - 52: Ausführung\n    - 53: Inbetriebnahme\n \
+    \   - 61: Betrieb\n    - 62: Erhaltung\n- **Disziplin**\n    - TGA-E:   Elektroanlagen\n    - TGA-GA:  Gebäudeautomation\n    - TGA-HK: Heizung-Kälte\n    - TGA-LK: Lüftung-Klima\n    - TGA-SA: Sanitäranlagen\n\
+    \    - TGA-SP: Sprinkleranlagen\n    - TGA-VD: Vakuum-Druckluft\n    - TGA-KO: Koordinationsmodell TGA\n    - Bei Bedarf weitere Modelle projektspezifisch definieren\n- **Freitext**\n\nDer Dateiname\
+    \ *kann* projektspezfisch frei ergänzt werden. z.B. Workbreakdownstructure, Status, ...\n\nWenn Modelle als Gliederungsebene für Neu/Bestand/Abbruch/Tempoär eingesetzt werden, was wir beim Start mit\
+    \ BIM empfehlen, muss im Modellnamen erwähnt werden, welche Inhalte enthalten sind. d.h. Status ist entweder:\n- Neu: beinhaltet nur neu zu erstellende Modelle\n- Bestand: Zeigt nur die Elemente aus\
+    \ dem Bestand die auch bestehen bleiben.\n- Abbruch: Zeigt nur die Elemente die abgebrochen werden.\n- Temporär: Zeigt nur Inhalte während der Bauphase."
+  fr: "Exemple : « APB-000311_1233-NB_31_TGA-KO_Texte-Libre »\n(le \"/\" doit être remplacé par un \"- \")\n\nLes modèles spécialisés de la technique du bâtiment englobent tous les contenus de planification\
+    \ du CVCSE. Ils doivent être subdivisés en sous-modèles spécifiques au projet afin de présenter clairement les responsabilités en matière de planification.\n\nLe nom du fichier se compose comme suit\
+    \ :\n\n- **Numéro de commande Maître d'ouvrage** (numéro de projet) selon armasuisse Immobilier\n- **ID du bâtiment** selon armasuisse Immobilier\n- **Phase du projet** :\n   00 : état des lieux\n   11\
+    \ : Formulation des besoins\n   21 : définition du projet, faisabilité\n   22 : Procédure de sélection\n   31 : Avant-projet\n   32 : Projet de construction\n   33 : Procédure d'autorisation, projet\
+    \ de mise à l'enquête\n   41 : Appel d'offres\n   51 : Projet d'exécution\n   52 : Exécution\n   53 : Mise en service\n   61 : exploitation\n   62 : Maintien\n- **Discipline:**\n    - TGA-E : Installations\
+    \ électriques\n    - TGA-GA : Automatisation des bâtiments\n    - TGA-HK : Chauffage-Refroidissement\n    - TGA-LK : Ventilation-Climatisation\n    - TGA-SA : Installations sanitaires\n    - TGA-SP\
+    \ : Installations sprinklers\n    - TGA-VD : Vide-Air comprimé\n    - TGA-KO : Modèle de coordination TGA\n    - Si nécessaire, définir d'autres modèles spécifiques au projet\n- **Texte libre**\n\n\
+    Le nom du fichier *peut* être complété librement en fonction du projet. Par exemple : structure de répartition du travail, statut, ...\n\nSi les modèles sont utilisés comme niveau de structure pour\
+    \ les éléments nouveaux/existants/à démolir/temporaires, ce que nous recommandons au début avec BIM, le nom du modèle doit mentionner le contenu qu'il contient. Le statut est donc soit :\n- Nouveau\
+    \ : ne contient que les modèles à créer\n- Existant : n'affiche que les éléments existants qui resteront inchangés.\n- Démolition : n'affiche que les éléments qui seront démolis.\n- Temporaire : n'affiche\
+    \ que le contenu pendant la phase de construction."
+  it: "Esempio: `APB-000311_1233-NB_31_TGA-KO_Testo-Libero`\n(la barra “/” deve essere sostituita da un trattino “-”)\n\nI modelli specialistici della tecnica degli edifici comprendono tutti i contenuti\
+    \ di progettazione di HLKSE. Devono essere suddivisi in modelli parziali specifici per ogni progetto, al fine di rappresentare chiaramente le responsabilità di progettazione.\n\nIl nome del file è composto\
+    \ da:\n- **Numero d'ordine Committente** (numero di progetto) secondo armasuisse Immobili\n- **ID edificio** secondo armasuisse Immobili\n- **Fase di progetto**\n    - 00 : inventario delle attrezzature\n\
+    \    - 11 : formulazione dei requisiti\n    - 21 : Definizione del progetto, fattibilità\n    - 22 : Procedura di selezione\n    - 31 : Progetto preliminare\n    - 32 : Progetto di costruzione\n   \
+    \ - 33 : Procedura di autorizzazione, progetto di indagine\n    - 41 : Bando di gara\n    - 51 : Progetto esecutivo\n    - 52 : Esecuzione\n    - 53: Messa in servizio\n    - 61: Gestione operativa\n\
+    \    - 62: Manutenzione\n- **Disciplina**\n    - TGA-E: Impianti elettrici\n    - TGA-GA: Automazione degli edifici\n    - TGA-HK: Riscaldamento-raffreddamento\n    - TGA-LK: Ventilazione-climatizzazione\n\
+    \    - TGA-SA: Impianti sanitari\n    - TGA-SP: Impianti sprinkler\n    - TGA-VD: Vuoto-aria compressa\n    - TGA-KO: Modello di coordinamento TGA\n    - Se necessario, definire ulteriori modelli specifici\
+    \ per il progetto\n- **Testo libero**\n\n\nIl nome del file *può* essere completato liberamente in base al progetto, ad es. struttura di suddivisione del lavoro, stato, ...\n\nSe i modelli vengono utilizzati\
+    \ come livello di struttura per nuovo/esistente/demolizione/temporaneo, cosa che consigliamo all'inizio con il BIM, nel nome del modello deve essere indicato quale contenuto è incluso. Lo stato può\
+    \ essere:\n- Nuovo: contiene solo modelli da creare ex novo\n- Esistente: mostra solo gli elementi esistenti che rimarranno invariati.\n- Demolizione: mostra solo gli elementi che saranno demoliti.\n\
+    - Temporaneo: mostra solo i contenuti durante la fase di costruzione."
+  en: ''
+file_name:
+  de: '{Auftrags-Nr Bauherr}_{Bauwerk ID}_{Phase}_{Disziplin}_{Freitext}'
+  fr: '{Numéro projet}_{Code bâtiment}_{Phase}_{Discipline Technique}_{Libre}'
+  it: '{Numero di incarico del committente}_{Codice opera di costruzione}_{Fase} {Disciplina} {Testo libero}'
+  en: ''
+status: active

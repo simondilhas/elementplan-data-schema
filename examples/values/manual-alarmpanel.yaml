@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-alarmpanel
+name:
+  de: PredefinedType_Zentrale und Brandmeldezentralen
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - ALARMPANEL
+  fr:
+  - ALARMPANEL
+  it:
+  - ALARMPANEL
+  en: []

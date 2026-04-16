@@ -1,0 +1,323 @@
+id: armasuisse:element/gas-leitung
+sort_order: 100
+status: active
+name:
+  de: Gas Leitung
+  fr: Conduite de gaz
+  it: Condotta gas
+  en: ''
+needed_in_domain:
+- armasuisse:domain/tiefbau
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDistributionFlowElement
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcDistributionFlowElement
+attributes:
+- name: ObjectType
+  pset: null
+  definition:
+    de: Gibt an, dass es sich um eine Gasleitung handelt.
+    fr: Indique qu’il s’agit d’une conduite de gaz.
+    it: Indica se si tratta di un tubo del gas.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/gas-leitung
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '53'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: true
+  status: active
+  sort_order: 1
+- name: HeightAccuracy
+  pset: Cust_Existing
+  definition:
+    de: 'Gibt den Toleranzbereich für die Z Koordinate an.
+
+      Format +/- cm.
+
+      Nur Nummer angeben, beispielsweise: 30'
+    fr: "Indique la plage de tolérance pour les coordonnées Z. \nFormat +/- cm. \nN’indiquer que le numéro, par exemple: 30"
+    it: "Indicare l'intervallo di tolleranza per la coordinata Z. \nFormato +/- cm. \nBasta indicare il numero, ad esempio: 30"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: PositionAccuracy
+  pset: Cust_Existing
+  definition:
+    de: 'Gibt den Toleranzbereich für die X und Y Koordinate an.
+
+      Format +/- cm.
+
+      Nur Nummer angeben, beispielsweise: 30'
+    fr: "Indique la plage de tolérance pour les coordonnées X et Y. \nFormat +/- cm. \nN’indiquer que le numéro, par exemple: 30"
+    it: "Indicare l'intervallo di tolleranza per le coordinate X e Y. \nFormato +/- cm. \nBasta indicare il numero, ad esempio: 30"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: RecordingDate
+  pset: Cust_Existing
+  definition:
+    de: Datum der Aufnahme im Format TT.MM.JJJJ z.B. 18.04.2023
+    fr: Date d’enregistrement au format JJ.MM.AAAA p. ex. 18.04.2023
+    it: Data di registrazione nel formato GG.MM.AAAA, ad es. 18.04.2023
+    en: ''
+  datatype: IfcDate
+  allowed_values: armasuisse:value/datum-regex
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: false
+  status: active
+  sort_order: 4
+- name: ConstructionYear
+  pset: Cust_Infra
+  definition:
+    de: Erstellungsjahr im Format YYYY, z.B. 2025
+    fr: Année de construction au format YYYY, p. ex. 2025
+    it: Anno di creazione nel formato AAAA, ad es. 2025
+    en: ''
+  datatype: IfcDate
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: false
+  status: active
+  sort_order: 5
+- name: Municipality
+  pset: Cust_Infra
+  definition:
+    de: Gemeinde, z.B. "Köniz"
+    fr: Commune, p. ex. "Köniz"
+    it: Comune, ad es. "Köniz"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: false
+  status: active
+  sort_order: 6
+- name: RenovationNeeded
+  pset: Cust_Infra
+  definition:
+    de: 'Gibt an, ob es Renovationsbedarf gibt:
+
+      - TRUE wenn ja
+
+      - FALSE wenn nein
+
+      - UNKNOWN wenn der Renovationsbedarf unbekannt ist'
+    fr: "Indique si une rénovation est nécessaire: \n- TRUE si oui \n- FALSE si non \n- UNKNOWN si besoin de rénovation inconnu"
+    it: "Indica se necessita di ristrutturazione: \n- TRUE se sì \n- FALSE se no \n- UNKNOWN se non si conosce il bisogno di ristrutturazione"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: armasuisse:value/boolean-with-unknown
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: false
+  status: active
+  sort_order: 7
+- name: RenovationYear
+  pset: Cust_Infra
+  definition:
+    de: Renovationsjahr, im Format YYYY, z.B. 2024
+    fr: Année de rénovation, au format YYYY, p. ex. 2024
+    it: Anno di risanamento nel formato AAAA, ad es. 2024
+    en: ''
+  datatype: IfcDate
+  allowed_values: armasuisse:value/datum-regex
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: false
+  status: active
+  sort_order: 8
+- name: Status
+  pset: Cust_Infra
+  definition:
+    de: "Status des Bauteils insbesondere beim Bauen im Bestand. \n- New: \"Neu\" - neues Bauteil als Ergänzung\n- Existing: \"Bestand\" -  bestehendes Bauteil, dass erhalten bleibt\n- Demolish: \"Abbruch\"\
+      \ - Bauteil, das abgebrochen wird\n- Temporary: \"Temporär\" -  Bauteil und andere Bauelemente, die vorübergehend eingebaut werden (wie Abstützungen, etc.)"
+    fr: "Statut de l’élément de construction, notamment pour la construction dans l’existant.  \n- New : \"Nouveau\" - nouvel élément de construction en complément \n- Existing : \"Existant\" - élément\
+      \ existant qui est maintenu \n- Demolish : \" Démolition \" - élément existant qui est démoli \n- Temporary : \"Temporaire\" - élément de construction et autres éléments qui sont intégrés provisoirement\
+      \ (comme des étayages, etc.)"
+    it: "Stato di un componente, in particolare per costruire nella sostanza edilizia esistente.  \n- New: \"Nuovo\" - nuovo componente come aggiunta \n- Existing: \"Esistente\" -  componente esistente\
+      \ che viene mantenuto \n- Demolish: \"Demolizione\" - componente che viene demolito\n- Temporary: \"Temporaneo\" -  Componente e altri elementi costitutivi installati temporaneamente (come i supporti,\
+      \ ecc.)"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: armasuisse:value/status
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: false
+  status: active
+  sort_order: 9

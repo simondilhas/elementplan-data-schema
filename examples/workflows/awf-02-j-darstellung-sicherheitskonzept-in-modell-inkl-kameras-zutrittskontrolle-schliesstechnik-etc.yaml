@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-02-j-darstellung-sicherheitskonzept-in-modell-inkl-kameras-zutrittskontrolle-schliesstechnik-etc
+sort_order: 18
+code: AWF-02-j
+name:
+  de: Visualisierung Sicherheitstechnik im Modell
+  fr: Présentation du concept de sécurité dans le modèle (y c. caméras, contrôle d’accès, technique de fermeture, etc.)
+  it: Rappresentazione del concetto di sicurezza nel modello (incl. videocamere, controllo degli accessi, dispositivi tecnici di chiusura, ecc.)
+  en: ''
+description:
+  de: "**Ziel**\nSicherheitstechnische Massnahmen wie Kameras, Zutrittskontrolle und Schliesstechnik werden räumlich im Modell verortet und visualisiert. Dies ermöglicht eine präzise Kommunikation des Sicherheitskonzepts
+    mit Nutzern und Betreibern.\n\n**Nutzen für den Auftraggeber**\n- Sicherheitstechnische Massnahmen sind räumlich verortbar und für alle Beteiligten nachvollziehbar\n- Kamerasichtwinkel und Abdeckungsbereiche
+    werden sichtbar.\n- Lücken im Sicherheitskonzept werden frühzeitig erkannt\n- Grundlage für die Übergabe des Sicherheitskonzepts an den Betrieb\n\n**Umsetzung im Projekt**\nDie Modellierungsanforderungen
+    werden durch den zuständigen Sicherheitsfachplaner projektspezifisch definiert. Neben der räumlichen Verortung der Sicherheitsbauteile (Kameras, Zutrittspunkte, Schliesszylinder etc.) werden projektspezifisch
+    auch Sichtwinkel und Wirkungsbereiche im Modell visualisiert.\n\n**Ergebnis**\n- IFC-Modell mit verorteten Sicherheitsbauteilen und visualisierten Wirkungsbereichen\n- Grundlage für Abstimmung, Kommunikation
+    und Übergabe des Sicherheitskonzepts an den Betrieb"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

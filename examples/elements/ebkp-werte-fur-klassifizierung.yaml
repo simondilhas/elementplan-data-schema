@@ -1,0 +1,21 @@
+id: armasuisse:element/ebkp-werte-fur-klassifizierung
+sort_order: 22
+status: active
+name:
+  de: eBKP Werte für Klassifizierung
+  fr: Classification eCCC
+  it: Classificazione eCCC
+  en: ''
+needed_in_domain: []
+definition:
+  de: Alle Bauteile in den Modellen sind nach eBKP zu klassifizieren. d.h. Die Bauteile werden der eBKP Klassifizierung zugeordnet.
+  fr: Tous les éléments de construction dans les modèles doivent être classifiés selon l'eCCC. c'est-à-dire que les éléments de construction sont attribués à la classification eCCC.
+  it: Tutti i componenti dei modelli devono essere classificati in base a eCCC, ossia i componenti vengono assegnati alla classificazione eCCC.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcClassificationReference
+entity_ifc4_3: null
+picture_link: ebkp-werte-fur-klassifizierung.jpg
+model_link: null
+applicability: entity_ifc4=IfcClassificationReference
+attributes: []

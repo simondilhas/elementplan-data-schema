@@ -1,0 +1,22 @@
+id: armasuisse:value/wasser-unterflurhydrant
+name:
+  de: Wasser Unterflurhydrant
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Wasser Unterflurhydrant
+  fr:
+  - Eau bouche d’incendie souterraine
+  it:
+  - Idrante sottosuolo
+  en: []

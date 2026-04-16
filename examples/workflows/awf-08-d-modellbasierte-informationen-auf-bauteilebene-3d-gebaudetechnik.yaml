@@ -1,0 +1,23 @@
+id: armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+sort_order: 44
+code: AWF-08-d
+name:
+  de: ''
+  fr: Informations basées sur des modèles au niveau des composants 3D - Technique du bâtiment
+  it: Informazioni a livello di parte dell’opera di costruzione basate sul modello 3D - tecnico
+  en: ''
+description:
+  de: Es sind modellbasiert die geforderten Attribute zu den Bauteilen / Komponenten zu bedienen. Weitergehende Modellierungsvorgaben sind durch den Planer projektspezfisch zu definieren.
+  fr: Il faut se servir des attributs requis pour les parties d’ouvrage / composants en se basant sur le modèle. Des directives de modélisation complémentaires doivent être définies par le concepteur de
+    façon spécifique au projet.
+  it: In base al modello devono essere impiegati gli attributi richiesti relativi alle parti dell’opera di costruzione/ai componenti. Ulteriori disposizioni di modellazione devono essere definite dal progettista
+    per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

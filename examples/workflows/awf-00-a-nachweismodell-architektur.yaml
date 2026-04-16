@@ -1,0 +1,30 @@
+id: armasuisse:workflow/awf-00-a-nachweismodell-architektur
+sort_order: 1
+code: AWF-00-a
+name:
+  de: Nachweismodell Modellierungskompetenz Architekt
+  fr: Modèle justificatif architecture
+  it: Modello di giustificazione architettura
+  en: ''
+description:
+  de: "**Ziel**\nDer anbietende Architekt weist nach, dass er die BIM-Anforderungen des Auftraggebers erfüllen kann. Der Nachweis erfolgt durch die Modellierung eines Mustermodells gemäss definierten Vorgaben
+    und dessen Prüfung vor Einreichung.\n\n**Nutzen für den Auftraggeber**\n- Fundierte Bewertungsgrundlage für den Vergabeentscheid\n- Sicherstellung, dass der beauftragte Architekt die geforderte Modellqualität
+    liefern kann\n- Standardisierter, vergleichbarer Nachweis über alle Angebote\n\n**Umsetzung im Projekt**\n\n1. *Entscheid Kriterientyp:* Der Auftraggeber legt fest, ob das Nachweismodell als Eignungs-
+    oder Zuschlagskriterium eingesetzt wird und welcher Erfüllungsgrad gefordert ist.\n2. *Anforderungen:* Die Modellierungsanforderungen werden den Ausschreibungsunterlagen beigelegt und sind online unter
+    [ar-elementplan.ch](http://ar-elementplan.ch) im Projekt APB-000BIM-NA einsehbar. Beispiele von Nachweismodellen sind auf armaform verfügbar.\n3. *Modellierung durch Anbieter:* Der Anbieter modelliert
+    das Nachweismodell entsprechend den Vorgaben.\n4. *Selbstcheck:* Das Modell wird durch den Anbieter unter [ar-pruefcloud.libal-tech.ch](https://ar-pruefcloud.libal-tech.ch) gegen die Anforderungen geprüft.\n
+    5. *Kontrolle:* Das eingereichte Modell wird durch den Auftraggeber geprüft und bewertet.\n\n**Ergebnis**\n- IFC-Nachweismodell gemäss Anforderungen\n- IDS-Prüfbericht als dokumentierter Nachweis der
+    Modellqualität"
+  fr: Le cas d'utilisation du modèle de preuve d'approvisionnement contient les exigences d'information pour les principaux modèles d'architecture et de technologie du bâtiment (électricité, chauffage/refroidissement,
+    ventilation et plomberie), qui doivent être remplies à 100 % par les gestionnaires BIM et les agents soumissionnaires dans le cadre du processus d'appel d'offres. comme preuve d'aptitude.
+  it: Il caso d’uso *Modello di prova Architettura* è una parte del modello di prova Acquisto.  Contiene i requisiti informativi che nel quadro della procedura d’offerta devono essere soddisfatti dall’impresa
+    offerente.  Nella documentazione della gara d’appalto sono contenute le informazioni relative all’uso o meno del modello di prova come criterio di idoneità o di aggiudicazione e al grado di adempimento
+    richiesto.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-00-nachweismodelle
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/nachweismodell-architektur
+comment: ''

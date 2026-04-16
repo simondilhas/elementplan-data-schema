@@ -1,0 +1,22 @@
+id: armasuisse:value/fernwarme-trasse-oberirdisch
+name:
+  de: Fernwärme Trasse oberirdisch
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Fernwärme Trasse oberirdisch
+  fr:
+  - Chauff. dist. tracé en surface
+  it:
+  - Tracciato teleriscaldamento superficiale
+  en: []

@@ -1,0 +1,21 @@
+id: armasuisse:element/abwasser-spezialbauwerk-pumpwerk
+sort_order: 86
+status: active
+name:
+  de: Abwasser Spezialbauwerk Pumpwerk
+  fr: Eaux usées ouvrage spécial station de pompage
+  it: Acque di scarico, opera speciale stazione di pompaggio
+  en: ''
+needed_in_domain: []
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcBuilding
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcBuilding
+attributes: []

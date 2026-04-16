@@ -1,0 +1,178 @@
+id: armasuisse:value/gtalink
+name:
+  de: GTALink
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - I-002 Notlichtanlage
+  - I-007 Aufzüge
+  - I-001 USV
+  - I-068 Windkraftwerke
+  - I-017 CO2 Löschanlage
+  - I-028 Gleisanlagen
+  - I-069 WärmeErz Oel_Gas
+  - I-076 WärmeVert MagFlussFi
+  - I-032 HS Schaltanlage
+  - I-023 Entsalzungsanlage
+  - I-006 Kälteanlagen
+  - I-073 WärmeErz Wärmepumpen
+  - I-022 Enthärtungsanlage
+  - I-031 Heiz-Versorg/Lager
+  - I-072 WärmeErz Schnitzel
+  - I-070 WärmeErz Stückholz
+  - I-034 Lüftungsanlagen
+  - I-024 Ersatzstromanlage
+  - I-027 Gebäudeleitsystem Gebäudeautomation
+  - I-066 Wassererwärmer
+  - I-019 Einbruchmeldeanlage
+  - I-005 Druckluft
+  - I-071 WärmeErz Pellets
+  - I-035 NS-Schaltanlage
+  - I-020 Einspeisezähler
+  - I-081 Oel und Fettabscheider
+  - I-065 UV Anlage
+  - I-016 Chlordosierungsanlage
+  - I-010 Videoüberwachung
+  - I-012 Alarmmanagement
+  - I-030 Heiz/Wärmeverteilung
+  - I-074 WärmeErz Solar
+  - I-011 Abwasserpumpen
+  - I-080 Domotik
+  - I-018 Druckerhöhungsanlage
+  - I-008 Brandmeldeanlage
+  - I-033 Kältespeicher
+  - I-078 WärmeVert Expansion
+  - I-037 Photovoltaikanlage
+  - I-067 Wasserkraftwerke
+  - I-079 El. Zutrittskontrolle
+  - I-036 Osmoseanlage
+  - I-075 WärmeVert Entsalzung
+  - I-025 Evakuationsanlage
+  - I-015 Blindstromkompensation
+  - I-014 Abschlüsse
+  - I-013 Anpassrampen
+  - I-064 Transformatoren
+  - I-021 Energiemanagement
+  - I-077 WärmeVert Entgasung
+  - I-026 Gas Gebäudeinstallation
+  - I-029 Heiz/Wärmeerzeugung
+  - I-009 Personenvereinzelungsanlage
+  fr:
+  - I-002 Installation d’éclairage de secours
+  - I-007 Ascenseurs
+  - I-001 ASI
+  - I-068 Éoliennes
+  - I-017 Installation d’extinction au CO2
+  - I-028 Voies ferrées
+  - I-069 Prod.chaleur Mazout_Gaz
+  - I-076 Dist.chaleur filtre flux mag.
+  - I-032 Installation de distribution HT
+  - I-023 Installation de désalinisation
+  - I-006 Installations de refroidissement
+  - I-073 Prod.chaleur pompes chaleur
+  - I-022 Installation d’adoucissement
+  - I-031 Alimentation/stockage de chaleur
+  - I-072 Prod.chaleur copeaux
+  - I-070 Prod.chaleur bûches
+  - I-034 Installations de ventilation
+  - I-024 Installation d’électricité de secours
+  - I-027 Système de contrôle du bâtiment domotique
+  - I-066 Chauffe-eau
+  - I-019 Installation de détection d’effraction
+  - I-005 Air comprimé
+  - I-071 Prod.chaleur pellets
+  - I-035 Installation de distribution BT
+  - I-020 Compteur d’alimentation
+  - I-081 Séparateur d’huiles et de graisses
+  - I-065 Installations UV
+  - I-016 Installation de dosage du chlore
+  - I-010 Vidéosurveillance
+  - I-012 Gestion des alarmes
+  - I-030 Distribution de chaleur/chauffage
+  - I-074 Prod.chaleur solaire
+  - I-011 Installation de relevage des eaux usées
+  - I-080 Domotique
+  - I-018 Surpresseur
+  - I-008 Installations de détection d’incendie
+  - I-033 Accumulateurs de froid
+  - I-078 Dist.chaleur expansion
+  - I-037 Installation photovoltaïque
+  - I-067 Centrales hydroélectriques
+  - I-079 Contrôle d’accès élect.
+  - I-036 Osmoseur
+  - I-075 Dist.chaleur désalinisation
+  - I-025 Installation d’évacuation
+  - I-015 Compensation de courant réactif
+  - I-014 Fermetures
+  - I-013 Rampes modulables
+  - I-064 Transformateurs
+  - I-021 Gestion de l’énergie
+  - I-077 Dist.chaleur dégasage
+  - I-026 Installation de gaz du bâtiment
+  - I-029 Production de chaleur/chauffage
+  - I-009 Système d’accès individuel
+  it:
+  - I-002 Impianto di illuminazione di emergenza
+  - I-007 Ascensori
+  - I-001 ASI
+  - I-068 Centrali eoliche
+  - I-017 Impianto di spegnimento a CO2
+  - I-028 Binari ferroviari
+  - I-069 Produzione di calore Gasolio_Gas
+  - I-076 Distribuzione di calore flusso mag.
+  - I-032 Impianto di distribuzione AT
+  - I-023 Impianto di desalinizzazione
+  - I-006 Impianti di refrigerazione
+  - I-073 Produzione di calore pompe di calore
+  - I-022 Impianto di addolcimento
+  - I-031 Alimentazione/accumulo di calore
+  - I-072 Prod. di calore cippato
+  - I-070 Prod. di calore legna in pezzi
+  - I-034 Impianti di ventilazione
+  - I-024 Impianto elettrico di emergenza
+  - I-027 Sistema di gestione domotica
+  - I-066 Scaldacqua
+  - I-019 Impianto di allarme antieffrazione
+  - I-005 Aria compressa
+  - I-071 Produzione di calore pellet
+  - I-035 Impianto di distribuzione BT
+  - I-020 Contatore di alimentazione
+  - I-081 Separatore olio e grasso
+  - I-065 Impianto a raggi UV
+  - I-016 Impianto dosaggio cloro
+  - I-010 Videosorveglianza
+  - I-012 Gestione allarmi
+  - I-030 Distribuzione calore/riscaldamento
+  - I-074 Produzione di calore solare
+  - I-011 Pompe sollevamento acque di scarico
+  - I-080 Domotica
+  - I-018 Impianto di aumento della pressione
+  - I-008 Impianto di rilevazione d’incendi
+  - I-033 Accumulatore di freddo
+  - I-078 Distr.calore espansione
+  - I-037 Impianto fotovoltaico
+  - I-067 Centrali idroelettriche
+  - I-079 Controllo elett. degli accessi
+  - I-036 Impianto di osmosi
+  - I-075 Distr.calore desalinizzazione
+  - I-025 Impianto di evacuazione
+  - I-015 Compensazione corrente reattiva
+  - I-014 Chiusure
+  - I-013 Rampe regolabili
+  - I-064 Trasformatori
+  - I-021 Gestione dell’energia
+  - I-077 Distr.calore degassificazione
+  - I-026 Impianto gas dell’edificio
+  - I-029 Produzione di calore/riscaldamento
+  - I-009 Sistema d'accesso individuale
+  en: []

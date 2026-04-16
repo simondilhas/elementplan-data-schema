@@ -1,0 +1,24 @@
+id: armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+sort_order: 23
+code: AWF-02-o
+name:
+  de: Visualisierung und Nachweis kritischer Betriebsabläufe
+  fr: Visualisation des processus d’exploitation/du processus
+  it: Visualizzazione processi di esercizio / processo
+  en: ''
+description:
+  de: "**Ziel**\nKritische Betriebsabläufe und nutzungsspezifische Anforderungen wie z.B. die Einbringung schwerer Geräte werden im Modell nachgewiesen. So kann die Planungslösung frühzeitig gegen reale
+    Betriebsanforderungen geprüft werden.\n\n**Nutzen für den Auftraggeber**\n- Betriebliche Anforderungen werden bereits in der Planung berücksichtigt und nachgewiesen\n- Konflikte zwischen Planungslösung
+    und Betriebsabläufen werden frühzeitig erkannt\n- Nachvollziehbare Prüfgrundlage für Projektleitung und Nutzer\n\n**Umsetzung im Projekt**\nDie zu prüfenden Betriebsabläufe und Anforderungen werden
+    projektspezifisch durch Nutzer und Projektleitung definiert. Dieser AWF befindet sich in der Konzeptphase — Ziel ist das Sammeln von Erfahrungen als Grundlage für standardisierte Anwendungsfälle.\n\n
+    **Ergebnis**\n- IFC-Modell mit modellierten Betriebsabläufen als Prüfgrundlage\n- Prüfregeln zur automatisierten oder manuellen Überprüfung der Planungslösung gegen die definierten Anforderungen"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

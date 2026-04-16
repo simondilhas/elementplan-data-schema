@@ -1,0 +1,27 @@
+id: armasuisse:workflow/awf-03-a-kostengliederung-bis-ebkp-i-d-r-stufe-3
+sort_order: 26
+code: AWF-03-a
+name:
+  de: Zuordnung der Bauteile nach eBKP 3 Stellig
+  fr: Structure des coûts jusqu’à eCCC (en général niveau 3)
+  it: Struttura dei costi fino a eCCC (di norma livello 3)
+  en: ''
+description:
+  de: "**Klassifizierung Bauteile nach eBKP**\n\n**Ziel**\nBauteile werden nach eBKP klassifiziert und die Bezugsgrössen abgeleitet. Dies ermöglicht eine visuelle Prüfung der Zuordnung sowie eine Plausibilisierung
+    der Mengen als Grundlage für Kostenschätzung und Benchmarking.\n\n**Nutzen für den Auftraggeber**\n- Plausibilisierung der Mengen direkt im Modell — Fehler in der Klassifizierung werden visuell sichtbar\n
+    - Einheitliche Mengengrundlage für projektübergreifendes Benchmarking\n- Bezugsgrössen stehen strukturiert und ohne manuelle Nachbearbeitung zur Verfügung\n\n**Umsetzung im Projekt**\nBauteile werden
+    den entsprechenden eBKH Positionen zugewiesen und die Bezugsgrössen abgeleitet.\n\nDie Umsetzung erfolgt in einer der folgenden Varianten:\n\n- *Variante A — Zuweisung via IFC-Klassifikationssystem:*
+    Die eBKP-H Klassifikation wird über das IFC-native Klassifikationssystem «eBKP» direkt am Bauteil hinterlegt.\n- *Variante B — Zuweisung via Property:* Die eBKP-H Klassifikation wird manuell über ein
+    dediziertes Property am Bauteil erfasst.\n- *Variante C — Automatisierte Zuweisung (in Entwicklung):* Die Klassifikation wird automatisiert aus den Grundattributen der Bauteile berechnet, um eine einheitliche
+    und reproduzierbare Zuordnung zu gewährleisten.\n\n**Ergebnis**\n- IFC-Modell mit eBKP-H klassifizierten Bauteilen\n- Excel-Auswertung mit den abgeleiteten Bezugsmengen pro eBKP-H Position"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

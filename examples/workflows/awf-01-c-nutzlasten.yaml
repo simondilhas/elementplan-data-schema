@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-01-c-nutzlasten
+sort_order: 8
+code: AWF-01-c
+name:
+  de: Qualitätssicherung Nutzlasten &Tragwerkskonzept
+  fr: Charge utile
+  it: Carichi utili
+  en: ''
+description:
+  de: "**Ziel**\nDas Modell dient als Grundlage zur Überprüfung der vorgesehenen Nutzlasten und ermöglicht eine frühe\nAbstimmung zwischen Nutzungskonzept und Tragwerksplanung.\n\nNutzen für das Projekt\n
+    - Visualisierung der vorgesehenen Nutzlasten pro Raum\n- Früher Abgleich zwischen Nutzung und Tragwerkskonzept\n- Identifikation von Abweichungen zur Nutzungsvereinbarung\n- Transparente Prüfgrundlage
+    für Projektleitung und Fachplanung\n\n**Prüfprozess (Workflow)**\nZur Prüfung der Nutzlasten im Modell:\n1. Modell in BIM Viewer z.B. (BIMcollab Zoom) öffnen\n2. Smart View die Eigenschaften Nutzlast
+    visualisieren\n3. Räume werden entsprechend ihrer\nNutzlastkategorie farblich dargestellt\n4. Prüfung auf:\n- Vollständigkeit der Nutzlastangaben\n- Übereinstimmung mit der\nNutzungsvereinbarung\n-
+    Plausibilität im Kontext des Tragwerkskonzepts\n\n**Ergebnis**\n- Übersicht der Nutzlasten im gesamten Projekt\n- Identifikation von Räumen mit abweichenden oder fehlenden Angaben\n- Grundlage für Abstimmung
+    zwischen Projektleitung, Nutzung und Tragwerksplanung"
+  fr: Les charges utiles doivent être gérées avec les attributs de local prévus.
+  it: I carichi utili devono essere aggiornati con gli attributi dei locali previsti.
+  en: ''
+workflow_group: BIM 3d full,BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-01-raumflachen-und-volumina
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

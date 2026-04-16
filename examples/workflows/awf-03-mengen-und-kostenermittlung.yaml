@@ -1,0 +1,54 @@
+id: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+sort_order: 25
+code: AWF-03
+name:
+  de: Mengen- und Kostenermittlung
+  fr: Détermination des quantités et des coûts, selon cas d'usage 02 du KBOB
+  it: Calcolo delle quantità e dei costi
+  en: ''
+description:
+  de: '**Beschrieb:**
+
+    Dieser Anwendungsfall umfasst die Ermittlung strukturierter und bauteilbezogener Mengen (Masse, Flächen, Volumen, Stückzahlen, etc.) auf Grundlage der digitalen Planungserzeugnisse als Basis für die
+    Kostenermittlungen. Es wird transparent und nachvollziehbar dargelegt, welche Mengen aus dem Gesamtmodell abgeleitet worden sind. Die so ermittelten Mengen werden stufengerecht mit den für die Kostenermittlung
+    erforderlichen Informationen angereichert.
+
+
+    **Ziele:**
+
+    - Erhöhung der Planungssicherheit durch konsistente, modellbasierte Mengenermittlung als Grundlage der Kostenermittlung
+
+
+    **Mehrwerte:**
+
+    - Grundlage für diverse Anwendungsfälle
+
+    - Korrekte und aktuelle Mengenangaben
+
+
+    **Lieferobjekte:**
+
+    - BIM-Modell(e)
+
+    - Dokumentationen im Excel-Format
+
+    - Diagramme'
+  fr: "**Description:**\nCe cas d'usage englobe la détermination de quantités structurées et liées aux éléments de l’ouvrage (dimensions, surfaces, volumes, nombres de pièces, etc.) à partir des résultats\
+    \ de la planification numérique , comme base pour les calculs de coûts. Les quantités tirées du modèle global sont présentées de manière transparente et compréhensible. Les quantités ainsi déterminées\
+    \ sont enrichies à chaque étape avec les informations nécessaires pour le calcul des coûts. \n\n**Objectif:** \n- Accroissement de la sécurité de la planification grâce à un calcul des volumes cohérent\
+    \ et modélisé comme base du calcul des coûts.  \n\n**Plus-value:** \n- Base des différents cas d’usage  \n- Indications de quantités correctes et actuelles  \n\n**Objets à livrer:** \n- Modèle BIM \n\
+    - Documentations au format Excel \n- Diagrammes"
+  it: "**Descrizione:**\nQuesto caso d’uso comprende il calcolo di quantità strutturate relative alle parti dell’opera (massa, superfici, volumi, numero di pezzi) utilizzando i risultati digitali della\
+    \ pianificazione come base per il calcolo dei costi.  Le quantità derivanti dal modello globale vengono esposte in modo trasparente e tracciabile. Le quantità così determinate vengono integrate in modo\
+    \ adeguato con le informazioni necessarie per il calcolo dei costi.  \n\n**Obiettivi:** \n- Aumento della sicurezza della pianificazione attraverso un calcolo sistematico delle quantità fondato su modelli\
+    \ come base per il calcolo dei costi  \n\n**Valori aggiunti:** \n- Base per diversi casi d’uso \n- Indicazioni delle quantità corrette e aggiornate  \n\n**Oggetti della fornitura:** \n- Modello/i BIM\
+    \ \n- Documentazione in formato Excel \n- Grafici"
+  en: ''
+workflow_group: null
+parent_workflow: null
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

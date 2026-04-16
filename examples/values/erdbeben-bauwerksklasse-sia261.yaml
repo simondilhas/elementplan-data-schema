@@ -1,0 +1,31 @@
+id: armasuisse:value/erdbeben-bauwerksklasse-sia261
+name:
+  de: Erdbeben Bauwerksklasse SIA261
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - BWK I
+  - BWK II
+  - BWK III
+  - Keine Anforderungen
+  fr:
+  - CO I
+  - CO II
+  - CO III
+  - Aucune exigence
+  it:
+  - CHP I
+  - CHP II
+  - CHP III
+  - Nessun requisito
+  en: []

@@ -1,0 +1,28 @@
+id: armasuisse:value/gta-wartungsvertragstyp
+name:
+  de: GTA Wartungsvertragstyp
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Kein
+  - Einzelvertrag
+  - Rahmenvertrag
+  fr:
+  - Aucun
+  - Contrat individuel
+  - Contrat-cadre
+  it:
+  - Nessuno
+  - Contratto individuale
+  - Contratto base
+  en: []

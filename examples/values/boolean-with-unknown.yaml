@@ -1,0 +1,28 @@
+id: armasuisse:value/boolean-with-unknown
+name:
+  de: Boolean With Unknown
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 'TRUE'
+  - UNKNOWN
+  - 'FALSE'
+  fr:
+  - 'TRUE'
+  - UNKNOWN
+  - 'FALSE'
+  it:
+  - 'TRUE'
+  - UNKNOWN
+  - 'FALSE'
+  en: []

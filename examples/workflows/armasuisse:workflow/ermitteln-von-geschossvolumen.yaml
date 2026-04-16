@@ -1,0 +1,44 @@
+id: armasuisse:workflow/ermitteln-von-geschossvolumen
+code: AWF-01-d
+name:
+  de: Kennwert Geschossvolumen ermitteln
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: '**Ziel**
+
+    Das Geschossvolumen kann je Geschoss aus dem Modell ausgelesen und für projektübergreifende Kennwerte und Benchmarking verwendet werden.
+
+
+    **Nutzen für den Auftraggeber**
+
+    - Einheitliche Volumenkenngrössen über alle Projekte vergleichbar
+
+    - Plausibilitätsprüfung der Planung anhand von Kennwerten möglich
+
+    - Kein manuelles Ermitteln und Übertragen von Volumendaten
+
+
+    **Umsetzung im Projekt**
+
+    - Variante A — Direktauswertung aus IFC
+
+    Die Geschossvolumen werden als modellierte Volumenkörper im IFC bereitgestellt und können direkt aus dem Modell ausgelesen werden.
+
+    - Variante B — Automatisierte Auswertung via Elementplan Action API
+
+    Die Volumenermittlung wird über die Action API automatisiert ausgeführt und in den Projektworkflow integriert.
+
+
+    **Ergebnis**
+
+    Geschossvolumen je Geschoss, bereit für Kennwertvergleiche.'
+  fr: ''
+  it: ''
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+picture_link: null
+status: active
+comment: ''

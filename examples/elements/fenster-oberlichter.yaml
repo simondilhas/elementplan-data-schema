@@ -1,0 +1,214 @@
+id: armasuisse:element/fenster-oberlichter
+sort_order: 24
+status: active
+name:
+  de: Fenster / Oberlichter
+  fr: Fenêtre / Lucarne
+  it: Finestre / Lucernari
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+definition:
+  de: "Es sind alle Innen- und Aussenfenster zu modellieren.\n\n**Modellierungshinweise:**\n- Der Glasanteil muss mit einem transparenten Material exportiert werden. \n- Jedes Fenster hat einen Bezug zum\
+    \ Raum."
+  fr: "Toutes les fenêtres intérieures et extérieures doivent être modélisées.\n\n**Note pour la modélisation.**\n- Le vitrage doit être exporté avec un matériau transparent. \n- Chaque fenêtre a une relation\
+    \ avec le local."
+  it: "Modellare tutte le finestre interne ed esterne.  \n\n**Indicazioni per la modellazione.** \n- La parte di vetro deve essere esportata con un materiale trasparente.  \n- Ogni finestra ha una connessione\
+    \ con la stanza."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcWindow
+entity_ifc4_3: null
+picture_link: fenster-oberlichter.jpg
+model_link: null
+applicability: entity_ifc4=IfcWindow
+attributes:
+- name: Name
+  pset: null
+  definition:
+    de: In späteren Phasen ist auch eine eindeutige Fensternummer möglich.
+    fr: Dans les phases ultérieures, un numéro de fenêtre unique est également possible.
+    it: Nelle fasi successive è possibile anche una numerazione univoca delle finestre.
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: Description
+  pset: null
+  definition:
+    de: Eindeutige Typenbezeichnung nach Vorgabe des Projektverfassers.
+    fr: Désignation claire du type selon directive de l’auteur de projet.
+    it: Designazione univoca del tipo secondo le disposizioni dell’autore del progetto.
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: PredefinedType
+  pset: null
+  definition:
+    de: 'Definiert um welche Art von Fenster es sich handelt.
+
+
+      - WINDOW: Fenster in Wand
+
+      - SKYLIGHT: Dachfenster
+
+      - LIGHTDOME: Lichtkuppel
+
+      z. B. "LIGHTDOME"
+
+      USERDEFINED ... alle anderen'
+    fr: "Définit le type de fenêtre. \n \n- WINDOW : fenêtre dans le mur \n- SKYLIGHT : fenêtre de toit \n- LIGHTDOME : fenêtre coupole \np. ex. \"LIGHTDOME\" \nUSERDEFINED ... tous les autres"
+    it: "Definisce di quale tipo di finestra si tratta.\n  \n- WINDOW: Finestra nella parete \n- SKYLIGHT: Lucernario \n- LIGHTDOME: Lucernario a cupola\nad es. \"LIGHTDOME\" \nUSERDEFINED ... tutti gli\
+      \ altri"
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/predefinedtype-window
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: IsExternal
+  pset: Pset_WindowCommon
+  definition:
+    de: 'Definiert ob es sich um ein Innen- oder Aussenfenster handelt.
+
+      - True: Aussenfenster
+
+      - False: Innenfenster'
+    fr: "Définit s’il s’agit d’une fenêtre intérieure ou extérieure.\n- True: fenêtre extérieure \n- False: fenêtre intérieure"
+    it: 'Definisce se si tratta di una finestra interna o esterna.
+
+      - True: finestra esterna
+
+      - False: finestra interna'
+    en: ''
+  datatype: IfcBoolean
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 4
+- name: Area
+  pset: Qto_WindowBaseQuantities
+  definition:
+    de: Fläche der Rohbauöffnungen für Fenster, z.B. 200.43
+    fr: Surface des ouvertures du gros œuvre pour les fenêtres, p. ex. 200.43
+    it: Superficie delle aperture grezze per le finestre, ad es. 200.43
+    en: ''
+  datatype: IfcAreaMeasure
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 5

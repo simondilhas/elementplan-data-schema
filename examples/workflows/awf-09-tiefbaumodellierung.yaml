@@ -1,0 +1,26 @@
+id: armasuisse:workflow/awf-09-tiefbaumodellierung
+sort_order: 45
+code: AWF-09
+name:
+  de: Modellierung Werkleitungen
+  fr: Modélisation du génie civil
+  it: Modellazione nel campo del genio civile
+  en: ''
+description:
+  de: "**Ziel**\nWerkleitungen werden modelliert und als strukturierte Datengrundlage bereitgestellt. Dies ermöglicht die Übernahme in GIS-Systeme sowie die Nutzung als Basis für weitere Test Anwendungsfälle.\n
+    \n**Nutzen für den Auftraggeber**\n- Koordinationsprobleme in komplexen Situationen werden frühzeitig erkannt und vermieden\n- Datengrundlage für die Übernahme von Werkleitungsdaten in GIS wird erprobt
+    und etabliert\n- Modell kann auf der Baustelle als Referenz genutzt werden\n\n**Umsetzung im Projekt**\nIn Absprache mit dem Auftraggeber ist eine der folgenden Varianten zu wählen:\n\n- *Variante A
+    — Modellierung mit konventioneller Vermessung:* Werkleitungen werden gemäss Vorgaben modelliert, sodass das Modell auf der Baustelle genutzt werden kann. Die As-built-Aufnahme der Leitungen erfolgt
+    konventionell durch einen Vermesser.\n- *Variante B — Modellierung, Bau nach Modell und modellbasierte Nachführung:* Werkleitungen werden modelliert und der Bau erfolgt nach Modell. Abweichungen werden
+    im Modell nachgeführt. Die Modelldaten werden anschliessend via FME-Workflow in GIS übernommen.\n\n**Ergebnis**\n- IFC-Modell mit modellierten Werkleitungen gemäss Vorgaben\n- *Variante B zusätzlich:*
+    Nachgeführtes As-built-Modell und übernommene GIS-Daten via FME-Workflow"
+  fr: Modélisation d’éléments de génie civil en vue de leur intégration dans des systèmes d’information géographique (SIG)
+  it: Modellazione di elementi di genio civile da acquisire in sistemi informativi geografici (SIG)
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/tiefbau
+comment: ''

@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-244-v-luftung-zone-1
+name:
+  de: RelationToSystem_Cust_Element_Brandschutzklappe
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 244_V_Luftung-Zone-1
+  fr:
+  - 244_V_Ventilation-Zone-1
+  it:
+  - 244_V_Ventilazione-Zona-1
+  en: []

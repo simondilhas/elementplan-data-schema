@@ -1,0 +1,37 @@
+id: armasuisse:value/energielabel-schweiz
+name:
+  de: Energielabel Schweiz
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Keine Anforderungen
+  - Minergie P
+  - Minergie P Eco
+  - LEED
+  - SNBS
+  - Minergie
+  fr:
+  - Aucune exigence
+  - Minergie P
+  - Minergie P Eco
+  - LEED
+  - SNBS
+  - Minergie
+  it:
+  - Nessun requisito
+  - Minergie P
+  - Minergie P Eco
+  - LEED
+  - SNBS
+  - Minergie
+  en: []

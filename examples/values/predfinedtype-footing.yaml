@@ -1,0 +1,34 @@
+id: armasuisse:value/predfinedtype-footing
+name:
+  de: PredfinedType:Footing
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - CAISSON_FOUNDATION
+  - FOOTING_BEAM
+  - PAD_FOOTING
+  - PILE_CAP
+  - STRIP_FOOTING
+  fr:
+  - CAISSON_FOUNDATION
+  - FOOTING_BEAM
+  - PAD_FOOTING
+  - PILE_CAP
+  - STRIP_FOOTING
+  it:
+  - CAISSON_FOUNDATION
+  - FOOTING_BEAM
+  - PAD_FOOTING
+  - PILE_CAP
+  - STRIP_FOOTING
+  en: []

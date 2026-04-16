@@ -1,0 +1,101 @@
+id: armasuisse:element/rauchmelder
+sort_order: 132
+status: active
+name:
+  de: Rauchmelder
+  fr: Détecteur de fumée
+  it: Rilevatore di fumo
+  en: ''
+needed_in_domain:
+- armasuisse:domain/nachweismodell-elektro
+- armasuisse:domain/gebaudetechnik
+definition:
+  de: Ein Brandmelder ist ein Gerät, das das Vorhandensein von Rauch, Hitze oder Flammen erkennen soll, um einen potenziellen Brand schnell zu melden. Er warnt die Bewohner eines Gebäudes, indem er einen
+    Alarm auslöst, so dass sie sicher evakuiert werden können und die Rettungskräfte schnell eingreifen können.
+  fr: Un détecteur d'incendie est un appareil conçu pour détecter la présence de fumée, de chaleur ou de flammes afin de signalser rapidement un incendie potentiel. Il permet de prévenir les occupants d’un
+    bâtiment en émettant une alarme afin qu'ils puissent évacuer en toute sécurité et que les secours puissent intervenir rapidement.
+  it: Un rilevatore di incendio è un dispositivo progettato per rilevare la presenza di fumo, calore o fiamme al fine di segnalare rapidamente un potenziale incendio. Avvisa gli occupanti di un edificio
+    attivando un allarme, in modo che possano essere evacuati in sicurezza e i soccorsi possano intervenire rapidamente.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcSensor
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcSensor
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: Definiert, dass es sich bei dem Element um einen Rauchmelder handelt.
+    fr: Définit que l’élément est un détecteur de fumée.
+    it: Definisce che l’elemento è un rilevatore di fumo.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-smokesensor
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-b-nachweismodell-elektroanlagen
+  is_applicability: true
+  status: active
+  sort_order: 1
+- name: RelationToSystem
+  pset: Cust_Element
+  definition:
+    de: Jedes gebäudetechnische Bauteil muss einem technischen System zugeordnet werden. Die Zuordnung stellt sicher, dass Funktionen, Abhängigkeiten und Verantwortlichkeiten eindeutig definiert sind und
+      ermöglicht eine konsistente Auswertung über Planung, Ausführung und Betrieb hinweg.
+    fr: Ogni componente tecnico dell’edificio deve essere assegnato a un sistema tecnico. Questa assegnazione garantisce una definizione chiara delle funzioni, delle dipendenze e delle responsabilità, e
+      consente una valutazione coerente durante la pianificazione, l’esecuzione e la gestione operativa.
+    it: Chaque élément technique du bâtiment doit être attribué à un système technique. Cette attribution garantit une définition claire des fonctions, des dépendances et des responsabilités, et permet
+      une analyse cohérente tout au long de la planification, de l’exécution et de l’exploitation.
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/manual-236-e-schwachstrom
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-b-nachweismodell-elektroanlagen
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  is_applicability: false
+  status: active
+  sort_order: 2

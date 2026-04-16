@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-site-demoareal
+name:
+  de: Name_Planungsperimeter / Projektperimeter
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Site DEMOAREAL
+  fr:
+  - Site DEMOAREAL
+  it:
+  - Site DEMOAREAL
+  en: []

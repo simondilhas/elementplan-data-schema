@@ -1,0 +1,17 @@
+id: armasuisse:workflow/ubernahme-von-modelldaten-in-gis-fur-werkleitungen
+code: AWF-08-k
+name:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: active
+comment: ''

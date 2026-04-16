@@ -1,0 +1,24 @@
+id: https://ifc.linkml.dev/common
+name: ifc_common
+prefixes:
+  ifc: https://standards.buildingsmart.org/IFC/DEV/
+default_prefix: ifc
+default_range: string
+
+imports:
+  - linkml:types
+
+enums:
+  IFCDatatypeEnum:
+    permissible_values:
+      IfcLabel: {}
+      IfcText: {}
+      IfcIdentifier: {}
+      IfcLengthMeasure: {}
+      IfcAreaMeasure: {}
+      IfcVolumeMeasure: {}
+      IfcPositiveLengthMeasure: {}
+      IfcCountMeasure: {}
+      IfcBoolean: {}
+      IfcDate: {}
+      IfcReal: {}

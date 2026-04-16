@@ -1,0 +1,19 @@
+id: armasuisse:workflow/awf-08-i-lia-gebaudetechnik-auf-systemebene
+sort_order: 50
+code: AWF-08-i
+name:
+  de: LIA-Gebäudetechnik auf Systemebene
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: 'in AWF 08a enthalten'
+  fr: ''
+  it: ''
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: deprecated
+needed_in_domain: []
+comment: ''

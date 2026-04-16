@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-a-z-d-2-d-2
+name:
+  de: Identification_
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - ^[A-Z]\d{2}\.\d{2}(.*)?$
+  fr:
+  - ^[A-Z]\d{2}\.\d{2}(.*)?$
+  it:
+  - ^[A-Z]\d{2}\.\d{2}(.*)?$
+  en: []

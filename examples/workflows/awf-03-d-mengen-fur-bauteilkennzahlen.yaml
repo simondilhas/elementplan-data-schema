@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+sort_order: 30
+code: AWF-03-d
+name:
+  de: Klärung Vertraglicher Schnittstellen
+  fr: Quantités pour indices des parties d’ouvrage
+  it: Quantità per gli indicatori delle parti delle opere di costruzione
+  en: ''
+description:
+  de: "**Ziel**\nBauteile werden den BKP-Positionen und Kostenschnittstellen (z.B. Grundausbau, Mieterausbau) zugeordnet. Dies schafft Klarheit über vertragliche Abgrenzungen, stellt sicher dass alle Leistungen
+    ausgeschrieben werden, und reduziert Unklarheiten bei allen Stakeholdern. Empfohlen bei komplexen Aufgaben mit vielen Schnittstellen oder Mischnutzungen.\n\n**Nutzen für den Auftraggeber**\n- Vollständigkeitskontrolle
+    — es wird sichergestellt, dass alle Bauteile einer BKP-Position zugeordnet und ausgeschrieben werden\n- Schnittstellenklarheit zwischen Gewerken sowie Grund- und Mieterausbau wird explizit dokumentiert\n
+    - Reduziertes Risiko von Lücken und Doppelspurigkeiten bei der Vergabe\n\n**Umsetzung im Projekt**\nDie Zuordnung erfolgt via IFC-Klassifikationssystem oder Property gemäss Vorgabe des Auftraggebers.
+    Ergänzend wird ein Schnittstellenworkshop durchgeführt, um die Abgrenzung zwischen Gewerken sowie Grund- und Mieterausbau gemeinsam zu klären und zu dokumentieren.\n\n**Ergebnis**\n- IFC-Modell mit
+    BKP-klassifizierten Bauteilen und Zuordnung zu Grundausbau und Mieterausbau\n- Schnittstellenliste mit dokumentierter Abgrenzung zwischen Gewerken und Ausbaustufen"
+  fr: Ce cas d’application permet de procéder à l’évaluation ou au calcul sur la base des parties d’ouvrage eCCC-Bât.
+  it: Questo caso d’uso consente la valutazione o il calcolo sulla base delle parti dell’opera di costruzione eCCC.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

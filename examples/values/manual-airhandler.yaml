@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-airhandler
+name:
+  de: PredefinedType_Konvektor mit Ventilator
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - AIRHANDLER
+  fr:
+  - AIRHANDLER
+  it:
+  - AIRHANDLER
+  en: []

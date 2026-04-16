@@ -1,0 +1,308 @@
+id: armasuisse:element/planungsperimeter-projektperimeter
+sort_order: 2
+status: active
+name:
+  de: Planungsperimeter / Projektperimeter
+  fr: Périmètre de planification / Périmètre du projet
+  it: Perimetro di pianificazione / perimetro di progetto
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+- armasuisse:domain/tiefbau
+- armasuisse:domain/referenz-perimeter
+- armasuisse:domain/referenz-bauwerk
+- armasuisse:domain/nachweismodell-architektur
+- armasuisse:domain/nachweismodell-sanitar
+- armasuisse:domain/nachweismodell-heizung-kalte
+- armasuisse:domain/nachweismodell-luftung-klima
+- armasuisse:domain/nachweismodell-elektro
+definition:
+  de: Da das baurechtliche Grundstück nicht zwangsläufig deckungsgleich mit dem Planungsperimeter ist, können mehrere Parzellen gemäss Katasterplan zu einer IfcSite zusammengefasst werden.
+  fr: Comme le terrain relevant du droit de la construction ne coïncide pas nécessairement avec le périmètre de planification, plusieurs parcelles peuvent être regroupées en un seul IfcSite conformément
+    au plan cadastral.
+  it: Poiché il terreno secondo il diritto di superficie non coincide necessariamente con il perimetro di pianificazione, è possibile riunire in un IfcSite diverse particelle secondo il piano di catasto.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcSite
+entity_ifc4_3: null
+picture_link: planungsperimeter-projektperimeter.png
+model_link: null
+applicability: entity_ifc4=IfcSite
+attributes:
+- name: Name
+  pset: null
+  definition:
+    de: Eindeutiger Identifikator des Grundstücks; BWE (Bez) gemäss SAP. z.B "Aussenstelle ALC Thun"
+    fr: Identifiant unique du bien-fonds ; UE (dés.) selon SAP, p. ex. "Site externe CLA Thoune"
+    it: Identificativo univoco del terreno, designazione dell’unità di gestione secondo SAP. Ad es. "Sede esterna CLEs Thun"
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-site-demoareal
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-06-a-simulation-kritischer-bauablaufe-in-modell
+  - armasuisse:workflow/awf-07-a-modellbasiertes-nachtragsmanagement
+  - armasuisse:workflow/awf-07-b-angabe-planer-und-unternehmer-pro-bauteil
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-00-b-nachweismodell-elektroanlagen
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  - armasuisse:workflow/awf-00-d-nachweismodell-luftung-klimaanlagen
+  - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: Description
+  pset: null
+  definition:
+    de: Nummer der Wirtschaftseinheit (WE_ID/AOID), z.B. "1808"
+    fr: Numéro de l’unité économique (UE_ID/AOID), p. ex. "1808"
+    it: Numero dell'unità economica (UE_ID/AOID), ad es. "1808"
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: '{7C8528E8-DC5A-4414-82AA-E3BABDFF209F},{9ADFAF1D-3F41-40B1-801F-212C2250B4FF}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-f-lia-areal
+  - armasuisse:workflow/awf-08-g-lia-grundstuck
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: ISK
+  pset: Cust_Site
+  definition:
+    de: Status Informationsschutzkonzept
+    fr: Statut du concept de protection des informations
+    it: Stato del concetto di protezione delle informazioni
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/isk-informationsschutzkonzept
+  link_uid: '{4D82E071-51D2-4C9C-B11D-D97DBC6865B5}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-f-lia-areal
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: PostalCode
+  pset: Cust_Site
+  definition:
+    de: Postleitzahl, z.B. "3006"
+    fr: 'Code postal d’acheminement, p. ex. : "3006"'
+    it: Codice d'avviamento postale, ad es. "3600"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 4
+- name: LandID
+  pset: Pset_LandRegistration
+  definition:
+    de: Angabe der Parzellennummer / Katasternummer (Achtung! Nicht = Egridnummer!)
+    fr: Localité (correspondant au code postal d’acheminement) dans laquelle se trouve le terrain. La valeur correcte se trouve dans le répertoire officiel des localités et des codes postaux d’acheminement,
+      p. ex. Berthoud
+    it: Comune (corrispondente al numero postale d'avviamento), luogo in cui si trova il terreno. La voce corretta può essere trovata nel registro ufficiale delle località e dei codici postali. Ad es. Burgdorf.
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: '{58F2E18D-F5D8-43E4-8786-55EA01F5C212}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-g-lia-grundstuck
+  is_applicability: false
+  status: active
+  sort_order: 5
+- name: PropertyName
+  pset: Pset_PropertyAgreement
+  definition:
+    de: Bezeichnung der Wirtschaftseinheit z.B. "Aussenstelle Burgdorf (Logistik-CenterT"
+    fr: 'Désignation de l’unité économique, p. ex. : "Site externe Berthoud (centre logistique)"'
+    it: Designazione dell’unità economica, ad es. "Sede esterna di Burgdorf (Centro Logistica 1)"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: '{14A9E0DA-1E4C-441C-95B2-4D7F337C481A}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-06-a-simulation-kritischer-bauablaufe-in-modell
+  - armasuisse:workflow/awf-07-a-modellbasiertes-nachtragsmanagement
+  - armasuisse:workflow/awf-07-b-angabe-planer-und-unternehmer-pro-bauteil
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-08-f-lia-areal
+  is_applicability: false
+  status: active
+  sort_order: 6

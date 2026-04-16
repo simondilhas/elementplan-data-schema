@@ -1,0 +1,1000 @@
+id: armasuisse:element/gebaude-bauwerke
+sort_order: 3
+status: active
+name:
+  de: Gebäude / Bauwerke
+  fr: Bâtiments / Ouvrages
+  it: Edifici/ Opere di costruzione
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+- armasuisse:domain/tiefbau
+- armasuisse:domain/referenz-bauwerk
+- armasuisse:domain/nachweismodell-architektur
+- armasuisse:domain/nachweismodell-sanitar
+- armasuisse:domain/nachweismodell-heizung-kalte
+- armasuisse:domain/nachweismodell-luftung-klima
+- armasuisse:domain/nachweismodell-elektro
+- armasuisse:domain/referenz-perimeter
+definition:
+  de: 'Gebäude sind mit dem Boden fest verbundene Bauten. Bei Doppel-, Gruppen- und Reihenhäusern zählt jedes Gebäude in der Regel als selbstständig, wenn es einen eigenen Zugang von aussen hat und wenn
+    zwischen den Gebäuden eine senkrechte, vom Erdgeschoss bis zum Dach reichende, tragende Trennmauer besteht.​ In Abstimmung mit dem Projektleiter Bauherr darf von dieser Definition abgewichen werden.
+
+
+    **Modellierungshinweis:**
+
+    Die Aufteilung in Gebäude ist mit dem Projektleiter im Vorfeld abzuklären. Kriterien können sein:
+
+    - Kostengliederung / Teilobjekte
+
+    - Reduktion der Dateigrösse für besser Performance
+
+    - Etappierungen
+
+    - ...'
+  fr: "Les bâtiments sont des constructions solidement fixées au sol. Dans le cas de maisons jumelées, groupées ou mitoyennes, chaque bâtiment est généralement considéré comme indépendant s'il dispose de\
+    \ son propre accès depuis l'extérieur et s'il existe entre les bâtiments un mur de séparation vertical porteur allant du rez-de-chaussée au toit. En accord avec le chef de projet du maître d'ouvrage,\
+    \ il est possible de s'écarter de cette définition. \n\n**Note pour la modélisation.**\nLa répartition en bâtiments doit être clarifiée au préalable avec le chef de projet. Les critères peuvent être :\
+    \ \n- Répartition des coûts / sous-objets \n- Réduction de la taille du fichier pour de meilleures performances \n- Étapes \n- ..."
+  it: "Gli edifici sono strutture saldamente ancorate al suolo. \nNel caso di case abbinate, a gruppi e a schiera, ogni edificio è generalmente considerato indipendente se ha un proprio accesso dall'esterno\
+    \ e se esiste un muro divisorio verticale portante tra gli edifici che si estende dal piano terra al tetto. \nQuesta definizione può essere derogata in consultazione con il capoprogetto del committente.\
+    \  \n  \n**Indicazione per la modellazione:** \nLa suddivisione in edifici dovrà essere chiarita preventivamente con il capoprogetto. \nI criteri possono essere: \n- Ripartizione costi/sottooggetti\
+    \ \n- Riduzione delle dimensioni del file per prestazioni migliori \n- Fasi \n- ..."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcBuilding
+entity_ifc4_3: null
+picture_link: gebaude-bauwerke.jpg
+model_link: null
+applicability: entity_ifc4=IfcBuilding
+attributes:
+- name: Name
+  pset: null
+  definition:
+    de: Gebäude ID (AOID). Eindeutiger Identifikator des Bauwerkes, setzt sich zusammen aus Wirtschaftseinheit WE/Objekt Nr., z.B. "1808/GN"
+    fr: 'ID bâtiment (AOID). Identifiant unique de l’ouvrage, composé de l’unité économique UE/du n° d’objet, p. ex. : "1808/GN"'
+    it: 'ID edificio (AOID): l''dentificativo univoco dell’opera è composto da un''unità economica (UE) / n. oggetto), ad es. "1808/GN"'
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-2032-ga
+  link_uid: '{97054F53-D093-4354-A2FF-C7A2C26C9FD0}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-00-b-nachweismodell-elektroanlagen
+  - armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+  - armasuisse:workflow/awf-00-d-nachweismodell-luftung-klimaanlagen
+  - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: Description
+  pset: null
+  definition:
+    de: Bezeichnung architektonisches Objekt
+    fr: Désignation de l'objet architectural
+    it: Denominazione dell'oggetto architettonico
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: '{E12D837B-DBD2-4BB9-9096-1663E914FFEB}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: AddressLines
+  pset: Cust_Building
+  definition:
+    de: 'Strasse oder benanntes Gebiet z.B. Murmattweg
+
+
+      Flurnamen sind kein offizieller Teil einer Adresse. Adressen beziehen sich entweder auf eine Strasse oder ein benanntes Gebiet.'
+    fr: "Rue ou zone désignée, p. ex. Murmattweg. \n\nLes noms de lieux-dits ne constituent pas un élément officiel de l’adresse. Les adresses se réfèrent à une rue ou à une zone désignée."
+    it: "Via o zona denominata, ad es. Murmattweg. \n\nI nomi dei luoghi non sono parte ufficiale dell'indirizzo. Gli indirizzi si riferiscono a una strada o a un'area designata."
+    en: ''
+  datatype: IfcText
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: BuildingHeightLVHB
+  pset: Cust_Building
+  definition:
+    de: 'Gebäudehöhe [m] gemäss IVHB https://www.bpuk.ch/bpuk/konkordate/ivhb/: "15.5"'
+    fr: 'Hauteur du bâtiment [m] selon AIHC https://www.bpuk.ch/fr/dtap/concordats/aihc : "15,5"'
+    it: 'Altezza dell’edificio [m] secondo CIAE https://www.bpuk.ch/bpuk/konkordate/ivhb/: "15.5"'
+    en: ''
+  datatype: IfcLengthMeasure
+  allowed_values: null
+  link_uid: '{27C71FF6-EF17-4405-9DDF-FD34744841BC}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '53'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 4
+- name: BuildingInsuranceNumber
+  pset: Cust_Building
+  definition:
+    de: Gebäudeversicherungs-Nr., z.B. "434"
+    fr: Assurance immobilière n°, p. ex. "434"
+    it: N. assicurazione fabbricati, ad es. "434"
+    en: ''
+  datatype: IfcText
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 5
+- name: BuildingLengthLHVB
+  pset: Cust_Building
+  definition:
+    de: 'Gebäudelänge [m] gemäss IVHB https://www.bpuk.ch/bpuk/konkordate/ivhb/: z.B. "12.34"'
+    fr: 'Longueur du bâtiment [m] selon AIHC https://www.bpuk.ch/fr/dtap/concordats/aihc : p. ex. "12,34"'
+    it: 'Lunghezza dell’edificio [m] secondo CIAE https://www.bpuk.ch/bpuk/konkordate/ivhb/: ad es. "12,34"'
+    en: ''
+  datatype: IfcLengthMeasure
+  allowed_values: null
+  link_uid: '{DB626C1C-7690-4322-BD07-6D944BAD0009}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '53'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 6
+- name: BuildingWidthLHVB
+  pset: Cust_Building
+  definition:
+    de: 'Gebäudebreite [m] gemäss IVHB https://www.bpuk.ch/bpuk/konkordate/ivhb/: "15.5"'
+    fr: 'Largeur du bâtiment [m] selon AIHC https://www.bpuk.ch/fr/dtap/concordats/aihc : "15,5"'
+    it: 'Larghezza dell’edificio [m] secondo CIAE https://www.bpuk.ch/bpuk/konkordate/ivhb/: "15.5"'
+    en: ''
+  datatype: IfcLengthMeasure
+  allowed_values: null
+  link_uid: '{F41C8239-DF2A-466B-A24C-B0A733A56588}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '53'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 7
+- name: BusinessUnitId
+  pset: Cust_Building
+  definition:
+    de: Referenz auf die Wirtschaftseinheit (WE_ID), z.B. "1808"
+    fr: Référence à l'unité économique (UE_ID), p. ex. "1808"
+    it: Riferimento all'unità economica (UE_ID), ad es. "1808"
+    en: ''
+  datatype: IfcText
+  allowed_values: null
+  link_uid: '{79FEEEA3-78F7-4A61-8518-7CA779E988DF}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 8
+- name: DateOfDecommissioning
+  pset: Cust_Building
+  definition:
+    de: Datum der Ausserbetriebssetzung im Format TT.MM.JJJJ z.B. 24.10.2024
+    fr: Date de mise hors service au format TT.MM.JJJJ p. ex. 24.10.2024
+    it: Data di messa fuori servizio nel formato GG.MM.AAAA, ad es. 24.10.2024
+    en: ''
+  datatype: IfcDate
+  allowed_values: armasuisse:value/datum-regex
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '52'
+  - '53'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 9
+- name: Diagonal
+  pset: Cust_Building
+  definition:
+    de: Diagonale [m]
+    fr: Diagonale [m]
+    it: Diagonale [m]
+    en: ''
+  datatype: IfcLengthMeasure
+  allowed_values: null
+  link_uid: '{217698AA-A2AC-4C22-8CAB-7502A80336DC}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 10
+- name: EarthquakeStructuralClass
+  pset: Cust_Building
+  definition:
+    de: Angabe der Erdbeben-Bauwerksklasse. z.B. "BWK I"
+    fr: Indication de la classe de construction parasismique, p. ex. "CO I"
+    it: 'Indicazione della classe d’opera dal punto di vista sismico, ad es.: "CHP I"'
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/erdbeben-bauwerksklasse-sia261
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 11
+- name: EnergyQualityLabel
+  pset: Cust_Building
+  definition:
+    de: Energie oder Qualitätslabel. z.B. "Minergie A"
+    fr: 'Énergie ou label qualité, p. ex. : "Minergie A"'
+    it: Certificazione energetica o della qualità, ad es. "Minergie A"
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/energielabel-schweiz
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 12
+- name: EnergyReferenceSurface
+  pset: Cust_Building
+  definition:
+    de: Energiebezugsfläche gemäss Norm SIA 380
+    fr: Surface de référence énergétique selon la norme SIA 380
+    it: Superficie di riferimento energetico secondo la norma SIA 380
+    en: ''
+  datatype: IfcAreaMeasure
+  allowed_values: null
+  link_uid: '{3B1872A2-B3C6-4DA6-A5AE-B03B68399E80}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-01-b-energiebezugsflache
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+  - armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+  - armasuisse:workflow/awf-02-d-darstellung-okologie-und-sicherheitsaspekten-in-modell
+  - armasuisse:workflow/awf-02-e-nachweis-etappierung-im-3d-modell
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-02-l-erstellung-varianten-im-modell-zur-entscheidungsfindung-armasuisse
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-p-sperrzonen-modell
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-04-a-issuemanagement
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 13
+- name: ObjectSubType
+  pset: Cust_Building
+  definition:
+    de: gemäss Katalog
+    fr: Selon le catalogue
+    it: Secondo il catalogo
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/objektunterart
+  link_uid: '{93298A7C-B1A6-4164-A3D2-F7118E79E386}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 14
+- name: ProtectionZone
+  pset: Cust_Building
+  definition:
+    de: Schutzzonenbezeichnung gemäss armasuisse Immobilien, z.B. Schutzzone 1
+    fr: Désignation de la zone de protection selon armasuisse Immobilier, p. ex. zone de protection 1
+    it: Designazione della zona di protezione secondo armasuisse Immobili, ad es. zona di protezione 1
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/armasuisse-schutzzone
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+  is_applicability: false
+  status: active
+  sort_order: 15
+- name: SeatsActual
+  pset: Cust_Building
+  definition:
+    de: Anzahl der im Modell geplanten Sitzplätze (IST) [St], z.B. 28
+    fr: Nombre de places assises réelles planifiées dans le modèle (RÉEL) [Nbr], p. ex. 28
+    it: Numero di posti a sedere previsti (EFFETTIVI) [pz], ad es. 28
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 16
+- name: SeatsTarget
+  pset: Cust_Building
+  definition:
+    de: Anzahl der bestellten Sitzplätze (SOLL), z.B. 60
+    fr: Nombre de places assises prévues commandées (THÉORIQUE), p. ex. 60
+    it: Numero di posti a sedere ordinati (NOMINALI), ad es. 60
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 17
+- name: SleepingPlacesTarget
+  pset: Cust_Building
+  definition:
+    de: Anzahl der bestellten Schläfplätze (SOLL). z.B. 52
+    fr: Nombre de lits prévus commandés (THÉORIQUE). p. ex. 52
+    it: Numero di posti letto ordinati (NOMINALI), ad es. 52
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  is_applicability: false
+  status: active
+  sort_order: 18
+- name: TrainingPlacesActual
+  pset: Cust_Building
+  definition:
+    de: Anzahl der im Modell geplanten Ausbildungsplätze (IST). z.B. 49
+    fr: Nombre de places de formation réelles planifiées dans le modèle (RÉEL), p. ex. 49
+    it: Numero di posti di formazione previsti (EFFETTIVI), ad es. 49
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 19
+- name: TrainingPlacesTarget
+  pset: Cust_Building
+  definition:
+    de: Anzahl der bestellten Ausbildungsplätze (SOLL), z.B. 50
+    fr: Nombre de places de formation prévues commandées (THÉORIQUE), p. ex. 50
+    it: Numero di posti di formazione (NOMINALI), ad es. 50
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 20
+- name: WorkplacesActual
+  pset: Cust_Building
+  definition:
+    de: Anzahl der im Modell geplanten Arbeitsplätze (IST). z.B. 38
+    fr: Nombre de postes de travail réels planifiés dans le modèle (RÉEL), p. ex. 38
+    it: Numero di postazioni di lavoro previsti (EFFETTIVI), ad es. 38
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 21
+- name: WorkplacesTarget
+  pset: Cust_Building
+  definition:
+    de: Anzahl der bestellten Arbeitsplätze (SOLL), z.B. 50
+    fr: Nombre de postes de travail prévus commandés (THÉORIQUE), p. ex. 50
+    it: Numero di postazioni di lavoro ordinate (NOMINALI), ad es. 50
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 22
+- name: BuildingID
+  pset: Pset_BuildingCommon
+  definition:
+    de: "Ein eindeutiger Identifikator, der einem Gebäude zugewiesen wird. Eine vorläufige Kennung wird zunächst bei der Einreichung eines Bauantrags zugewiesen. Diese vorläufige Kennung wird in eine dauerhafte\
+      \ Kennung umgewandelt, wenn das Gebäude in einer gesetzlich vorgeschriebenen Gebäude- und Grundstücksdatenbank registriert wird. \n\nBei armasuisse Immobilien ist dies die 2-stellige Objekt Nr., zB.\
+      \ \"GA\""
+    fr: "Un identificateur unique, qui est attribué à un bâtiment. Une identification provisoire qui est d’abord attribuée lorsque la demande d’autorisation de construire est déposée. Cette identification\
+      \ provisoire devient permanente quand le bâtiment est enregistré dans une base de données légale des bâtiments et des terrains.  \n\nChez armasuisse Immobilier, il s’agit d’un n° d’objet à deux caractères,\
+      \ p. ex. : \"GA\""
+    it: "Identificatore univoco assegnato a un edificio. Al momento della presentazione della domanda di costruzione viene assegnato inizialmente un codice provvisorio. \nQuest’ultimo viene trasformato\
+      \ in un codice permanente una volta che l’edificio viene registrato in una banca dati di edifici e terreni prescritta per legge. \n\nPer armasuisse Immobili il n. immobile è il numero dell'immobile\
+      \ a 2 cifre: \"GA\""
+    en: ''
+  datatype: IfcIdentifier
+  allowed_values: null
+  link_uid: '{5E9ECBC2-AA33-4EBF-9CBA-D176BBAD89CB}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 23
+- name: IsLandmarked
+  pset: Pset_BuildingCommon
+  definition:
+    de: 'Denkmalschutz: Wenn das Gebäude oder Bauwerk in irgendeiner Form denkmalgeschützt ist, ist der Wert auf "TRUE" zu setzen.'
+    fr: Monuments historiques. Si le bâtiment ou l’ouvrage est classé monument historique, la valeur doit être définie sur "TRUE".
+    it: Conservazione dei monumenti storici. Se l’edificio o parte dell'opera in una qual misura è soggetto alla protezione dei monumenti storici occorre impostare il valore su "TRUE".
+    en: ''
+  datatype: IfcBoolean
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 24
+- name: Reference
+  pset: Pset_BuildingCommon
+  definition:
+    de: Objektart, gemäss Werteliste. z.B. " 1.1.10 Einfamilienhaus"
+    fr: 'Type d’objet selon la liste des valeurs, p. ex. : " 1.1.10 Maison individuelle"'
+    it: Tipo di oggetto, secondo la lista di valori, ad es. " 1.1.10 Casa unifamiliare"
+    en: ''
+  datatype: IfcIdentifier
+  allowed_values: armasuisse:value/gebaudetypen-objekttypen-liste
+  link_uid: '{26935252-4F81-42BD-8905-EFF916370274}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 25
+- name: YearOfConstruction
+  pset: Pset_BuildingCommon
+  definition:
+    de: Angabe des Jahres, in dem das Gebäude fertiggestellt wurde. Bei Umbau wird das Datum der Fertigstellung des Umbaus eingetragen. z.B. "2024"
+    fr: Indication de l’année d’achèvement du bâtiment. En cas de transformations, la date d’achèvement des transformations est inscrite, p. ex. "2024"
+    it: Indicazione dell’anno in cui l’edificio è stato completato. In caso di trasformazione viene inserita la data di completamento di quest’ultima, ad es. "2024"
+    en: ''
+  datatype: IfcLabel
+  allowed_values: null
+  link_uid: '{CBC06B3B-8DBD-40DF-ACA7-9B19CFF90128}'
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: false
+  status: active
+  sort_order: 26
+- name: YearOfLastRefurbishment
+  pset: Pset_BuildingCommon
+  definition:
+    de: Jahr der letzten Instandsetzung, z.B. "2024"
+    fr: 'Année de la dernière remise en état, p. ex. : "2024"'
+    it: Anno dell’ultimo ripristino, ad es. "2024"
+    en: ''
+  datatype: IfcReal
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
+  is_applicability: false
+  status: active
+  sort_order: 27

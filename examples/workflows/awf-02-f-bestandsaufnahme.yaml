@@ -1,0 +1,21 @@
+id: armasuisse:workflow/awf-02-f-bestandsaufnahme
+sort_order: 15
+code: AWF-02-f
+name:
+  de: Bestandsaufnahme
+  fr: Inventaire
+  it: Inventario
+  en: ''
+description:
+  de: TBD
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

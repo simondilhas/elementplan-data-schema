@@ -1,0 +1,24 @@
+id: armasuisse:workflow/awf-02-b-szenarienentwicklung-areal-und-bauwerksversorgung
+sort_order: 11
+code: AWF-02-b
+name:
+  de: Szenarienentwicklung Areal- und Bauwerksversorgung
+  fr: Développement de scénarios approvisionnement des sites et ouvrages
+  it: Sviluppo di scenari approvvigionamento area e opera
+  en: ''
+description:
+  de: "**Szenarienentwicklung Energie- und Gebäudeversorgung**\n\n**Ziel**\nVersorgungsszenarien für Infrastruktur (Energie, Gebäudetechnik, ...)  können in frühen Projektphasen modellbasiert entwickelt
+    und verglichen werden. Dies schafft eine belastbare Grundlage für den Variantenentscheid und die nachfolgende Fachplanung.\n\n**Nutzen für den Auftraggeber**\n- Frühe Machbarkeitsprüfung von Versorgungskonzepten
+    auf Basis des Modells\n- Variantenvergleich auf einheitlicher Grundlage, vor Beginn der detaillierten Fachplanung\n- Reduziertes Risiko von kostspieligen Planungskorrekturen in späteren Phasen\n- Klare
+    Übergabebasis für die beauftragten Fachplaner\n\n**Umsetzung im Projekt**\nDie Modellierungsanforderungen werden durch den zuständigen Fachplaner projektspezifisch definiert. Pro Szenario wird ein separates
+    IFC-Modell bereitgestellt.\n\n**Ergebnis**\n- IFC-Modelle der untersuchten Versorgungsszenarien\n- Variantenvergleich als Grundlage für den Entscheid über das Versorgungskonzept"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

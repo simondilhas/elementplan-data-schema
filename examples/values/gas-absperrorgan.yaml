@@ -1,0 +1,22 @@
+id: armasuisse:value/gas-absperrorgan
+name:
+  de: Gas Absperrorgan
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Gas Absperrorgan
+  fr:
+  - Gaz commande de fermeture
+  it:
+  - Organo di intercettazione gas
+  en: []

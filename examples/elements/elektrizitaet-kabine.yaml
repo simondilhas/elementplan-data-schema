@@ -1,0 +1,21 @@
+id: armasuisse:element/elektrizitaet-kabine
+sort_order: 118
+status: active
+name:
+  de: Elektrizitaet Kabine
+  fr: Électricité cabine
+  it: Elettricità cabina
+  en: ''
+needed_in_domain: []
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDistributionChamberElement
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcDistributionChamberElement
+attributes: []

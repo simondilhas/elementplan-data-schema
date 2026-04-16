@@ -1,0 +1,25 @@
+id: armasuisse:value/predefinedtypecolumn
+name:
+  de: PredefinedTypeColumn
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - COLUMN
+  - PILASTER
+  fr:
+  - COLUMN
+  - PILASTER
+  it:
+  - COLUMN
+  - PILASTER
+  en: []

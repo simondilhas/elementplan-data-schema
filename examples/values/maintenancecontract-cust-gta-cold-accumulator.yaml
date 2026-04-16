@@ -1,0 +1,40 @@
+id: armasuisse:value/maintenancecontract-cust-gta-cold-accumulator
+name:
+  de: MaintenanceContract_Cust_GTA_Cold_accumulator
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Stückholz
+  - Holzschnitzel
+  - Pellets
+  - Erdgas
+  - Bio- Klährgas
+  - Flüssiggas (LPG)
+  - Heizoel
+  fr:
+  - Bûches
+  - Copeaux de bois
+  - Pellets
+  - Gaz naturel
+  - Gaz de digestion (biogaz)
+  - Gaz liquéfié (GPL)
+  - Mazout
+  it:
+  - Ceppi di legna
+  - Trucioli di legno
+  - Pellet
+  - Gas naturale
+  - Biogas/Gas di depurazione
+  - Gas di petrolio liquefatto (GPL)
+  - Olio combustibile
+  en: []

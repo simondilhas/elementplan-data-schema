@@ -1,0 +1,21 @@
+id: armasuisse:element/elektrizitat-tragwerk
+sort_order: 126
+status: active
+name:
+  de: Elektrizität -  Tragwerk
+  fr: Électricité - Structure porteuse
+  it: Elettricità - Struttura portante
+  en: ''
+needed_in_domain: []
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDistributionElement
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcDistributionElement
+attributes: []

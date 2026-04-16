@@ -1,0 +1,22 @@
+id: armasuisse:value/ebkp-h-name-klassifikiationssystem
+name:
+  de: eBKP-H Name Klassifikiationssystem
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - eBKP
+  fr:
+  - eCCC
+  it:
+  - eCCC
+  en: []

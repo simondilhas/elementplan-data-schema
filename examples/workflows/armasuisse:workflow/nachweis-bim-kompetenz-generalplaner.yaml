@@ -1,0 +1,44 @@
+id: armasuisse:workflow/nachweis-bim-kompetenz-generalplaner
+code: AWF-00-f
+name:
+  de: Nachweis BIM-Kompetenz Generalplaner
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: '**Ziel**
+
+    Im Rahmen der Ausschreibung wird die BIM-Kompetenz des Generalplaners als Zuschlagskriterium bewertet. So wird sichergestellt, dass der richtige Partner mit nachgewiesener BIM-Erfahrung beauftragt wird.
+
+
+    **Nutzen für den Auftraggeber**
+
+    - Fundierte Grundlage für den Vergabeentscheid
+
+    - Risiken durch unzureichende BIM-Kompetenz im Projekt werden frühzeitig erkannt
+
+    - Vergleichbarkeit der Angebote anhand eines einheitlichen Nachweisformats
+
+
+    **Umsetzung im Projekt**
+
+    Der Nachweis der BIM-Kompetenz erfolgt im Rahmen der Ausschreibung:
+
+
+    - *Generalplaner:* Liefert ein Dokument (max. 2 Seiten A4), das zeigt, wie BIM im Projekt konkret eingesetzt wird, um Projektrisiken zu managen.
+
+
+    Die Bewertung der Mustermodelle der Subunternehmer (Architektur, HLKSE) wird in separaten AWFs definiert.
+
+
+    **Ergebnis**
+
+    - Bewertbarer BIM-Kompetenznachweis des Generalplaners/Gesamtleiters als Grundlage für den Vergabeentscheid'
+  fr: ''
+  it: ''
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-00-nachweismodelle
+picture_link: null
+status: active
+comment: ''

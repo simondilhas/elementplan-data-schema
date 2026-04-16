@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-243-h-heizung
+name:
+  de: RelationToSystem_Cust_Element_Wärmetauscher
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 243-H_Heizung
+  fr:
+  - 243-C_Chauffage
+  it:
+  - 243-R_Riscaldamento
+  en: []

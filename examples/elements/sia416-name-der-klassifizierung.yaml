@@ -1,0 +1,64 @@
+id: armasuisse:element/sia416-name-der-klassifizierung
+sort_order: 19
+status: active
+name:
+  de: SIA416 Name der Klassifizierung
+  fr: SIA416 Nom de la classification
+  it: SIA416 Nome della classificazione
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+definition:
+  de: 'Bezeichnung der verwendeten Klassifikation: "SIA 416"'
+  fr: "Classification pour le calcul de surfaces selon SIA 416:2003 - Surfaces et volumes de bâtiments.   \n\nNote pour la modélisation: - Les éléments de l'espace modélisé (IfcSpace) doivent être affectés\
+    \ aux zones SIA416 et exportés."
+  it: "Classificazione per il calcolo delle superfici secondo la norma SIA 416:2003 - Superfici e volumi degli edifici.   \n\nNota per la modellazione: - Gli elementi spaziali modellati (IfcSpace) devono\
+    \ essere assegnati alle zone SIA416 ed esportati."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcClassification
+entity_ifc4_3: null
+picture_link: sia416-name-der-klassifizierung.jpg
+model_link: null
+applicability: entity_ifc4=IfcClassification
+attributes:
+- name: Name
+  pset: null
+  definition:
+    de: 'Name der Klassifikation: SIA416
+
+      Dienst der Identifikation der Klassifizierungsart'
+    fr: "Nom de la classification : SIA 416 \nPermet l’identification du type de classification"
+    it: 'Nome della classificazione: SIA416
+
+      Servizio di identificazione del tipo di classificazione'
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/sia416-klassifikationsname
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-08-e-lia-gebaude
+  is_applicability: true
+  status: active
+  sort_order: 1

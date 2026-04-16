@@ -1,0 +1,44 @@
+id: armasuisse:workflow/kennwert-geschossflache-ermitteln
+code: AWF-01-e
+name:
+  de: Kennwert Geschossfläche ermitteln
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: '**Ziel**
+
+    Die Geschossfläche kann je Geschoss aus dem Modell ausgelesen und für projektübergreifende Kennwerte und Benchmarking verwendet werden.
+
+
+    **Nutzen für den Auftraggeber**
+
+    - Einheitliche Flächenkenngrössen über alle Projekte vergleichbar
+
+    - Plausibilitätsprüfung der Planung anhand von Kennwerten möglich
+
+    - Kein manuelles Ermitteln und Übertragen von Flächendaten
+
+
+    **Umsetzung im Projekt**
+
+    - Variante A — Direktauswertung aus IFC
+
+    Die Geschossfläche entspricht der Fläche der modellierten Geschossvolumen abzüglich der Luftraumflächen und wird direkt aus dem IFC-Modell ausgelesen.
+
+    - Variante B — Automatisierte Auswertung via Elementplan Action API
+
+    Die Flächenermittlung inkl. Luftraumabzug wird über die Action API automatisiert ausgeführt und in den Projektworkflow integriert.
+
+
+    **Ergebnis**
+
+    Geschossflächen je Geschoss, bereit für Kennwertvergleiche.'
+  fr: ''
+  it: ''
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+picture_link: null
+status: active
+comment: ''

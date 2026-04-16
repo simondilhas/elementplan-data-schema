@@ -1,0 +1,28 @@
+id: armasuisse:value/predefinedtype-window
+name:
+  de: PredefinedType:Window
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - WINDOW
+  - SKYLIGHT
+  - LIGHTDOME
+  fr:
+  - WINDOW
+  - SKYLIGHT
+  - LIGHTDOME
+  it:
+  - WINDOW
+  - SKYLIGHT
+  - LIGHTDOME
+  en: []

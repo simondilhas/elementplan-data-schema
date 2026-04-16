@@ -1,0 +1,22 @@
+id: armasuisse:value/wasser-gartenhydrant
+name:
+  de: Wasser Gartenhydrant
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Wasser Gartenhydrant
+  fr:
+  - Eau bouche d’incendie de jardin
+  it:
+  - Valvola di intercettazione dell'acqua
+  en: []

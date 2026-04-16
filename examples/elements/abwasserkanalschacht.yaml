@@ -1,0 +1,98 @@
+id: armasuisse:element/abwasserkanalschacht
+sort_order: 143
+status: active
+name:
+  de: Abwasserkanalschacht
+  fr: Regard eaux usées
+  it: Pozzetto acque reflue
+  en: ''
+needed_in_domain:
+- armasuisse:domain/nachweismodell-sanitar
+- armasuisse:domain/gebaudetechnik
+definition:
+  de: Ein Abwasserschacht ist ein unterirdisches, mit einem Deckel verschlossenes Bauwerk, das Zugang zu den Abwasserleitungen bietet. Er ermöglicht die Inspektion und Wartung des Abwassernetzes.
+  fr: Un regard d'eaux usées est un ouvrage enterré, fermé par un couvercle, qui donne accès aux canalisations. Il permet d'inspecter et d'entretenir le réseau d'assainissement.
+  it: Un pozzetto per acque reflue è un'opera interrata, chiusa da un coperchio, che dà accesso alle tubazioni. Permette di ispezionare e mantenere la rete fognaria.
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDistributionChamberElement
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcDistributionChamberElement
+attributes:
+- name: PredefinedType
+  pset: null
+  definition:
+    de: PredefinedType dient dazu, ein Element innerhalb seiner IFC-Klasse weiter zu spezifizieren und funktional genauer einzuordnen.
+    fr: Il PredefinedType serve a specificare in modo più dettagliato un elemento all’interno della sua classe IFC e a definirne con maggiore precisione la funzione.
+    it: Le PredefinedType sert à spécifier plus précisément un élément au sein de sa classe IFC et à en définir plus clairement la fonction.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/manual-manhole
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
+  is_applicability: true
+  status: active
+  sort_order: 1
+- name: RelationToSystem
+  pset: Cust_Element
+  definition:
+    de: Jedes gebäudetechnische Bauteil muss einem technischen System zugeordnet werden. Die Zuordnung stellt sicher, dass Funktionen, Abhängigkeiten und Verantwortlichkeiten eindeutig definiert sind und
+      ermöglicht eine konsistente Auswertung über Planung, Ausführung und Betrieb hinweg.
+    fr: Ogni componente tecnico dell’edificio deve essere assegnato a un sistema tecnico. Questa assegnazione garantisce una definizione chiara delle funzioni, delle dipendenze e delle responsabilità, e
+      consente una valutazione coerente durante la pianificazione, l’esecuzione e la gestione operativa.
+    it: Chaque élément technique du bâtiment doit être attribué à un système technique. Cette attribution garantit une définition claire des fonctions, des dépendances et des responsabilités, et permet
+      une analyse cohérente tout au long de la planification, de l’exécution et de l’exploitation.
+    en: ''
+  datatype: IfcText
+  allowed_values: armasuisse:value/manual-254-3-s-abwasser
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '11'
+  - '21'
+  - '22'
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
+  - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
+  - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
+  is_applicability: false
+  status: active
+  sort_order: 2

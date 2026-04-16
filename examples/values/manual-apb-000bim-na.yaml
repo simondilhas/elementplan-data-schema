@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-apb-000bim-na
+name:
+  de: Name_Projekt
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - APB-000BIM-NA
+  fr:
+  - APB-000BIM-NA
+  it:
+  - APB-000BIM-NA
+  en: []

@@ -1,0 +1,85 @@
+id: armasuisse:value/brandschutz-gemass-vkf
+name:
+  de: Brandschutz gemäss VKF
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - '-'
+  - E30
+  - E60
+  - E90
+  - E120
+  - E180
+  - EI30
+  - EI60
+  - EI90
+  - EI120
+  - EI180
+  - REI30
+  - REI60
+  - REI90
+  - REI120
+  - REI180
+  - REI240
+  - EW30
+  - EW60
+  - S
+  - K30
+  - K60
+  fr:
+  - '-'
+  - E30
+  - E60
+  - E90
+  - E120
+  - E180
+  - EI30
+  - EI60
+  - EI90
+  - EI120
+  - EI180
+  - REI30
+  - REI60
+  - REI90
+  - REI120
+  - REI180
+  - REI240
+  - EW30
+  - EW60
+  - S
+  - K30
+  - K60
+  it:
+  - '-'
+  - E30
+  - E60
+  - E90
+  - E120
+  - E180
+  - EI30
+  - EI60
+  - EI90
+  - EI120
+  - EI180
+  - REI30
+  - REI60
+  - REI90
+  - REI120
+  - REI180
+  - REI240
+  - EW30
+  - EW60
+  - S
+  - K30
+  - K60
+  en: []

@@ -1,0 +1,21 @@
+id: armasuisse:element/abwasser-leitung
+sort_order: 81
+status: active
+name:
+  de: Abwasser Leitung
+  fr: Conduites d'eau usées
+  it: Condotte acque di scarico
+  en: ''
+needed_in_domain: []
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDistributionFlowElement
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcDistributionFlowElement
+attributes: []

@@ -1,0 +1,51 @@
+id: armasuisse:workflow/awf-06-bauablaufplanung-und-baufortschritt
+sort_order: 35
+code: AWF-06
+name:
+  de: Bauablaufplanung und Baufortschritt
+  fr: Planification du déroulement des travaux et avancement des travaux base cas d’application 06 selon KBOB
+  it: Pianificazione dello svolgimento e dell’avanzamento dei lavori di costruzione
+  en: ''
+description:
+  de: '**Beschrieb:**
+
+    Vorgehen und Ablauf der Projektrealisierung werden in phasenbezogenen Bauablaufschritten im koordinierten Gesamtmodell dargestellt. Während der Realisierung wird der Baufortschritt elementbezogen dokumentiert.
+    z.B. bei Statusänderungen.
+
+
+    **Ziele:**
+
+    - Verbesserung der Termin- und Planungssicherheit im Bauablauf.
+
+
+    **Mehrwert:**
+
+    - Optimierung Bauprozess
+
+    - Überwachung Bauprozess
+
+
+    **Lieferobjekte:**
+
+    - BIM-Modell(e)
+
+    - Termin- und Koordinationsplan
+
+    - Dokumentation in Bild-, Video- oder Berichtsform'
+  fr: "**Description:**\nLa procédure et le déroulement de la réalisation du projet sont représentés dans des étapes de déroulement des travaux par phase dans le modèle global coordonné. Pendant la réalisation,\
+    \ l’avancement des travaux est documenté par rapport aux éléments, p. ex. en cas de changements de statut. \n\n**Objectif:** \n- Amélioration de la sécurité des délais et de la planification dans le\
+    \ déroulement des travaux \n\n**Plus-value: \n- Optimisation du processus de construction  \n- Surveillance du processus de construction \n\n**Objets à livrer:** \n- Modèle BIM  \n- Calendrier et plan\
+    \ de coordination  \n- Documentation sous une forme illustrée, sous forme de rapport ou en vidéo"
+  it: "**Descrizione:**  \nLa procedura e lo svolgimento della realizzazione del progetto vengono rappresentati in cicli dei lavori di costruzione con riferimento alle varie fasi nel modello globale coordinato.\
+    \  Durante la realizzazione, lo stato di avanzamento dei lavori di costruzione viene documentato in relazione agli elementi, ad es. relativamente ai cambiamenti di stato  \n\n**Obiettivi:** \n- Miglioramento\
+    \ del rispetto delle scadenze e della sicurezza della pianificazione durante i lavori di costruzione.  \n\n**Valore aggiunto:** \n- Ottimizzazione del processo di costruzione \n- Monitoraggio del processo\
+    \ di costruzione  \n\n**Oggetti della fornitura:** \n- Modello/i BIM \n- Piano delle scadenze e di coordinazione \n- Documentazione in formato fotografico, video o come relazione"
+  en: ''
+workflow_group: null
+parent_workflow: null
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

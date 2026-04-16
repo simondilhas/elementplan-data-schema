@@ -1,0 +1,849 @@
+id: armasuisse:value/raumliste-innen
+name:
+  de: Raumliste Innen
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Fahrzeugabstellfläche
+  - Elektrische Stromversorgung
+  - Warmwasserversorgung
+  - Vorraum
+  - Vorraum mit Sanitäreinrichtung
+  - Archive/Sammlungsräume
+  - Aufzugs- und Förderanlagen
+  - Werkstätten
+  - Werkstätten mit Sanitäreinrichtung
+  - Ih Werkstätte Flz
+  - Ih Werkstätte Flz mit Sanitäreinrichtung
+  - Ih Werkstätte Mat/Geräte
+  - Ih Werkstätte Mat/Geräte mit Sanitäreinrichtung
+  - Ih Werkstätte Fz
+  - Ih Werkstätte Fz mit Sanitäreinrichtung
+  - Werkstätte Infra
+  - Werkstätte Infra mit Sanitäreinrichtung
+  - Sonderarbeitsräume
+  - Sonstige Nutzung allgemein
+  - Sonstige betriebstechnische Anlagen
+  - Bibliotheksräume
+  - Bibliotheksräume mit Sanitäreinrichtung
+  - Waschküche
+  - Kegelbahn
+  - Kegelbahn mit Sanitäreinrichtung
+  - Büro Leiter Vpf Z
+  - Bürotechnik
+  - Bürotechnik/Rechenzentrum
+  - Büroräume
+  - Büroräume Profi (Kdo)
+  - Büroräume Profi (Kdo) mit Sanitäreinrichtung
+  - Büroräume Verwaltung
+  - Büroräume Verwaltung mit Sanitäreinrichtung
+  - Büroräume mit Sanitäreinrichtung
+  - Büroarbeit allgemein
+  - Büroräume Miliz (Kp)
+  - Büroräume Miliz (Kp) mit Sanitäreinrichtung
+  - Cafeteria
+  - Zelle
+  - Zelle mit Sanitäreinrichtung
+  - Schlafraum Kdt
+  - Schlafraum Kdt mit Sanitäreinrichtungen
+  - Schlafraum Zeitmilitär Of/höh Uof
+  - Schlafraum Zeitmilitär Of/höh Uof mit Sanitäreinrichtungen
+  - Schlafraum Zeitmilitär Uof/Sdt
+  - Schlafraum Zeitmilitär Uof/Sdt mit Sanitäreinrichtungen
+  - Schlafraum Berufspiloten
+  - Schlafraum Berufspiloten mit Sanitäreinrichtungen
+  - Schlafraum Offiziere
+  - Schlafraum Offiziere mit Sanitäreinrichtungen
+  - Schlafraum RZ 1x W
+  - Schlafraum RZ 1x W mit Sanitäreinrichtungen
+  - Schlafraum RZ 2x W
+  - Schlafraum RZ 2x W mit Sanitäreinrichtungen
+  - Raum für operative Eingriffe
+  - Bettenraum mit besonderer Ausstattung
+  - Bettenraum mit allgemeiner Ausstattung
+  - Schlafraum Unteroffiziere
+  - Schlafraum Unteroffiziere mit Sanitäreinrichtung
+  - Schlafraum Mannschaft
+  - Schlafraum Mannschaft mit Sanitäreinrichtung
+  - Heiz- u. Brauchwassererwärmung
+  - Film- und Hörsäle
+  - Film- und Hörsäle mit Sanitäreinrichtung
+  - Küche
+  - Küchen
+  - Produktionsküchen
+  - Abstellraum/Hausdienst
+  - Abstellraum/Hausdienst mit Sanitäreinrichtung
+  - Nebenräume zu Produktionsküchen
+  - Schlafraum Wache
+  - Schlafraum Wache mit Sanitäreinrichtung
+  - Stallung
+  - Bildung/Unterricht und Kultur allgemein
+  - Betriebstechnische Anlagen
+  - Treppen
+  - Konstruktionsraum
+  - Konstruktionsraum mit Sanitäreinrichtung
+  - Raum für Strahlentherapie
+  - Gemeinschaftsräume
+  - Gemeinschaftsräume mit Sanitäreinrichtung
+  - Vorplatz/Vordach
+  - Pilotengarderobe mit Umkleide und Ausrüstungslager
+  - Pilotengarderobe mit Umkleide und Ausrüstungslager mit Sanitäreinrichtung
+  - Gase (ohne Heizung) und Flüssigkeiten
+  - Grossraumbüro
+  - Grossraumbüro mit Sanitäreinrichtung
+  - Wohnräume (Schlafräume)
+  - Wohnräume (Schlafräume) mit Sanitäreinrichtungen
+  - Eingangshalle Kunden
+  - Eingangshalle mit Sanitäreinrichtung
+  - Flur/Halle/Korridore mit Sanitäreinrichtung
+  - Flur/Halle/Korridore
+  - Sporthalle
+  - Sporthalle mit Sanitäreinrichtung
+  - Halle mit Hochregallager
+  - Halle mit Hochregallager mit Sanitäreinrichtung
+  - Halle für Fz/Flz (Vor Ort Lager/ohne Ausb. und Ih)
+  - Halle für Fz/Flz (Vor Ort Lager/ohne Ausb. und Ih) mit Sanitäreinrichtung
+  - Werkhallen
+  - Werkhallen mit Sanitäreinrichtung
+  - Ih Werkhallen
+  - Ih Werkhallen mit Sanitäreinrichtung
+  - Werkhallen für Trp Hdw
+  - Werkhallen für Trp Hdw mit Sanitäreinrichtung
+  - Ausbildungshallen
+  - Ausbildungshallen mit Sanitäreinrichtung
+  - Fz-Hallen mit Ausbildungsfunktion
+  - Fz-Hallen mit Ausbildungsfunktion mit Sanitäreinrichtung
+  - Fahrzeughallen Infra
+  - Fahrzeughallen Infra mit Sanitäreinrichtung
+  - Verkehrserschliessung und -sicherung allgemein
+  - Schiessanlage
+  - Schiessanlage mit Sanitäreinrichtung
+  - Kiosk
+  - Kiosk mit Sanitäreinrichtung
+  - Chemisches/bakteriologisches Labor
+  - Physikalisches/technisches Labor
+  - Technologisches Labor
+  - Fahrzeugverkehrsfläche
+  - Raum mit allgemeiner medizinischer Ausstattung
+  - Raum mit besonderer medizinischer Ausstattung
+  - Lokal Wachkdt
+  - Lokal Wachkdt mit Sanitäreinrichtung
+  - CUA - RIGA - Raum/E-Learning
+  - CUA - RIGA - Raum/E-Learning mit Sanitäreinrichtung
+  - Übungsraum mit Sanitäreinrichtung
+  - Übungsraum
+  - Bedienungsraum
+  - Schalterraum
+  - Kraft-/Fitnessraum
+  - Kraft-/Fitnessraum mit Sanitäreinrichtung
+  - Leseraum
+  - Leseraum mit Sanitäreinrichtung
+  - Schutzraum
+  - Annahme- und Ausgaberaum
+  - Aufsichtsräume
+  - Aufsichtsraum mit Sanitäreinrichtung
+  - Theorieraum
+  - Theorieraum mit Sanitäreinrichtung
+  - Fachausbildungstheorieraum
+  - Geräteraum
+  - Geräteraum mit Sanitäreinrichtung
+  - Raum der Stille
+  - Raum der Stille mit Sanitäreinrichtung
+  - Kühlraum
+  - Raum für zentrale Technik
+  - Raum für zentrale Technik mit Sanitäreinrichtung
+  - Archivraum
+  - Unterrichts- und Übungsräume mit festem Gestühl
+  - Unterrichts- und Übungsräume mit festem Gestühl mit Sanitäreinrichtung
+  - Allgemeine Unterrichts- und Übungsräume ohne festes Gestühl
+  - Allgemeine Unterrichts- und Übungsräume ohne festes Gestühl mit Sanitäreinrichtung
+  - Besondere Unterrichts- und Übungsräume ohne festes Gestühl
+  - Besondere Unterrichts- und Übungsräume ohne festes Gestühl mit Sanitäreinrichtung
+  - Pausenräume mit Sanitäreinrichtung
+  - Sporträume
+  - Sporträume mit Sanitäreinrichtung
+  - Lagerräume
+  - Lagerräume zu Produktionsküchen (ungekühlt)
+  - Lagerräume zu Produktionsküchen (ungekühlt) mit Sanitäreinrichtung
+  - Lagerräume Material (Vor Ort Lager) mit Sanitäreinrichtung
+  - Lagerräume für gefährliche Güter
+  - Lagerräume für gefährliche Güter mit Sanitäreinrichtung
+  - Lagerräume Material und Geräte (Infra)
+  - Lagerräume Material und Geräte (Infra) mit Sanitäreinrichtung
+  - Lagerräume Munition
+  - Lagerräume Munition mit Sanitäreinrichtung
+  - Lagerräume mit Sanitäreinrichtung
+  - Verkaufsräume
+  - Verkaufsräume mit Sanitäreinrichtung
+  - Lagerräume Material (Vor Ort Lager)
+  - Waffenstellungsraum
+  - Raumlufttechnische Anlagen
+  - Ausstellungsräume
+  - Ausstellungsräume mit Sanitäreinrichtung
+  - Hafträume
+  - Pausenräume
+  - Duschenraum
+  - Lagerräume Material (Fw Mag)
+  - Lagerräume Material (Fw Mag) mit Sanitäreinrichtung
+  - Pharmaräume
+  - Räume für Pflanzenzucht
+  - Räume für Tierhaltung
+  - Sakralräume
+  - Sakralräume mit Sanitäreinrichtung
+  - Sanitärräume
+  - Sicherheitsraum
+  - Sicherheitsraum für Waffen mit Sanitäreinrichtung
+  - Simulatorenräume
+  - Simulatorenräume mit Sanitäreinrichtung
+  - Loge
+  - Loge mit Sanitäreinrichtung
+  - Wohnen und Aufenthalt allgemein
+  - San Mat/Medikamente
+  - PD/ID-Stand
+  - Schwimmbad
+  - Militärpost/Postbüro
+  - Produktion/Hand- und Maschinenarbeit allgemein
+  - Schacht für Förderanlagen
+  - Speiseraum
+  - Speiseraum mit Sanitäreinrichtung
+  - Warteraum / Behandlung
+  - Warteraum mit Sanitäreinrichtung
+  - Gesprächsraum mit Sanitäreinrichtung
+  - Badezimmer
+  - Duschenraum Z T2
+  - Kraft-/Fitnessraum mit Sanitäreinrichtung Z T1
+  - Kraft-/Fitnessraum Z T1
+  - Raum für Physiotherapie und Rehabilitation
+  - Raum für Strahlendiagnostik
+  - Rapportraum
+  - Rapportraum mit Sanitäreinrichtung
+  - Sitzungszimmer
+  - Sitzungszimmer mit Sanitäreinrichtung
+  - Sporthalle Z T1
+  - Testraum
+  - Testraum mit Sanitäreinrichtung
+  - Theorisaal
+  - Theorisaal mit Sanitäreinrichtung
+  - Fachausbildungstheorieraum mit Sanitäreinrichtung
+  - Behandlungsräume
+  - Arbeitsraum
+  - Arbeitsraum mit Sanitäreinrichtung
+  - Besprechungsraum mit Sanitäreinrichtung
+  - Waschraum Z T2
+  - Untersuchungsräume
+  - Gesprächsraum
+  - Versammlungsraum
+  - Versammlungsraum mit Sanitäreinrichtung
+  - Inhalationsräume
+  - Speiseräume VPF
+  - Warteräume
+  - Physiotherapieräume
+  - Besprechungsräume
+  - Wohnzimmer
+  - Wohnzimmer mit Sanitäreinrichtung
+  - Waschraum
+  - Sauna
+  - Bühnen-/Studioraum
+  - Bühnen-/Studioraum mit Sanitäreinrichtung
+  - Aufenthaltsraum
+  - Aufenthaltsraum mit Sanitäreinrichtung
+  - Aufenthalt Wache
+  - Aufenthalt Wache mit Sanitäreinrichtung
+  - Treibhaus
+  - Schauräume
+  - Schauräume mit Sanitäreinrichtung
+  - Heilung und Pflege allgemein
+  - Stationsräume
+  - Lagerung/Verteilung und Verkauf allgemein
+  - Lehrmittel
+  - Fernmeldetechnik
+  - Telekommunikation
+  - Terrasse
+  - Toilette Z T2
+  - Abwasseraufbereitung und -beseitigung
+  - VERKEHR
+  - Umkleideraum
+  - Umkleideraum mit Sanitäreinrichtung
+  - Garderoben zu Duschen
+  - Garderoben zu Duschen mit Sanitäreinrichtung
+  - Garderoben
+  - Garderoben mit Sanitäreinrichtung
+  - Garderoben zu Duschen mit Sanitäreinrichtung Z T2
+  - Garderoben zu Duschen Z T2
+  - Garderoben/Duschenraum Z T2
+  - Toilette T1
+  - Toilette T2
+  - Toilette T3
+  - WC/Duschenraum
+  - WC/Duschenraum Z T2
+  - WC/Waschraum Z T2
+  - WC/Waschraum
+  - Fahrgastfläche
+  - Sonderarbeitsraum mit Sanitäreinrichtung
+  fr:
+  - Aire de stationnement de voitures
+  - Alimentation électrique
+  - Alimentation en eau chaude
+  - Antichambre
+  - Antichambre avec inst. sanitaires
+  - Archives/locaux pour collections
+  - Ascenseurs et convoyeurs
+  - Ateliers
+  - Ateliers avec inst. sanitaires
+  - Ateliers de maintenance avions
+  - Ateliers de maintenance avions avec inst. sanitaires
+  - Ateliers de maintenance mat/engins
+  - Ateliers de maintenance mat/engins avec inst. sanitaires
+  - Ateliers de maintenance véhicules
+  - Ateliers de maintenance véhicules avec inst. sanitaires
+  - Ateliers infra
+  - Ateliers infra avec inst. sanitaires
+  - Ateliers spéciaux
+  - Autre usage général
+  - Autres inst. techniques
+  - Bibliothèque
+  - Bibliothèque avec inst. sanitaires
+  - Blanchisserie
+  - Bowling
+  - Bowling avec inst. sanitaires
+  - Bureau chef centre de susistance
+  - Bureau technique
+  - Bureau technique/ centre informatique
+  - Bureaux
+  - Bureaux (Cdmt)
+  - Bureaux (Cdmt) avec inst. sanitaires
+  - Bureaux administration
+  - Bureaux administration avec inst. sanitaires
+  - Bureaux avec inst. sanitaires
+  - Bureaux en général
+  - Bureaux milice (Cp)
+  - Bureaux milice (Cp) avec inst. sanitaires
+  - Cafétéria
+  - Cellule
+  - Cellule avec inst. sanitaires
+  - Chambre Cdt
+  - Chambre Cdt avec inst. sanitaires
+  - Chambre contractuel of/ sof sup
+  - Chambre contractuel of/ sof sup avec inst. sanitaires
+  - Chambre contractuel sof/sdt
+  - Chambre contractuel sof/sdt avec inst. sanitaires
+  - Chambre de pilote professionnel
+  - Chambre de pilote professionnel avec inst. sanitaires
+  - Chambre of
+  - Chambre of avec inst. sanitaires
+  - Chambre pour CR 1x W
+  - Chambre pour CR 1x W avec inst. sanitaires
+  - Chambre pour CR 2x W
+  - Chambre pour CR 2x W avec inst. sanitaires
+  - Chambre pour la chirurgie
+  - Chambre pour patient avec équipement spécial
+  - Chambre pour patient avec installations communes
+  - Chambre sof
+  - Chambre sof avec inst. sanitaires
+  - Chambre trp
+  - Chambre trp avec inst. sanitaires
+  - Chauffage et production dieau chaude
+  - Cinéma et amphithéâtres
+  - Cinéma et amphithéâtres avec inst. sanitaires
+  - Cuisine
+  - Cuisines
+  - Cuisines de production
+  - Débarras/concierge
+  - Débarras/concierge avec inst. sanitaires
+  - Dépendances des cuisines de production
+  - Dortoirs garde
+  - Dortoirs garde avec inst. sanitaires
+  - Ecuries
+  - Education/apprentissage et culture en général
+  - Équipement d’exploitation
+  - Escalier
+  - Espace de conception
+  - Espace de conception avec inst. sanitaires
+  - Espace pour la radiothérapie
+  - Espaces communs
+  - Espaces communs avec inst. sanitaires
+  - esplanade/avant-toit
+  - Garde-robe de pilote pour léquipement/ dressing
+  - Garde-robe de pilote pour léquipement/ dressing avec inst. sanitaires
+  - Gaz (sans chauffage) et liquides
+  - Grand bureau décloisonné
+  - Grand bureau décloisonné avec inst. sanitaires
+  - Habitation (dortoirs)
+  - Habitation (dortoirs) avec inst. sanitaires
+  - Hall dientrée clients
+  - Hall dientrée clients avec inst. sanitaires
+  - Hall/halle/ couloirs avec inst. sanitaires
+  - Hall/halle/couloirs
+  - Halle de sport
+  - Halle de sport avec inst. sanitaires
+  - Halle MGH
+  - Halle MGH avec inst. sanitaires
+  - Halle pour véhicules/avions (Vor Ort Lager
+  - sans instruction ni maintenance)
+  - Halle pour véhicules/avions (Vor Ort Lager
+  - sans instruction ni maintenance) avec inst. sanitaires
+  - Halles atelier
+  - Halles atelier avec inst. sanitaires
+  - Halles atelier de maintenance
+  - Halles atelier de maintenance avec inst. sanitaires
+  - Halles atelier pour artisans trp.
+  - Halles atelier pour artisans trp. avec inst. sanitaires
+  - Halles de formation
+  - Halles de formation avec inst. sanitaires
+  - Halles véhicules avec fonction de formation
+  - Halles véhicules avec fonction de formation avec inst. sanitaires
+  - Halles véhicules infra
+  - Halles véhicules infra avec inst. sanitaires
+  - Infrastructures de transport et sécurité en général
+  - Installation de tirs
+  - Installation de tirs avec inst. sanitaires
+  - Kiosque
+  - Kiosque avec inst. sanitaires
+  - Laboratoire chimique/bactériologie
+  - Laboratoire technique physique/laboratoire technique
+  - Laboratoire technologique
+  - Les zones de trafic de véhicules
+  - Local avec équipements médicaux généraux
+  - Local avec équipements médicaux spéciaux
+  - Local Cdt de garde
+  - Local Cdt de garde avec inst. sanitaires
+  - Local CUA-RIGA/E-Learning
+  - Local CUA-RIGA/E-Learning avec inst. sanitaires
+  - Local d’exercice avec inst. sanitaires
+  - Local d’exercices
+  - Local de commande
+  - Local de commutation
+  - Local de Fitness/force
+  - Local de Fitness/force avec inst. sanitaires
+  - Local de lecture
+  - Local de lecture avec inst. sanitaires
+  - Local de protection
+  - Local de réception et de distribution
+  - Local de supervision
+  - Local de supervision avec inst. sanitaires
+  - Local de théorie
+  - Local de théorie avec inst. sanitaires
+  - Local de théorie et de formation
+  - Local des engins
+  - Local des engins avec inst. sanitaires
+  - Local du silence
+  - Local du silence avec inst. sanitaires
+  - local réfrigérateur
+  - Local technique central
+  - Local technique central avec inst. sanitaires
+  - Locaux d’archives
+  - Locaux d’enseignement et d’exercices avec équipements fixes
+  - Locaux d’enseignement et d’exercices avec équipements fixes avec inst. sanitaires
+  - Locaux d’enseignement et d’exercices sans équipements fixes
+  - Locaux d’enseignement et d’exercices sans équipements fixes avec inst. sanitaires
+  - Locaux d’enseignement et d’exercices spéciaux sans équipements permanents
+  - Locaux d’enseignement et d’exercices spéciaux sans équipements permanents avec inst. sanitaires
+  - Locaux de pause avec inst. sanitaires
+  - Locaux de sports
+  - Locaux de sports avec inst. sanitaires
+  - Locaux de stockage
+  - Locaux de stockage cuisines de production (non refroidie)
+  - Locaux de stockage cuisines de production (non refroidie) avec inst. sanitaires
+  - Locaux de stockage de matériel (Vor Ort Lager) avec inst. sanitaires
+  - Locaux de stockage des matières dangereuses
+  - Locaux de stockage des matières dangereuses avec inst. sanitaires
+  - Locaux de stockage mat et engins (infra)
+  - Locaux de stockage mat et engins (infra) avec inst. sanitaires
+  - Locaux de stockage munition
+  - Locaux de stockage munition avec inst. sanitaires
+  - Locaux de stockage avec inst. sanitaires
+  - Locaux de vente
+  - Locaux de vente avec inst. sanitaires
+  - Locaux de stockage de matériel (Vor Ort Lager)
+  - Locaux dépôt diarmes
+  - Locaux des systèmes de climatisation
+  - Locaux diexposition
+  - Locaux diexposition avec inst. sanitaires
+  - Locaux de détention
+  - Locaux de pause
+  - Locaux douches
+  - Locaux mat. (magasin sgtm)
+  - Locaux mat. (magasin sgtm) avec inst. sanitaires
+  - Locaux pharma
+  - Locaux pour la culture des plantes
+  - Locaux pour la garde d’animaux
+  - Locaux sacrés
+  - Locaux sacrés avec inst. sanitaires
+  - Locaux sanitaires
+  - Locaux sécurisés pour armes
+  - Locaux sécurisés pour armes avec inst. sanitaires
+  - Locaux simulateurs
+  - Locaux simulateurs avec inst. sanitaires
+  - Loge
+  - Loge avec inst. sanitaires
+  - Logement et séjour en général
+  - Mat. San. médicaments
+  - PD/ID-Stand
+  - Piscine
+  - Poste militaire/bureau de poste
+  - Production/travail manuel et mécanisé en général
+  - Puits pour Convoyeurs
+  - Salle à manger
+  - Salle à manger avec inst. sanitaires
+  - Salle d’attente / traitement
+  - Salle d’attente avec inst. sanitaires
+  - Salle d’entretien avec inst. sanitaires
+  - Salle de bain
+  - Salle de douche Z T2
+  - Salle de musculation/fitness avec sanitaires Z T1
+  - Salle de musculation/fitness Z T1
+  - Salle de physiothérapie et de réadaptation
+  - Salle de radiodiagnostic
+  - Salle de rapport
+  - Salle de rapport avec inst. sanitaires
+  - Salle de réunion
+  - Salle de réunion avec inst. sanitaires
+  - Salle de sport Z T1
+  - Salle de test
+  - Salle de test avec inst. sanitaires
+  - Salle de théorie
+  - Salle de théorie avec inst. sanitaires
+  - Salle de théorie spécialisée avec inst. sanitaires
+  - Salles de traitement médical
+  - Salle de travail
+  - Salle de travail avec inst. sanitaires
+  - Salles de réunion avec inst. sanitaires
+  - Salle dieau Z T2
+  - Salle diexamen médical
+  - Salle d’entretien
+  - Salle de conférence
+  - Salle de conférence avec inst. sanitaires
+  - Salle diinhalation
+  - Salles à manger VPF
+  - Salles diattente
+  - Salles de physiothérapie
+  - Salles de réunion
+  - Salon
+  - Salon avec inst. sanitaires
+  - Sanitaire/ evier
+  - Sauna
+  - Scène et local studio
+  - Scène et local studio avec inst. sanitaires
+  - Séjour
+  - Séjour avec inst. sanitaires
+  - Séjour garde
+  - Séjour garde avec inst. sanitaires
+  - Serre
+  - showrooms
+  - showrooms avec inst. sanitaires
+  - Soins et traitements généraux
+  - Station de soins
+  - Stockage/distribution et vente en général
+  - Supports pédagogiques
+  - Technique trm
+  - Télécommunications
+  - Terrasse
+  - Toilettes Z T2
+  - Traitement des eaux usées et élimination
+  - TRANSPORTS
+  - Vestiaire / local d’habillage
+  - Vestiaire / local d’habillage avec inst. sanitaires
+  - Vestiaire avec douches
+  - Vestiaire avec douches avec inst. sanitaires
+  - Vestiaire d’entrée / penderie
+  - Vestiaire d’entrée / penderie avec inst. sanitaires
+  - Vestiaires pour douches avec équipement sanitaire Z T2
+  - Vestiaires pour douches Z T2
+  - Vestiaires/douches Z T2
+  - WC T1
+  - WC T2
+  - WC T3
+  - WC/Locaux douches
+  - WC/salle de douche Z T2
+  - WC/salle deau Z T2
+  - WC/Sanitaire/evier
+  - Zone d’hôtes
+  - Zone de travail spéciale avec inst. sanitaires
+  it:
+  - Area di stazionamento dei veicoli
+  - Approvvigionamento elettrico
+  - Approvvigionamento di acqua calda
+  - Anticamera
+  - Anticamera con impianti sanitari
+  - Archivi/locali per collezioni
+  - Ascensori e impianti di movimentazione
+  - Officine
+  - Officine con impianti sanitari
+  - Officina man aerei
+  - Officina man aerei con impianti sanitari
+  - Officina man mat/apparecchi
+  - Officina man mat/apparecchi con impianti sanitari
+  - Officina man veic
+  - Officina man veic con impianti sanitari
+  - Officina infra
+  - Officina infra con impianti sanitari
+  - Locali di lavoro speciali
+  - Altra utilizzazione generale
+  - Altri impianti tecnici diesercizio
+  - Biblioteca
+  - Biblioteca con impianti sanitari
+  - Lavanderia
+  - Bowling
+  - Bowling con impianti sanitari
+  - Ufficio responsabile centro di sussistenza
+  - Burotica
+  - Burotica/centro di calcolo
+  - Uffici
+  - Uffici prof (cdo)
+  - Uffici prof (cdo) con impianti sanitari
+  - Uffici amministrazione
+  - Uffici amministrazione con impianti sanitari
+  - Uffici con impianti sanitari
+  - Lavoro diufficio in generale
+  - Uffici milizia (cp)
+  - Uffici milizia (cp) con impianti sanitari
+  - Caffetteria
+  - Cella
+  - Cella con impianti sanitari
+  - Dormitorio cdt
+  - Dormitorio cdt con impianti sanitari
+  - Dormitorio militare a contratto temporaneo uff/suff sup
+  - Dormitorio militare a contratto temporaneo uff/suff sup con impianti sanitari
+  - Dormitorio militare a contratto temporaneo suff/sdt
+  - Dormitorio militare a contratto temporaneo suff/sdt con impianti sanitari
+  - Dormitorio piloti di professione
+  - Dormitorio piloti di professione con impianti sanitari
+  - Dormitorio ufficiali
+  - Dormitorio ufficiali con impianti sanitari
+  - Dormitorio cen recl 1x sett
+  - Dormitorio cen recl 1 x sett con impianti sanitari
+  - Dormitorio cen recl 2x sett
+  - Dormitorio cen recl 2 x sett con impianti sanitari
+  - Locale per interventi chirurgici
+  - Postazione letti con equipaggiamento speciale
+  - Postazione letti con equipaggiamento generale
+  - Dormitorio sottufficiali
+  - Dormitorio sottufficiali con impianti sanitari
+  - Dormitorio truppa
+  - Camera da letto per il personale con servizi igienici
+  - Produzione acqua calda per riscaldamento e acqua non potabile
+  - Sale film e uditori
+  - Sale film e uditori con impianti sanitari
+  - Cucina
+  - Cucine
+  - Cucine di produzione
+  - Ripostiglio/servizio di portineria
+  - Ripostiglio/servizio di portineria con impianti sanitari
+  - Locali annessi alle cucine di produzione
+  - Dormitorio guardia
+  - Dormitorio guardia con impianti sanitari
+  - Locale di stabulazione
+  - Formazione/insegnamento e cultura in generale
+  - Impianti tecnici diesercizio
+  - Scale
+  - Locale concezione
+  - Locale concezione con impianti sanitari
+  - Locale per radioterapia
+  - Locali ad uso comune
+  - Locale ad uso comune con impianti sanitari
+  - cortile esterno/baldacchino
+  - Guardaroba per piloti con spogliatoio e deposito equipaggiamento
+  - Guardaroba per piloti con spogliatoio e deposito equipaggiamento con impianti sanitari
+  - Gas (senza riscaldamento) e liquidi
+  - Ufficio a spazio aperto
+  - Ufficio a spazio aperto con impianti sanitari
+  - Locali abitativi (dormitori)
+  - Locali abitativi (dormitori) con impianti sanitari
+  - Atrio clienti
+  - Atrio con impianti sanitari
+  - Corridoio/capannone/con impianti sanitari
+  - Corridoio/capannone
+  - Palestra
+  - Palestra con impianti sanitari
+  - Capannone con deposito a scaffalature verticali
+  - Capannone a scaffalature verticali con impianti sanitari
+  - Capannone per veicoli/aerei (deposito periferico senza istruzione e manutenzione)
+  - Capannone per veicoli/aerei (deposito periferico senza istruzione e manutenzione) con impianti sanitari
+  - Capannoni
+  - Capannoni con impianti sanitari
+  - Capannoni di manutenzione
+  - Capannoni di manutenzione con impianti sanitari
+  - Capannoni per arti trp
+  - Capannoni per arti trp con impianti sanitari
+  - Capannoni diistruzione
+  - Capannoni diistruzione con impianti sanitari
+  - Capannoni dei veicoli adibiti all'istruzione
+  - Capannoni dei veicoli adibiti all'istruzione con impianti sanitari
+  - Capannoni per veicoli infra
+  - Capannoni per veicoli infra con impianti sanitari
+  - Collegamenti e sicurezza in generale
+  - Impianto di tiro
+  - Impianto di tiro con impianti sanitari
+  - Chiosco
+  - Chiosco con impianti sanitari
+  - Laboratorio di chimica/batteriologia
+  - Laboratorio di fisica/tecnica
+  - Laboratorio tecnologico
+  - Area di circolazione di veicoli
+  - Locale con equipaggiamento medico generale
+  - Locale con equipaggiamento medico speciale
+  - Locale cdt guardia
+  - Locale cdt guardia con impianti sanitari
+  - Locale IAO-RIGA/E-Learning
+  - Locale IAO-RIGA/E-Learning con impianti sanitari
+  - Locale diesercizio con impianti sanitari
+  - Locale diesercizio
+  - Locale di comando
+  - Locale di commutazione
+  - Locale muscolazione/fitness
+  - Locale muscolazione/fitness con impianti sanitari
+  - Locale di lettura
+  - Locale di lettura con impianti sanitari
+  - Locale di protezione
+  - Locale di ricezione e distribuzione
+  - Locali di supervisione
+  - Locale di supervisione con impianti sanitari
+  - Locale di teoria
+  - Locale di teoria con impianti sanitari
+  - Locale di teoria per l'insegnamento specialistico
+  - Locale attrezzi
+  - Locale attrezzi con impianti sanitari
+  - Locale del silenzio
+  - Locale del silenzio con impianti sanitari
+  - Locale di refrigerazione
+  - Locale per tecnica centrale
+  - Locale per tecnica centrale con impianti sanitari
+  - Locale archivio
+  - Locali diinsegnamento e diesercizio con sedie fisse
+  - Locali diinsegnamento e diesercizio con sedie fisse con impianti sanitari
+  - Locali generali diinsegnamento e diesercizio senza sedie fisse
+  - Locali generali diinsegnamento e diesercizio senza sedie fisse con impianti sanitari
+  - Locali speciali diinsegnamento e diesercizio senza sedie fisse
+  - Locali speciali diinsegnamento e diesercizio senza sedie fisse con impianti sanitari
+  - Locali per le pause con impianti sanitari
+  - Locali sport
+  - Locali sport con impianti sanitari
+  - Depositi
+  - Depositi delle cucine di produzione (non refrigerati)
+  - Depositi delle cucine di produzione (non refrigerati) con impianti sanitari
+  - Depositi di materiale (deposito periferico) con impianti sanitari
+  - Depositi per merci pericolose
+  - Depositi per merci pericolose con impianti sanitari
+  - Depositi di materiale e apparecchi (infra)
+  - Depositi di materiale e apparecchi (infra) con impianti sanitari
+  - Depositi di munizioni
+  - Depositi di munizioni con impianti sanitari
+  - Depositi con impianti sanitari
+  - Locali di vendita
+  - Locali di vendita con impianti sanitari
+  - Depositi di materiale (depositi periferici)
+  - Locale di deposito delle armi
+  - Impianti di ventilazione/climatizzazione
+  - Locali diesposizione
+  - Locali diesposizione con impianti sanitari
+  - Locale di detenzione
+  - Locali per le pause
+  - Docce
+  - Depositi di materiale (mag sgtm)
+  - Depositi di materiale (mag sgtm) con impianti sanitari
+  - Locali farma
+  - Locali per la coltura di piante
+  - Locale per la tenuta di animali
+  - Locali sacri
+  - Locali sacri con impianti sanitari
+  - Locali sanitari
+  - Locale di sicurezza per armi
+  - Locale di sicurezza per armi con impianti sanitari
+  - Locali dei simulatori
+  - Locali dei simulatori con impianti sanitari
+  - Portineria
+  - Portineria con impianti sanitari
+  - Alloggio e soggiorno in generale
+  - Mat san/medicamenti
+  - PD/ID-Stand
+  - Piscina
+  - Posta militare/ufficio postale
+  - Produzione/lavoro artigianale o industriale
+  - Pozzetto per impianti di trasporto
+  - Refettorio
+  - Refettorio con impianti sanitari
+  - Sala diattesa / trattamento
+  - Sala diattesa con impianti sanitari
+  - Sala colloqui con impianti sanitari
+  - Bagno
+  - Sala docce Z T2
+  - Palestra/sala fitness con servizi igienici Z T1
+  - Palestra/sala fitness Z T1
+  - Locale per fisioterapia e riabilitazione
+  - Locale per radiodiagnostica
+  - Sala rapporti
+  - Sala rapporti con impianti sanitari
+  - Sala riunioni
+  - Sala riunioni con impianti sanitari
+  - Palestra Z T1
+  - Locale test
+  - Locale test con impianti sanitari
+  - Sala di teoria
+  - Sala di teoria con impianti sanitari
+  - Locale di teoria per l'insegnamento specialistico con impianti sanitari
+  - Locali di trattamento
+  - Sala di lavoro
+  - Sala di lavoro con impianti sanitari
+  - Sale riunioni con impianti sanitari
+  - Lavanderia Z T2
+  - Locali diesame
+  - Sala colloqui
+  - Sala assemblea
+  - Sala assemblea con impianti sanitari
+  - Locali per inalazioni
+  - Refettori suss
+  - Sale diattesa
+  - Locali per fisioterapia
+  - Sale riunioni
+  - Salotto
+  - Salotto con impianti sanitari
+  - Locali di pulizia
+  - Sauna
+  - Locale con palco scenico/studio
+  - Locale con palco scenico/studio con impianti sanitari
+  - Locale di soggiorno
+  - Locale di soggiorno con impianti sanitari
+  - Soggiorno guardia
+  - Soggiorno guardia con impianti sanitari
+  - Serra
+  - Locali espositivi
+  - Locali espositivi con impianti sanitari
+  - Ristabilimento e cure generali
+  - Stazioni
+  - Immagazzinamento/distribuzione e vendita in generale
+  - Mezzi didattici
+  - Tecnica delle telecomunicazioni
+  - Telecomunicazione
+  - Terrazzo
+  - Servizio igienico Z T2
+  - Trattamento e smaltimento delle acque di scarico
+  - TRASPORTI
+  - Spogliatoio
+  - Spogliatoio con impianti sanitari
+  - Spogliatoio per docce
+  - Spogliatoio per docce con impianti sanitari
+  - Guardaroba
+  - Guardaroba con impianti sanitari
+  - Spogliatoio per docce con impianti sanitari Z T2
+  - Spogliatoio per docce Z T2
+  - Spogliatoi/Docce Z T2
+  - WC T1
+  - WC T2
+  - WC T3
+  - WC/docce
+  - WC/Doccia Z T2
+  - WC/lavanderia Z T2
+  - WC/Locali di pulizia
+  - Area per passeggeri
+  - Locale di lavoro speciale con impianti sanitari
+  en: []

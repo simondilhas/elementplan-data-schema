@@ -1,0 +1,334 @@
+id: armasuisse:element/tur-tor-revisionsoffnung
+sort_order: 23
+status: active
+name:
+  de: Tür / Tor / Revisionsöffnung
+  fr: Porte / portail / ouverture de révision
+  it: Porta / portone / apertura di ispezione
+  en: ''
+needed_in_domain:
+- armasuisse:domain/architektur
+definition:
+  de: 'Modellieren Sie alle Türen, Toren und Revisionsöffnungen.
+
+
+    **Modellierungshinweise:**
+
+    - Glasflächen in Türen sind mit einem transparenten Material zu modellieren.
+
+    - Halten Sie den Detailierungsgrad besser klein und arbeiten Sie mit einer Türliste für zusätzliche Anforderungen.
+
+    - Führen Sie ab Bauprojekt eine eindeutige Türnummer als Verknüpfung zur Türliste mit den weiteren Eigenschaften.
+
+    - Modellieren sie die Türen geschlossen. Der Bewegungsraum von Türen kann als eigenes Element ergänzt werden.'
+  fr: "Modélisez toutes les portes, portails et trappes d'inspection.\n\n**Note pour la modélisation.** \n- Les surfaces vitrées des portes doivent être modélisées avec un matériau transparent. \n- Il est\
+    \ préférable de maintenir un niveau de détail faible et de travailler avec une liste de portes pour les exigences supplémentaires. \n- Dès le projet de construction, conserver un numéro de porte unique\
+    \ comme lien vers la liste des portes avec les autres propriétés. \n- Modéliser les portes fermées. L'espace de mouvement des portes peut être ajouté en tant qu'élément séparé."
+  it: "Modellare tutte le porte, le aperture di ispezione e tutti i portoni.   \n\n**Indicazioni per la modellazione.**\n - Le superfici vetrate di porte devono essere modellate con materiale trasparente.\
+    \ \n- È meglio mantenere basso il livello di dettaglio e lavorare con un elenco di porte per eventuali requisiti aggiuntivi. \n- Dal progetto di costruzione in poi, mantenere un numero di porta univoco\
+    \ come collegamento all'elenco delle porte con le altre proprietà. \n- Modellare le porte chiuse. Lo spazio di movimento delle porte può essere integrato come elemento separato."
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDoor
+entity_ifc4_3: null
+picture_link: tur-tor-revisionsoffnung.jpg
+model_link: null
+applicability: entity_ifc4=IfcDoor
+attributes:
+- name: Name
+  pset: null
+  definition:
+    de: Spätestens ab Bauprojekt ist eine eigene Türnummer zu führen.
+    fr: Quand débute le projet de construction au plus tard, il convient de gérer le numéro de porte spécifique.
+    it: Al più tardi a partire dal progetto definitivo, deve essere registrato un numero di porta.
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '32'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  is_applicability: false
+  status: active
+  sort_order: 1
+- name: Description
+  pset: null
+  definition:
+    de: Eindeutige Typenbezeichnung nach Vorgabe des Projektverfassers.
+    fr: Désignation claire du type selon directive de l’auteur de projet.
+    it: Designazione univoca del tipo secondo le disposizioni dell’autore del progetto.
+    en: ''
+  datatype: null
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-o-visualisierung-betriebsablaufe-prozess
+  - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  is_applicability: false
+  status: active
+  sort_order: 2
+- name: PredefinedType
+  pset: null
+  definition:
+    de: 'Der PredefinedType definiert die Art der Tür genauer.
+
+
+      - DOOR ... Tür
+
+      - GATE ... Tor
+
+      - TRAPDOOR ... Revisionsöffnung'
+    fr: "Le PredefinedType définit plus précisément le type de porte.  \n\n- DOOR ... Porte \n- GATE ... Portail \n- TRAPDOOR ... Ouverture de révision"
+    it: "Il «Tipo prefinito» definisce il tipo di porta in modo più preciso. \n\n- DOOR ... Porta \n- GATE ... Portone \n- TRAPDOOR ... Apertura di ispezione"
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/predefinedtype-door
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  is_applicability: false
+  status: active
+  sort_order: 3
+- name: OperationType
+  pset: null
+  definition:
+    de: 'Der OperationType ist eine standardisierte Typisierung um die Öffnungsart zu definieren. z.B. "SINGLE_SWING_LEFT"
+
+
+      - SINGLE_SWING_LEFT ... Einflügelig Schwingen Links
+
+      - SINGLE_SWING_RIGHT ... Einflügelig Schwingen Rechts
+
+      - DOUBLE_DOOR_SINGLE_SWING ... Doppeltür Einflügelig Schwingen
+
+      - DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_LEFT ... Doppeltür Einflügelig Schwingen Gegenüber Links
+
+      - DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_RIGHT ... Doppeltür Einflügelig Schwingen Gegenüber Rechts
+
+      - DOUBLE_SWING_LEFT ... Doppelt Schwingen Links
+
+      - DOUBLE_SWING_RIGHT ... Doppelt Schwingen Rechts
+
+      - DOUBLE_DOOR_DOUBLE_SWING ... Doppeltür Doppelt Schwingen
+
+      - SLIDING_TO_LEFT ... Schieben Nach Links
+
+      - SLIDING_TO_RIGHT ... Schieben Nach Rechts
+
+      - DOUBLE_DOOR_SLIDING ... Doppeltür Schieben
+
+      - FOLDING_TO_LEFT ... Falten Nach Links
+
+      - FOLDING_TO_RIGHT ... Falten Nach Rechts
+
+      - DOUBLE_DOOR_FOLDING ... Doppeltür Falten
+
+      - REVOLVING ... Drehtür
+
+      - ROLLINGUP ... Aufrollen
+
+      - SWING_FIXED_LEFT ... Schwingen Fest Links
+
+      - SWING_FIXED_RIGHT ... Schwingen Fest Rechts
+
+      - USERDEFINED ... Benutzerdefiniert'
+    fr: "Le OperationType est une catégorisation standardisée permettant de définir le type d’ouverture, p. ex. \"SINGLE_SWING_LEFT\"  \n\n- SINGLE_SWING_LEFT ... un vantail pivotant gauche \n- SINGLE_SWING_RIGHT\
+      \ ... un vantail pivotant droite \n- DOUBLE_DOOR_SINGLE_SWING ... double porte un vantail pivotant\n- DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_LEFT ... double porte un vantail pivotant côté opposé, gauche\
+      \ \n- DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_RIGHT ... double porte un vantail pivotant côté opposé, droite \n- DOUBLE_SWING_LEFT ... double pivotant gauche \n- DOUBLE_SWING_RIGHT ... double pivotant droite\
+      \ \n- DOUBLE_DOOR_DOUBLE_SWING ... double porte, double pivotant \n- SLIDING_TO_LEFT ... coulissant vers la gauche \n- SLIDING_TO_RIGHT ... coulissant vers la droite \n- DOUBLE_DOOR_SLIDING ... double\
+      \ porte coulissante \n- FOLDING_TO_LEFT ... pliant vers la gauche \n- FOLDING_TO_RIGHT ... pliant vers la droite\n- DOUBLE_DOOR_FOLDING ... double porte pliante \n- REVOLVING ... porte tournante \n\
+      - ROLLINGUP ... porte enroulable \n- SWING_FIXED_LEFT ... pivotant fixe à gauche \n- SWING_FIXED_RIGHT ... pivotant fixe à droite \n- USERDEFINED ... défini par l’utilisateur"
+    it: "L’attributo «Tipo di operazione» è una tipizzazione standard per definire il tipo di vano. Ad es. \"SINGLE_SWING_LEFT\" \n\n- SINGLE_SWING_LEFT ... Anta battente sinistra per anta singola  \n-\
+      \ SINGLE_SWING_RIGHT ... Anta battente destra per anta singola  \n- DOUBLE_DOOR_SINGLE_SWING ... Porta doppia battente ad anta singola \n- DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_LEFT ... Doppia porta battente\
+      \ ad anta singola opposta a sinistra \n- DOUBLE_DOOR_SINGLE_SWING_OPPOSITE_RIGHT ... Doppia porta battente ad anta singola opposta a destra \n- DOUBLE_SWING_LEFT ... Porta doppio battente a sinistra\
+      \ \n- DOUBLE_SWING_RIGHT ... Porta doppio battente a destra \n- DOUBLE_DOOR_DOUBLE_SWING ... Porta doppia a doppio battente \n- SLIDING_TO_LEFT ... Porta scorrevole a sinistra \n- SLIDING_TO_RIGHT\
+      \ ... Porta scorrevole a destra \n- DOUBLE_DOOR_SLIDING ... Doppia porta scorrevole \n- FOLDING_TO_LEFT ... Porta pieghevole a sinistra \n- FOLDING_TO_RIGHT ... Porta pieghevole a destra \n- DOUBLE_DOOR_FOLDING\
+      \ ... Doppia porta pieghevole \n- REVOLVING ... Porta girevole \n- ROLLINGUP ... Porta avvolgibile \n- SWING_FIXED_LEFT ...Battente con fissaggio a sinistra \n- SWING_FIXED_RIGHT ... Battente con\
+      \ fissaggio a destra \n- USERDEFINED ... configurazione utente"
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/operationtypedoor
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 4
+- name: RelationToSpace
+  pset: Cust_Element
+  definition:
+    de: Für jede Tür muss die dazugehörige Raumnummer (siehe Attribut "Innenraum, Eindeutige Raumnummer") im Attribut gepflegt werden. Es ist der Raum zu wählen, in den die Tür öffnet. Man beginnt bei der
+      Eingangstüre. z.B. "0108" (Siehe Kennzeichnungskonzep)
+    fr: Pour chaque porte, il faut mettre à jour le numéro de local correspondant (voir attribut "Espace intérieur, numéro de local unique") dans l’attribut. Il faut choisir le local que la porte permet
+      d’ouvrir. On commence par la porte d’entrée, p. ex. "0108" (voir concept de marquage).
+    it: Per ogni elemento di porte e finestre è necessario registrare nell’attributo il numero di locale corrispondente (vedere l'attributo "Interno, numero unico della camera"). Per le porte va scelto
+      il locale verso il quale la porta si apre. Si inizia dalle porte d'ingresso. Ad es. "0108" (vedere il sistema di etichettatura)
+    en: ''
+  datatype: IfcText
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '52'
+  - '53'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+  is_applicability: false
+  status: active
+  sort_order: 5
+- name: IsExternal
+  pset: Pset_DoorCommon
+  definition:
+    de: 'Gibt an ob es sich um eine Tür zwischen zwei Innenräumen oder zwischen Innen und Aussen handelt.
+
+      - True wenn die Türe nach aussen führt
+
+      - False wenn die Türe zwischen zwei Innenräumen ist'
+    fr: "Indique s’il s’agit d’une porte entre deux espaces intérieurs ou entre l’intérieur et l’extérieur. \n- True si la porte mène à l’extérieur \n- False si la porte se trouve entre deux espaces intérieurs"
+    it: "Indica se si tratta di una porta tra due ambienti interni o tra interno ed esterno. \n- True se la porta conduce all'esterno \n- False se la porta è tra due ambienti interni"
+    en: ''
+  datatype: IfcBoolean
+  allowed_values: null
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+  - armasuisse:workflow/awf-02-k-darstellung-sicherheitsklassifizierungen-der-fassade-nach-comsec-im-modell
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 6
+- name: Area
+  pset: Qto_DoorBaseQuantities
+  definition:
+    de: Fläche der Rohbauöffnungen für Türen, z.B. 103.43
+    fr: Surface des ouvertures du gros œuvre pour les portes, p. ex. 103.43
+    it: Superficie delle aperture grezze per le porte, ad es. 103.43
+    en: ''
+  datatype: IfcAreaMeasure
+  allowed_values: armasuisse:value/ifcareameasure
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '41'
+  - '51'
+  - '52'
+  - '53'
+  - '61'
+  - '62'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows:
+  - armasuisse:workflow/awf-08-c-modellbasierte-informationen-auf-bauteilebene-3d-architektur
+  - armasuisse:workflow/awf-02-f-bestandsaufnahme
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  is_applicability: false
+  status: active
+  sort_order: 7

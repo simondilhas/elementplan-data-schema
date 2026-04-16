@@ -1,0 +1,19 @@
+id: armasuisse:workflow/awf-08-h-lia-gebaudetechnik-auf-bauteilebene
+sort_order: 49
+code: AWF-08-h
+name:
+  de: LIA-Gebäudetechnik auf Bauteilebene
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: wip
+needed_in_domain: []
+comment: ''

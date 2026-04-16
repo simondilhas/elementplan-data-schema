@@ -1,0 +1,24 @@
+id: armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
+sort_order: 10
+code: AWF-02-a
+name:
+  de: Szenarienentwicklung städtebauliche Machbarkeit
+  fr: Développement de scénarios faisabilité urbanistique
+  it: Sviluppo di scenari fattibilità urbanistica
+  en: ''
+description:
+  de: "**Ziel**\nIn frühen Projektphasen können städtebauliche Szenarien schnell modelliert und anhand von Kennzahlen verglichen werden. Volumen, Organisation und Nutzungsverteilung werden auf einer gemeinsamen
+    Modellbasis geklärt — bevor aufwändige Planung beginnt.\n\n**Nutzen für den Auftraggeber**\n- Belastbare Entscheidungsgrundlage in früher Projektphase\n- Szenarien sind anhand einheitlicher Kennzahlen
+    direkt vergleichbar\n- Reduktion von Planungsaufwand durch frühzeitige Klärung städtebaulicher Rahmenbedingungen\n- Transparente Variantendokumentation für interne Entscheidungsträger\n\n**Umsetzung
+    im Projekt**\nDie städtebaulichen Szenarien werden als Geschossvolumen je Geschoss im IFC-Modell modelliert. Bei Bedarf erfolgt eine Unterteilung in Nutzungszonen. Pro Szenario wird ein separates Modell
+    bereitgestellt.\n\n**Ergebnis**\n\nIFC-Modelle der untersuchten Szenarien\nVariantenvergleich mit den relevanten Kennzahlen (Geschossfläche, Volumen, Nutzungsverteilung) als Tabelle oder Bericht"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

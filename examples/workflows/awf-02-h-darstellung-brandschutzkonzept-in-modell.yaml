@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
+sort_order: 16
+code: AWF-02-h
+name:
+  de: Darstellung Brandschutzkonzept in Modell
+  fr: Présentation du concept de protection incendie dans le modèle
+  it: Rappresentazione del concetto di protezione antincendio nel modello
+  en: ''
+description:
+  de: "**Ziel**\nDas Brandschutzkonzept wird im Modell räumlich abgebildet und kann durch interne Brandschutzverantwortliche direkt geprüft werden. Ein standardisiertes Vorgehen ermöglicht schnellere und
+    konsistente Rückmeldungen.\n\n**Nutzen für den Auftraggeber**\n- Interne Brandschutzverantwortliche können das Konzept direkt im Modell prüfen\n- Standardisiertes Prüfvorgehen verkürzt Feedbackzyklen\n
+    - Abweichungen und Lücken im Brandschutzkonzept werden räumlich sichtbar\n\n**Umsetzung im Projekt**\nBrandabschnitte, Brandschutzzonen und Fluchtwege werden als Räume und Zonen im Modell klassifiziert.
+    Brandschutzbauteile wie Türen, Wände und Abschlüsse werden als Platzhalterobjekte (Prismen) modelliert und den jeweiligen Brandschutzanforderungen zugeordnet. Die projektspezifischen Anforderungen werden
+    durch den zuständigen Brandschutzfachplaner definiert.\n\n**Ergebnis**\n- IFC-Modell mit klassifizierten Brandschutzzonen und modellierten Platzhalterobjekten\n- Grundlage für die standardisierte Prüfung
+    durch interne Brandschutzverantwortliche"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

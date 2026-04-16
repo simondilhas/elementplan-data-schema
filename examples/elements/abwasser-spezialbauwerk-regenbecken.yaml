@@ -1,0 +1,21 @@
+id: armasuisse:element/abwasser-spezialbauwerk-regenbecken
+sort_order: 87
+status: active
+name:
+  de: Abwasser Spezialbauwerk Regenbecken
+  fr: Eaux usées ouvrage spécial bassin d’eau de pluie
+  it: Acque di scarico, opera speciale bacino d’acqua piovana
+  en: ''
+needed_in_domain: []
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcBuilding
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcBuilding
+attributes: []

@@ -1,0 +1,34 @@
+id: armasuisse:value/predefinedtype-beam
+name:
+  de: PredefinedType:Beam
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - BEAM
+  - JOIST
+  - LINTEL
+  - SPANDREL
+  - T_BEAM
+  fr:
+  - BEAM
+  - JOIST
+  - LINTEL
+  - SPANDREL
+  - T_BEAM
+  it:
+  - BEAM
+  - JOIST
+  - LINTEL
+  - SPANDREL
+  - T_BEAM
+  en: []

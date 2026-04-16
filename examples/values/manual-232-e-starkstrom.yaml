@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-232-e-starkstrom
+name:
+  de: RelationToSystem_Cust_Element_Beleuchtung
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 232_E_Starkstrom
+  fr:
+  - 232_E_Courant-fort
+  it:
+  - 232_E_Corrente-forte
+  en: []

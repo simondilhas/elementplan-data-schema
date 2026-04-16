@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-discipline-reference-point
+name:
+  de: Description_Modelleinfügepunkt Disziplin
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - ^Discipline Reference Point.*$
+  fr:
+  - ^Discipline Reference Point.*$
+  it:
+  - ^Discipline Reference Point.*$
+  en: []

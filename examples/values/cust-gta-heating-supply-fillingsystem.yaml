@@ -1,0 +1,28 @@
+id: armasuisse:value/cust-gta-heating-supply-fillingsystem
+name:
+  de: Cust_GTA_Heating_supply.FillingSystem
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Kippmulde
+  - Füllstutzen
+  - andere
+  fr:
+  - Benne basculante
+  - Bec de remplissage
+  - autres
+  it:
+  - Benna ribaltabile
+  - Bocchettone di riempimento
+  - altri
+  en: []

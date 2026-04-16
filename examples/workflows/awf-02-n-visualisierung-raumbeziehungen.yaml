@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
+sort_order: 22
+code: AWF-02-n
+name:
+  de: Visualisierung Raumbeziehungen
+  fr: Visualisation des rapports des espaces entre eux
+  it: Visualizzazione dei rapporti tra gli spazi
+  en: ''
+description:
+  de: "**Ziel**\nRaumbeziehungen und Nutzungsanforderungen werden vor Beauftragung des Architekten in einer Raumbuch-Softwarelösung erfasst und visualisiert. Dies stellt sicher, dass das Raumprogramm mit
+    den Nutzern abgestimmt und als verbindliche Bestellgrundlage dokumentiert ist.\n\n**Nutzen für den Auftraggeber**\n- Anforderungen der Nutzer werden frühzeitig und strukturiert erfasst — bevor die Planung
+    beginnt\n- Missverständnisse zwischen Auftraggeber, Nutzer und Architekt werden vermieden\n- Abgestimmtes Raumprogramm bildet eine klare und nachvollziehbare Bestellgrundlage\n- Raumbeziehungen sind
+    visuell kommunizierbar und für nicht-technische Stakeholder verständlich\n\n**Umsetzung im Projekt**\nRäume, Nutzungsanforderungen und Beziehungen zwischen Räumen werden in einer Raumbuch-Softwarelösung
+    erfasst und als Netzwerk visualisiert. Die Erarbeitung erfolgt in enger Abstimmung mit den Nutzern und wird vor Beauftragung des Architekten abgeschlossen.\n\n**Ergebnis**\n- Abgestimmtes Raumprogramm
+    als verbindliche Bestellgrundlage\n- Visualisiertes Raumbeziehungsnetzwerk für Kommunikation mit Nutzern und Planern"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: BIM 3d full 10Mio+,BIM 3d light,BIM 3d full
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

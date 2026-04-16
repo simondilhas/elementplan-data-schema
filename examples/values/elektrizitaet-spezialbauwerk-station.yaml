@@ -1,0 +1,22 @@
+id: armasuisse:value/elektrizitaet-spezialbauwerk-station
+name:
+  de: Elektrizitaet Spezialbauwerk Station
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Elektrizitaet Spezialbauwerk Station
+  fr:
+  - Électricité ouvrage spécial station
+  it:
+  - Elettricità Opera speciale pozzetto
+  en: []

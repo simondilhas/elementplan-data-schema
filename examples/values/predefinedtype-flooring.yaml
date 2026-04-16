@@ -1,0 +1,22 @@
+id: armasuisse:value/predefinedtype-flooring
+name:
+  de: PredefinedType:FLOORING
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - FLOORING
+  fr:
+  - FLOORING
+  it:
+  - FLOORING
+  en: []

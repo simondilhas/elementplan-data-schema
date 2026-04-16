@@ -1,0 +1,22 @@
+id: armasuisse:value/elektrizitaet-anker-strebe
+name:
+  de: Elektrizitaet Anker Strebe
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Elektrizitaet Anker Strebe
+  fr:
+  - Électricité entretoise d’ancrage
+  it:
+  - Elettricità Ancoraggio puntone
+  en: []

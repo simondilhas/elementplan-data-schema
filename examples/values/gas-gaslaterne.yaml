@@ -1,0 +1,22 @@
+id: armasuisse:value/gas-gaslaterne
+name:
+  de: Gas Gaslaterne
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Gas Gaslaterne
+  fr:
+  - Gaz lanterne à gaz
+  it:
+  - Gas – lanterna a gas
+  en: []

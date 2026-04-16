@@ -1,0 +1,22 @@
+id: armasuisse:value/wasser-leitung
+name:
+  de: Wasser Leitung
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Wasser Leitung
+  fr:
+  - Eau conduite
+  it:
+  - Condotta dell'acqua
+  en: []

@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-endsuction
+name:
+  de: PredefinedType_Abwasserhebepumpe
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - ENDSUCTION
+  fr:
+  - ENDSUCTION
+  it:
+  - ENDSUCTION
+  en: []

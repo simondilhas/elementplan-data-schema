@@ -1,0 +1,22 @@
+id: armasuisse:value/sia416-klassifikationsname
+name:
+  de: sia416_Klassifikationsname
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - SIA416
+  fr:
+  - SIA416
+  it:
+  - SIA416
+  en: []

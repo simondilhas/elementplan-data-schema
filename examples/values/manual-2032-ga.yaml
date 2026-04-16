@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-2032-ga
+name:
+  de: Name_Gebäude / Bauwerke
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 2032/GA
+  fr:
+  - 2032/GA
+  it:
+  - 2032/GA
+  en: []

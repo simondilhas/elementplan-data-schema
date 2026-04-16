@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-firedamper
+name:
+  de: PredefinedType_Brandschutzklappe
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - FIREDAMPER
+  fr:
+  - FIREDAMPER
+  it:
+  - FIREDAMPER
+  en: []

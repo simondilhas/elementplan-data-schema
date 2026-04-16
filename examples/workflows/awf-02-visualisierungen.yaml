@@ -1,0 +1,39 @@
+id: armasuisse:workflow/awf-02-visualisierungen
+sort_order: 9
+code: AWF-02
+name:
+  de: Visualisierungen
+  fr: Visualisations base cas d’application 02 selon KBOB
+  it: Visualizzazioni
+  en: ''
+description:
+  de: "**Beschrieb:**\nFür die Diskussionen mit armasuisse Immobilien werden durch die Auftragnehmenden aus den zusammengefügten Modellen stufen- und phasengerecht 3D-Ansichten erzeugt. Ausarbeitungsgrad,\
+    \ Informationsgehalt und Detaillierung stellen sicher, dass die in den Grundleistungen sowie in den zusätzlich definierten Anwendungsfällen beschriebenen Tätigkeiten ausgeführt werden können. Es muss\
+    \ vom Auftragnehmer eine Möglichkeit zur Betrachtung der erzeugten Modelle zur Verfügung gestellt werden, um eine möglichst realitätsnahe Grundlage für die Bewertung der Funktionalität des Projekts\
+    \ durch armasuisse Immobilien zu schaffen. Unter dem Begriff Visualisierungen werden zweckmässige grafische Darstellungen (Planunterlagen in 2D und 3D, Schemata, Konzepte, etc.) im üblichen Rahmen und\
+    \ keine fotorealistischen Darstellungen o.ä. verstanden.\n\n**Ziele:**\n- Grundlage der Planung \n- Verbesserung der Kommunikation und des Projektverständnisses durch Unterstützung integraler virtueller\
+    \ Bauwerksmodelle.\n\n**Mehrwerte:**\n- bessere Entscheidungsgrundlagen aufgrund Visualisierung\n- schnelleres Verständnis des Projekts durch das 3D-Modell für alle Projektbeteiligten\n- Grundlage für\
+    \ die Bewertung der Funktionalität des Projekts\n\n**Lieferobjekte:**\n- BIM-Modell(e)\n- Dokumentationen in Bild-, Video- oder PDF-Format"
+  fr: "**Description:**\nPour les discussions avec armasuisse Immobilier, les mandataires génèrent à partir des modèles fusionnés des vues en 3D en fonction du niveau et de la phase. Le niveau de finition,\
+    \ la teneur de l’information et le degré de détail garantissent que les activités décrites dans les prestations de base ainsi que dans les cas d’usage définis en plus peuvent être exécutées.   Le mandataire\
+    \ doit mettre à disposition une possibilité d’examiner les modèles générés, afin de créer une base la plus réelle possible pour l’évaluation de la fonctionnalité du projet par armasuisse Immobilier.\
+    \  \n\n**Objectif:** \n- Base de la planification \n- Amélioration de la communication et de la compréhension du projet grâce au soutien de modèles d’ouvrage virtuels intégraux \n\n**Plus-value:** \n\
+    - Meilleures bases décisionnelles sur la base de la visualisation   \n- Compréhension plus rapide du projet pour tous les participants au projet grâce au modèle en 3D  \n- Base de l’évaluation de la\
+    \ fonctionnalité du projet   \n\n**Objets à livrer:** \n- Modèle BIM  \n- Documentations au format image, vidéo ou PDF  Remarque : le terme visualisations fait référence aux représentations graphiques\
+    \ adéquates (documents de planification en 2D et 3D, schémas, concepts, etc.) dans le cadre usuel, et pas aux représentations photoréalistes ou autres supports similaires."
+  it: "**Descrizione:**  \nIl mandatario, utilizzando i modelli assemblati, crea rappresentazioni in 3D per stadio intermedio e per fase da utilizzare durante i colloqui con armasuisse Immobili. Il grado\
+    \ di elaborazione, il contenuto informativo e il livello di dettaglio garantiscono lo svolgimento delle attività descritte nelle prestazioni di base e nei casi d’uso definiti in aggiunta. Il mandatario\
+    \ deve fornire la possibilità di analizzare i modelli generati, al fine di creare una base il più possibile vicina alla realtà per la valutazione della funzionalità del progetto da parte di armasuisse\
+    \ Immobili.  Con il termine «visualizzazioni» si intendono le consuete rappresentazioni grafiche funzionali (piani in 2D e 3D, schemi, progetti ecc.) e non le rappresentazioni fotorealistiche o similari.\n\
+    \n**Obiettivi:** \n- Base della pianificazione \n- Miglioramento della comunicazione e della comprensione del progetto con il supporto di modelli integrali dell’opera virtuali.  \n\n**Valori aggiunti:**\
+    \ \n- Migliore base decisionale grazie alla visualizzazione \n- Comprensione più rapida del progetto grazie al modello 3D per tutti gli attori del progetto \n- Base per la valutazione della funzionalità\
+    \ del progetto  \n\n**Oggetti della fornitura:** \n- Modello/i BIM \n- Documentazione in formato fotografico, video o PDF"
+  en: ''
+workflow_group: null
+parent_workflow: null
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

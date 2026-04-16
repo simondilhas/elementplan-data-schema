@@ -1,0 +1,22 @@
+id: armasuisse:value/wasser-oberflurhydrant
+name:
+  de: Wasser Oberflurhydrant
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Wasser Oberflurhydrant
+  fr:
+  - Eau bouche d’incendie en surface
+  it:
+  - Idrante soprasuolo
+  en: []

@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-userdefined
+name:
+  de: PredefinedType_Luftraum
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - USERDEFINED
+  fr:
+  - USERDEFINED
+  it:
+  - USERDEFINED
+  en: []

@@ -1,0 +1,31 @@
+id: armasuisse:workflow/awf-08-a-basis-dokumente-inkl-lia-2d
+sort_order: 41
+code: AWF-08-a
+name:
+  de: Übergabe Baudokumentation Gebäudetechnik und Betriebsdaten (LIA)
+  fr: Base (documents y c. LIA), 2D
+  it: Base (documenti incl. LIA), 2D
+  en: ''
+description:
+  de: "**Ziel**\nVor Projektabschluss steht eine vollständige, strukturierte digitale Dokumentation der Gebäudetechnik zur Verfügung. Sie umfasst alle relevanten Planungserzeugnisse sowie strukturierte
+    Betriebsdaten, die direkt als Grundlage für die Bewirtschaftung übernommen werden können.\n\n**Nutzen für den Auftraggeber**\n- LIA kann die Betriebsdaten schnell und ohne manuelle Nachbearbeitung in
+    die Bewirtschaftungssysteme übernehmen\n- Vollständige Schlussdokumentation mit nachgeführten As-built-Modellen, 2D-Plänen und Prüfberichten\n- Wesentliche Dokumente (z.B. Produktdatenblätter) sind
+    direkt mit den entsprechenden Modellkomponenten verknüpft\n\n**Umsetzung im Projekt**\nDie Betriebsdaten werden in einer der folgenden Varianten bereitgestellt:\n\n- *Variante A — Daten im IFC-System:*
+    Die geforderten Betriebsdaten werden im IfcSystem hinterlegt und jedes Bauteil dem entsprechenden System zugewiesen. Dies ermöglicht eine einfache Visualisierung der Daten im Modell. Der Workflow zur
+    Dateneingabe — insbesondere durch wen und in welcher Phase — muss projektspezifisch geklärt und definiert werden.\n- *Variante B — Strukturierte Excel-Liste:* Die geforderten Betriebsdaten werden in
+    einer vom Auftraggeber bereitgestellten Excel-Datei (im Projekt auf ar-elementplan herunterladbar) mit Bezug zum Modell erfasst. Jedes Bauteil erhält dafür das Property «RelationToSystem».\n\n**Ergebnis**\n
+    - Phasengerecht strukturierte digitale Schlussdokumentation (As-built-Modelle, 2D-Pläne, Prüfberichte, Dokumente)\n- *Variante A:* IFC-Modell mit Systemen und hinterlegten Betriebsdaten\n- *Variante
+    B:* IFC-Modell mit Bauteilen und Property «RelationToSystem» sowie ausgefüllte Excel-Liste, die mit dem Modell korrespondiert"
+  fr: armasuisse Immobilier reçoit du mandataire une documentation numérique structurée par phase de l’ouvrage. La structure de la documentation doit être conforme à la directive. Elle englobe tous les
+    résultats numériques de la planification dans le sens d’une documentation finale avec les modèles numériques mis à jour par rapport aux modifications de l’exécution (as-built), les plans en 2D, les
+    rapports de contrôle et tous les autres documents déterminants. Les principaux documents sont associés aux composantes correspondantes du modèle (p. ex. fiches techniques du produit).
+  it: armasuisse Immobili riceve dal mandatario una documentazione strutturata dell’opera in formato digitale adeguata alle varie fasi. La struttura della documentazione deve rispettare determinate specifiche.
+    Essa comprende tutti i risultati digitali della pianificazione, quindi rappresenta un documento finale che raccoglie i modelli digitali (as-built), i piani in 2D, i rapporti di verifica e tutti gli
+    altri documenti rilevanti aggiornati con le modifiche apportate durante l’esecuzione I documenti principali sono associati all’elemento corrispondente del modello (ad es. schede informative dei prodotti).
+  en: ''
+workflow_group: BIM 2d light,BIM 3d light,BIM 3d full,BIM 2d full,BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+picture_link: null
+status: active
+needed_in_domain: []
+comment: ''

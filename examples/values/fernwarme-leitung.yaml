@@ -1,0 +1,22 @@
+id: armasuisse:value/fernwarme-leitung
+name:
+  de: Fernwärme Leitung
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Fernwärme Leitung
+  fr:
+  - Chauff. dist. conduite
+  it:
+  - Condotta calore a distanza
+  en: []

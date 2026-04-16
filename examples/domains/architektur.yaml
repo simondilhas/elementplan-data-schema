@@ -1,0 +1,44 @@
+id: armasuisse:domain/architektur
+sort_order: 8
+name:
+  de: Architektur
+  fr: Architecture
+  it: Architettura
+  en: ''
+definition:
+  de: "Beispiel: `APB-000311_1233-NB_31_ARC_Freitext`\n(\"/\" muss durch ein \"-\" ersetzt werden)\n\nDas Fachmodell Architektur & Umgebung enthält alle Planungsinhalte und kann bei Bedarf in Absprache\
+    \ mit dem BIM-Manager projektspezifisch in weitere Teilmodelle aufgeteilt werden, z. B. Raummodell, Fassade, Innenausbau oder Tragwerk.\n\nDer Dateiname setzt sich wie folgt zusammen:\n- **Auftrags-Nr\
+    \ Bauherr** gemäss armasuisse Immobilien\n- **Gebäude ID** gemäss armasuisse Immobilien\n- **Projektphase**:\n    - 00: Bestandsaufnahme\n    - 11: Bedürfnisformulierung\n    - 21: Projektdefinition,\
+    \ Machbarkeit\n    - 22: Auswahlverfahren\n    - 31: Vorprojekt\n    - 32: Bauprojekt\n    - 33: Bewilligungsverfahren, Auflageprojekt\n    - 41: Ausschreibung\n    - 51: Ausführungsprojekt\n    - 52:\
+    \ Ausführung\n    - 53: Inbetriebnahme\n    - 61: Betrieb\n    - 62: Erhaltung\n- **Disziplin:**\n    - ARC: Architektur\n    - ARC-LA: Landschaftsarchitektur\n    - ARC-IA: Innenarchitektur\n    -\
+    \ BIN:  Bauingenieur\n    - BIN-AB:  Fachmodell Tragwerk– Aussparungen, Bohrungen\n    - BIN-SZ: Sperrzonen\n    - Bei Bedarf weitere Modelle projektspezifisch definieren\n\n\n\n**Freitext**\nDer Dateiname\
+    \ *kann* projektspezifisch um zusätzliche Informationen ergänzt werden, z. B. Work-Breakdown-Structure oder Status. \n\nWenn Modelle nach Neu/Bestand/Abbruch/Temporär gegliedert werden (was wir beim\
+    \ BIM-Start empfehlen), muss im Modellnamen der jeweilige Status enthalten sein:\n- Neu: Enthält nur neue Elemente.\n- Bestand: Zeigt nur bestehende, verbleibende Elemente.\n- Abbruch: Zeigt nur Elemente,\
+    \ die abgebrochen werden.\n- Temporär: Zeigt Elemente, die nur während der Bauphase relevant sind."
+  fr: "Exemple : `APB-000311_1233-NB_31_ARC_Texte-Libre`\n(\"/\" doit être remplacé par un \"-\")\n\nLa maquette Architecture & Environnement contient tous les contenus de planification et peut, si nécessaire,\
+    \ être divisée en d'autres maquettes partielles en fonction du projet, en accord avec le BIM-Manager, par exemple le maquette de pièce, de façade, d'aménagement intérieur ou de structure porteuse.\n\
+    \nLe nom du fichier se compose comme suit :\n   **Numéro de mandat du maître d'ouvrage** selon armasuisse Immobilier\n   **ID du bâtiment** selon armasuisse Immobilier\n   **Phase du projet** :\n   00\
+    \ : état des lieux\n   11 : Formulation des besoins\n   21 : définition du projet, faisabilité\n   22 : Procédure de sélection\n   31 : Avant-projet\n   32 : Projet de construction\n   33 : Procédure\
+    \ d'autorisation, projet de mise à l'enquête\n   41 : Appel d'offres\n   51 : Projet d'exécution\n   52 : Exécution\n   53 : Mise en service\n   61 : exploitation\n   62 : Maintien\n   **Discipline:**\n\
+       ARC : Architecture\n   ARC-LA : Architecture de paysage\n   ARC-IA : Architecture d'intérieur\n   BIN : Ingénieur civil\n   BIN-AB : Modèle spécialisé structure porteuse- évidements, forages\n   BIN-SZ\
+    \ : Zones interdites\n   Si nécessaire, définir d'autres modèles spécifiques au projet\n\n**Texte libre**\nLe nom de fichier *peut* être complété par des informations supplémentaires spécifiques au\
+    \ projet, par ex. la structure d'arrêt de travail ou le statut. \n\nSi les maquettes sont structurées en Nouveau/Existant/Démolition/Temporaire (ce que nous recommandons lors du démarrage du BIM), le\
+    \ nom de la maquette doit contenir le statut correspondant :\n- Nouveau : ne contient que de nouveaux éléments.\n- Existant : ne montre que les éléments existants restants.\n- Démolition : Affiche uniquement\
+    \ les éléments qui seront annulés.\n- Provisoire : Affiche les éléments qui ne sont pertinents que pendant la phase de construction."
+  it: "Esempio: `APB-000311_1233-NB_31_ARC_Testo-Libero`\n(\"/\" deve essere sostituito da un \"-\")\n\nIl modello Architettura & Ambiente contiene tutti i contenuti della progettazione e, se necessario,\
+    \ può essere suddiviso in altri modelli parziali a seconda del progetto, in accordo con il BIM-Manager, ad esempio il mockup del locale, della facciata, della disposizione interna o della struttura\
+    \ portante.\n\nIl nome del file è composto come segue\n**Numero di mandato del cliente** secondo armasuisse Real Estate\n**Identità dell'edificio** secondo armasuisse Real Estate\n**Fase del progetto**\
+    \ :\n\t\t00 : inventario delle attrezzature\n\t\t11 : formulazione dei requisiti\n\t\t21 : Definizione del progetto, fattibilità\n\t\t22 : Procedura di selezione\n\t\t31 : Progetto preliminare\n\t\t\
+    32 : Progetto di costruzione\n\t\t33 : Procedura di autorizzazione, progetto di indagine\n\t\t41 : Bando di gara\n\t\t51 : Progetto esecutivo\n\t\t52 : Esecuzione\n\t\t53: Messa in servizio\n\t\t61:\
+    \ Gestione operativa\n\t\t62: Manutenzione\n\n**Disciplina:**\n\t\tARC: Architettura\n\t\tARC-LA: Architettura del paesaggio\n\t\tARC-IA: Architettura d'interni\n\t\tBIN: Ingegneria civile\n\t\tBIN-AB:\
+    \ Modello specializzato di struttura portante - tagli, perforazioni\n\t\tBIN-SZ: Zone vietate\n\nSe necessario, definire altri modelli specifici per il progetto\n**Testo libero Il nome del file *può*\
+    \ essere integrato con informazioni aggiuntive specifiche del progetto, ad esempio la struttura di interruzione dei lavori o lo stato.\nSe i modelli sono strutturati come Nuovo/Esistente/Demolizione/Temporaneo\
+    \ (cosa che consigliamo quando si avvia il BIM), il nome del modello deve contenere lo stato corrispondente:\n- Nuovo: contiene solo gli elementi nuovi.\n- Esistente: mostra solo gli elementi ancora\
+    \ esistenti.\n- Demolizione: mostra solo gli elementi che saranno demoliti.\n- Provvisorio: mostra gli elementi che sono rilevanti solo durante la fase di costruzione.\""
+  en: ''
+file_name:
+  de: '{Auftrags-Nr Bauherr}_{Bauwerk ID}_{Phase}_{Disziplin}_{Freitext}'
+  fr: '{Numéro projet}_{Code bâtiment}_{Phase}_{Discipline Technique}_{Libre}'
+  it: '{Numero di incarico del committente}_{Codice opera di costruzione}_{Fase} {Disciplina} {Testo libero}'
+  en: ''
+status: active

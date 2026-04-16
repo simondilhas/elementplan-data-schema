@@ -1,0 +1,54 @@
+id: armasuisse:workflow/awf-07-auftrags-pendenzen-und-magelmanagement
+sort_order: 37
+code: AWF-07
+name:
+  de: Auftrags-, Pendenzen- und Mägelmanagement
+  fr: Gestion des mandats, des points en suspens et des défauts
+  it: Gestione di mandati, pendenze e difetti
+  en: ''
+description:
+  de: '**Beschrieb:**
+
+    Der Bauherr stellt sicher, dass Aufträge, Pendenzen und Mängel mit den jeweils zugehörigen Vorgangsinformationen (Herkunft, weiteres Vorgehen, Fristen, etc.) digital erfasst, im konsolidierten Gesamtmodell
+    verortet und einem Verantwortlichen zugewiesen werden. Die verantwortliche Person (Gesamtleitung AN) ergreift die erforderlichen Massnahmen und meldet die Erledigung zurück. Aktualisierte Listen werden
+    dem Auftraggeber in regelmässigen Abständen zur Verfügung gestellt.
+
+
+    **Ziele:**
+
+    - Verbesserung der Transparenz und Qualitätssicherung in der Projektrealisierung, Kontrolle der Weiterbearbeitung bzw. der Erledigung von Pendenzen und Mängeln.
+
+    - Zuverlässige Nachvollziehbarkeit bei Abnahmen, Haftungs- und Garantiefragen. Zuverlässige Nachvollziehbarkeit bei verdeckten Mängeln.
+
+
+    **Mehrwerte:**
+
+    - Effiziente Kommunikation
+
+    - Übersicht über Mängel
+
+
+    **Lieferobjekte:**
+
+    - Dokumentation der Pendenzen als BCF-Datei sowie im Berichtsform (PDF oder Excel)
+
+    - Zugang zur CDE PIM'
+  fr: "**Description:**\nLe mandataire s’assure que les mandats, points en suspens et défauts sont saisis par voie numérique avec les informations correspondantes sur l’opération (provenance, suite à donner,\
+    \ délais, etc.), localisés dans le modèle global consolidé et attribués à un responsable. La personne responsable (direction générale mandataire) prend les mesures requises et donne un feed-back sur\
+    \ l’exécution. Des listes actualisées sont mises à la disposition du mandant à intervalles réguliers. \n\n**Objectif:** \n- Amélioration de la transparence et de l’assurance qualité dans la réalisation\
+    \ du projet, contrôle de la poursuite du traitement ou du règlement des points en suspens et des défauts.   \n- Traçabilité fiable lors des réceptions, des questions de responsabilité et de garantie.\
+    \ Traçabilité fiable pour les défauts cachés \n\n**Plus-value:** \n- Communication efficace  \n- Vue d’ensemble des défauts \n\n**Objets à livrer:**  \n- Documentation des cas en suspens sous forme\
+    \ de fichier BCF et sous forme de rapport (fichier PDF ou Excel)  \n- Accès aux CDE-PIM"
+  it: "**Descrizione:**  \nIl committente assicura che i mandati, le pendenze e i difetti vengano registrati in formato digitale insieme alle relative informazioni sul processo  (provenienza, passi successivi,\
+    \ scadenze ecc.), vengano inseriti nel modello globale consolidato e vengano assegnati a un responsabile.  La persona responsabile (direzione generale mandatario) adotta le misure necessarie e riferisce\
+    \ in merito al completamento. Periodicamente viene fornito al mandante un elenco aggiornato.  \n\n**Obiettivi: **  \n- Miglioramento della trasparenza e garanzia della qualità nella realizzazione del\
+    \ progetto, controllo della successiva elaborazione e risoluzione di pendenze e difetti. \n- Tracciabilità affidabile in caso di accettazioni e questioni concernenti responsabilità e garanzia. Tracciabilità\
+    \ affidabile in caso di difetti occulti.  \n\n**Valore aggiunto:** \n- Comunicazione efficiente \n- Panoramica dei difetti  \n\n**Oggetti della fornitura:** \n- Documentazione delle pendenze in formato\
+    \ BCF e come relazione (PDF o Excel) \n- Accesso a CDE PIM"
+  en: ''
+workflow_group: null
+parent_workflow: null
+picture_link: null
+status: active
+needed_in_domain: []
+comment: ''

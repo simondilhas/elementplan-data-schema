@@ -1,0 +1,22 @@
+id: armasuisse:value/sia416-innenraum
+name:
+  de: sia416_innenraum
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - ^(HNF[1-6]|NNF|FF|VF|BUF|UUF|ANF|AVF|AFF)$
+  fr:
+  - ^(SUP[1-6]|SUS|SI|SD|SAA|SAN|SEU|SED|SEI)$
+  it:
+  - ^(SUP[1-6]|SUS|SI|SCIR|SLES|SLEN|SUE|SCIRE|SIE)$
+  en: []

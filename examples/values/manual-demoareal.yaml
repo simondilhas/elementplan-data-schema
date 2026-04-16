@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-demoareal
+name:
+  de: Description_Projekt
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - DEMOAREAL
+  fr:
+  - DEMOAREAL
+  it:
+  - DEMOAREAL
+  en: []

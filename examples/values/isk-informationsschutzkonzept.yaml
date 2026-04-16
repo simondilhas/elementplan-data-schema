@@ -1,0 +1,34 @@
+id: armasuisse:value/isk-informationsschutzkonzept
+name:
+  de: ISK_Informationsschutzkonzept
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - 1 vorhanden
+  - 2 Vorhanden für mehrere WE’s
+  - 3 Vorhanden für einzelne Objekte
+  - 4 Nicht vorhanden
+  - 9 Nicht relevant
+  fr:
+  - 1 disponible
+  - 2 Disponible pour plusieurs entités économiques
+  - 3 Disponible pour les objets individuels
+  - 4 Non disponible
+  - 9 Sans objet
+  it:
+  - 1 disponibile
+  - 2 Disponibile per più unità economiche
+  - 3 Disponibile per singoli oggetti
+  - 4 Non disponibile
+  - 9 Non pertinente
+  en: []

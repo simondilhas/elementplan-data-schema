@@ -1,0 +1,22 @@
+id: armasuisse:value/gas-sicherheitskorridor
+name:
+  de: Gas Sicherheitskorridor
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Gas Sicherheitskorridor
+  fr:
+  - Gaz corridor de sécurité
+  it:
+  - Gas – corridoio di sicurezza
+  en: []

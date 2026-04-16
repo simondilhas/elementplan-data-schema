@@ -1,0 +1,48 @@
+id: armasuisse:element/fernwarme-leitung
+sort_order: 106
+status: active
+name:
+  de: Fernwärme Leitung
+  fr: Chauff. dist. conduite
+  it: Condotta teleriscaldamento
+  en: ''
+needed_in_domain:
+- armasuisse:domain/tiefbau
+definition:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+entity_ifc2x3: null
+entity_ifc4: IfcDistributionFlowElement
+entity_ifc4_3: null
+picture_link: null
+model_link: null
+applicability: entity_ifc4=IfcDistributionFlowElement
+attributes:
+- name: ObjectType
+  pset: null
+  definition:
+    de: Gibt an, dass es sich um eine Fernwärmeleitung handelt.
+    fr: Indique qu’il s’agit d’une conduite de chauffage à distance.
+    it: Indica se si tratta di un tubo per il teleriscaldamento.
+    en: ''
+  datatype: null
+  allowed_values: armasuisse:value/fernwarme-leitung
+  link_uid: ''
+  regex:
+    de: ''
+    fr: ''
+    it: ''
+    en: ''
+  needed_in_phases:
+  - '31'
+  - '32'
+  - '33'
+  - '53'
+  ifc_versions:
+  - ifc4
+  needed_for_workflows: []
+  is_applicability: true
+  status: active
+  sort_order: 1

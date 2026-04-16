@@ -1,0 +1,22 @@
+id: armasuisse:value/fernwarme-bauwerk-kammer
+name:
+  de: Fernwärme Bauwerk Kammer
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Fernwärme Bauwerk Kammer
+  fr:
+  - Chauff. dist. ouvrage compartiment
+  it:
+  - Opera teleriscaldamento camera
+  en: []

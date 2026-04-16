@@ -1,0 +1,25 @@
+id: armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
+sort_order: 17
+code: AWF-02-i
+name:
+  de: Darstellung Sicherheitszonen in Modell
+  fr: Présentation des zones de sécurité dans le modèle
+  it: Rappresentazione del concetto di zone di sicurezza nel modello
+  en: ''
+description:
+  de: "**Ziel**\nSicherheitsrelevante Räume und Zonen werden im Modell klassifiziert und dargestellt. Dies verbessert das gemeinsame Verständnis und erleichtert die Kommunikation des Sicherheitskonzepts
+    mit Nutzern und Betreibern.\n\n**Nutzen für den Auftraggeber**\n- Sicherheitskonzept ist für Nutzer und Betreiber räumlich nachvollziehbar\n- Abstimmung von Sicherheitsanforderungen auf Basis eines
+    gemeinsamen Modells statt reiner Textdokumentation\n- Frühzeitige Identifikation von Konflikten zwischen Nutzungsanforderungen und Sicherheitsvorgaben\n\n**Umsetzung im Projekt**\nRäume und Sicherheitszonen
+    werden im Modell klassifiziert und dargestellt. Die projektspezifische Zonierung wird durch den zuständigen Sicherheitsplaner definiert.\n\n**Ergebnis**\n- IFC-Modell mit klassifizierten Sicherheitsräumen
+    und -zonen\n- Grundlage für Abstimmung und Kommunikation des Sicherheitskonzepts mit Nutzern und Betreibern"
+  fr: Les zones de sécurité doivent être saisies en tant que zones et affectées à des types de zone correspondants. Le concept de zones doit être proposé par le mandataire en même temps que le BEP et ajusté
+    avec le mandant.
+  it: Le zone di sicurezza devono essere registrate come zone e assegnate alle categorie corrispondenti. Il concetto delle zone deve essere proposto con il BEP del mandatario e concordato assieme a quest’ultimo.
+  en: ''
+workflow_group: BIM 3d light,BIM 3d full,BIM 3d full 10Mio+
+parent_workflow: armasuisse:workflow/awf-02-visualisierungen
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

@@ -1,0 +1,22 @@
+id: armasuisse:value/elektrizitaet-spezialbauwerk-schacht
+name:
+  de: Elektrizitaet Spezialbauwerk Schacht
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Elektrizitaet Spezialbauwerk Schacht
+  fr:
+  - Électricité ouvrage spécial regard
+  it:
+  - Cavo di telecontrollo delle acque
+  en: []

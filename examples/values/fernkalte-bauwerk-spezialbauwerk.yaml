@@ -1,0 +1,22 @@
+id: armasuisse:value/fernkalte-bauwerk-spezialbauwerk
+name:
+  de: Fernkälte Bauwerk Spezialbauwerk
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - Fernkälte Bauwerk Spezialbauwerk
+  fr:
+  - Réseau de froid ouvrage ouvrage spécial
+  it:
+  - Rete di teleraffrescamento
+  en: []

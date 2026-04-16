@@ -1,0 +1,56 @@
+id: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
+sort_order: 40
+code: AWF-08
+name:
+  de: Bauwerksdokumentation Basis AWF-08 gemäss KBOB
+  fr: Documentation d’ouvrage base cas d’application 08 selon KBOB
+  it: Documentazione dell’opera, caso d’uso-08 base secondo KBOB
+  en: ''
+description:
+  de: '**Beschrieb:**
+
+    armasuisse Immobilien erhält vom Beauftragten eine strukturierte digitale Dokumentation des Bauwerks. Die Struktur der Dokumentation hat gemäss Vorgabe zu erfolgen. Sie umfasst alle digitalen Planungserzeugnisse
+    im Sinne einer Schlussdokumentation, das heisst die hinsichtlich Ausführungsänderungen nachgeführten digitalen Modelle (as-built), 2D-Pläne, Prüfberichte und alle weiteren relevanten Dokumente.
+
+
+    **Ziele:**
+
+    - Verbesserung der Datengrundlage des Bauwerkes zu Nutzung über den gesamten Lebenszyklus.
+
+
+    **Mehrwert:**
+
+    - Nutzung der Daten in Betrieb
+
+    - Strukturierte Bauwerksdokumentation
+
+    - Verbesserung der Qualitätssicherung zum Projektabschluss
+
+
+    **Lieferobjekte:**
+
+    - BIM-Modell(e)
+
+    - Excel GtA-Listen (LIA)
+
+    - Dokumente gemäss Immobilienprojektdokumentation'
+  fr: "**Description:**\narmasuisse Immobilier reçoit du mandataire une documentation numérique structurée de l’ouvrage. La structure de la documentation doit être conforme à la directive. Elle englobe\
+    \ tous les résultats numériques de la planification dans le sens d’une documentation finale avec les modèles numériques mis à jour par rapport aux modifications de l’exécution (as-built), les plans\
+    \ en 2D, les rapports de contrôle et tous les autres documents déterminants. Les principaux documents sont associés aux composantes correspondantes du modèle (p. ex. fiches techniques du produit). \n\
+    \n**Objectif:** \n- Amélioration de la base de données de l’ouvrage concernant l’utilisation tout au long du cycle de vie \n\n**Plus-value:** \n- Utilisation des données exploitées \n- Documentation\
+    \ structurée de l’ouvrage  \n- Amélioration de l’assurance qualité jusqu’à la fin du projet  \n\n**Objets à livrer:** \n- Modèle BIM  \n- Listes Excel-GtA (LIA) \n- Documents selon Documentation de\
+    \ projets immobiliers"
+  it: "**Descrizione:**  \narmasuisse Immobili riceve dal mandatario una documentazione strutturata dell’opera in formato digitale. La struttura della documentazione deve rispettare determinate specifiche.\
+    \ Essa comprende tutti i risultati digitali della pianificazione e rappresenta un documento finale che raccoglie i modelli digitali (as-built), i piani in 2D, i rapporti di verifica e tutti gli altri\
+    \ documenti rilevanti aggiornati con le modifiche apportate durante l’esecuzione.  \n\n**Obiettivi:** \n- Miglioramento della base di dati dell’opera di costruzione da utilizzare per tutto il ciclo\
+    \ di vita.  \n\n**Valore aggiunto:** \n- Uso dei dati in funzione - Documentazione dell’opera strutturata\n- Miglioramento della garanzia della qualità in fase di conclusione del progetto  \n\n**Oggetti\
+    \ della fornitura:** \n- Modello/i BIM \n- Elenchi Excel (LIA)\n- Documenti secondo la documentazione del progetto immobiliare"
+  en: ''
+workflow_group: null
+parent_workflow: null
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+- armasuisse:domain/gebaudetechnik
+comment: ''

@@ -1,0 +1,22 @@
+id: armasuisse:value/manual-circulator
+name:
+  de: PredefinedType_Zirkulationspumpe
+  fr: ''
+  it: ''
+  en: ''
+description:
+  de: ''
+  fr: ''
+  it: ''
+  en: ''
+year: 2025
+norm_reference: null
+status: active
+values:
+  de:
+  - CIRCULATOR
+  fr:
+  - CIRCULATOR
+  it:
+  - CIRCULATOR
+  en: []

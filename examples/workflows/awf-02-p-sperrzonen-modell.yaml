@@ -1,0 +1,23 @@
+id: armasuisse:workflow/awf-02-p-sperrzonen-modell
+sort_order: 24
+code: AWF-02-p
+name:
+  de: Sperrzonen-Modell Tragwerk
+  fr: Modèle des zones interdites
+  it: Modello zone di sbarramento
+  en: ''
+description:
+  de: "**Ziel**\nTragwerkssperrzonen werden im Vorprojekt modelliert und den Fachplanern als verbindliche Grundlage übergeben. Koordinationsprobleme zwischen Tragwerk und Haustechnik werden so frühzeitig
+    vermieden.\n\n**Nutzen für den Auftraggeber**\n- Sperrzonen sind für alle Fachplaner räumlich eindeutig kommuniziert\n- Kollisionen zwischen Tragwerk und Haustechnikführung werden frühzeitig erkannt\n
+    - Kostspieligen Planungskorrekturen in späteren Phasen werden vermieden\n\n**Umsetzung im Projekt**\nDer Tragwerksplaner definiert und modelliert die Sperrzonen im Vorprojekt. Das Sperrzonenmodell wird
+    den beauftragten Fachplanern als Koordinationsgrundlage übergeben.\n\n**Ergebnis**\n- IFC-Sperrzonenmodell als verbindliche Koordinationsgrundlage für alle Fachplaner"
+  fr: Les directives de modélisation doivent être définies par le concepteur de façon spécifique au projet.
+  it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
+  en: ''
+workflow_group: BIM 3d full 10Mio+,BIM 3d full,BIM 3d light
+parent_workflow: armasuisse:workflow/awf-05-planungskoordination-und-fortschritt
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+comment: ''

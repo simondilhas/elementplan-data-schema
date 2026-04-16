@@ -1,0 +1,31 @@
+id: armasuisse:workflow/awf-00-c-nachweismodell-heizung-kalteanlagen
+sort_order: 3
+code: AWF-00-c
+name:
+  de: Nachweis Modellierungskompetenz Heizung- und Kälteanlagen Planer
+  fr: Modèle de justificatif acquisition install. tech. bât. installations de chauffage et frigorifiques
+  it: Modello di prova Impianti di riscaldamento e refrigerazione
+  en: ''
+description:
+  de: "**Ziel**\nDer anbietende Fachplaner für Heizung- und Kälteanlagen weist nach, dass er die BIM-Anforderungen des Auftraggebers erfüllen kann. Der Nachweis erfolgt durch die Modellierung eines Mustermodells
+    gemäss definierten Vorgaben und dessen Prüfung vor Einreichung.\n\n**Nutzen für den Auftraggeber**\n- Fundierte Bewertungsgrundlage für den Vergabeentscheid\n- Sicherstellung, dass der beauftragte Fachplaner
+    die geforderte Modellqualität liefern kann\n- Standardisierter, vergleichbarer Nachweis über alle Angebote\n\n**Umsetzung im Projekt**\n\n1. *Entscheid Kriterientyp:* Der Auftraggeber legt fest, ob
+    das Nachweismodell als Eignungs- oder Zuschlagskriterium eingesetzt wird und welcher Erfüllungsgrad gefordert ist.\n2. *Anforderungen:* Die Modellierungsanforderungen werden den Ausschreibungsunterlagen
+    beigelegt und sind online unter [ar-elementplan.ch](http://ar-elementplan.ch) im Projekt APB-000BIM-NA einsehbar. Beispiele von Nachweismodellen sind auf armaform verfügbar.\n3. *Modellierung durch
+    Anbieter:* Der Anbieter modelliert das Nachweismodell entsprechend den Vorgaben.\n4. *Selbstcheck:* Das Modell wird durch den Anbieter unter [ar-pruefcloud.libal-tech.ch](https://ar-pruefcloud.libal-tech.ch)
+    gegen die Anforderungen geprüft.\n5. *Kontrolle:* Das eingereichte Modell wird durch den Auftraggeber geprüft und bewertet.\n\n**Ergebnis**\n- IFC-Nachweismodell gemäss Anforderungen\n- IDS-Prüfbericht
+    als dokumentierter Nachweis der Modellqualität"
+  fr: Pour les principaux modèles Architecture et technique du bâtiment (installations électriques, de chauffage/frigorifiques, de ventilation et sanitaires), le cas d’application Modèle de justificatif
+    acquisition renferme les exigences relatives aux informations qui doivent être remplies intégralement dans le cadre des procédures d’offre par les BIM managers et les mandataires soumissionnaires en
+    tant que certificat d’aptitude.
+  it: Il caso d’uso *Modello di prova Impianti di riscaldamento e refrigerazione* è una parte del modello di prova Acquisto. Contiene i requisiti informativi che nel quadro della procedura d’offerta devono
+    essere soddisfatti dall’impresa offerente. Nella documentazione della gara d’appalto sono contenute le informazioni relative all’uso o meno del modello di prova come criterio di idoneità o di aggiudicazione
+    e al grado di adempimento richiesto.
+  en: ''
+workflow_group: null
+parent_workflow: armasuisse:workflow/awf-00-nachweismodelle
+picture_link: null
+status: active
+needed_in_domain:
+- armasuisse:domain/nachweismodell-heizung-kalte
+comment: ''
