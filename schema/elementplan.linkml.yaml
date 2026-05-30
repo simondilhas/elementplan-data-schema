@@ -102,6 +102,9 @@ slots:
     range: string
   datatype:
     range: IFCDatatypeEnum
+  unit:
+    range: string
+    description: Optional unit for measure datatypes (e.g. mm, m², kg).
   allowed_values:
     range: ValueSet
     inlined: false
@@ -304,6 +307,7 @@ classes:
       - pset
       - definition
       - datatype
+      - unit
       - allowed_values
       - regex
       - needed_in_phases
