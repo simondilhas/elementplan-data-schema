@@ -1,0 +1,17 @@
+id: armasuisse:project-goal/bim-kompetenz
+sort_order: 10
+code: PG-01
+name:
+  de: BIM-Kompetenz nachweisen
+  fr: Démontrer la compétence BIM
+  it: Dimostrare la competenza BIM
+  en: Demonstrate BIM competence
+description:
+  de: Sicherstellen, dass Beauftragte die geforderte BIM-Modellierungs- und Prozesskompetenz nachweisen
+    können.
+  fr: Garantir que les mandataires peuvent démontrer la compétence BIM requise en modélisation et en processus.
+  it: Garantire che i mandatari possano dimostrare la competenza BIM richiesta in modellazione e processi.
+  en: Ensure contractors can demonstrate the required BIM modelling and process competence.
+picture_link: null
+status: active
+comment: ''

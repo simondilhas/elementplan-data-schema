@@ -1,0 +1,17 @@
+id: armasuisse:project-goal/planungskoordination-und-qualitaet
+sort_order: 50
+code: PG-05
+name:
+  de: Planungskoordination und Qualität sicherstellen
+  fr: Assurer coordination et qualité de la planification
+  it: Garantire coordinamento e qualità della pianificazione
+  en: Ensure planning coordination and quality
+description:
+  de: Koordination, Issues und Planungsfortschritt nachvollziehbar steuern und die Modellqualität absichern.
+  fr: Piloter de façon traçable la coordination, les issues et l’avancement, et garantir la qualité des
+    modèles.
+  it: Guidare in modo tracciabile coordinamento, issue e avanzamento, e garantire la qualità dei modelli.
+  en: Manage coordination, issues and planning progress transparently and safeguard model quality.
+picture_link: null
+status: active
+comment: ''

@@ -28,4 +28,6 @@ picture_link: null
 status: active
 needed_in_domain:
 - armasuisse:domain/nachweismodell-sanitar
+needed_for_project_goals:
+- armasuisse:project-goal/bim-kompetenz
 comment: ''

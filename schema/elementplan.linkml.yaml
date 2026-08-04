@@ -119,11 +119,19 @@ slots:
     multivalued: true
     range: Workflow
     inlined: false
+  needed_for_project_goals:
+    multivalued: true
+    range: ProjectGoal
+    inlined: false
   is_applicability:
     range: boolean
   domains:
     multivalued: true
     range: Domain
+    inlined_as_list: true
+  project_goals:
+    multivalued: true
+    range: ProjectGoal
     inlined_as_list: true
   workflows:
     multivalued: true
@@ -199,6 +207,7 @@ classes:
     tree_root: true
     slots:
       - domains
+      - project_goals
       - workflows
       - valuesets
       - phase_schemes
@@ -217,6 +226,17 @@ classes:
       - file_name
       - status
 
+  ProjectGoal:
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - description
+      - picture_link
+      - status
+      - comment
+
   Workflow:
     slots:
       - id
@@ -229,6 +249,7 @@ classes:
       - picture_link
       - status
       - needed_in_domain
+      - needed_for_project_goals
       - comment
 
   ValueSet:

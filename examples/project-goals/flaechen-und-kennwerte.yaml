@@ -1,0 +1,17 @@
+id: armasuisse:project-goal/flaechen-und-kennwerte
+sort_order: 20
+code: PG-02
+name:
+  de: Flächen und Kennwerte transparent ermitteln
+  fr: Déterminer surfaces et indicateurs de façon transparente
+  it: Determinare superfici e indicatori in modo trasparente
+  en: Determine areas and key figures transparently
+description:
+  de: Raumflächen, Volumina und Bauwerkskennwerte modellbasiert, nachvollziehbar und phasengerecht bereitstellen.
+  fr: Fournir surfaces, volumes et indicateurs d’ouvrage de façon modélisée, traçable et adaptée aux phases.
+  it: Fornire superfici, volumi e indicatori dell’opera in modo modellato, tracciabile e adeguato alle
+    fasi.
+  en: Provide areas, volumes and building metrics in a model-based, traceable and phase-appropriate way.
+picture_link: null
+status: active
+comment: ''

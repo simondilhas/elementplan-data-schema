@@ -24,4 +24,6 @@ status: active
 needed_in_domain:
 - armasuisse:domain/referenz-perimeter
 - armasuisse:domain/referenz-bauwerk
+needed_for_project_goals:
+- armasuisse:project-goal/modellbasierte-entscheidungsfindung
 comment: ''

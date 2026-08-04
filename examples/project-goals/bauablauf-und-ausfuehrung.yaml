@@ -1,0 +1,16 @@
+id: armasuisse:project-goal/bauablauf-und-ausfuehrung
+sort_order: 60
+code: PG-06
+name:
+  de: Bauablauf planen und steuern
+  fr: Planifier et piloter le processus de construction
+  it: Pianificare e guidare il processo costruttivo
+  en: Plan and control the construction process
+description:
+  de: Kritische Bauabläufe und Baufortschritt modellbasiert planen, simulieren und steuern.
+  fr: Planifier, simuler et piloter processus et avancement de construction sur la base de modèles.
+  it: Pianificare, simulare e guidare processi e avanzamento costruttivo basati su modelli.
+  en: Plan, simulate and control critical construction processes and progress using models.
+picture_link: null
+status: active
+comment: ''

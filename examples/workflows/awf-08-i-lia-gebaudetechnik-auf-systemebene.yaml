@@ -16,4 +16,7 @@ parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-g
 picture_link: null
 status: deprecated
 needed_in_domain: []
+needed_for_project_goals:
+- armasuisse:project-goal/betrieb-und-dokumentation
+
 comment: ''

@@ -23,4 +23,6 @@ status: active
 needed_in_domain:
 - armasuisse:domain/architektur
 - armasuisse:domain/gebaudetechnik
+needed_for_project_goals:
+- armasuisse:project-goal/modellbasierte-entscheidungsfindung
 comment: ''

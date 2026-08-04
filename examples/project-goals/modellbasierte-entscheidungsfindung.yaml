@@ -1,0 +1,19 @@
+id: armasuisse:project-goal/modellbasierte-entscheidungsfindung
+sort_order: 30
+code: PG-03
+name:
+  de: Entscheidungen modellbasiert unterstützen
+  fr: Soutenir les décisions sur la base de modèles
+  it: Supportare le decisioni basate su modelli
+  en: Support model-based decision making
+description:
+  de: Varianten, Konzepte und Rahmenbedingungen im Modell visualisieren, um Entscheidungen früh und belastbar
+    zu treffen.
+  fr: Visualiser variantes, concepts et conditions-cadres dans le modèle pour décider tôt et de façon
+    fiable.
+  it: Visualizzare varianti, concetti e condizioni quadro nel modello per decidere in anticipo e in modo
+    affidabile.
+  en: Visualise variants, concepts and constraints in the model to make early, robust decisions.
+picture_link: null
+status: active
+comment: ''

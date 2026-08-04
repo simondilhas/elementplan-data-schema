@@ -17,4 +17,6 @@ picture_link: null
 status: deprecated
 needed_in_domain:
 - armasuisse:domain/architektur
+needed_for_project_goals:
+- armasuisse:project-goal/mengen-und-kosten
 comment: ''

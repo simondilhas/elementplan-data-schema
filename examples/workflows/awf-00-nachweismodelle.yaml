@@ -16,4 +16,7 @@ parent_workflow: null
 picture_link: null
 status: active
 needed_in_domain: []
+needed_for_project_goals:
+- armasuisse:project-goal/bim-kompetenz
+
 comment: ''

@@ -1,0 +1,16 @@
+id: armasuisse:project-goal/mengen-und-kosten
+sort_order: 40
+code: PG-04
+name:
+  de: Mengen und Kosten sicher ermitteln
+  fr: Déterminer quantités et coûts de façon fiable
+  it: Determinare quantità e costi in modo affidabile
+  en: Determine quantities and costs reliably
+description:
+  de: Konsistente, modellbasierte Mengen als Grundlage für Kosten- und Lebenszyklusbetrachtungen sicherstellen.
+  fr: Assurer des quantités cohérentes et modélisées comme base des analyses de coûts et de cycle de vie.
+  it: Garantire quantità coerenti e modellate come base per analisi di costi e ciclo di vita.
+  en: Ensure consistent, model-based quantities as the basis for cost and lifecycle analysis.
+picture_link: null
+status: active
+comment: ''

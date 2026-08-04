@@ -14,4 +14,5 @@ workflow_group: null
 parent_workflow: null
 picture_link: null
 status: active
+needed_for_project_goals: []
 comment: ''

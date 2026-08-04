@@ -23,4 +23,6 @@ picture_link: null
 status: active
 needed_in_domain:
 - armasuisse:domain/tiefbau
+needed_for_project_goals:
+- armasuisse:project-goal/betrieb-und-dokumentation
 comment: ''

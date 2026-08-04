@@ -32,6 +32,43 @@ if unit_slot.get("range") != "string":
     raise SystemExit("unit slot must have range: string")
 
 print("Schema contract OK: Attribute.unit (string)")
+
+if "ProjectGoal" not in schema["classes"]:
+    raise SystemExit("ProjectGoal class is missing.")
+
+dataset_slots = schema["classes"]["ElementplanDataset"]["slots"]
+if "project_goals" not in dataset_slots:
+    raise SystemExit("ElementplanDataset is missing the project_goals slot.")
+if dataset_slots.index("project_goals") >= dataset_slots.index("workflows"):
+    raise SystemExit("project_goals must appear before workflows on ElementplanDataset.")
+
+workflow_slots = schema["classes"]["Workflow"]["slots"]
+if "needed_for_project_goals" not in workflow_slots:
+    raise SystemExit("Workflow class is missing the needed_for_project_goals slot.")
+
+project_goals_slot = schema["slots"].get("project_goals")
+if (
+    not project_goals_slot
+    or project_goals_slot.get("range") != "ProjectGoal"
+    or not project_goals_slot.get("multivalued")
+    or not project_goals_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "project_goals slot must be multivalued ProjectGoal with inlined_as_list: true"
+    )
+
+needed_for_project_goals_slot = schema["slots"].get("needed_for_project_goals")
+if (
+    not needed_for_project_goals_slot
+    or needed_for_project_goals_slot.get("range") != "ProjectGoal"
+    or not needed_for_project_goals_slot.get("multivalued")
+    or needed_for_project_goals_slot.get("inlined") is not False
+):
+    raise SystemExit(
+        "needed_for_project_goals slot must be multivalued ProjectGoal with inlined: false"
+    )
+
+print("Schema contract OK: ProjectGoal above Workflow")
 PY
 
 echo "Running LinkML metamodel validation..."
@@ -50,6 +87,21 @@ if not unit_property or "string" not in unit_property.get("type", []):
     raise SystemExit("Compiled JSON Schema Attribute.unit must allow string values.")
 
 print("JSON Schema OK: Attribute.unit (string)")
+
+if "ProjectGoal" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing ProjectGoal.")
+
+dataset_props = compiled["$defs"]["ElementplanDataset"]["properties"]
+if "project_goals" not in dataset_props:
+    raise SystemExit("Compiled JSON Schema ElementplanDataset is missing project_goals.")
+
+workflow_props = compiled["$defs"]["Workflow"]["properties"]
+if "needed_for_project_goals" not in workflow_props:
+    raise SystemExit(
+        "Compiled JSON Schema Workflow is missing needed_for_project_goals."
+    )
+
+print("JSON Schema OK: ProjectGoal above Workflow")
 PY
 
 echo "Schema check passed."

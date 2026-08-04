@@ -41,4 +41,6 @@ workflow_group: null
 parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
 picture_link: null
 status: active
+needed_for_project_goals:
+- armasuisse:project-goal/flaechen-und-kennwerte
 comment: ''

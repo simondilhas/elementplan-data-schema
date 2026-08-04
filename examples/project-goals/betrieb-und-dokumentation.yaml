@@ -1,0 +1,17 @@
+id: armasuisse:project-goal/betrieb-und-dokumentation
+sort_order: 70
+code: PG-07
+name:
+  de: Betrieb und Bauwerksdokumentation absichern
+  fr: Sécuriser exploitation et documentation d’ouvrage
+  it: Garantire esercizio e documentazione dell’opera
+  en: Secure operations and building documentation
+description:
+  de: Strukturierte digitale Bauwerksdokumentation und Betriebsdaten für den gesamten Lebenszyklus bereitstellen.
+  fr: Fournir une documentation numérique structurée et des données d’exploitation pour tout le cycle
+    de vie.
+  it: Fornire documentazione digitale strutturata e dati di esercizio per l’intero ciclo di vita.
+  en: Provide structured digital building documentation and operational data for the full lifecycle.
+picture_link: null
+status: active
+comment: ''
