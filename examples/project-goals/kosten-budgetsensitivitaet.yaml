@@ -1,0 +1,69 @@
+id: pragmaticbim:project-goal/kosten-budgetsensitivitaet
+sort_order: 10
+code: PG-COST
+name:
+  de: Kosten-/Budgetsensitivität
+  fr: Sensibilité coûts/budget
+  it: Sensibilità costi/budget
+  en: Cost/budget sensitivity
+description:
+  de: Steuert Mengen-, Kosten- und Benchmarking-Tiefe über geordnete Ausprägungen.
+  fr: Contrôle la profondeur des quantités, coûts et benchmarking via des niveaux ordonnés.
+  it: Controlla la profondità di quantità, costi e benchmarking tramite livelli ordinati.
+  en: Controls quantity, cost and benchmarking depth via ordered levels.
+picture_link: null
+status: active
+comment: Prototype goal for Goal × Level → Workflow mapping (Kickoff / Konfigurator).
+levels:
+- id: pragmaticbim:project-goal-level/kosten-grosszuegig
+  code: COST-01
+  sort_order: 1
+  name:
+    de: grosszügig
+    fr: généreux
+    it: generoso
+    en: generous
+  description:
+    de: Basis-Mengen-/Kostenermittlung.
+    en: Baseline quantity/cost takeoff.
+  status: active
+  # Annex: basis AWF-03 on lowest level so mapping alone drives Kickoff selection.
+  activated_workflows:
+  - armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+  comment: Delta at level grosszügig (sort_order 1).
+- id: pragmaticbim:project-goal-level/kosten-mittel
+  code: COST-02
+  sort_order: 2
+  name:
+    de: mittel
+    fr: moyen
+    it: medio
+    en: medium
+  description:
+    de: Erweiterte Kostengliederung und Kennzahlen.
+    en: Extended cost breakdown and key figures.
+  status: active
+  # Annex codes AWF-03-1 / 03-6 / 03-8 mapped to closest existing AWF-03 children.
+  activated_workflows:
+  - armasuisse:workflow/awf-03-a-kostengliederung-bis-ebkp-i-d-r-stufe-3
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
+  comment: Delta at level mittel (sort_order 2); cumulative with grosszügig.
+- id: pragmaticbim:project-goal-level/kosten-sensitiv
+  code: COST-03
+  sort_order: 3
+  name:
+    de: sensitiv
+    fr: sensible
+    it: sensibile
+    en: sensitive
+  description:
+    de: Lebenszykluskosten und vertiefte Kennwerte.
+    en: Lifecycle costing and deeper key values.
+  status: active
+  # Annex codes AWF-03-4 / AWF-01-05 / AWF-01-3 mapped to closest existing workflows.
+  activated_workflows:
+  - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
+  - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
+  - armasuisse:workflow/awf-01-c-nutzlasten
+  comment: Delta at level sensitiv (sort_order 3); cumulative with mittel and grosszügig.

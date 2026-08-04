@@ -69,6 +69,41 @@ if (
     )
 
 print("Schema contract OK: ProjectGoal above Workflow")
+
+if "ProjectGoalLevel" not in schema["classes"]:
+    raise SystemExit("ProjectGoalLevel class is missing.")
+
+project_goal_slots = schema["classes"]["ProjectGoal"]["slots"]
+if "levels" not in project_goal_slots:
+    raise SystemExit("ProjectGoal class is missing the levels slot.")
+
+level_slots = schema["classes"]["ProjectGoalLevel"]["slots"]
+if "activated_workflows" not in level_slots:
+    raise SystemExit("ProjectGoalLevel class is missing the activated_workflows slot.")
+
+levels_slot = schema["slots"].get("levels")
+if (
+    not levels_slot
+    or levels_slot.get("range") != "ProjectGoalLevel"
+    or not levels_slot.get("multivalued")
+    or not levels_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "levels slot must be multivalued ProjectGoalLevel with inlined_as_list: true"
+    )
+
+activated_workflows_slot = schema["slots"].get("activated_workflows")
+if (
+    not activated_workflows_slot
+    or activated_workflows_slot.get("range") != "Workflow"
+    or not activated_workflows_slot.get("multivalued")
+    or activated_workflows_slot.get("inlined") is not False
+):
+    raise SystemExit(
+        "activated_workflows slot must be multivalued Workflow with inlined: false"
+    )
+
+print("Schema contract OK: ProjectGoalLevel.activated_workflows")
 PY
 
 echo "Running LinkML metamodel validation..."
@@ -102,6 +137,21 @@ if "needed_for_project_goals" not in workflow_props:
     )
 
 print("JSON Schema OK: ProjectGoal above Workflow")
+
+if "ProjectGoalLevel" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing ProjectGoalLevel.")
+
+goal_props = compiled["$defs"]["ProjectGoal"]["properties"]
+if "levels" not in goal_props:
+    raise SystemExit("Compiled JSON Schema ProjectGoal is missing levels.")
+
+level_props = compiled["$defs"]["ProjectGoalLevel"]["properties"]
+if "activated_workflows" not in level_props:
+    raise SystemExit(
+        "Compiled JSON Schema ProjectGoalLevel is missing activated_workflows."
+    )
+
+print("JSON Schema OK: ProjectGoalLevel.activated_workflows")
 PY
 
 echo "Schema check passed."

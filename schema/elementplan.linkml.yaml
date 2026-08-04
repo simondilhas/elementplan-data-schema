@@ -123,6 +123,10 @@ slots:
     multivalued: true
     range: ProjectGoal
     inlined: false
+    description: >-
+      Deprecated binary link from workflow to project goals. Prefer
+      ProjectGoalLevel.activated_workflows (goal level → workflows) for
+      level-based activation.
   is_applicability:
     range: boolean
   domains:
@@ -142,6 +146,18 @@ slots:
     multivalued: true
     range: ProjectGoal
     inlined_as_list: true
+  levels:
+    multivalued: true
+    range: ProjectGoalLevel
+    inlined_as_list: true
+    description: Ordered Ausprägungen of a project goal (ordinal via sort_order).
+  activated_workflows:
+    multivalued: true
+    range: Workflow
+    inlined: false
+    description: >-
+      Workflows newly activated at this goal level (delta). Selection of level N
+      activates the union of all deltas for levels with sort_order <= N.
   workflows:
     multivalued: true
     range: Workflow
@@ -263,6 +279,22 @@ classes:
       - description
       - picture_link
       - status
+      - comment
+      - levels
+
+  ProjectGoalLevel:
+    description: >-
+      Ausprägung (ordered level) of a project goal. sort_order is the ordinal used
+      for cumulative workflow activation. activated_workflows is the Goal × Level
+      → Workflow delta for this level.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - description
+      - status
+      - activated_workflows
       - comment
 
   Workflow:
