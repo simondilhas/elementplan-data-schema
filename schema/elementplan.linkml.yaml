@@ -129,6 +129,15 @@ slots:
     multivalued: true
     range: Domain
     inlined_as_list: true
+  domain:
+    range: Domain
+    inlined: false
+    description: Parent domain of a project-specific model (Teilmodell).
+  models:
+    multivalued: true
+    range: Model
+    inlined_as_list: true
+    description: Optional project-specific models (Teilmodelle). Used in projects, not templates.
   project_goals:
     multivalued: true
     range: ProjectGoal
@@ -207,6 +216,7 @@ classes:
     tree_root: true
     slots:
       - domains
+      - models
       - project_goals
       - workflows
       - valuesets
@@ -225,6 +235,24 @@ classes:
       - definition
       - file_name
       - status
+
+  Model:
+    description: >-
+      Project-specific model (Teilmodell) within a domain, e.g. Room model or
+      Facade model under Architecture. Optional; used in projects, not templates.
+      Same slots as Domain, plus a required link to the parent domain.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - file_name
+      - status
+      - domain
+    slot_usage:
+      domain:
+        required: true
 
   ProjectGoal:
     slots:

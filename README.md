@@ -22,11 +22,19 @@ Creating the technical IDS is hard work, but banal: properties, datatypes, phase
 
 The schema encodes that link explicitly: workflows reference project goals (`needed_for_project_goals`); attributes reference workflows (`needed_for_workflows`). Requirements stay traceable from delivery detail back to intent.
 
+### Domains and models
+
+**Domains** are the stable ordering and grouping level (e.g. Architecture, Building services). Requirements are ordered and filtered by domain.
+
+**Models** are optional, project-specific Teilmodelle under a domain (e.g. Room model, Architecture element model, Facade model under Architecture). They are used in projects, not in templates. Each model links to exactly one domain (`domain`).
+
+For ordering, only the domain is relevant. In the project, the actual model matters — that is what is delivered and named.
+
 ## What Is Included
 
 - `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
-- `examples/`: sample project goals, workflows, elements, values, domains, and phases
+- `examples/`: sample project goals, workflows, elements, values, domains, models, and phases
 - `scripts/schema_check.sh`: local schema validation entry point
 - `.github/workflows/schema-check.yml`: GitHub Actions workflow for automatic validation
 

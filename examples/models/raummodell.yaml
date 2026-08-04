@@ -1,0 +1,20 @@
+id: armasuisse:model/raummodell
+code: ARC-RM
+sort_order: 1
+name:
+  de: Raummodell
+  fr: Maquette de pièces
+  it: Modello degli spazi
+  en: Room model
+definition:
+  de: Projektspezifisches Teilmodell unter der Domain Architektur. Enthält Räume und raumbezogene Informationen.
+  fr: Maquette partielle spécifique au projet sous le domaine Architecture. Contient les pièces et les informations liées aux espaces.
+  it: Modello parziale specifico del progetto nel dominio Architettura. Contiene gli spazi e le informazioni relative agli ambienti.
+  en: Project-specific partial model under the Architecture domain. Contains rooms and space-related information.
+file_name:
+  de: '{Auftrags-Nr Bauherr}_{Bauwerk ID}_{Phase}_ARC-RM_{Freitext}'
+  fr: '{Numéro projet}_{Code bâtiment}_{Phase}_ARC-RM_{Libre}'
+  it: '{Numero di incarico del committente}_{Codice opera di costruzione}_{Fase}_ARC-RM_{Testo libero}'
+  en: '{Client order no}_{Building ID}_{Phase}_ARC-RM_{Free text}'
+status: active
+domain: armasuisse:domain/architektur
