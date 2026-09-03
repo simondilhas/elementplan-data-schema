@@ -131,6 +131,22 @@ if (
     )
 
 print("Schema contract OK: ProjectGoalLevel.activated_workflows")
+
+if "included_elements" not in schema["classes"]["Model"]["slots"]:
+    raise SystemExit("Model class is missing the included_elements slot.")
+
+included_elements_slot = schema["slots"].get("included_elements")
+if (
+    not included_elements_slot
+    or included_elements_slot.get("range") != "Element"
+    or not included_elements_slot.get("multivalued")
+    or included_elements_slot.get("inlined") is not False
+):
+    raise SystemExit(
+        "included_elements slot must be multivalued Element with inlined: false"
+    )
+
+print("Schema contract OK: Model.included_elements")
 PY
 
 echo "Running LinkML metamodel validation..."
@@ -183,6 +199,14 @@ if "activated_workflows" not in level_props:
     )
 
 print("JSON Schema OK: ProjectGoalLevel.activated_workflows")
+
+model_props = compiled["$defs"]["Model"]["properties"]
+if "included_elements" not in model_props:
+    raise SystemExit(
+        "Compiled JSON Schema Model is missing included_elements."
+    )
+
+print("JSON Schema OK: Model.included_elements")
 PY
 
 echo "Schema check passed."

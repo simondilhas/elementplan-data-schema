@@ -404,6 +404,15 @@ slots:
     range: Model
     inlined_as_list: true
     description: Optional project-specific models (Teilmodelle). Used in projects, not templates.
+  included_elements:
+    multivalued: true
+    range: Element
+    inlined: false
+    description: >-
+      Catalog elements delivered in this project Teilmodell. Optional subset;
+      omitted or empty means unspecified, not the full domain catalog.
+      An element may be listed on multiple models. Prefer this over putting
+      model membership on Element.
   project_goals:
     multivalued: true
     range: ProjectGoal
@@ -518,7 +527,8 @@ classes:
     description: >-
       Project-specific model (Teilmodell) within a domain, e.g. Room model or
       Facade model under Architecture. Optional; used in projects, not templates.
-      Same slots as Domain, plus a required link to the parent domain.
+      Same slots as Domain, plus a required link to the parent domain and an
+      optional included_elements list of catalog elements delivered in this file.
     slots:
       - id
       - code
@@ -528,6 +538,7 @@ classes:
       - file_name
       - status
       - domain
+      - included_elements
     slot_usage:
       domain:
         required: true

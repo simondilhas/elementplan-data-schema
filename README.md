@@ -30,7 +30,7 @@ Project complexity / package tags (`workflow_group`) stay a **separate** axis fr
 
 **Domains** are the stable ordering and grouping level (e.g. Architecture, Building services). Requirements are ordered and filtered by domain.
 
-**Models** are optional, project-specific Teilmodelle under a domain (e.g. Room model, Architecture element model, Facade model under Architecture). They are used in projects, not in templates. Each model links to exactly one domain (`domain`).
+**Models** are optional, project-specific Teilmodelle under a domain (e.g. Room model, Architecture element model, Facade model under Architecture). They are used in projects, not in templates. Each model links to exactly one domain (`domain`). Optional `included_elements` lists catalog element IDs delivered in that Teilmodell (a subset; omitted or empty means unspecified, not the full domain). An element may appear on more than one model. Element catalog membership stays on `needed_in_domain`; do not put model membership on Element.
 
 For ordering, only the domain is relevant. In the project, the actual model matters — that is what is delivered and named.
 
@@ -49,7 +49,7 @@ The repository includes a minimal validation pipeline that checks:
 - all YAML files in `schema/` parse correctly
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
-- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, and `ProjectGoalLevel.activated_workflows`
+- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `ProjectGoalLevel.activated_workflows`, and `Model.included_elements`
 
 Run the check locally with:
 

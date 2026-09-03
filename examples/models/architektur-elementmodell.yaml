@@ -18,3 +18,7 @@ file_name:
   en: '{Client order no}_{Building ID}_{Phase}_ARC-EL_{Free text}'
 status: active
 domain: armasuisse:domain/architektur
+included_elements:
+  - armasuisse:element/bodenaufbauten
+  - armasuisse:element/fundamente
+  - armasuisse:element/decken-flachdacher
