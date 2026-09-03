@@ -45,6 +45,33 @@ if dataset_slots.index("project_goals") >= dataset_slots.index("workflows"):
 workflow_slots = schema["classes"]["Workflow"]["slots"]
 if "needed_for_project_goals" not in workflow_slots:
     raise SystemExit("Workflow class is missing the needed_for_project_goals slot.")
+if "jurisdiction" not in workflow_slots:
+    raise SystemExit("Workflow class is missing the jurisdiction slot.")
+
+jurisdiction_slot = schema["slots"].get("jurisdiction")
+if not jurisdiction_slot or jurisdiction_slot.get("range") != "JurisdictionEnum":
+    raise SystemExit("jurisdiction slot must have range: JurisdictionEnum")
+
+jurisdiction_enum = schema.get("enums", {}).get("JurisdictionEnum", {})
+jurisdiction_values = set((jurisdiction_enum.get("permissible_values") or {}).keys())
+required_jurisdictions = {"general", "at", "ch", "us", "de"}
+if not required_jurisdictions.issubset(jurisdiction_values):
+    raise SystemExit(
+        "JurisdictionEnum must include general and ISO codes at, ch, us, de"
+    )
+iso_codes = {value for value in jurisdiction_values if value != "general"}
+if "en" in iso_codes:
+    raise SystemExit("JurisdictionEnum must not include language code en")
+if len(iso_codes) < 249:
+    raise SystemExit(
+        "JurisdictionEnum must include all ISO 3166-1 alpha-2 country codes"
+    )
+if any(len(code) != 2 or not code.isalpha() or not code.islower() for code in iso_codes):
+    raise SystemExit(
+        "ISO jurisdiction codes must be lowercase ISO 3166-1 alpha-2"
+    )
+
+print("Schema contract OK: Workflow.jurisdiction")
 
 project_goals_slot = schema["slots"].get("project_goals")
 if (
@@ -135,6 +162,10 @@ if "needed_for_project_goals" not in workflow_props:
     raise SystemExit(
         "Compiled JSON Schema Workflow is missing needed_for_project_goals."
     )
+if "jurisdiction" not in workflow_props:
+    raise SystemExit("Compiled JSON Schema Workflow is missing jurisdiction.")
+
+print("JSON Schema OK: Workflow.jurisdiction")
 
 print("JSON Schema OK: ProjectGoal above Workflow")
 

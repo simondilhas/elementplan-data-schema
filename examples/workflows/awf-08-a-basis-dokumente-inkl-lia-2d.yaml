@@ -27,6 +27,7 @@ workflow_group: BIM 2d light,BIM 3d light,BIM 3d full,BIM 2d full,BIM 3d full 10
 parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
 picture_link: null
 status: active
+jurisdiction: general
 needed_in_domain: []
 needed_for_project_goals:
 - armasuisse:project-goal/betrieb-und-dokumentation

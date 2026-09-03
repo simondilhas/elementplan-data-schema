@@ -21,6 +21,7 @@ workflow_group: BIM 3d light,BIM 3d full,BIM 3d full 10Mio+,BIM 2d light,BIM 2d 
 parent_workflow: armasuisse:workflow/awf-02-visualisierungen
 picture_link: null
 status: active
+jurisdiction: general
 needed_in_domain:
 - armasuisse:domain/referenz-perimeter
 - armasuisse:domain/referenz-bauwerk

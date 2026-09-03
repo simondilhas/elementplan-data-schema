@@ -22,6 +22,7 @@ workflow_group: BIM 3d full,BIM 3d full 10Mio+
 parent_workflow: armasuisse:workflow/awf-01-raumflachen-und-volumina
 picture_link: null
 status: active
+jurisdiction: general
 needed_in_domain:
 - armasuisse:domain/architektur
 needed_for_project_goals:

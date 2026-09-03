@@ -54,6 +54,7 @@ workflow_group: null
 parent_workflow: armasuisse:workflow/awf-01-raumflachen-und-volumina
 picture_link: null
 status: active
+jurisdiction: general
 needed_for_project_goals:
 - armasuisse:project-goal/flaechen-und-kennwerte
 comment: ''

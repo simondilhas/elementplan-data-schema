@@ -19,6 +19,7 @@ workflow_group: null
 parent_workflow: armasuisse:workflow/awf-06-bauablaufplanung-und-baufortschritt
 picture_link: null
 status: active
+jurisdiction: general
 needed_in_domain:
 - armasuisse:domain/architektur
 - armasuisse:domain/gebaudetechnik
