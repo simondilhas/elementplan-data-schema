@@ -1,0 +1,24 @@
+id: armasuisse:document/architektur-dokument
+code: ARC-DOC
+sort_order: 1
+name:
+  de: Architektur-Dokument
+  fr: Document d'architecture
+  it: Documento di architettura
+  en: Architecture document
+definition:
+  de: Projektspezifisches Dokument unter der Domain Architektur. Enthält architektonische Bauteile und Elemente.
+  fr: Document spécifique au projet sous le domaine Architecture. Contient les éléments et composants architecturaux.
+  it: Documento specifico del progetto nel dominio Architettura. Contiene componenti ed elementi architettonici.
+  en: Project-specific document under the Architecture domain. Contains architectural building elements.
+file_name:
+  de: '{Auftrags-Nr Bauherr}_{Bauwerk ID}_{Phase}_ARC-DOC_{Freitext}'
+  fr: '{Numéro projet}_{Code bâtiment}_{Phase}_ARC-DOC_{Libre}'
+  it: '{Numero di incarico del committente}_{Codice opera di costruzione}_{Fase}_ARC-DOC_{Testo libero}'
+  en: '{Client order no}_{Building ID}_{Phase}_ARC-DOC_{Free text}'
+status: active
+domain: armasuisse:domain/architektur
+included_elements:
+  - armasuisse:element/bodenaufbauten
+  - armasuisse:element/fundamente
+  - armasuisse:element/decken-flachdacher

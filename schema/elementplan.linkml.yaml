@@ -398,21 +398,26 @@ slots:
   domain:
     range: Domain
     inlined: false
-    description: Parent domain of a project-specific model (Teilmodell).
+    description: Parent domain of a project-specific model (Teilmodell) or document.
   models:
     multivalued: true
     range: Model
     inlined_as_list: true
     description: Optional project-specific models (Teilmodelle). Used in projects, not templates.
+  documents:
+    multivalued: true
+    range: Document
+    inlined_as_list: true
+    description: Optional project-specific documents. Used in projects, not templates.
   included_elements:
     multivalued: true
     range: Element
     inlined: false
     description: >-
-      Catalog elements delivered in this project Teilmodell. Optional subset;
-      omitted or empty means unspecified, not the full domain catalog.
-      An element may be listed on multiple models. Prefer this over putting
-      model membership on Element.
+      Catalog elements delivered in this project model (Teilmodell) or document.
+      Optional subset; omitted or empty means unspecified, not the full domain
+      catalog. An element may be listed on multiple models or documents. Prefer
+      this over putting model or document membership on Element.
   project_goals:
     multivalued: true
     range: ProjectGoal
@@ -504,6 +509,7 @@ classes:
     slots:
       - domains
       - models
+      - documents
       - project_goals
       - workflows
       - valuesets
@@ -529,6 +535,26 @@ classes:
       Facade model under Architecture. Optional; used in projects, not templates.
       Same slots as Domain, plus a required link to the parent domain and an
       optional included_elements list of catalog elements delivered in this file.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - file_name
+      - status
+      - domain
+      - included_elements
+    slot_usage:
+      domain:
+        required: true
+
+  Document:
+    description: >-
+      Project-specific document within a domain. Optional; used in projects,
+      not templates. Same slots as Domain, plus a required link to the parent
+      domain and an optional included_elements list of catalog elements
+      delivered in this file.
     slots:
       - id
       - code

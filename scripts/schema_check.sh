@@ -147,6 +147,28 @@ if (
     )
 
 print("Schema contract OK: Model.included_elements")
+
+if "Document" not in schema["classes"]:
+    raise SystemExit("Document class is missing.")
+
+if "included_elements" not in schema["classes"]["Document"]["slots"]:
+    raise SystemExit("Document class is missing the included_elements slot.")
+
+if "documents" not in dataset_slots:
+    raise SystemExit("ElementplanDataset is missing the documents slot.")
+
+documents_slot = schema["slots"].get("documents")
+if (
+    not documents_slot
+    or documents_slot.get("range") != "Document"
+    or not documents_slot.get("multivalued")
+    or not documents_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "documents slot must be multivalued Document with inlined_as_list: true"
+    )
+
+print("Schema contract OK: Document.included_elements")
 PY
 
 echo "Running LinkML metamodel validation..."
@@ -207,6 +229,20 @@ if "included_elements" not in model_props:
     )
 
 print("JSON Schema OK: Model.included_elements")
+
+if "Document" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing Document.")
+
+if "documents" not in dataset_props:
+    raise SystemExit("Compiled JSON Schema ElementplanDataset is missing documents.")
+
+document_props = compiled["$defs"]["Document"]["properties"]
+if "included_elements" not in document_props:
+    raise SystemExit(
+        "Compiled JSON Schema Document is missing included_elements."
+    )
+
+print("JSON Schema OK: Document.included_elements")
 PY
 
 echo "Schema check passed."
