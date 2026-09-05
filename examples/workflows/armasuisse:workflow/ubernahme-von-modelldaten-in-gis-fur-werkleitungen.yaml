@@ -14,7 +14,4 @@ workflow_group: null
 parent_workflow: armasuisse:workflow/awf-08-bauwerksdokumentation-basis-awf-08-gemass-kbob
 picture_link: null
 status: active
-jurisdiction: general
-needed_for_project_goals:
-- armasuisse:project-goal/betrieb-und-dokumentation
 comment: ''

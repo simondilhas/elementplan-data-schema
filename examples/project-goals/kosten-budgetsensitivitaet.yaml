@@ -30,7 +30,7 @@ levels:
   # Annex: basis AWF-03 on lowest level so mapping alone drives Kickoff selection.
   activated_workflows:
   - armasuisse:workflow/awf-03-mengen-und-kostenermittlung
-  comment: Delta at level grosszügig (sort_order 1).
+  comment: Complete set at level grosszügig (sort_order 1).
 - id: pragmaticbim:project-goal-level/kosten-mittel
   code: COST-02
   sort_order: 2
@@ -45,10 +45,11 @@ levels:
   status: active
   # Annex codes AWF-03-1 / 03-6 / 03-8 mapped to closest existing AWF-03 children.
   activated_workflows:
+  - armasuisse:workflow/awf-03-mengen-und-kostenermittlung
   - armasuisse:workflow/awf-03-a-kostengliederung-bis-ebkp-i-d-r-stufe-3
   - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
-  comment: Delta at level mittel (sort_order 2); cumulative with grosszügig.
+  comment: Complete set at level mittel (sort_order 2); lower-level workflows copied on save.
 - id: pragmaticbim:project-goal-level/kosten-sensitiv
   code: COST-03
   sort_order: 3
@@ -63,7 +64,11 @@ levels:
   status: active
   # Annex codes AWF-03-4 / AWF-01-05 / AWF-01-3 mapped to closest existing workflows.
   activated_workflows:
+  - armasuisse:workflow/awf-03-mengen-und-kostenermittlung
+  - armasuisse:workflow/awf-03-a-kostengliederung-bis-ebkp-i-d-r-stufe-3
+  - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
+  - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
   - armasuisse:workflow/awf-01-c-nutzlasten
-  comment: Delta at level sensitiv (sort_order 3); cumulative with mittel and grosszügig.
+  comment: Complete set at level sensitiv (sort_order 3); lower-level workflows copied on save.

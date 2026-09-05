@@ -24,7 +24,7 @@ entity_ifc2x3: null
 entity_ifc4: IfcBuildingElementProxy
 entity_ifc4_3: null
 picture_link: modelleinfugepunkt-perimeter-bauwerk.jpg
-model_link: null
+attachment_link: null
 applicability: entity_ifc4=IfcBuildingElementProxy
 attributes:
 - name: Name

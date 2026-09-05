@@ -31,7 +31,7 @@ entity_ifc2x3: null
 entity_ifc4: IfcProject
 entity_ifc4_3: null
 picture_link: null
-model_link: null
+attachment_link: null
 applicability: entity_ifc4=IfcProject
 attributes:
 - name: Name

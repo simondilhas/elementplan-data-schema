@@ -8,6 +8,13 @@ name:
   en: ''
 needed_in_domain:
 - armasuisse:domain/architektur
+needed_in_models:
+- armasuisse:model/architektur-elementmodell
+needed_for_models:
+  armasuisse:model/architektur-elementmodell:
+  - '32'
+  - '33'
+  - '41'
 definition:
   de: Bodenbeläge werden erst als eigenes Element modelliert, wenn es unterschiedliche Bodenbeläge oder Aufbauten innerhalb eines Raumes gibt. Sonst werden die Informationen im Element "Raum" gepflegt.
   fr: Les revêtements de sol ne sont modélisés en tant qu’élément spécifique que si l’on trouve différents revêtements de sol ou structures à l’intérieur d’une pièce. Sinon, les informations sont gérées
@@ -19,7 +26,7 @@ entity_ifc2x3: null
 entity_ifc4: IfcCovering
 entity_ifc4_3: null
 picture_link: null
-model_link: null
+attachment_link: null
 applicability: entity_ifc4=IfcCovering
 attributes:
 - name: PredefinedType

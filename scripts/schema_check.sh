@@ -42,36 +42,24 @@ if "project_goals" not in dataset_slots:
 if dataset_slots.index("project_goals") >= dataset_slots.index("workflows"):
     raise SystemExit("project_goals must appear before workflows on ElementplanDataset.")
 
+if "documents" not in dataset_slots:
+    raise SystemExit("ElementplanDataset is missing the documents slot.")
+if dataset_slots.index("models") >= dataset_slots.index("documents"):
+    raise SystemExit("models must appear before documents on ElementplanDataset.")
+
 workflow_slots = schema["classes"]["Workflow"]["slots"]
-if "needed_for_project_goals" not in workflow_slots:
-    raise SystemExit("Workflow class is missing the needed_for_project_goals slot.")
-if "jurisdiction" not in workflow_slots:
-    raise SystemExit("Workflow class is missing the jurisdiction slot.")
+if "jurisdiction" in workflow_slots:
+    raise SystemExit("Workflow must not include jurisdiction.")
+if "needed_for_project_goals" in workflow_slots:
+    raise SystemExit("Workflow must not include needed_for_project_goals.")
+if "jurisdiction" in schema["slots"]:
+    raise SystemExit("jurisdiction slot must be removed.")
+if "needed_for_project_goals" in schema["slots"]:
+    raise SystemExit("needed_for_project_goals slot must be removed.")
+if "JurisdictionEnum" in schema.get("enums", {}):
+    raise SystemExit("JurisdictionEnum must be removed.")
 
-jurisdiction_slot = schema["slots"].get("jurisdiction")
-if not jurisdiction_slot or jurisdiction_slot.get("range") != "JurisdictionEnum":
-    raise SystemExit("jurisdiction slot must have range: JurisdictionEnum")
-
-jurisdiction_enum = schema.get("enums", {}).get("JurisdictionEnum", {})
-jurisdiction_values = set((jurisdiction_enum.get("permissible_values") or {}).keys())
-required_jurisdictions = {"general", "at", "ch", "us", "de"}
-if not required_jurisdictions.issubset(jurisdiction_values):
-    raise SystemExit(
-        "JurisdictionEnum must include general and ISO codes at, ch, us, de"
-    )
-iso_codes = {value for value in jurisdiction_values if value != "general"}
-if "en" in iso_codes:
-    raise SystemExit("JurisdictionEnum must not include language code en")
-if len(iso_codes) < 249:
-    raise SystemExit(
-        "JurisdictionEnum must include all ISO 3166-1 alpha-2 country codes"
-    )
-if any(len(code) != 2 or not code.isalpha() or not code.islower() for code in iso_codes):
-    raise SystemExit(
-        "ISO jurisdiction codes must be lowercase ISO 3166-1 alpha-2"
-    )
-
-print("Schema contract OK: Workflow.jurisdiction")
+print("Schema contract OK: Workflow without jurisdiction or needed_for_project_goals")
 
 project_goals_slot = schema["slots"].get("project_goals")
 if (
@@ -82,17 +70,6 @@ if (
 ):
     raise SystemExit(
         "project_goals slot must be multivalued ProjectGoal with inlined_as_list: true"
-    )
-
-needed_for_project_goals_slot = schema["slots"].get("needed_for_project_goals")
-if (
-    not needed_for_project_goals_slot
-    or needed_for_project_goals_slot.get("range") != "ProjectGoal"
-    or not needed_for_project_goals_slot.get("multivalued")
-    or needed_for_project_goals_slot.get("inlined") is not False
-):
-    raise SystemExit(
-        "needed_for_project_goals slot must be multivalued ProjectGoal with inlined: false"
     )
 
 print("Schema contract OK: ProjectGoal above Workflow")
@@ -129,6 +106,13 @@ if (
     raise SystemExit(
         "activated_workflows slot must be multivalued Workflow with inlined: false"
     )
+activated_desc = activated_workflows_slot.get("description") or ""
+if "Complete set of workflows activated when this goal level is selected" not in activated_desc:
+    raise SystemExit(
+        "activated_workflows description must state the complete set, not a delta"
+    )
+if "delta" in activated_desc.lower() or "union" in activated_desc.lower():
+    raise SystemExit("activated_workflows description must not use delta/union language")
 
 print("Schema contract OK: ProjectGoalLevel.activated_workflows")
 
@@ -154,9 +138,6 @@ if "Document" not in schema["classes"]:
 if "included_elements" not in schema["classes"]["Document"]["slots"]:
     raise SystemExit("Document class is missing the included_elements slot.")
 
-if "documents" not in dataset_slots:
-    raise SystemExit("ElementplanDataset is missing the documents slot.")
-
 documents_slot = schema["slots"].get("documents")
 if (
     not documents_slot
@@ -169,6 +150,31 @@ if (
     )
 
 print("Schema contract OK: Document.included_elements")
+
+element_slots = schema["classes"]["Element"]["slots"]
+if "needed_in_models" not in element_slots:
+    raise SystemExit("Element class is missing the needed_in_models slot.")
+if "needed_for_models" not in element_slots:
+    raise SystemExit("Element class is missing the needed_for_models slot.")
+if "attachment_link" not in element_slots:
+    raise SystemExit("Element class is missing the attachment_link slot.")
+if "model_link" in element_slots:
+    raise SystemExit("Element must use attachment_link, not model_link.")
+if "model_link" in schema["slots"]:
+    raise SystemExit("model_link slot must be replaced by attachment_link.")
+
+needed_in_models_slot = schema["slots"].get("needed_in_models")
+if (
+    not needed_in_models_slot
+    or needed_in_models_slot.get("range") != "Model"
+    or not needed_in_models_slot.get("multivalued")
+    or needed_in_models_slot.get("inlined") is not False
+):
+    raise SystemExit(
+        "needed_in_models slot must be multivalued Model with inlined: false"
+    )
+
+print("Schema contract OK: Element.needed_in_models and attachment_link")
 PY
 
 echo "Running LinkML metamodel validation..."
@@ -196,14 +202,14 @@ if "project_goals" not in dataset_props:
     raise SystemExit("Compiled JSON Schema ElementplanDataset is missing project_goals.")
 
 workflow_props = compiled["$defs"]["Workflow"]["properties"]
-if "needed_for_project_goals" not in workflow_props:
+if "needed_for_project_goals" in workflow_props:
     raise SystemExit(
-        "Compiled JSON Schema Workflow is missing needed_for_project_goals."
+        "Compiled JSON Schema Workflow must not include needed_for_project_goals."
     )
-if "jurisdiction" not in workflow_props:
-    raise SystemExit("Compiled JSON Schema Workflow is missing jurisdiction.")
+if "jurisdiction" in workflow_props:
+    raise SystemExit("Compiled JSON Schema Workflow must not include jurisdiction.")
 
-print("JSON Schema OK: Workflow.jurisdiction")
+print("JSON Schema OK: Workflow without jurisdiction or needed_for_project_goals")
 
 print("JSON Schema OK: ProjectGoal above Workflow")
 
@@ -243,6 +249,18 @@ if "included_elements" not in document_props:
     )
 
 print("JSON Schema OK: Document.included_elements")
+
+element_props = compiled["$defs"]["Element"]["properties"]
+if "needed_in_models" not in element_props:
+    raise SystemExit("Compiled JSON Schema Element is missing needed_in_models.")
+if "needed_for_models" not in element_props:
+    raise SystemExit("Compiled JSON Schema Element is missing needed_for_models.")
+if "attachment_link" not in element_props:
+    raise SystemExit("Compiled JSON Schema Element is missing attachment_link.")
+if "model_link" in element_props:
+    raise SystemExit("Compiled JSON Schema Element must not include model_link.")
+
+print("JSON Schema OK: Element.needed_in_models and attachment_link")
 PY
 
 echo "Schema check passed."

@@ -26,9 +26,6 @@ workflow_group: null
 parent_workflow: armasuisse:workflow/awf-00-nachweismodelle
 picture_link: null
 status: active
-jurisdiction: general
 needed_in_domain:
 - armasuisse:domain/nachweismodell-heizung-kalte
-needed_for_project_goals:
-- armasuisse:project-goal/bim-kompetenz
 comment: ''

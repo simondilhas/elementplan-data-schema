@@ -21,7 +21,7 @@ entity_ifc2x3: null
 entity_ifc4: IfcDistributionSystem
 entity_ifc4_3: null
 picture_link: i-006-kalteanlagen.jpg
-model_link: null
+attachment_link: null
 applicability: entity_ifc4=IfcDistributionSystem
 attributes:
 - name: Description

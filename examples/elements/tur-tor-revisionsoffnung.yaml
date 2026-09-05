@@ -32,7 +32,7 @@ entity_ifc2x3: null
 entity_ifc4: IfcDoor
 entity_ifc4_3: null
 picture_link: tur-tor-revisionsoffnung.jpg
-model_link: null
+attachment_link: null
 applicability: entity_ifc4=IfcDoor
 attributes:
 - name: Name

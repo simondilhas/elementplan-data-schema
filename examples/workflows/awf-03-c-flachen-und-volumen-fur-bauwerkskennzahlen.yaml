@@ -15,9 +15,6 @@ workflow_group: BIM 3d light,BIM 3d full,BIM 3d full 10Mio+
 parent_workflow: armasuisse:workflow/awf-03-mengen-und-kostenermittlung
 picture_link: null
 status: deprecated
-jurisdiction: general
 needed_in_domain:
 - armasuisse:domain/architektur
-needed_for_project_goals:
-- armasuisse:project-goal/mengen-und-kosten
 comment: ''

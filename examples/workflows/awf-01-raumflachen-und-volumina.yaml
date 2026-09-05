@@ -47,9 +47,6 @@ workflow_group: null
 parent_workflow: null
 picture_link: null
 status: active
-jurisdiction: general
 needed_in_domain:
 - armasuisse:domain/architektur
-needed_for_project_goals:
-- armasuisse:project-goal/flaechen-und-kennwerte
 comment: ''

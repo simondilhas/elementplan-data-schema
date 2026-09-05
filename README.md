@@ -10,29 +10,31 @@ This schema is used in the `elementplan.pragmaticbim.ch` app as well as in the r
 Elementplan structures BIM information requirements as a chain from intent to technical detail:
 
 ```text
-Project goals  →  Ausprägungen (levels + workflow deltas)  →  Workflows  →  BIM requirements
-     why              how deep / which AWFs                      how              what
+Project goals  →  Ausprägungen (levels + complete workflow sets)  →  Workflows  →  BIM requirements
+     why              how deep / which AWFs                            how              what
 ```
 
 - **Project goals** define *why* information is needed.
-- **Ausprägungen (`ProjectGoalLevel`)** are ordered levels of a goal (e.g. grosszügig → mittel → sensitiv). `sort_order` is the ordinal. Each level’s `activated_workflows` is the **delta** newly enabled at that level (Goal × Level → Workflow).
-- **Cumulative selection:** choosing level N activates the union of all deltas for levels of that goal with `sort_order <= N`.
+- **Ausprägungen (`ProjectGoalLevel`)** are ordered levels of a goal (e.g. grosszügig → mittel → sensitiv). `sort_order` is the ordinal. Each level’s `activated_workflows` is the **complete set** of workflows activated when that level is selected. Higher levels list lower-level workflows explicitly (copied on save).
+- **Level selection:** choosing a level activates that level’s stored `activated_workflows` list.
 - **Workflows** define *how* those goals are realized in project practice.
 - **Elements and attributes** define *what* must be delivered in the model (the technical IDS level).
 
 Creating the technical IDS is hard work, but banal: properties, datatypes, phases, IFC mapping. The hard part is linking project goals to the requirements — making every attribute answer a real project purpose, not just fill a checklist.
 
-The preferred link from intent to workflows is `ProjectGoalLevel.activated_workflows` on the goal. Attributes still reference workflows (`needed_for_workflows`). The older binary slot `Workflow.needed_for_project_goals` remains for transition and is deprecated in favor of level-based activation.
+The link from intent to workflows is `ProjectGoalLevel.activated_workflows` on the goal. Attributes still reference workflows (`needed_for_workflows`).
 
 Project complexity / package tags (`workflow_group`) stay a **separate** axis from project goals: complexity tends to drive base coordination workflows; goals drive additional thematic workflows.
 
 ### Domains, models, and documents
 
-**Domains** are the stable ordering and grouping level (e.g. Architecture, Building services). Requirements are ordered and filtered by domain.
+**Domains** are the stable discipline grouping (e.g. Architecture, Building services). Requirements are ordered and filtered by domain.
 
-**Models** are optional, project-specific Teilmodelle under a domain (e.g. Room model, Architecture element model, Facade model under Architecture). They are used in projects, not in templates. Each model links to exactly one domain (`domain`). Optional `included_elements` lists catalog element IDs delivered in that Teilmodell (a subset; omitted or empty means unspecified, not the full domain). An element may appear on more than one model. Element catalog membership stays on `needed_in_domain`; do not put model membership on Element.
+**Models** are optional delivery units (Teilmodelle) under a domain (e.g. Room model, Architecture element model, Facade model under Architecture). They may be predefined in master templates and inherited or extended by projects. Each model links to exactly one domain (`domain`). Optional `included_elements` is the template/default element set used as IDP pretags.
 
-**Documents** are optional, project-specific files under a domain, with the same slots as models: a required parent `domain` and an optional `included_elements` list. They are used in projects, not in templates. An element may appear on more than one document. Do not put document membership on Element.
+**Documents** have the same shape as models, for non-IFC containers (e.g. a 2D plan): a required parent `domain` and optional `included_elements` pretags. They may also be predefined in master templates and inherited or extended by projects.
+
+Element catalog membership is `needed_in_domain`. IDP assignment lives on the Element: `needed_in_models` (container IDs of models and documents) and `needed_for_models` (container id → phase ids). `included_elements` on Model/Document are pretags only, until a project-specific `needed_for_models` override exists.
 
 For ordering, only the domain is relevant. In the project, the actual model or document matters — that is what is delivered and named.
 
@@ -51,7 +53,7 @@ The repository includes a minimal validation pipeline that checks:
 - all YAML files in `schema/` parse correctly
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
-- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, and `Document.included_elements`
+- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, `Document.included_elements`, `Element.needed_in_models`, and `Element.attachment_link`
 
 Run the check locally with:
 

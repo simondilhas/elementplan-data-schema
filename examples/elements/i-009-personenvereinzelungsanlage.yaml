@@ -23,7 +23,7 @@ entity_ifc2x3: null
 entity_ifc4: IfcBuildingSystem
 entity_ifc4_3: null
 picture_link: i-009-personenvereinzelungsanlage.jpg
-model_link: null
+attachment_link: null
 applicability: entity_ifc4=IfcBuildingSystem
 attributes:
 - name: Description

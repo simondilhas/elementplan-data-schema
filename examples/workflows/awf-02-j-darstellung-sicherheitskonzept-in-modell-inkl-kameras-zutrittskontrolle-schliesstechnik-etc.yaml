@@ -20,9 +20,6 @@ workflow_group: BIM 3d full 10Mio+
 parent_workflow: armasuisse:workflow/awf-02-visualisierungen
 picture_link: null
 status: active
-jurisdiction: general
 needed_in_domain:
 - armasuisse:domain/architektur
-needed_for_project_goals:
-- armasuisse:project-goal/modellbasierte-entscheidungsfindung
 comment: ''
