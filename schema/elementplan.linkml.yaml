@@ -124,10 +124,6 @@ slots:
       Milestone IDs at which this model or document is scheduled for delivery.
       Omit the field or use an empty list if unscheduled. Not an inlined
       milestones block; values are catalog ids such as "11:beginning".
-  idp_content_column:
-    range: boolean
-    description: >-
-      If true, this document appears as an IDP Content column.
   kind:
     range: MilestoneKindEnum
   date:
@@ -344,22 +340,27 @@ classes:
       may be predefined in master templates and inherited or extended by
       projects. Same slots as Domain, plus a required link to the parent domain,
       an optional included_elements pre-tag list, optional scheduled_milestones
-      (catalog ids of delivery moments), and optional idp_content_column.
+      (catalog ids of delivery moments), and optional description (checkable
+      content list, distinct from definition).
     slots:
       - id
       - code
       - sort_order
       - name
       - definition
+      - description
       - file_name
       - status
       - domain
       - included_elements
       - scheduled_milestones
-      - idp_content_column
     slot_usage:
       domain:
         required: true
+      description:
+        description: >-
+          Short checkable list of required document contents, for LLM
+          completeness/fit checks. Distinct from definition (catalog purpose).
 
   ProjectGoal:
     slots:

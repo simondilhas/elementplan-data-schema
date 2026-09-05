@@ -193,14 +193,12 @@ if "scheduled_milestones" not in schema["classes"]["Model"]["slots"]:
 if "scheduled_milestones" not in schema["classes"]["Document"]["slots"]:
     raise SystemExit("Document class is missing the scheduled_milestones slot.")
 
-if "idp_content_column" not in schema["classes"]["Document"]["slots"]:
-    raise SystemExit("Document class is missing the idp_content_column slot.")
+if "idp_content_column" in schema["slots"]:
+    raise SystemExit("idp_content_column slot must be removed.")
 if "idp_content_column" in schema["classes"]["Model"]["slots"]:
     raise SystemExit("Model must not include idp_content_column.")
-
-idp_content_column_slot = schema["slots"].get("idp_content_column")
-if not idp_content_column_slot or idp_content_column_slot.get("range") != "boolean":
-    raise SystemExit("idp_content_column slot must have range: boolean")
+if "idp_content_column" in schema["classes"]["Document"]["slots"]:
+    raise SystemExit("Document must not include idp_content_column.")
 
 milestone_slots = schema["classes"]["Milestone"]["slots"]
 for required_slot in ("id", "code", "sort_order", "name", "status", "phase", "kind", "date"):
@@ -219,7 +217,7 @@ kind_slot = schema["slots"].get("kind")
 if not kind_slot or kind_slot.get("range") != "MilestoneKindEnum":
     raise SystemExit("kind slot must have range: MilestoneKindEnum")
 
-print("Schema contract OK: Milestone, scheduled_milestones, and idp_content_column")
+print("Schema contract OK: Milestone and scheduled_milestones")
 
 element_slots = schema["classes"]["Element"]["slots"]
 if "needed_in_models" not in element_slots:
@@ -345,9 +343,9 @@ if "scheduled_milestones" not in document_props:
     raise SystemExit(
         "Compiled JSON Schema Document is missing scheduled_milestones."
     )
-if "idp_content_column" not in document_props:
+if "idp_content_column" in document_props:
     raise SystemExit(
-        "Compiled JSON Schema Document is missing idp_content_column."
+        "Compiled JSON Schema Document must not include idp_content_column."
     )
 
 milestone_props = compiled["$defs"]["Milestone"]["properties"]
@@ -357,7 +355,7 @@ for required_prop in ("id", "code", "sort_order", "name", "status", "phase", "ki
             f"Compiled JSON Schema Milestone is missing {required_prop}."
         )
 
-print("JSON Schema OK: Milestone, scheduled_milestones, and idp_content_column")
+print("JSON Schema OK: Milestone and scheduled_milestones")
 
 element_props = compiled["$defs"]["Element"]["properties"]
 if "needed_in_models" not in element_props:

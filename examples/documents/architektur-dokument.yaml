@@ -11,6 +11,23 @@ definition:
   fr: Document spécifique au projet sous le domaine Architecture. Contient les éléments et composants architecturaux.
   it: Documento specifico del progetto nel dominio Architettura. Contiene componenti ed elementi architettonici.
   en: Project-specific document under the Architecture domain. Contains architectural building elements.
+description:
+  de: |-
+    - Architektonische Bauteile und Elemente
+    - Bezug zu Gebäude und Geschoss
+    - Für die Planung lesbare Darstellung
+  fr: |-
+    - Éléments architecturaux
+    - Référence au bâtiment et à l'étage
+    - Représentation lisible pour la planification
+  it: |-
+    - Componenti ed elementi architettonici
+    - Riferimento a edificio e piano
+    - Rappresentazione leggibile per la pianificazione
+  en: |-
+    - Architectural building elements
+    - Reference to building and storey
+    - Representation readable for planning
 file_name:
   de: '{Auftrags-Nr Bauherr}_{Bauwerk ID}_{Phase}_ARC-DOC_{Freitext}'
   fr: '{Numéro projet}_{Code bâtiment}_{Phase}_ARC-DOC_{Libre}'
@@ -25,4 +42,3 @@ included_elements:
 scheduled_milestones:
   - "11:beginning"
   - "21:end"
-idp_content_column: true
