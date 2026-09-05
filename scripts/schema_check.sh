@@ -151,6 +151,76 @@ if (
 
 print("Schema contract OK: Document.included_elements")
 
+if "Milestone" not in schema["classes"]:
+    raise SystemExit("Milestone class is missing.")
+
+if "MilestoneKindEnum" not in schema.get("enums", {}):
+    raise SystemExit("MilestoneKindEnum is missing.")
+kind_values = set(schema["enums"]["MilestoneKindEnum"].get("permissible_values", {}))
+if kind_values != {"beginning", "end"}:
+    raise SystemExit("MilestoneKindEnum must permit beginning and end.")
+
+if "milestones" in dataset_slots:
+    raise SystemExit("ElementplanDataset must not include milestones; they belong on Phase.")
+
+if "milestones" not in schema["classes"]["Phase"]["slots"]:
+    raise SystemExit("Phase class is missing the milestones slot.")
+
+milestones_slot = schema["slots"].get("milestones")
+if (
+    not milestones_slot
+    or milestones_slot.get("range") != "Milestone"
+    or not milestones_slot.get("multivalued")
+    or not milestones_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "milestones slot must be multivalued Milestone with inlined_as_list: true"
+    )
+
+scheduled_milestones_slot = schema["slots"].get("scheduled_milestones")
+if (
+    not scheduled_milestones_slot
+    or scheduled_milestones_slot.get("range") != "Milestone"
+    or not scheduled_milestones_slot.get("multivalued")
+    or scheduled_milestones_slot.get("inlined") is not False
+):
+    raise SystemExit(
+        "scheduled_milestones slot must be multivalued Milestone with inlined: false"
+    )
+
+if "scheduled_milestones" not in schema["classes"]["Model"]["slots"]:
+    raise SystemExit("Model class is missing the scheduled_milestones slot.")
+if "scheduled_milestones" not in schema["classes"]["Document"]["slots"]:
+    raise SystemExit("Document class is missing the scheduled_milestones slot.")
+
+if "idp_content_column" not in schema["classes"]["Document"]["slots"]:
+    raise SystemExit("Document class is missing the idp_content_column slot.")
+if "idp_content_column" in schema["classes"]["Model"]["slots"]:
+    raise SystemExit("Model must not include idp_content_column.")
+
+idp_content_column_slot = schema["slots"].get("idp_content_column")
+if not idp_content_column_slot or idp_content_column_slot.get("range") != "boolean":
+    raise SystemExit("idp_content_column slot must have range: boolean")
+
+milestone_slots = schema["classes"]["Milestone"]["slots"]
+for required_slot in ("id", "code", "sort_order", "name", "status", "phase", "kind", "date"):
+    if required_slot not in milestone_slots:
+        raise SystemExit(f"Milestone class is missing the {required_slot} slot.")
+
+date_slot = schema["slots"].get("date")
+if not date_slot or date_slot.get("range") != "date":
+    raise SystemExit("date slot must have range: date")
+
+milestone_phase = schema["classes"]["Milestone"].get("slot_usage", {}).get("phase", {})
+if milestone_phase.get("range") != "string" or not milestone_phase.get("required"):
+    raise SystemExit("Milestone.phase must be a required string (phase code).")
+
+kind_slot = schema["slots"].get("kind")
+if not kind_slot or kind_slot.get("range") != "MilestoneKindEnum":
+    raise SystemExit("kind slot must have range: MilestoneKindEnum")
+
+print("Schema contract OK: Milestone, scheduled_milestones, and idp_content_column")
+
 element_slots = schema["classes"]["Element"]["slots"]
 if "needed_in_models" not in element_slots:
     raise SystemExit("Element class is missing the needed_in_models slot.")
@@ -249,6 +319,45 @@ if "included_elements" not in document_props:
     )
 
 print("JSON Schema OK: Document.included_elements")
+
+if "Milestone" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing Milestone.")
+
+if "milestones" in dataset_props:
+    raise SystemExit(
+        "Compiled JSON Schema ElementplanDataset must not include milestones."
+    )
+
+phase_props = compiled["$defs"]["Phase"]["properties"]
+if "milestones" not in phase_props:
+    raise SystemExit("Compiled JSON Schema Phase is missing milestones.")
+
+if "scheduled_milestones" not in model_props:
+    raise SystemExit(
+        "Compiled JSON Schema Model is missing scheduled_milestones."
+    )
+if "idp_content_column" in model_props:
+    raise SystemExit(
+        "Compiled JSON Schema Model must not include idp_content_column."
+    )
+
+if "scheduled_milestones" not in document_props:
+    raise SystemExit(
+        "Compiled JSON Schema Document is missing scheduled_milestones."
+    )
+if "idp_content_column" not in document_props:
+    raise SystemExit(
+        "Compiled JSON Schema Document is missing idp_content_column."
+    )
+
+milestone_props = compiled["$defs"]["Milestone"]["properties"]
+for required_prop in ("id", "code", "sort_order", "name", "status", "phase", "kind", "date"):
+    if required_prop not in milestone_props:
+        raise SystemExit(
+            f"Compiled JSON Schema Milestone is missing {required_prop}."
+        )
+
+print("JSON Schema OK: Milestone, scheduled_milestones, and idp_content_column")
 
 element_props = compiled["$defs"]["Element"]["properties"]
 if "needed_in_models" not in element_props:

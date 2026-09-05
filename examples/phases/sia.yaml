@@ -17,3 +17,28 @@ values:
 - '53'
 - '61'
 - '62'
+milestones:
+- id: "11:beginning"
+  code: beginning
+  sort_order: 1
+  name:
+    de: Beginn 11
+    en: Beginning 11
+    fr: Début 11
+    it: Inizio 11
+  status: active
+  phase: "11"
+  kind: beginning
+  date: 2026-01-01
+- id: "21:end"
+  code: end
+  sort_order: 2
+  name:
+    de: Ende 21
+    en: End 21
+    fr: Fin 21
+    it: Fine 21
+  status: active
+  phase: "21"
+  kind: end
+  date: 2026-06-30

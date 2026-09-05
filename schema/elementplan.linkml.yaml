@@ -32,6 +32,10 @@ enums:
       IfcBoolean: {}
       IfcDate: {}
       IfcReal: {}
+  MilestoneKindEnum:
+    permissible_values:
+      beginning: {}
+      end: {}
 
 slots:
   id:
@@ -112,6 +116,23 @@ slots:
       Template/default element set for this model or document. The Information
       Delivery Plan pretags these elements until a project-specific
       needed_for_models override exists.
+  scheduled_milestones:
+    multivalued: true
+    range: Milestone
+    inlined: false
+    description: >-
+      Milestone IDs at which this model or document is scheduled for delivery.
+      Omit the field or use an empty list if unscheduled. Not an inlined
+      milestones block; values are catalog ids such as "11:beginning".
+  idp_content_column:
+    range: boolean
+    description: >-
+      If true, this document appears as an IDP Content column.
+  kind:
+    range: MilestoneKindEnum
+  date:
+    range: date
+    description: Optional calendar date of this delivery moment.
   entity_ifc2x3:
     range: string
   entity_ifc4:
@@ -216,6 +237,13 @@ slots:
     multivalued: true
     range: PhaseSubphase
     inlined_as_list: true
+  milestones:
+    multivalued: true
+    range: Milestone
+    inlined_as_list: true
+    description: >-
+      Delivery moments that belong to a Phase (beginning/end of a phase
+      code). Referenced from Model and Document via scheduled_milestones ids.
   scheme:
     range: PhaseScheme
     inlined: false
@@ -293,7 +321,8 @@ classes:
       Model (Teilmodell) within a domain, e.g. Room model or Facade model under
       Architecture. Optional; may be predefined in master templates and inherited
       or extended by projects. Same slots as Domain, plus a required link to the
-      parent domain and an optional included_elements pre-tag list.
+      parent domain, an optional included_elements pre-tag list, and optional
+      scheduled_milestones (catalog ids of delivery moments).
     slots:
       - id
       - code
@@ -304,6 +333,7 @@ classes:
       - status
       - domain
       - included_elements
+      - scheduled_milestones
     slot_usage:
       domain:
         required: true
@@ -312,8 +342,9 @@ classes:
     description: >-
       Document within a domain (non-IFC container, e.g. a 2D plan). Optional;
       may be predefined in master templates and inherited or extended by
-      projects. Same slots as Domain, plus a required link to the parent domain
-      and an optional included_elements pre-tag list.
+      projects. Same slots as Domain, plus a required link to the parent domain,
+      an optional included_elements pre-tag list, optional scheduled_milestones
+      (catalog ids of delivery moments), and optional idp_content_column.
     slots:
       - id
       - code
@@ -324,6 +355,8 @@ classes:
       - status
       - domain
       - included_elements
+      - scheduled_milestones
+      - idp_content_column
     slot_usage:
       domain:
         required: true
@@ -394,10 +427,14 @@ classes:
       - status
 
   Phase:
+    description: >-
+      A phase scheme (e.g. SIA) with ordered phase codes in values. Milestones
+      (beginning/end moments) are part of the phase, not a separate catalog.
     slots:
       - id
       - name
       - values
+      - milestones
 
   PhaseSubphase:
     slots:
@@ -408,6 +445,27 @@ classes:
       - definition
       - status
       - phase
+
+  Milestone:
+    description: >-
+      A delivery moment that belongs to a Phase (beginning or end of a phase
+      code). Referenced from Model and Document via scheduled_milestones ids;
+      not inlined inside model or document YAML.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - status
+      - phase
+      - kind
+      - date
+    slot_usage:
+      phase:
+        range: string
+        required: true
+      kind:
+        required: true
 
   CustomPset:
     slots:

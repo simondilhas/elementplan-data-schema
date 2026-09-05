@@ -30,9 +30,11 @@ Project complexity / package tags (`workflow_group`) stay a **separate** axis fr
 
 **Domains** are the stable discipline grouping (e.g. Architecture, Building services). Requirements are ordered and filtered by domain.
 
-**Models** are optional delivery units (Teilmodelle) under a domain (e.g. Room model, Architecture element model, Facade model under Architecture). They may be predefined in master templates and inherited or extended by projects. Each model links to exactly one domain (`domain`). Optional `included_elements` is the template/default element set used as IDP pretags.
+**Models** are optional delivery units (Teilmodelle) under a domain (e.g. Room model, Architecture element model, Facade model under Architecture). They may be predefined in master templates and inherited or extended by projects. Each model links to exactly one domain (`domain`). Optional `included_elements` is the template/default element set used as IDP pretags. Optional `scheduled_milestones` is a list of milestone catalog ids (e.g. `"11:beginning"`) for when the container is delivered; omit the field or use `[]` if unscheduled. There is no inlined `milestones:` block inside the container YAML.
 
-**Documents** have the same shape as models, for non-IFC containers (e.g. a 2D plan): a required parent `domain` and optional `included_elements` pretags. They may also be predefined in master templates and inherited or extended by projects.
+**Documents** have the same shape as models, for non-IFC containers (e.g. a 2D plan): a required parent `domain` and optional `included_elements` pretags. They may also be predefined in master templates and inherited or extended by projects. Documents may additionally set `idp_content_column: true` to appear as an IDP Content column.
+
+**Milestones** belong to a **Phase** (`Phase.milestones`): delivery moments with `kind` `beginning` or `end`, an optional `date`, and a phase code. Models and documents reference them only via `scheduled_milestones` ids (no `milestones:` block inside the container YAML). Attribute `needed_in_phases` and Element `needed_for_models` stay phase codes (when an attribute/element is required), distinct from when a container is delivered.
 
 Element catalog membership is `needed_in_domain`. IDP assignment lives on the Element: `needed_in_models` (container IDs of models and documents) and `needed_for_models` (container id → phase ids). `included_elements` on Model/Document are pretags only, until a project-specific `needed_for_models` override exists.
 
@@ -42,7 +44,7 @@ For ordering, only the domain is relevant. In the project, the actual model or d
 
 - `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
-- `examples/`: sample project goals (incl. levels and activated workflows), workflows, elements, values, domains, models, documents, and phases
+- `examples/`: sample project goals (incl. levels and activated workflows), workflows, elements, values, domains, models, documents, and phases (incl. nested milestones)
 - `scripts/schema_check.sh`: local schema validation entry point
 - `.github/workflows/schema-check.yml`: GitHub Actions workflow for automatic validation
 
@@ -53,7 +55,7 @@ The repository includes a minimal validation pipeline that checks:
 - all YAML files in `schema/` parse correctly
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
-- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, `Document.included_elements`, `Element.needed_in_models`, and `Element.attachment_link`
+- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Document.idp_content_column`, `Milestone`, `Element.needed_in_models`, and `Element.attachment_link`
 
 Run the check locally with:
 

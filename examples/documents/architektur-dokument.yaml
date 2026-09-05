@@ -22,3 +22,7 @@ included_elements:
   - armasuisse:element/bodenaufbauten
   - armasuisse:element/fundamente
   - armasuisse:element/decken-flachdacher
+scheduled_milestones:
+  - "11:beginning"
+  - "21:end"
+idp_content_column: true
