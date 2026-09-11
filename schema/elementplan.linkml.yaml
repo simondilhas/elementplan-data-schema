@@ -34,8 +34,9 @@ enums:
       IfcReal: {}
   MilestoneKindEnum:
     permissible_values:
-      beginning: {}
-      end: {}
+      B: {}
+      M: {}
+      E: {}
 
 slots:
   id:
@@ -76,6 +77,23 @@ slots:
     range: string
   comment:
     range: string
+  source:
+    range: string
+    description: >-
+      Source id or code in a mapping (Phase id on PhaseMapping; phase or
+      milestone code on PhaseMapEntry).
+  target:
+    range: string
+    description: >-
+      Target id or code in a mapping (Phase id on PhaseMapping; phase or
+      milestone code on PhaseMapEntry).
+  phase_mappings:
+    multivalued: true
+    range: PhaseMapping
+    inlined_as_list: true
+    description: >-
+      Approximate equivalence maps between pickable Phase catalogs (e.g. SIA →
+      abstract), used for display and phase picker translation.
   workflow_group:
     range: string
   parent_workflow:
@@ -123,7 +141,7 @@ slots:
     description: >-
       Milestone IDs at which this model or document is scheduled for delivery.
       Omit the field or use an empty list if unscheduled. Not an inlined
-      milestones block; values are catalog ids such as "11:beginning".
+      milestones block; values are catalog ids such as "11:B".
   kind:
     range: MilestoneKindEnum
   date:
@@ -238,8 +256,8 @@ slots:
     range: Milestone
     inlined_as_list: true
     description: >-
-      Delivery moments that belong to a Phase (beginning/end of a phase
-      code). Referenced from Model and Document via scheduled_milestones ids.
+      Delivery moments that belong to a Phase (B/M/E of a phase code).
+      Referenced from Model and Document via scheduled_milestones ids.
   scheme:
     range: PhaseScheme
     inlined: false
@@ -298,6 +316,7 @@ classes:
       - valuesets
       - phase_schemes
       - phases
+      - phase_mappings
       - phase_subphases
       - custom_pset_entities
       - elements
@@ -429,13 +448,62 @@ classes:
 
   Phase:
     description: >-
-      A phase scheme (e.g. SIA) with ordered phase codes in values. Milestones
-      (beginning/end moments) are part of the phase, not a separate catalog.
+      A pickable phase catalog (e.g. SIA or abstract) with ordered phase codes
+      in values. Milestones (B/M/E moments) are part of the phase, not a
+      separate catalog. Multiple Phase catalogs may coexist; PhaseMapping
+      relates them for display and phase picker translation.
     slots:
       - id
       - name
       - values
       - milestones
+
+  PhaseMapEntry:
+    description: >-
+      One source→target code pair inside a PhaseMapping (phase code or
+      milestone id).
+    slots:
+      - source
+      - target
+    slot_usage:
+      source:
+        required: true
+      target:
+        required: true
+
+  PhaseMapping:
+    description: >-
+      Approximate equivalence between two Phase catalogs (e.g. SIA → abstract)
+      for display and phase picker. `phases` maps phase codes; `milestones`
+      maps milestone ids. Unmapped codes (e.g. Demolish) have no counterpart.
+    slots:
+      - id
+      - source
+      - target
+      - status
+      - name
+      - comment
+      - phases
+      - milestones
+    slot_usage:
+      source:
+        range: Phase
+        required: true
+        inlined: false
+      target:
+        range: Phase
+        required: true
+        inlined: false
+      comment:
+        range: LocalizedText
+      phases:
+        range: PhaseMapEntry
+        multivalued: true
+        inlined_as_list: true
+      milestones:
+        range: PhaseMapEntry
+        multivalued: true
+        inlined_as_list: true
 
   PhaseSubphase:
     slots:
@@ -449,9 +517,9 @@ classes:
 
   Milestone:
     description: >-
-      A delivery moment that belongs to a Phase (beginning or end of a phase
-      code). Referenced from Model and Document via scheduled_milestones ids;
-      not inlined inside model or document YAML.
+      A delivery moment that belongs to a Phase (B beginning, M mid, or E end
+      of a phase code). Referenced from Model and Document via
+      scheduled_milestones ids; not inlined inside model or document YAML.
     slots:
       - id
       - code

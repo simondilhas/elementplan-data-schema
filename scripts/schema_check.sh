@@ -157,8 +157,8 @@ if "Milestone" not in schema["classes"]:
 if "MilestoneKindEnum" not in schema.get("enums", {}):
     raise SystemExit("MilestoneKindEnum is missing.")
 kind_values = set(schema["enums"]["MilestoneKindEnum"].get("permissible_values", {}))
-if kind_values != {"beginning", "end"}:
-    raise SystemExit("MilestoneKindEnum must permit beginning and end.")
+if kind_values != {"B", "M", "E"}:
+    raise SystemExit("MilestoneKindEnum must permit B, M, and E.")
 
 if "milestones" in dataset_slots:
     raise SystemExit("ElementplanDataset must not include milestones; they belong on Phase.")
@@ -218,6 +218,67 @@ if not kind_slot or kind_slot.get("range") != "MilestoneKindEnum":
     raise SystemExit("kind slot must have range: MilestoneKindEnum")
 
 print("Schema contract OK: Milestone and scheduled_milestones")
+
+if "PhaseMapping" not in schema["classes"]:
+    raise SystemExit("PhaseMapping class is missing.")
+if "PhaseMapEntry" not in schema["classes"]:
+    raise SystemExit("PhaseMapEntry class is missing.")
+
+if "phase_mappings" not in dataset_slots:
+    raise SystemExit("ElementplanDataset is missing the phase_mappings slot.")
+if dataset_slots.index("phases") >= dataset_slots.index("phase_mappings"):
+    raise SystemExit("phase_mappings must appear after phases on ElementplanDataset.")
+
+phase_mappings_slot = schema["slots"].get("phase_mappings")
+if (
+    not phase_mappings_slot
+    or phase_mappings_slot.get("range") != "PhaseMapping"
+    or not phase_mappings_slot.get("multivalued")
+    or not phase_mappings_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "phase_mappings slot must be multivalued PhaseMapping with inlined_as_list: true"
+    )
+
+mapping_slots = schema["classes"]["PhaseMapping"]["slots"]
+for required_slot in (
+    "id",
+    "source",
+    "target",
+    "status",
+    "name",
+    "comment",
+    "phases",
+    "milestones",
+):
+    if required_slot not in mapping_slots:
+        raise SystemExit(f"PhaseMapping class is missing the {required_slot} slot.")
+
+mapping_usage = schema["classes"]["PhaseMapping"].get("slot_usage", {})
+for slot_name in ("source", "target"):
+    usage = mapping_usage.get(slot_name, {})
+    if usage.get("range") != "Phase" or not usage.get("required") or usage.get("inlined") is not False:
+        raise SystemExit(
+            f"PhaseMapping.{slot_name} must be a required Phase reference (inlined: false)."
+        )
+if mapping_usage.get("comment", {}).get("range") != "LocalizedText":
+    raise SystemExit("PhaseMapping.comment must have range: LocalizedText")
+for slot_name in ("phases", "milestones"):
+    usage = mapping_usage.get(slot_name, {})
+    if (
+        usage.get("range") != "PhaseMapEntry"
+        or not usage.get("multivalued")
+        or not usage.get("inlined_as_list")
+    ):
+        raise SystemExit(
+            f"PhaseMapping.{slot_name} must be multivalued PhaseMapEntry with inlined_as_list: true"
+        )
+
+entry_slots = schema["classes"]["PhaseMapEntry"]["slots"]
+if "source" not in entry_slots or "target" not in entry_slots:
+    raise SystemExit("PhaseMapEntry must include source and target slots.")
+
+print("Schema contract OK: PhaseMapping")
 
 element_slots = schema["classes"]["Element"]["slots"]
 if "needed_in_models" not in element_slots:
@@ -356,6 +417,17 @@ for required_prop in ("id", "code", "sort_order", "name", "status", "phase", "ki
         )
 
 print("JSON Schema OK: Milestone and scheduled_milestones")
+
+if "PhaseMapping" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing PhaseMapping.")
+if "PhaseMapEntry" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing PhaseMapEntry.")
+if "phase_mappings" not in dataset_props:
+    raise SystemExit(
+        "Compiled JSON Schema ElementplanDataset is missing phase_mappings."
+    )
+
+print("JSON Schema OK: PhaseMapping")
 
 element_props = compiled["$defs"]["Element"]["properties"]
 if "needed_in_models" not in element_props:

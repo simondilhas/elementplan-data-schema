@@ -40,5 +40,5 @@ included_elements:
   - armasuisse:element/fundamente
   - armasuisse:element/decken-flachdacher
 scheduled_milestones:
-  - "11:beginning"
-  - "21:end"
+  - "11:B"
+  - "21:E"

@@ -1,4 +1,4 @@
-id: armasuisse:phase/sia
+id: pragmaticbim:phase/sia
 name:
   de: SIA Phasen
   fr: Phases SIA
@@ -18,8 +18,8 @@ values:
 - '61'
 - '62'
 milestones:
-- id: "11:beginning"
-  code: beginning
+- id: "11:B"
+  code: B
   sort_order: 1
   name:
     de: Beginn 11
@@ -28,10 +28,10 @@ milestones:
     it: Inizio 11
   status: active
   phase: "11"
-  kind: beginning
+  kind: B
   date: 2026-01-01
-- id: "21:end"
-  code: end
+- id: "21:E"
+  code: E
   sort_order: 2
   name:
     de: Ende 21
@@ -40,5 +40,5 @@ milestones:
     it: Fine 21
   status: active
   phase: "21"
-  kind: end
+  kind: E
   date: 2026-06-30
