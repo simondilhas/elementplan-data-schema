@@ -67,6 +67,14 @@ slots:
     range: LocalizedText
   picture_link:
     range: string
+    description: >-
+      Filename of a screen/web preview image under media/pictures/
+      (e.g. PNG or JPEG).
+  picture_print_link:
+    range: string
+    description: >-
+      Filename of a print-quality image under media/pictures/
+      (e.g. TIFF), distinct from picture_link.
   attachment_link:
     range: string
     description: >-
@@ -74,7 +82,15 @@ slots:
       (PDF, IFC, or other allowed model formats). Legacy YAML may still
       use model_link; readers should accept both and write attachment_link.
   applicability:
-    range: string
+    range: Any
+    any_of:
+      - range: string
+      - range: LocalizedText
+    description: >-
+      Filter expression identifying the element within its IFC entity. A plain
+      string when the expression is language-neutral; a LocalizedText when it
+      contains a localised literal (e.g. ObjectType or LongName tokens that
+      differ per language).
   comment:
     range: string
   source:
@@ -273,6 +289,12 @@ slots:
     range: string
 
 classes:
+  Any:
+    class_uri: linkml:Any
+    description: >-
+      Placeholder range for a slot that permits more than one shape; the
+      accepted shapes are listed in the slot's any_of.
+
   LocalizedText:
     slots:
       - de
@@ -562,6 +584,7 @@ classes:
       - entity_ifc4
       - entity_ifc4_3
       - picture_link
+      - picture_print_link
       - attachment_link
       - applicability
       - custom_psets
