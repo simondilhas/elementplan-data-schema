@@ -37,6 +37,12 @@ enums:
       B: {}
       M: {}
       E: {}
+  ServiceKindEnum:
+    permissible_values:
+      basic:
+        description: Grundleistung (standard service in the base scope).
+      special:
+        description: Besondere Leistung (additional service, separately commissioned).
 
 slots:
   id:
@@ -112,6 +118,11 @@ slots:
       abstract), used for display and phase picker translation.
   workflow_group:
     range: string
+  service_kind:
+    range: ServiceKindEnum
+    description: >-
+      Whether this workflow is a Grundleistung (basic) or a besondere Leistung
+      (special). Omit when not yet classified.
   parent_workflow:
     range: Workflow
     inlined: false
@@ -431,6 +442,9 @@ classes:
       - comment
 
   Workflow:
+    description: >-
+      A BIM use case (Anwendungsfall). service_kind marks it as a Grundleistung
+      (basic) or a besondere Leistung (special) when that distinction is known.
     slots:
       - id
       - code
@@ -438,6 +452,7 @@ classes:
       - name
       - description
       - workflow_group
+      - service_kind
       - parent_workflow
       - picture_link
       - status

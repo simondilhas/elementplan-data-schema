@@ -16,6 +16,7 @@ description:
   it: Le disposizioni di modellazione devono essere definite dal progettista per il progetto specifico.
   en: ''
 workflow_group: null
+service_kind: special
 parent_workflow: armasuisse:workflow/awf-02-visualisierungen
 picture_link: null
 status: active

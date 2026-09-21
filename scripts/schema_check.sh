@@ -61,6 +61,23 @@ if "JurisdictionEnum" in schema.get("enums", {}):
 
 print("Schema contract OK: Workflow without jurisdiction or needed_for_project_goals")
 
+if "ServiceKindEnum" not in schema.get("enums", {}):
+    raise SystemExit("ServiceKindEnum is missing.")
+service_kind_values = set(schema["enums"]["ServiceKindEnum"].get("permissible_values", {}))
+if service_kind_values != {"basic", "special"}:
+    raise SystemExit("ServiceKindEnum must permit basic and special.")
+
+if "service_kind" not in workflow_slots:
+    raise SystemExit("Workflow class is missing the service_kind slot.")
+
+service_kind_slot = schema["slots"].get("service_kind")
+if not service_kind_slot or service_kind_slot.get("range") != "ServiceKindEnum":
+    raise SystemExit("service_kind slot must have range: ServiceKindEnum")
+if service_kind_slot.get("required"):
+    raise SystemExit("service_kind must be optional so unclassified workflows stay valid.")
+
+print("Schema contract OK: Workflow.service_kind")
+
 project_goals_slot = schema["slots"].get("project_goals")
 if (
     not project_goals_slot
@@ -339,6 +356,11 @@ if "jurisdiction" in workflow_props:
     raise SystemExit("Compiled JSON Schema Workflow must not include jurisdiction.")
 
 print("JSON Schema OK: Workflow without jurisdiction or needed_for_project_goals")
+
+if "service_kind" not in workflow_props:
+    raise SystemExit("Compiled JSON Schema Workflow is missing service_kind.")
+
+print("JSON Schema OK: Workflow.service_kind")
 
 print("JSON Schema OK: ProjectGoal above Workflow")
 

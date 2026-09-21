@@ -30,6 +30,7 @@ description:
     \ del progetto  \n\n**Oggetti della fornitura:** \n- Modello/i BIM \n- Documentazione in formato fotografico, video o PDF"
   en: ''
 workflow_group: null
+service_kind: basic
 parent_workflow: null
 picture_link: null
 status: active

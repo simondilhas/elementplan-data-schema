@@ -26,6 +26,8 @@ The link from intent to workflows is `ProjectGoalLevel.activated_workflows` on t
 
 Project complexity / package tags (`workflow_group`) stay a **separate** axis from project goals: complexity tends to drive base coordination workflows; goals drive additional thematic workflows.
 
+Optional `service_kind` on a workflow records whether it is a **Grundleistung** (`basic`) or a **besondere Leistung** (`special`). Omit it when the workflow is not yet classified. The badge is on the workflow, not on attributes: an attribute shows the kind of the workflows it is needed for.
+
 ### Domains, models, and documents
 
 **Domains** are the stable discipline grouping (e.g. Architecture, Building services). Requirements are ordered and filtered by domain.
@@ -57,7 +59,7 @@ The repository includes a minimal validation pipeline that checks:
 - all YAML files in `schema/` parse correctly
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
-- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, and `Element.attachment_link`
+- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `Workflow.service_kind`, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, and `Element.attachment_link`
 
 Run the check locally with:
 
