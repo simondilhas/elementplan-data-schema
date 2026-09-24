@@ -80,6 +80,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: AcousticRating
   pset: Pset_SlabCommon
@@ -114,6 +116,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: FireRating
   pset: Pset_SlabCommon
@@ -152,6 +156,8 @@ attributes:
   - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: LoadBearing
   pset: Pset_SlabCommon
@@ -186,6 +192,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4
 - name: Status
   pset: Pset_SlabCommon
@@ -228,6 +236,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 5
 - name: ThermalTransmittance
   pset: Pset_SlabCommon
@@ -262,4 +272,6 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 6

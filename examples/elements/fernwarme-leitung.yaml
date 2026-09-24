@@ -45,4 +45,6 @@ attributes:
   needed_for_workflows: []
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 1

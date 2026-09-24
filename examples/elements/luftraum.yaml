@@ -73,6 +73,8 @@ attributes:
   - armasuisse:workflow/awf-00-a-nachweismodell-architektur
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: ObjectType
   pset: null
@@ -111,6 +113,8 @@ attributes:
   - armasuisse:workflow/awf-00-a-nachweismodell-architektur
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: NetFloorArea
   pset: Qto_SpaceBaseQuantities
@@ -152,6 +156,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: NetVolume
   pset: Qto_SpaceBaseQuantities
@@ -192,4 +198,6 @@ attributes:
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4

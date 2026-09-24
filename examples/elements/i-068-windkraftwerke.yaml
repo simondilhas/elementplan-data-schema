@@ -53,6 +53,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: Supplier
   pset: Cust_SupplierOccurence
@@ -79,6 +81,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: SpaceID
   pset: Cust_System
@@ -106,6 +110,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: SystemCategory
   pset: Cust_System
@@ -133,6 +139,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4
 - name: AcquisitionDate
   pset: Pset_ManufacturerOccurrence
@@ -160,6 +168,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 5
 - name: WarrantyEndDate
   pset: Pset_Warranty
@@ -186,6 +196,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 6
 - name: WarrantyStartDate
   pset: Pset_Warranty
@@ -212,4 +224,6 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 7

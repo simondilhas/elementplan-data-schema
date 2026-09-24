@@ -20,6 +20,8 @@ service_kind: special
 parent_workflow: armasuisse:workflow/awf-02-visualisierungen
 picture_link: null
 status: active
+jurisdiction:
+- general
 needed_in_domain:
 - armasuisse:domain/architektur
 comment: ''

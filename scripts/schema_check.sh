@@ -48,18 +48,36 @@ if dataset_slots.index("models") >= dataset_slots.index("documents"):
     raise SystemExit("models must appear before documents on ElementplanDataset.")
 
 workflow_slots = schema["classes"]["Workflow"]["slots"]
-if "jurisdiction" in workflow_slots:
-    raise SystemExit("Workflow must not include jurisdiction.")
 if "needed_for_project_goals" in workflow_slots:
     raise SystemExit("Workflow must not include needed_for_project_goals.")
-if "jurisdiction" in schema["slots"]:
-    raise SystemExit("jurisdiction slot must be removed.")
 if "needed_for_project_goals" in schema["slots"]:
     raise SystemExit("needed_for_project_goals slot must be removed.")
-if "JurisdictionEnum" in schema.get("enums", {}):
-    raise SystemExit("JurisdictionEnum must be removed.")
 
-print("Schema contract OK: Workflow without jurisdiction or needed_for_project_goals")
+print("Schema contract OK: Workflow without needed_for_project_goals")
+
+if "JurisdictionEnum" not in schema.get("enums", {}):
+    raise SystemExit("JurisdictionEnum is missing.")
+jurisdiction_values = set(
+    schema["enums"]["JurisdictionEnum"].get("permissible_values", {})
+)
+for required_code in ("general", "ch", "de", "at"):
+    if required_code not in jurisdiction_values:
+        raise SystemExit(f"JurisdictionEnum must include {required_code}.")
+
+jurisdiction_slot = schema["slots"].get("jurisdiction")
+if not jurisdiction_slot:
+    raise SystemExit("jurisdiction slot is missing.")
+if jurisdiction_slot.get("range") != "JurisdictionEnum":
+    raise SystemExit("jurisdiction slot must have range: JurisdictionEnum")
+if not jurisdiction_slot.get("multivalued"):
+    raise SystemExit("jurisdiction slot must be multivalued.")
+
+for class_name in ("Workflow", "Attribute", "Model", "Document"):
+    class_slots = schema["classes"][class_name]["slots"]
+    if "jurisdiction" not in class_slots:
+        raise SystemExit(f"{class_name} class is missing the jurisdiction slot.")
+
+print("Schema contract OK: jurisdiction on Workflow, Attribute, Model, Document")
 
 if "ServiceKindEnum" not in schema.get("enums", {}):
     raise SystemExit("ServiceKindEnum is missing.")
@@ -352,10 +370,17 @@ if "needed_for_project_goals" in workflow_props:
     raise SystemExit(
         "Compiled JSON Schema Workflow must not include needed_for_project_goals."
     )
-if "jurisdiction" in workflow_props:
-    raise SystemExit("Compiled JSON Schema Workflow must not include jurisdiction.")
 
-print("JSON Schema OK: Workflow without jurisdiction or needed_for_project_goals")
+print("JSON Schema OK: Workflow without needed_for_project_goals")
+
+for class_name in ("Workflow", "Attribute", "Model", "Document"):
+    class_props = compiled["$defs"][class_name]["properties"]
+    if "jurisdiction" not in class_props:
+        raise SystemExit(
+            f"Compiled JSON Schema {class_name} is missing jurisdiction."
+        )
+
+print("JSON Schema OK: jurisdiction on Workflow, Attribute, Model, Document")
 
 if "service_kind" not in workflow_props:
     raise SystemExit("Compiled JSON Schema Workflow is missing service_kind.")

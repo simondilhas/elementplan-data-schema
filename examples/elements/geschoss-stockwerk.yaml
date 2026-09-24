@@ -146,4 +146,6 @@ attributes:
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1

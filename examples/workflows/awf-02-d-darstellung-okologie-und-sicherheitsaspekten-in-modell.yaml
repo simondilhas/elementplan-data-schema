@@ -20,6 +20,8 @@ workflow_group: null
 parent_workflow: armasuisse:workflow/awf-02-visualisierungen
 picture_link: null
 status: deprecated
+jurisdiction:
+- general
 needed_in_domain:
 - armasuisse:domain/architektur
 comment: ''

@@ -90,6 +90,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: Description
   pset: null
@@ -160,6 +162,8 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: ObjectType
   pset: null
@@ -226,6 +230,8 @@ attributes:
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: ElevationLN02
   pset: Cust_ModelInsertionPoint
@@ -267,6 +273,8 @@ attributes:
   - armasuisse:workflow/awf-00-a-nachweismodell-architektur
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4
 - name: LV95E
   pset: Cust_ModelInsertionPoint
@@ -307,6 +315,8 @@ attributes:
   - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 5
 - name: LV95N
   pset: Cust_ModelInsertionPoint
@@ -347,4 +357,6 @@ attributes:
   - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 6

@@ -53,6 +53,8 @@ attributes:
   - armasuisse:workflow/awf-00-a-nachweismodell-architektur
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: Description
   pset: null
@@ -88,6 +90,8 @@ attributes:
   - armasuisse:workflow/awf-00-a-nachweismodell-architektur
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: PredefinedType
   pset: null
@@ -134,6 +138,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: IsExternal
   pset: Pset_WindowCommon
@@ -178,6 +184,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4
 - name: Area
   pset: Qto_WindowBaseQuantities
@@ -211,4 +219,6 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 5

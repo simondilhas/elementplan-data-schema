@@ -58,6 +58,8 @@ attributes:
   - armasuisse:workflow/awf-00-b-nachweismodell-elektroanlagen
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: RelationToSystem
   pset: Cust_Element
@@ -98,4 +100,6 @@ attributes:
   - armasuisse:workflow/awf-05-a-planungskoordination-und-fortschritt
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2

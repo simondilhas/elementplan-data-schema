@@ -15,6 +15,8 @@ workflow_group: BIM 3d full 10Mio+,BIM 3d light,BIM 3d full
 parent_workflow: armasuisse:workflow/awf-07-auftrags-pendenzen-und-magelmanagement
 picture_link: null
 status: deprecated
+jurisdiction:
+- general
 needed_in_domain:
 - armasuisse:domain/architektur
 - armasuisse:domain/gebaudetechnik

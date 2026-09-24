@@ -112,6 +112,8 @@ attributes:
   - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: Description
   pset: null
@@ -171,6 +173,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: AddressLines
   pset: Cust_Building
@@ -210,6 +214,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: BuildingHeightLVHB
   pset: Cust_Building
@@ -235,6 +241,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4
 - name: BuildingInsuranceNumber
   pset: Cust_Building
@@ -263,6 +271,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 5
 - name: BuildingLengthLHVB
   pset: Cust_Building
@@ -288,6 +298,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 6
 - name: BuildingWidthLHVB
   pset: Cust_Building
@@ -313,6 +325,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 7
 - name: BusinessUnitId
   pset: Cust_Building
@@ -350,6 +364,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 8
 - name: DateOfDecommissioning
   pset: Cust_Building
@@ -375,6 +391,8 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 9
 - name: Diagonal
   pset: Cust_Building
@@ -434,6 +452,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 10
 - name: EarthquakeStructuralClass
   pset: Cust_Building
@@ -467,6 +487,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 11
 - name: EnergyQualityLabel
   pset: Cust_Building
@@ -498,6 +520,8 @@ attributes:
   - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 12
 - name: EnergyReferenceSurface
   pset: Cust_Building
@@ -557,6 +581,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 13
 - name: ObjectSubType
   pset: Cust_Building
@@ -594,6 +620,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 14
 - name: ProtectionZone
   pset: Cust_Building
@@ -629,6 +657,8 @@ attributes:
   - armasuisse:workflow/awf-02-i-darstellung-sicherheitszonen-in-modell
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 15
 - name: SeatsActual
   pset: Cust_Building
@@ -662,6 +692,8 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 16
 - name: SeatsTarget
   pset: Cust_Building
@@ -687,6 +719,8 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 17
 - name: SleepingPlacesTarget
   pset: Cust_Building
@@ -711,6 +745,8 @@ attributes:
   - armasuisse:workflow/awf-08-b-modellbasierte-informationen-auf-systemebene-3d
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 18
 - name: TrainingPlacesActual
   pset: Cust_Building
@@ -744,6 +780,8 @@ attributes:
   - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 19
 - name: TrainingPlacesTarget
   pset: Cust_Building
@@ -769,6 +807,8 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 20
 - name: WorkplacesActual
   pset: Cust_Building
@@ -802,6 +842,8 @@ attributes:
   - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 21
 - name: WorkplacesTarget
   pset: Cust_Building
@@ -827,6 +869,8 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 22
 - name: BuildingID
   pset: Pset_BuildingCommon
@@ -870,6 +914,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 23
 - name: IsLandmarked
   pset: Pset_BuildingCommon
@@ -906,6 +952,8 @@ attributes:
   - armasuisse:workflow/awf-03-c-flachen-und-volumen-fur-bauwerkskennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 24
 - name: Reference
   pset: Pset_BuildingCommon
@@ -943,6 +991,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 25
 - name: YearOfConstruction
   pset: Pset_BuildingCommon
@@ -971,6 +1021,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 26
 - name: YearOfLastRefurbishment
   pset: Pset_BuildingCommon
@@ -997,4 +1049,6 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 27

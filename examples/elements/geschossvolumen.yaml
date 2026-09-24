@@ -65,6 +65,8 @@ attributes:
   - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: GrossFloorArea
   pset: Qto_SpaceBaseQuantities
@@ -103,6 +105,8 @@ attributes:
   - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: GrossVolume
   pset: Qto_SpaceBaseQuantities
@@ -138,4 +142,6 @@ attributes:
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3

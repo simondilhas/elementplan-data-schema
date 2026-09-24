@@ -86,6 +86,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: FireRating
   pset: Pset_BeamCommon
@@ -124,6 +126,8 @@ attributes:
   - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: LoadBearing
   pset: Pset_BeamCommon
@@ -158,6 +162,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: Status
   pset: Pset_BeamCommon
@@ -200,4 +206,6 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4

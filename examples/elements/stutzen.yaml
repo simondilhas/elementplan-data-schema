@@ -63,6 +63,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: LoadBearing
   pset: Pset_ColumnCommon
@@ -97,6 +99,8 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: Status
   pset: Pset_ColumnCommon
@@ -139,4 +143,6 @@ attributes:
   - armasuisse:workflow/awf-03-d-mengen-fur-bauteilkennzahlen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3

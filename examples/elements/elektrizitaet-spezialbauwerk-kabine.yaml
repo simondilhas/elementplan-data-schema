@@ -45,6 +45,8 @@ attributes:
   needed_for_workflows: []
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: HeightAccuracy
   pset: Cust_Existing
@@ -81,6 +83,8 @@ attributes:
   needed_for_workflows: []
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: PositionAccuracy
   pset: Cust_Existing
@@ -117,6 +121,8 @@ attributes:
   needed_for_workflows: []
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: RecordingDate
   pset: Cust_Existing
@@ -149,6 +155,8 @@ attributes:
   needed_for_workflows: []
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4
 - name: ConstructionYear
   pset: Cust_Infra
@@ -181,6 +189,8 @@ attributes:
   needed_for_workflows: []
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 5
 - name: Municipality
   pset: Cust_Infra
@@ -213,6 +223,8 @@ attributes:
   needed_for_workflows: []
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 6
 - name: RenovationNeeded
   pset: Cust_Infra
@@ -251,6 +263,8 @@ attributes:
   needed_for_workflows: []
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 7
 - name: RenovationYear
   pset: Cust_Infra
@@ -283,6 +297,8 @@ attributes:
   needed_for_workflows: []
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 8
 - name: Status
   pset: Cust_Infra
@@ -320,4 +336,6 @@ attributes:
   needed_for_workflows: []
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 9

@@ -95,6 +95,8 @@ attributes:
   - armasuisse:workflow/awf-00-e-nachweismodell-sanitaranlagen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: Description
   pset: null
@@ -133,6 +135,8 @@ attributes:
   - armasuisse:workflow/awf-08-g-lia-grundstuck
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: ISK
   pset: Cust_Site
@@ -169,6 +173,8 @@ attributes:
   - armasuisse:workflow/awf-08-f-lia-areal
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: PostalCode
   pset: Cust_Site
@@ -205,6 +211,8 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4
 - name: LandID
   pset: Pset_LandRegistration
@@ -243,6 +251,8 @@ attributes:
   - armasuisse:workflow/awf-08-g-lia-grundstuck
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 5
 - name: PropertyName
   pset: Pset_PropertyAgreement
@@ -305,4 +315,6 @@ attributes:
   - armasuisse:workflow/awf-08-f-lia-areal
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 6

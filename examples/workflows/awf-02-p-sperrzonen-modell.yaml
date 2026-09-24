@@ -18,6 +18,8 @@ workflow_group: BIM 3d full 10Mio+,BIM 3d full,BIM 3d light
 parent_workflow: armasuisse:workflow/awf-05-planungskoordination-und-fortschritt
 picture_link: null
 status: active
+jurisdiction:
+- general
 needed_in_domain:
 - armasuisse:domain/architektur
 comment: ''

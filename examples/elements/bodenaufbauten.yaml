@@ -62,6 +62,8 @@ attributes:
   - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: FloorCovering
   pset: Cust_Element
@@ -96,4 +98,6 @@ attributes:
   - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 2

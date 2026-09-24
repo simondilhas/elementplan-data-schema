@@ -34,6 +34,8 @@ service_kind: basic
 parent_workflow: null
 picture_link: null
 status: active
+jurisdiction:
+- general
 needed_in_domain:
 - armasuisse:domain/architektur
 - armasuisse:domain/gebaudetechnik

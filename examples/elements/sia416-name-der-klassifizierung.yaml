@@ -61,4 +61,6 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 1

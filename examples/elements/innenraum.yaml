@@ -87,6 +87,8 @@ attributes:
   - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1
 - name: PredefinedType
   pset: null
@@ -126,6 +128,8 @@ attributes:
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   is_applicability: true
   status: active
+  jurisdiction:
+  - general
   sort_order: 2
 - name: LongName
   pset: null
@@ -168,6 +172,8 @@ attributes:
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 3
 - name: AreaLoad
   pset: Cust_Space
@@ -197,6 +203,8 @@ attributes:
   - armasuisse:workflow/awf-02-f-bestandsaufnahme
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 4
 - name: IsEnergyReferenceArea
   pset: Cust_Space
@@ -224,6 +232,8 @@ attributes:
   - armasuisse:workflow/awf-03-b-liefern-von-grundlagen-fur-lebenszykluskostenberechnungen-stufe-2
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 5
 - name: RoomTag
   pset: Cust_Space
@@ -250,6 +260,8 @@ attributes:
   - armasuisse:workflow/awf-02-f-bestandsaufnahme
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 6
 - name: IsExternal
   pset: Pset_SpaceCommon
@@ -288,6 +300,8 @@ attributes:
   - armasuisse:workflow/awf-02-n-visualisierung-raumbeziehungen
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 7
 - name: NetPlannedArea
   pset: Pset_SpaceCommon
@@ -312,6 +326,8 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 8
 - name: Reference
   pset: Pset_SpaceCommon
@@ -355,6 +371,8 @@ attributes:
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 9
 - name: CeilingCovering
   pset: Pset_SpaceCoveringRequirements
@@ -388,6 +406,8 @@ attributes:
   - armasuisse:workflow/awf-08-d-modellbasierte-informationen-auf-bauteilebene-3d-gebaudetechnik
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 10
 - name: ConcealedFlooring
   pset: Pset_SpaceCoveringRequirements
@@ -420,6 +440,8 @@ attributes:
   - armasuisse:workflow/awf-02-f-bestandsaufnahme
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 11
 - name: FloorCovering
   pset: Pset_SpaceCoveringRequirements
@@ -448,6 +470,8 @@ attributes:
   - armasuisse:workflow/awf-02-f-bestandsaufnahme
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 12
 - name: FireExit
   pset: Pset_SpaceFireSafetyRequirements
@@ -481,6 +505,8 @@ attributes:
   - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 13
 - name: OccupancyNumber
   pset: Pset_SpaceOccupancyRequirements
@@ -511,6 +537,8 @@ attributes:
   - armasuisse:workflow/awf-02-h-darstellung-brandschutzkonzept-in-modell
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 14
 - name: Height
   pset: Qto_SpaceBaseQuantities
@@ -545,6 +573,8 @@ attributes:
   - armasuisse:workflow/awf-02-a-szenarienentwicklung-stadtebauliche-machbarkeit
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 15
 - name: NetFloorArea
   pset: Qto_SpaceBaseQuantities
@@ -586,6 +616,8 @@ attributes:
   - armasuisse:workflow/awf-08-e-lia-gebaude
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 16
 - name: NetVolume
   pset: Qto_SpaceBaseQuantities
@@ -626,4 +658,6 @@ attributes:
   - armasuisse:workflow/awf-03-e-bim2lcc-lebenszykluskosten
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 17

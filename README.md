@@ -28,6 +28,17 @@ Project complexity / package tags (`workflow_group`) stay a **separate** axis fr
 
 Optional `service_kind` on a workflow records whether it is a **Grundleistung** (`basic`) or a **besondere Leistung** (`special`). Omit it when the workflow is not yet classified. The badge is on the workflow, not on attributes: an attribute shows the kind of the workflows it is needed for.
 
+### Jurisdiction (country vs general)
+
+`jurisdiction` is a multivalued list on **Workflow**, **Attribute**, **Model**, and **Document**:
+
+- `[general]` — not country-specific (omit the field to mean the same)
+- one or more ISO 3166-1 alpha-2 codes (lowercase), e.g. `[ch]` or `[ch, de, at]`
+
+Do not mix `general` with country codes. A project with country `C` matches an entity if the list is `[general]` (or omitted) **or** contains `C`.
+
+**ValueSets** have no jurisdiction field; they inherit applicability via `Attribute.allowed_values`. Phase catalogs stay country-ish by scheme identity (e.g. SIA vs abstract), not via this slot.
+
 ### Domains, models, and documents
 
 **Domains** are the stable discipline grouping (e.g. Architecture, Building services). Requirements are ordered and filtered by domain.
@@ -59,7 +70,7 @@ The repository includes a minimal validation pipeline that checks:
 - all YAML files in `schema/` parse correctly
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
-- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `Workflow.service_kind`, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, and `Element.attachment_link`
+- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `Workflow.service_kind`, `jurisdiction` on Workflow/Attribute/Model/Document, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, and `Element.attachment_link`
 
 Run the check locally with:
 

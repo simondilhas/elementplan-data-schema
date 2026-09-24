@@ -62,4 +62,6 @@ attributes:
   - armasuisse:workflow/awf-02-m-modellgrundlage-datenubergabe-bauherr
   is_applicability: false
   status: active
+  jurisdiction:
+  - general
   sort_order: 1

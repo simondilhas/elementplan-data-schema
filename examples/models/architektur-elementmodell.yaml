@@ -17,6 +17,8 @@ file_name:
   it: '{Numero di incarico del committente}_{Codice opera di costruzione}_{Fase}_ARC-EL_{Testo libero}'
   en: '{Client order no}_{Building ID}_{Phase}_ARC-EL_{Free text}'
 status: active
+jurisdiction:
+- general
 domain: armasuisse:domain/architektur
 included_elements:
   - armasuisse:element/bodenaufbauten
