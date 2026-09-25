@@ -27,7 +27,6 @@ attributes:
     fr: Réseau de froid à distance ouvrage station
     it: Teleraffrescamento opera per Stazione
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernkalte-bauwerk-station
   link_uid: ''
   regex:

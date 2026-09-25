@@ -27,7 +27,6 @@ attributes:
     fr: Réseau de froid à distance tracé souterrain
     it: Teleraffrescamento Tracciato sotterraneo
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernkalte-trasse-unterirdisch
   link_uid: ''
   regex:

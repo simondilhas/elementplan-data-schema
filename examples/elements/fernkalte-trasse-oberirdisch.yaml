@@ -27,7 +27,6 @@ attributes:
     fr: Réseau de froid à distance tracé en surface
     it: Teleraffrescamento Tracciato fuori terra
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernkalte-trasse-oberirdisch
   link_uid: ''
   regex:

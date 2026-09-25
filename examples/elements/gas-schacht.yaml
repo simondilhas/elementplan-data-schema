@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’un regard.
     it: Indica se si tratta di un pozzo.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/gas-schacht
   link_uid: ''
   regex:

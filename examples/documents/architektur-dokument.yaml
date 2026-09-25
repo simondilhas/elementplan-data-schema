@@ -44,3 +44,146 @@ included_elements:
 scheduled_milestones:
   - "11:B"
   - "21:E"
+classifications:
+  - classification_scheme: KBOBDocumentTypes2016
+    classification_code: V07100
+    classification_label: Architekturplan
+    classification_source: KBOB/IPB Dokumenttypenkatalog 2016, Anhang C
+  - classification_scheme: DocumentFunctionClassification
+    classification_code: TEC-PLN
+    classification_label: Plans
+responsible_role:
+  classification_scheme: AbstractRoles
+  classification_code: aec.architect
+reviewing_roles:
+  - classification_scheme: AbstractRoles
+    classification_code: aec.bim_coordinator
+audience_roles:
+  - classification_scheme: AbstractRoles
+    classification_code: aec.client
+content_requirements:
+  - name:
+      de: Legende
+      fr: Légende
+      it: Legenda
+      en: Legend
+    sort_order: 1
+    definition:
+      de: Erklärung aller verwendeten Symbole, Schraffuren und Abkürzungen.
+      fr: Explication de tous les symboles, hachures et abréviations utilisés.
+      it: Spiegazione di tutti i simboli, tratteggi e abbreviazioni utilizzati.
+      en: Explanation of all symbols, hatches, and abbreviations used.
+    needed_in_phases:
+      - '31'
+      - '32'
+      - '41'
+      - '51'
+    needed_for_workflows:
+      - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+    status: active
+    jurisdiction:
+      - general
+  - name:
+      de: Massstab und Nordpfeil
+      fr: Échelle et flèche du nord
+      it: Scala e freccia del nord
+      en: Scale and north arrow
+    sort_order: 2
+    definition:
+      de: Angabe des Massstabs im Planfeld; Grundrisse mit Nordpfeil.
+      fr: Indication de l'échelle dans le cartouche; plans avec flèche du nord.
+      it: Indicazione della scala nel cartiglio; planimetrie con freccia del nord.
+      en: Scale stated in the title block; floor plans with north arrow.
+    needed_in_phases:
+      - '31'
+      - '32'
+      - '41'
+      - '51'
+    needed_for_workflows:
+      - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+    status: active
+    jurisdiction:
+      - general
+  - name:
+      de: Gebäude- und Geschossbezug
+      fr: Référence au bâtiment et à l'étage
+      it: Riferimento a edificio e piano
+      en: Building and storey reference
+    sort_order: 3
+    definition:
+      de: Jeder Plan nennt Bauwerk ID und Geschoss gemäss armasuisse Immobilien; identisch mit dem Modell.
+      fr: Chaque plan indique l'ID du bâtiment et l'étage selon armasuisse Immobilier; identique à la maquette.
+      it: Ogni piano indica il codice dell'opera e il piano secondo armasuisse Immobili; identico al modello.
+      en: Every sheet states the building ID and storey per armasuisse Immobilien; identical to the model.
+    needed_in_phases:
+      - '31'
+      - '32'
+      - '41'
+      - '51'
+    needed_for_workflows:
+      - armasuisse:workflow/awf-00-a-nachweismodell-architektur
+      - armasuisse:workflow/awf-08-a-basis-dokumente-inkl-lia-2d
+    status: active
+    jurisdiction:
+      - general
+  - name:
+      de: Revisionstabelle
+      fr: Tableau des révisions
+      it: Tabella delle revisioni
+      en: Revision table
+    sort_order: 4
+    definition:
+      de: Tabelle mit Index, Datum und Beschreibung jeder Planänderung.
+      fr: Tableau avec indice, date et description de chaque modification du plan.
+      it: Tabella con indice, data e descrizione di ogni modifica del piano.
+      en: Table with index, date, and description of every sheet revision.
+    needed_in_phases:
+      - '41'
+      - '51'
+    needed_for_workflows:
+      - armasuisse:workflow/awf-08-a-basis-dokumente-inkl-lia-2d
+    status: active
+    jurisdiction:
+      - general
+metadata_requirements:
+  - name:
+      de: Revisionsindex
+      fr: Indice de révision
+      it: Indice di revisione
+      en: Revision index
+    sort_order: 1
+    definition:
+      de: Laufender Revisionsindex im Dateinamen und im Planfeld (A, B, C, ...).
+      fr: Indice de révision courant dans le nom de fichier et le cartouche (A, B, C, ...).
+      it: Indice di revisione progressivo nel nome file e nel cartiglio (A, B, C, ...).
+      en: Running revision index in file name and title block (A, B, C, ...).
+    regex: '^[A-Z]$'
+    needed_in_phases:
+      - '41'
+      - '51'
+    needed_for_workflows:
+      - armasuisse:workflow/awf-08-a-basis-dokumente-inkl-lia-2d
+    status: active
+    jurisdiction:
+      - general
+  - name:
+      de: Planstatus
+      fr: Statut du plan
+      it: Stato del piano
+      en: Sheet status
+    sort_order: 2
+    definition:
+      de: Bearbeitungsstatus des Plans (Entwurf, zur Prüfung, freigegeben, as-built).
+      fr: Statut de traitement du plan (projet, pour contrôle, approuvé, as-built).
+      it: Stato di elaborazione del piano (bozza, per verifica, approvato, as-built).
+      en: Processing status of the sheet (draft, for review, approved, as-built).
+    needed_in_phases:
+      - '31'
+      - '32'
+      - '41'
+      - '51'
+    needed_for_workflows:
+      - armasuisse:workflow/awf-08-a-basis-dokumente-inkl-lia-2d
+    status: active
+    jurisdiction:
+      - general

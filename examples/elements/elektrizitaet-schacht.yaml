@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’un regard électrique.
     it: Indica se si tratta di un pozzetto per energia elettrica.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/elektrizitaet-schacht
   link_uid: ''
   regex:

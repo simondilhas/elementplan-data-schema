@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’un tracé en surface.
     it: Indica se si tratta di un tracciato fuori terra
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/elektrizitaet-trasse-oberirdisch
   link_uid: ''
   regex:

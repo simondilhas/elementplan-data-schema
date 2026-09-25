@@ -60,7 +60,6 @@ attributes:
 
       T_BEAM … Trave a T'
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/predefinedtype-beam
   link_uid: ''
   regex:

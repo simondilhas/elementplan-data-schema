@@ -34,7 +34,6 @@ attributes:
     fr: Le numéro du point de repère, p. ex. S-9510932
     it: Il numero del punto di rilevamento. Ad es. S-9510932
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:
@@ -71,7 +70,6 @@ attributes:
     fr: Description indiquant de quel genre de point de référence il s’agit, p. ex. point topographique, point de contrôle, ...
     it: Descrizione di che tipo di punto di riferimento si tratta. Ad es. punto topografico, punto di controllo, ...
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:
@@ -139,7 +137,6 @@ attributes:
     fr: La valeur PredefinedType doit être définie sur USERDEFINED afin que le type d’objet individuel puisse être lu via l’attribut ObjectType.
     it: Il valore PredefinedType deve essere impostato su USERDEFINED affinché il tipo di oggetto individuale possa essere letto tramite l’attributo ObjectType.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-userdefined
   link_uid: ''
   regex:
@@ -207,7 +204,6 @@ attributes:
     fr: L’attribut ObjectType définit que l’élément modélisé correspond à un point de référence/d’insertion du périmètre du projet.
     it: L'attributo Tipo di oggetto serve a definire che per elemento di modello si tratta  di un punto di riferimento/inserimento per il perimetro del progetto.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-referencepoint
   link_uid: ''
   regex:

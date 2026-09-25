@@ -37,7 +37,6 @@ attributes:
       PILASTER … Pilier'
     it: Le PredefinedType definit plus precisement le type de poteau.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/predefinedtypecolumn
   link_uid: ''
   regex:

@@ -42,7 +42,6 @@ attributes:
     fr: La valeur PredefinedType doit être définie sur USERDEFINED afin que le type d’objet individuel puisse être lu via l’attribut ObjectType.
     it: Il valore PredefinedType deve essere impostato su USERDEFINED affinché il tipo di oggetto individuale possa essere letto tramite l’attributo ObjectType.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-userdefined
   link_uid: ''
   regex:
@@ -83,7 +82,6 @@ attributes:
     fr: La désignation du local est espace aérien.
     it: Designazione del locale come spazio aereo.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-luftraum
   link_uid: ''
   regex:

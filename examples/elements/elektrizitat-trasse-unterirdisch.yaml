@@ -27,7 +27,6 @@ attributes:
     fr: Électricité tracé souterrain
     it: Elettricità Tracciato sotterraneo
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/elektrizitaet-trasse-unterirdisch
   link_uid: ''
   regex:

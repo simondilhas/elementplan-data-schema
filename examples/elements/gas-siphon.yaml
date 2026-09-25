@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’un siphon.
     it: Indica se si tratta di un un sifone.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/gas-siphon
   link_uid: ''
   regex:

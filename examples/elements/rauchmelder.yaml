@@ -31,7 +31,6 @@ attributes:
     fr: Définit que l’élément est un détecteur de fumée.
     it: Definisce che l’elemento è un rilevatore di fumo.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-smokesensor
   link_uid: ''
   regex:

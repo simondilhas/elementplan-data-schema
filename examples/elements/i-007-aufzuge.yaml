@@ -36,7 +36,6 @@ attributes:
     fr: Numéro d’installation selon install. tech. et selon directive technique MCRG 70177
     it: Numero di impianto secondo la lista degli impianti tecnici di esercizio come da tV MSRL 70177
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:

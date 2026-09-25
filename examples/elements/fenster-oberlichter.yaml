@@ -30,7 +30,6 @@ attributes:
     fr: Dans les phases ultérieures, un numéro de fenêtre unique est également possible.
     it: Nelle fasi successive è possibile anche una numerazione univoca delle finestre.
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:
@@ -63,7 +62,6 @@ attributes:
     fr: Désignation claire du type selon directive de l’auteur de projet.
     it: Designazione univoca del tipo secondo le disposizioni dell’autore del progetto.
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:
@@ -112,7 +110,6 @@ attributes:
     it: "Definisce di quale tipo di finestra si tratta.\n  \n- WINDOW: Finestra nella parete \n- SKYLIGHT: Lucernario \n- LIGHTDOME: Lucernario a cupola\nad es. \"LIGHTDOME\" \nUSERDEFINED ... tutti gli\
       \ altri"
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/predefinedtype-window
   link_uid: ''
   regex:

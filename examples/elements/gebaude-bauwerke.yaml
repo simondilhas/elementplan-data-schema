@@ -56,7 +56,6 @@ attributes:
     fr: 'ID bâtiment (AOID). Identifiant unique de l’ouvrage, composé de l’unité économique UE/du n° d’objet, p. ex. : "1808/GN"'
     it: 'ID edificio (AOID): l''dentificativo univoco dell’opera è composto da un''unità economica (UE) / n. oggetto), ad es. "1808/GN"'
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-2032-ga
   link_uid: '{97054F53-D093-4354-A2FF-C7A2C26C9FD0}'
   regex:
@@ -122,7 +121,6 @@ attributes:
     fr: Désignation de l'objet architectural
     it: Denominazione dell'oggetto architettonico
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: '{E12D837B-DBD2-4BB9-9096-1663E914FFEB}'
   regex:

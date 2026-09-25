@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’une station de chauffage à distance.
     it: Indica se si tratta di una stazione di teleriscaldamento.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernwarme-bauwerk-station
   link_uid: ''
   regex:

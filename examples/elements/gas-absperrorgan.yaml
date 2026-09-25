@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’une commande de fermeture du gaz.
     it: Indica se si tratta di una valvola di arresto per gas.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/gas-absperrorgan
   link_uid: ''
   regex:

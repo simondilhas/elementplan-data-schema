@@ -54,7 +54,6 @@ attributes:
 
       BASESLAB … Platea di fondazione'
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/predefinedtype-slabs
   link_uid: ''
   regex:

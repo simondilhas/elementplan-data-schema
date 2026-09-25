@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’un chauffage à distance tracé en surface.
     it: Indica se si tratta di una rete del teleriscaldamento fuori terra.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernwarme-trasse-oberirdisch
   link_uid: ''
   regex:

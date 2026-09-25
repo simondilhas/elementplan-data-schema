@@ -27,7 +27,6 @@ attributes:
     fr: Froid à distance (FAD)
     it: Raffreddamento remoto
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernkalte-leitung
   link_uid: ''
   regex:

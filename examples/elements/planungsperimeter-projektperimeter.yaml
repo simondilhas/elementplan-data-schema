@@ -37,7 +37,6 @@ attributes:
     fr: Identifiant unique du bien-fonds ; UE (dés.) selon SAP, p. ex. "Site externe CLA Thoune"
     it: Identificativo univoco del terreno, designazione dell’unità di gestione secondo SAP. Ad es. "Sede esterna CLEs Thun"
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-site-demoareal
   link_uid: ''
   regex:
@@ -105,7 +104,6 @@ attributes:
     fr: Numéro de l’unité économique (UE_ID/AOID), p. ex. "1808"
     it: Numero dell'unità economica (UE_ID/AOID), ad es. "1808"
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: '{7C8528E8-DC5A-4414-82AA-E3BABDFF209F},{9ADFAF1D-3F41-40B1-801F-212C2250B4FF}'
   regex:

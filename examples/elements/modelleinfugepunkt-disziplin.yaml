@@ -34,7 +34,6 @@ attributes:
     fr: Indication de la discipline pour la définition de la "part du gâteau"
     it: La denominazione della disciplina per la definizione di "Fetta di torta"
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:
@@ -104,7 +103,6 @@ attributes:
 
       Valore: Discipline Reference Point {Abbreviazione della disciplina}'
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-discipline-reference-point
   link_uid: ''
   regex:
@@ -172,7 +170,6 @@ attributes:
     fr: L’attribut ObjectType définit que l’élément modélisé correspond à un point de référence/d’insertion du bâtiment.
     it: L'attributo Tipo di oggetto serve a definire che per elemento di modello si tratta  di un punto di riferimento/inserimento per l'edificio.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-referencepoint
   link_uid: ''
   regex:

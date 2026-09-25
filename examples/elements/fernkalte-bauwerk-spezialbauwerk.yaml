@@ -27,7 +27,6 @@ attributes:
     fr: Réseau de froid à distance ouvrage spécial
     it: Teleraffrescamento opera speciale
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernkalte-bauwerk-spezialbauwerk
   link_uid: ''
   regex:

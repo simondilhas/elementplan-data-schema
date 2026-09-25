@@ -28,7 +28,6 @@ attributes:
     fr: Il PredefinedType serve a specificare in modo più dettagliato un elemento all’interno della sua classe IFC e a definirne con maggiore precisione la funzione.
     it: Le PredefinedType sert à spécifier plus précisément un élément au sein de sa classe IFC et à en définir plus clairement la fonction.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-airhandler
   link_uid: ''
   regex:

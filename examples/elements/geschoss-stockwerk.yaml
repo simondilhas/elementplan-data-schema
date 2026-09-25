@@ -88,7 +88,6 @@ attributes:
 
       - Piano intermedio: Z{Numero 01-99}  ad es. «03»'
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-2-2-z-d-1-2-d-1-u-d-1
   link_uid: ''
   regex:

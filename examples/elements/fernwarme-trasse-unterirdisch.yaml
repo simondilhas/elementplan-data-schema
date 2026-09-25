@@ -27,7 +27,6 @@ attributes:
     fr: Chauffage à distance tracé souterrain
     it: Teleriscaldamento Tracciato sotterraneo
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernwarme-trasse-unterirdisch
   link_uid: ''
   regex:

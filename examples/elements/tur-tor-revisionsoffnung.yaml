@@ -42,7 +42,6 @@ attributes:
     fr: Quand débute le projet de construction au plus tard, il convient de gérer le numéro de porte spécifique.
     it: Al più tardi a partire dal progetto definitivo, deve essere registrato un numero di porta.
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:
@@ -78,7 +77,6 @@ attributes:
     fr: Désignation claire du type selon directive de l’auteur de projet.
     it: Designazione univoca del tipo secondo le disposizioni dell’autore del progetto.
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:
@@ -122,7 +120,6 @@ attributes:
     fr: "Le PredefinedType définit plus précisément le type de porte.  \n\n- DOOR ... Porte \n- GATE ... Portail \n- TRAPDOOR ... Ouverture de révision"
     it: "Il «Tipo prefinito» definisce il tipo di porta in modo più preciso. \n\n- DOOR ... Porta \n- GATE ... Portone \n- TRAPDOOR ... Apertura di ispezione"
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/predefinedtype-door
   link_uid: ''
   regex:
@@ -208,7 +205,6 @@ attributes:
       \ ... Doppia porta pieghevole \n- REVOLVING ... Porta girevole \n- ROLLINGUP ... Porta avvolgibile \n- SWING_FIXED_LEFT ...Battente con fissaggio a sinistra \n- SWING_FIXED_RIGHT ... Battente con\
       \ fissaggio a destra \n- USERDEFINED ... configurazione utente"
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/operationtypedoor
   link_uid: ''
   regex:

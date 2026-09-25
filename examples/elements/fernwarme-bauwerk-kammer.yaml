@@ -27,7 +27,6 @@ attributes:
     fr: Station de transfert de chaleur
     it: Stazione di trasferimento del calore
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernwarme-bauwerk-kammer
   link_uid: ''
   regex:

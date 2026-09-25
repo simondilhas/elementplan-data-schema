@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’une cabine d’ouvrage spécial.
     it: Indica se si tratta di una costruzione speciale per cabina elettrica.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/elektrizitaet-spezialbauwerk-kabine
   link_uid: ''
   regex:

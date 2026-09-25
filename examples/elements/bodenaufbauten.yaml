@@ -36,7 +36,6 @@ attributes:
     fr: Définit que le revêtement est une structure du sol.
     it: Definisce che il rivestimento è adatto alla struttura del pavimento.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/predefinedtype-flooring
   link_uid: ''
   regex:

@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’une entretoise d’ancrage électricité.
     it: Indica se si tratta di un ancoraggio di puntoni elettrici.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/elektrizitaet-anker-strebe
   link_uid: ''
   regex:

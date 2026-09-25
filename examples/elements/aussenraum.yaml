@@ -49,7 +49,6 @@ attributes:
     fr: Définit que le local est un espace intérieur.
     it: Definisce se il locale è uno spazio interno.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-external
   link_uid: ''
   regex:
@@ -90,7 +89,6 @@ attributes:
     fr: Désignation du local selon la définition du projet.
     it: Designazione del locale secondo la definizione di progetto.
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:

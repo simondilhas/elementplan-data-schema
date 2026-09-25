@@ -60,7 +60,6 @@ attributes:
 
       CAISSON_FOUNDATION … Fondazione a cassone'
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/predfinedtype-footing
   link_uid: ''
   regex:

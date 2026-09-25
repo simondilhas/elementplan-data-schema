@@ -33,7 +33,6 @@ attributes:
 
       Servizio di identificazione del tipo di classificazione'
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/sia416-klassifikationsname
   link_uid: ''
   regex:

@@ -36,7 +36,6 @@ attributes:
     fr: Definisce se con questo elemento si tratta del volume di un piano secondo la norma SIA 416 (GV).
     it: Définit que cet élément est un volume d’étage selon SIA 416 (GV).
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/predefinedtype-gfa
   link_uid: ''
   regex:

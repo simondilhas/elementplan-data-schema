@@ -291,6 +291,8 @@ enums:
       IfcBoolean: {}
       IfcDate: {}
       IfcReal: {}
+      IfcInteger: {}
+      IfcThermalTransmittanceMeasure: {}
   MilestoneKindEnum:
     permissible_values:
       B: {}
@@ -468,8 +470,20 @@ slots:
     inlined: false
     description: Optional reference to a ValueSet for enumerated constraints.
   regex:
+    range: Any
+    any_of:
+      - range: string
+      - range: LocalizedText
+    description: >-
+      Optional regex pattern for free-text validation when ValueSet is not used.
+      A plain string when the pattern is language-neutral; a LocalizedText when
+      patterns differ per language. Legacy YAML may use an empty LocalizedText
+      for "no pattern"; treat that as omitted.
+  link_uid:
     range: string
-    description: Optional regex pattern for free-text validation when ValueSet is not used.
+    description: >-
+      Optional editor/import identifier on an Attribute (legacy YAML). Not used
+      by the Information Delivery Plan.
   ifc_versions:
     multivalued: true
     range: IFCVersionEnum
@@ -567,6 +581,80 @@ slots:
     multivalued: true
     range: string
 
+  classification_scheme:
+    range: string
+    required: true
+    description: >-
+      Identifier of the classification scheme, matching the dcterms:identifier
+      of the SKOS ConceptScheme published on schema.pragmaticbim.ch (e.g.
+      KBOBDocumentTypes2016, DocumentFunctionClassification,
+      AbstractModelClassification, AbstractRoles).
+  classification_code:
+    range: string
+    required: true
+    description: Code (skos:notation) of the concept inside the scheme.
+  classification_label:
+    range: string
+    description: Optional human-readable label of the concept.
+  classification_uri:
+    range: uriorcurie
+    description: >-
+      Optional URI/CURIE of the concept in an external registry. Namespaces may
+      still change; scheme + code are the stable key.
+  classification_version:
+    range: string
+    description: Optional scheme or version identifier.
+  classification_source:
+    range: string
+    description: Source authority or dataset for this classification.
+  classifications:
+    multivalued: true
+    range: Classification
+    inlined_as_list: true
+    description: >-
+      Classification entries from external schemes, e.g.
+      KBOBDocumentTypes2016 / V07100 or DocumentFunctionClassification /
+      TEC-PLN on a document, AbstractModelClassification / ARC on a model.
+      The `code` slot remains the pragmaticBIM-internal container token; do not
+      repeat it here.
+  responsible_role:
+    range: Classification
+    inlined: true
+    description: >-
+      Role responsible for producing the container. classification_scheme must
+      be AbstractRoles; classification_code is a role id such as aec.architect.
+      Template default; projects may override.
+  reviewing_roles:
+    multivalued: true
+    range: Classification
+    inlined_as_list: true
+    description: >-
+      Roles that review or approve the container. classification_scheme must be
+      AbstractRoles.
+  audience_roles:
+    multivalued: true
+    range: Classification
+    inlined_as_list: true
+    description: >-
+      Roles that consume the container (readers). classification_scheme must be
+      AbstractRoles.
+  content_requirements:
+    multivalued: true
+    range: DocumentRequirement
+    inlined_as_list: true
+    description: >-
+      Structured list of what must be inside the document (legend, scale,
+      revision table, report sections). Non-element content, distinct from
+      included_elements. Each item carries needed_in_phases and
+      needed_for_workflows like an Element attribute.
+  metadata_requirements:
+    multivalued: true
+    range: DocumentRequirement
+    inlined_as_list: true
+    description: >-
+      Structured list of what the document's own metadata must carry (revision
+      index, status code, originator). Same item type as content_requirements.
+
 classes:
   Any:
     class_uri: linkml:Any
@@ -606,6 +694,46 @@ classes:
     description: >-
       Mapping of container id (Model or Document) to a list of phase ids.
 
+  Classification:
+    description: >-
+      Generic classification entry from an external scheme (KBOB document
+      types, document function, abstract model classification, abstract roles).
+      Same slot names as the pragmatic BIM data contract Classification class so
+      records round-trip between both schemas. Vocabularies are the SKOS files
+      published on schema.pragmaticbim.ch; this schema stores scheme + code only.
+    slots:
+      - classification_scheme
+      - classification_code
+      - classification_label
+      - classification_uri
+      - classification_version
+      - classification_source
+
+  DocumentRequirement:
+    description: >-
+      One required item of a document: either content that must be inside it
+      (content_requirements) or metadata the file must carry
+      (metadata_requirements). The document analog of an Element Attribute:
+      needed_in_phases states when the item is required, needed_for_workflows
+      justifies it via the goal → workflow → requirement chain. No IFC datatype
+      or ifc_versions.
+    slots:
+      - name
+      - sort_order
+      - definition
+      - allowed_values
+      - regex
+      - needed_in_phases
+      - needed_for_workflows
+      - status
+      - jurisdiction
+    slot_usage:
+      name:
+        required: true
+      needed_in_phases:
+        required: true
+        minimum_cardinality: 1
+
   ElementplanDataset:
     tree_root: true
     slots:
@@ -637,8 +765,10 @@ classes:
       Model (Teilmodell) within a domain, e.g. Room model or Facade model under
       Architecture. Optional; may be predefined in master templates and inherited
       or extended by projects. Same slots as Domain, plus a required link to the
-      parent domain, an optional included_elements pre-tag list, and optional
-      scheduled_milestones (catalog ids of delivery moments).
+      parent domain, an optional included_elements pre-tag list, optional
+      scheduled_milestones (catalog ids of delivery moments), optional external
+      classifications (e.g. AbstractModelClassification), and optional role
+      assignments (responsible_role, reviewing_roles, audience_roles).
     slots:
       - id
       - code
@@ -651,6 +781,10 @@ classes:
       - domain
       - included_elements
       - scheduled_milestones
+      - classifications
+      - responsible_role
+      - reviewing_roles
+      - audience_roles
     slot_usage:
       domain:
         required: true
@@ -662,7 +796,11 @@ classes:
       projects. Same slots as Domain, plus a required link to the parent domain,
       an optional included_elements pre-tag list, optional scheduled_milestones
       (catalog ids of delivery moments), and optional description (checkable
-      content list, distinct from definition).
+      content list, distinct from definition). Optional external
+      classifications (KBOBDocumentTypes2016, DocumentFunctionClassification),
+      role assignments (responsible_role, reviewing_roles, audience_roles), and
+      structured requirement lists (content_requirements,
+      metadata_requirements) whose items link to phases and workflows.
     slots:
       - id
       - code
@@ -676,6 +814,12 @@ classes:
       - domain
       - included_elements
       - scheduled_milestones
+      - classifications
+      - responsible_role
+      - reviewing_roles
+      - audience_roles
+      - content_requirements
+      - metadata_requirements
     slot_usage:
       domain:
         required: true
@@ -892,9 +1036,12 @@ classes:
       - is_applicability
       - status
       - jurisdiction
+      - link_uid
     slot_usage:
       name:
         required: true
+        range: string
+        description: IFC property or attribute name (not a localized catalog title).
       ifc_versions:
         required: true
         minimum_cardinality: 1

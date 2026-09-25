@@ -33,6 +33,18 @@ if unit_slot.get("range") != "string":
 
 print("Schema contract OK: Attribute.unit (string)")
 
+attribute_name_usage = schema["classes"]["Attribute"].get("slot_usage", {}).get("name", {})
+if attribute_name_usage.get("range") != "string" or not attribute_name_usage.get("required"):
+    raise SystemExit("Attribute.name must be a required string (IFC property name).")
+if "link_uid" not in attribute_slots:
+    raise SystemExit("Attribute class is missing the link_uid slot.")
+regex_slot = schema["slots"].get("regex")
+regex_any_of = {item.get("range") for item in (regex_slot or {}).get("any_of") or []}
+if regex_any_of != {"string", "LocalizedText"}:
+    raise SystemExit("regex slot must accept string or LocalizedText.")
+
+print("Schema contract OK: Attribute.name (string), link_uid, regex")
+
 if "ProjectGoal" not in schema["classes"]:
     raise SystemExit("ProjectGoal class is missing.")
 
@@ -339,6 +351,110 @@ if (
     )
 
 print("Schema contract OK: Element.needed_in_models and attachment_link")
+
+if "Classification" not in schema["classes"]:
+    raise SystemExit("Classification class is missing.")
+classification_slots = schema["classes"]["Classification"]["slots"]
+for required_slot in (
+    "classification_scheme",
+    "classification_code",
+    "classification_label",
+    "classification_uri",
+    "classification_version",
+    "classification_source",
+):
+    if required_slot not in classification_slots:
+        raise SystemExit(f"Classification class is missing the {required_slot} slot.")
+for slot_name in ("classification_scheme", "classification_code"):
+    slot = schema["slots"].get(slot_name)
+    if not slot or slot.get("range") != "string" or not slot.get("required"):
+        raise SystemExit(f"{slot_name} slot must be a required string.")
+
+classifications_slot = schema["slots"].get("classifications")
+if (
+    not classifications_slot
+    or classifications_slot.get("range") != "Classification"
+    or not classifications_slot.get("multivalued")
+    or not classifications_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "classifications slot must be multivalued Classification with inlined_as_list: true"
+    )
+
+responsible_role_slot = schema["slots"].get("responsible_role")
+if (
+    not responsible_role_slot
+    or responsible_role_slot.get("range") != "Classification"
+    or responsible_role_slot.get("inlined") is not True
+    or responsible_role_slot.get("multivalued")
+):
+    raise SystemExit("responsible_role slot must be a single inlined Classification.")
+for slot_name in ("reviewing_roles", "audience_roles"):
+    slot = schema["slots"].get(slot_name)
+    if (
+        not slot
+        or slot.get("range") != "Classification"
+        or not slot.get("multivalued")
+        or not slot.get("inlined_as_list")
+    ):
+        raise SystemExit(
+            f"{slot_name} slot must be multivalued Classification with inlined_as_list: true"
+        )
+
+for class_name in ("Model", "Document"):
+    class_slots = schema["classes"][class_name]["slots"]
+    for slot_name in ("classifications", "responsible_role", "reviewing_roles", "audience_roles"):
+        if slot_name not in class_slots:
+            raise SystemExit(f"{class_name} class is missing the {slot_name} slot.")
+
+print("Schema contract OK: Classification and roles on Model, Document")
+
+if "DocumentRequirement" not in schema["classes"]:
+    raise SystemExit("DocumentRequirement class is missing.")
+requirement_slots = schema["classes"]["DocumentRequirement"]["slots"]
+for required_slot in (
+    "name",
+    "sort_order",
+    "definition",
+    "allowed_values",
+    "regex",
+    "needed_in_phases",
+    "needed_for_workflows",
+    "status",
+    "jurisdiction",
+):
+    if required_slot not in requirement_slots:
+        raise SystemExit(f"DocumentRequirement class is missing the {required_slot} slot.")
+for forbidden_slot in ("ifc_versions", "datatype", "pset", "is_applicability"):
+    if forbidden_slot in requirement_slots:
+        raise SystemExit(f"DocumentRequirement must not include the IFC slot {forbidden_slot}.")
+requirement_usage = schema["classes"]["DocumentRequirement"].get("slot_usage", {})
+if not requirement_usage.get("name", {}).get("required"):
+    raise SystemExit("DocumentRequirement.name must be required.")
+phases_usage = requirement_usage.get("needed_in_phases", {})
+if not phases_usage.get("required") or phases_usage.get("minimum_cardinality") != 1:
+    raise SystemExit("DocumentRequirement.needed_in_phases must be required with minimum_cardinality 1.")
+
+if schema["classes"]["Attribute"].get("is_a"):
+    raise SystemExit("Attribute must not inherit from another class.")
+
+for slot_name in ("content_requirements", "metadata_requirements"):
+    slot = schema["slots"].get(slot_name)
+    if (
+        not slot
+        or slot.get("range") != "DocumentRequirement"
+        or not slot.get("multivalued")
+        or not slot.get("inlined_as_list")
+    ):
+        raise SystemExit(
+            f"{slot_name} slot must be multivalued DocumentRequirement with inlined_as_list: true"
+        )
+    if slot_name not in schema["classes"]["Document"]["slots"]:
+        raise SystemExit(f"Document class is missing the {slot_name} slot.")
+    if slot_name in schema["classes"]["Model"]["slots"]:
+        raise SystemExit(f"Model must not include {slot_name}.")
+
+print("Schema contract OK: DocumentRequirement and Document.content_requirements")
 PY
 
 echo "Running LinkML metamodel validation..."
@@ -357,6 +473,14 @@ if not unit_property or "string" not in unit_property.get("type", []):
     raise SystemExit("Compiled JSON Schema Attribute.unit must allow string values.")
 
 print("JSON Schema OK: Attribute.unit (string)")
+
+attribute_name_prop = compiled["$defs"]["Attribute"]["properties"].get("name")
+if not attribute_name_prop or "string" not in attribute_name_prop.get("type", []):
+    raise SystemExit("Compiled JSON Schema Attribute.name must allow string values.")
+if "link_uid" not in compiled["$defs"]["Attribute"]["properties"]:
+    raise SystemExit("Compiled JSON Schema Attribute is missing link_uid.")
+
+print("JSON Schema OK: Attribute.name (string) and link_uid")
 
 if "ProjectGoal" not in compiled["$defs"]:
     raise SystemExit("Compiled JSON Schema is missing ProjectGoal.")
@@ -487,6 +611,44 @@ if "model_link" in element_props:
     raise SystemExit("Compiled JSON Schema Element must not include model_link.")
 
 print("JSON Schema OK: Element.needed_in_models and attachment_link")
+
+if "Classification" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing Classification.")
+classification_required = set(compiled["$defs"]["Classification"].get("required", []))
+if not {"classification_scheme", "classification_code"} <= classification_required:
+    raise SystemExit(
+        "Compiled JSON Schema Classification must require classification_scheme and classification_code."
+    )
+
+for class_name in ("Model", "Document"):
+    class_props = compiled["$defs"][class_name]["properties"]
+    for prop_name in ("classifications", "responsible_role", "reviewing_roles", "audience_roles"):
+        if prop_name not in class_props:
+            raise SystemExit(f"Compiled JSON Schema {class_name} is missing {prop_name}.")
+
+print("JSON Schema OK: Classification and roles on Model, Document")
+
+if "DocumentRequirement" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing DocumentRequirement.")
+requirement_props = compiled["$defs"]["DocumentRequirement"]["properties"]
+for prop_name in ("needed_in_phases", "needed_for_workflows"):
+    if prop_name not in requirement_props:
+        raise SystemExit(f"Compiled JSON Schema DocumentRequirement is missing {prop_name}.")
+if "ifc_versions" in requirement_props:
+    raise SystemExit("Compiled JSON Schema DocumentRequirement must not include ifc_versions.")
+requirement_required = set(compiled["$defs"]["DocumentRequirement"].get("required", []))
+if not {"name", "needed_in_phases"} <= requirement_required:
+    raise SystemExit(
+        "Compiled JSON Schema DocumentRequirement must require name and needed_in_phases."
+    )
+
+for prop_name in ("content_requirements", "metadata_requirements"):
+    if prop_name not in document_props:
+        raise SystemExit(f"Compiled JSON Schema Document is missing {prop_name}.")
+    if prop_name in model_props:
+        raise SystemExit(f"Compiled JSON Schema Model must not include {prop_name}.")
+
+print("JSON Schema OK: DocumentRequirement and Document.content_requirements")
 PY
 
 echo "Schema check passed."

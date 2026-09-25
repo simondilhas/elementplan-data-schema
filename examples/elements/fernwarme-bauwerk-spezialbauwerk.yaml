@@ -27,7 +27,6 @@ attributes:
     fr: Chauffage à distance ouvrage spécial
     it: Teleriscaldamento opera speciale
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernwarme-bauwerk-spezialbauwerk
   link_uid: ''
   regex:

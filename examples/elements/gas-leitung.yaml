@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’une conduite de gaz.
     it: Indica se si tratta di un tubo del gas.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/gas-leitung
   link_uid: ''
   regex:

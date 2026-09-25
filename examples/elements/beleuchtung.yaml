@@ -28,7 +28,6 @@ attributes:
     fr: ''
     it: ''
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-pointsource
   link_uid: ''
   regex:

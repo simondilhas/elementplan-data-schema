@@ -27,7 +27,6 @@ attributes:
     fr: Ouvrage spécial station d'électricité
     it: Opera speciale Stazione Elettrica
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/elektrizitaet-spezialbauwerk-station
   link_uid: ''
   regex:

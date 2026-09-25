@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’une lanterne à gaz.
     it: Indica se si tratta di un lampione a gas.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/gas-gaslaterne
   link_uid: ''
   regex:

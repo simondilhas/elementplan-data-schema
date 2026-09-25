@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’une construction de puits.
     it: Indica se si tratta della costruzione di un pozzo.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/elektrizitaet-spezialbauwerk-schacht
   link_uid: ''
   regex:

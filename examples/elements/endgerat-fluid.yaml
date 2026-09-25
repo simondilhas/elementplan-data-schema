@@ -30,7 +30,6 @@ attributes:
     it: Chaque élément technique du bâtiment doit être attribué à un système technique. Cette attribution garantit une définition claire des fonctions, des dépendances et des responsabilités, et permet
       une analyse cohérente tout au long de la planification, de l’exécution et de l’exploitation.
     en: ''
-  datatype: null
   allowed_values: null
   link_uid: ''
   regex:

@@ -34,7 +34,6 @@ attributes:
     fr: Noms des contenus qui sont affectés à la classification SIA 416, p. ex. "SUP1"
     it: Nomi dei contenuti assegnati alla classificazione della norma SIA 416. Ad es. "SUP1"
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/sia416-innenraum
   link_uid: ''
   regex:

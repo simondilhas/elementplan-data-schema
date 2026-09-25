@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’une conduite de chauffage à distance.
     it: Indica se si tratta di un tubo per il teleriscaldamento.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/fernwarme-leitung
   link_uid: ''
   regex:

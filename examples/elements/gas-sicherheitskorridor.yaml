@@ -27,7 +27,6 @@ attributes:
     fr: Indique qu’il s’agit d’un corridor de sécurité.
     it: Indica se si tratta di un coordinatore per la sicurezza.
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/gas-sicherheitskorridor
   link_uid: ''
   regex:

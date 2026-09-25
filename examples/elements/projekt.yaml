@@ -41,7 +41,6 @@ attributes:
     fr: N° mandat du maître d’ouvrage, p. ex. APB-000311
     it: N. ordine committente ad es. APB-000311
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-projectnumber
   link_uid: ''
   regex:
@@ -109,7 +108,6 @@ attributes:
     fr: Nom du mandat du maître d’ouvrage, p. ex. "Berthoud, extension site externe"
     it: Nome dell'ordine del committente, ad es. "Burgdorf, ampliamento sede esterna"
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/manual-demoareal
   link_uid: ''
   regex:
@@ -154,7 +152,6 @@ attributes:
       P. ex.: "21"'
     it: "Numero della sottofase secondo SIA 112. \nAd esempio \"21\""
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/sia-projektphasen
   link_uid: ''
   regex:

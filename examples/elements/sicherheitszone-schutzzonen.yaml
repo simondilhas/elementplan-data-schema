@@ -33,7 +33,6 @@ attributes:
     fr: Information sur la zone de protection à laquelle le local appartient, p. ex. zone de protection 1
     it: Informazioni relative in quale zona di protezione rientra il locale. Ad es. zona di protezione 1
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/armasuisse-schutzzone
   link_uid: ''
   regex:

@@ -27,7 +27,6 @@ attributes:
     fr: Ouvrage spécial consommateur public d'électricité
     it: Opera speciale per i consumatori pubblici di energia elettrica
     en: ''
-  datatype: null
   allowed_values: armasuisse:value/elektrizitaet-spezialbauwerk-oeffentlicherverbraucher
   link_uid: ''
   regex:
