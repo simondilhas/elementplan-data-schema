@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/betreuungs-warteraum
+code: RT-09
+sort_order: 9
+name:
+  de: Betreuungs-Warteraum
+  en: Assistance waiting room
+definition:
+  de: Warteraum für Reisende, die Betreuung benötigen.
+  en: Waiting room for passengers who need assistance.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Betreuungs-Warteraum
+    en: Assistance waiting room
+status: active

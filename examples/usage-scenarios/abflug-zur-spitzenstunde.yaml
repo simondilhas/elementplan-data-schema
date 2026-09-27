@@ -1,0 +1,18 @@
+id: pragmaticbim:usage-scenario/abflug-zur-spitzenstunde
+code: US-01
+sort_order: 1
+name:
+  de: Abflug zur Spitzenstunde
+  en: Peak-hour departure
+description:
+  de: Reisende kommen in der Stosszeit am Flughafen an, geben Gepäck auf, passieren die Sicherheitskontrolle und warten am Gate, bis sie über die Fluggastbrücke ins Flugzeug gehen.
+  en: During the peak departure rush, passengers arrive, drop baggage, pass security, wait at the gate, and board via the passenger boarding bridge.
+scenario_group: Flughafen
+status: active
+jurisdiction:
+- general
+required_room_types:
+- pragmaticbim:room-type/check-in-halle
+- pragmaticbim:room-type/sicherheitskontrolle
+- pragmaticbim:room-type/gate-warteraum
+- pragmaticbim:room-type/fluggastbruecke

@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/check-in-halle
+code: RT-01
+sort_order: 1
+name:
+  de: Check-in-Halle
+  en: Check-in hall
+definition:
+  de: Halle, in der abfliegende Reisende ankommen und Gepäck aufgeben.
+  en: Hall where departing passengers arrive and drop baggage.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Check-in-Halle
+    en: Check-in hall
+status: active

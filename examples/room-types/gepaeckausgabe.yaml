@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/gepaeckausgabe
+code: RT-07
+sort_order: 7
+name:
+  de: Gepäckausgabe
+  en: Baggage reclaim
+definition:
+  de: Bereich, in dem ankommende Reisende aufgegebenes Gepäck abholen.
+  en: Area where arriving passengers collect checked baggage.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Gepäckausgabe
+    en: Baggage reclaim
+status: active

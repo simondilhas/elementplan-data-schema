@@ -1,0 +1,18 @@
+id: pragmaticbim:usage-scenario/reise-mit-eingeschraenkter-mobilitaet
+code: US-03
+sort_order: 3
+name:
+  de: Reise mit eingeschränkter Mobilität
+  en: Travel with reduced mobility
+description:
+  de: Reisende mit eingeschränkter Mobilität werden im Betreuungs-Warteraum empfangen, erreichen das Gate barrierefrei mit dem Lift und steigen am Ambulift-Standplatz um.
+  en: Passengers with reduced mobility are received in the assistance waiting room, reach the gate step-free by lift, and transfer at the ambulift stand.
+scenario_group: Flughafen
+status: active
+jurisdiction:
+- general
+required_room_types:
+- pragmaticbim:room-type/betreuungs-warteraum
+- pragmaticbim:room-type/lift
+- pragmaticbim:room-type/gate-warteraum
+- pragmaticbim:room-type/ambulift-standplatz

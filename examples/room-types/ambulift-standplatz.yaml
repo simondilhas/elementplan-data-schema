@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/ambulift-standplatz
+code: RT-11
+sort_order: 11
+name:
+  de: Ambulift-Standplatz
+  en: Ambulift stand
+definition:
+  de: Standplatz, an dem ein Ambulift Reisende mit eingeschränkter Mobilität zum Flugzeug bringt.
+  en: Stand where an ambulift takes passengers with reduced mobility to the aircraft.
+attribute_presets:
+- element: armasuisse:element/aussenraum
+  name: PredefinedType
+  value: EXTERNAL
+- element: armasuisse:element/aussenraum
+  name: LongName
+  value:
+    de: Ambulift-Standplatz
+    en: Ambulift stand
+status: active

@@ -163,6 +163,97 @@ if "delta" in activated_desc.lower() or "union" in activated_desc.lower():
 
 print("Schema contract OK: ProjectGoalLevel.activated_workflows")
 
+if "RoomType" not in schema["classes"]:
+    raise SystemExit("RoomType class is missing.")
+if "UsageScenario" not in schema["classes"]:
+    raise SystemExit("UsageScenario class is missing.")
+
+room_type_slots = schema["classes"]["RoomType"]["slots"]
+for slot_name in ("id", "code", "sort_order", "name", "definition", "status", "attribute_presets"):
+    if slot_name not in room_type_slots:
+        raise SystemExit(f"RoomType class is missing the {slot_name} slot.")
+
+if "AttributePreset" not in schema["classes"]:
+    raise SystemExit("AttributePreset class is missing.")
+preset_slots = schema["classes"]["AttributePreset"]["slots"]
+for slot_name in ("element", "name", "pset", "value"):
+    if slot_name not in preset_slots:
+        raise SystemExit(f"AttributePreset class is missing the {slot_name} slot.")
+preset_name = schema["classes"]["AttributePreset"].get("slot_usage", {}).get("name", {})
+if preset_name.get("range") != "string" or not preset_name.get("required"):
+    raise SystemExit("AttributePreset.name must be a required string (IFC property name).")
+if not schema["classes"]["AttributePreset"].get("slot_usage", {}).get("element", {}).get("required"):
+    raise SystemExit("AttributePreset.element must be required.")
+
+attribute_presets_slot = schema["slots"].get("attribute_presets")
+if (
+    not attribute_presets_slot
+    or attribute_presets_slot.get("range") != "AttributePreset"
+    or not attribute_presets_slot.get("multivalued")
+    or not attribute_presets_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "attribute_presets slot must be multivalued AttributePreset with inlined_as_list: true"
+    )
+value_slot = schema["slots"].get("value")
+value_any_of = {item.get("range") for item in (value_slot or {}).get("any_of") or []}
+if value_any_of != {"string", "boolean", "integer", "float", "LocalizedText"}:
+    raise SystemExit(
+        "value slot must accept string, boolean, integer, float, or LocalizedText."
+    )
+
+usage_scenario_slots = schema["classes"]["UsageScenario"]["slots"]
+for slot_name in (
+    "id",
+    "code",
+    "sort_order",
+    "name",
+    "description",
+    "scenario_group",
+    "status",
+    "jurisdiction",
+    "required_room_types",
+):
+    if slot_name not in usage_scenario_slots:
+        raise SystemExit(f"UsageScenario class is missing the {slot_name} slot.")
+
+required_room_types_slot = schema["slots"].get("required_room_types")
+if (
+    not required_room_types_slot
+    or required_room_types_slot.get("range") != "RoomType"
+    or not required_room_types_slot.get("multivalued")
+    or required_room_types_slot.get("inlined") is not False
+):
+    raise SystemExit(
+        "required_room_types slot must be multivalued RoomType with inlined: false"
+    )
+
+for slot_name, range_name in (
+    ("room_types", "RoomType"),
+    ("usage_scenarios", "UsageScenario"),
+):
+    slot = schema["slots"].get(slot_name)
+    if (
+        not slot
+        or slot.get("range") != range_name
+        or not slot.get("multivalued")
+        or not slot.get("inlined_as_list")
+    ):
+        raise SystemExit(
+            f"{slot_name} slot must be multivalued {range_name} with inlined_as_list: true"
+        )
+    if slot_name not in dataset_slots:
+        raise SystemExit(f"ElementplanDataset is missing the {slot_name} slot.")
+
+if dataset_slots.index("project_goals") >= dataset_slots.index("room_types"):
+    raise SystemExit("project_goals must appear before room_types on ElementplanDataset.")
+if dataset_slots.index("room_types") >= dataset_slots.index("usage_scenarios"):
+    raise SystemExit("room_types must appear before usage_scenarios on ElementplanDataset.")
+if dataset_slots.index("usage_scenarios") >= dataset_slots.index("workflows"):
+    raise SystemExit("usage_scenarios must appear before workflows on ElementplanDataset.")
+
+print("Schema contract OK: UsageScenario.required_room_types")
+
 if "included_elements" not in schema["classes"]["Model"]["slots"]:
     raise SystemExit("Model class is missing the included_elements slot.")
 
@@ -527,6 +618,23 @@ if "activated_workflows" not in level_props:
     )
 
 print("JSON Schema OK: ProjectGoalLevel.activated_workflows")
+
+if "RoomType" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing RoomType.")
+if "UsageScenario" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing UsageScenario.")
+if "required_room_types" not in compiled["$defs"]["UsageScenario"]["properties"]:
+    raise SystemExit("Compiled JSON Schema UsageScenario is missing required_room_types.")
+if "AttributePreset" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing AttributePreset.")
+if "attribute_presets" not in compiled["$defs"]["RoomType"]["properties"]:
+    raise SystemExit("Compiled JSON Schema RoomType is missing attribute_presets.")
+dataset_props = compiled["$defs"]["ElementplanDataset"]["properties"]
+for prop_name in ("room_types", "usage_scenarios"):
+    if prop_name not in dataset_props:
+        raise SystemExit(f"Compiled JSON Schema ElementplanDataset is missing {prop_name}.")
+
+print("JSON Schema OK: UsageScenario.required_room_types")
 
 model_props = compiled["$defs"]["Model"]["properties"]
 if "included_elements" not in model_props:

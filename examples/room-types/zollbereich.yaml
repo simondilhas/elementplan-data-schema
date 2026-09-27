@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/zollbereich
+code: RT-08
+sort_order: 8
+name:
+  de: Zollbereich
+  en: Customs area
+definition:
+  de: Bereich der Zollabfertigung nach der Ankunft.
+  en: Area for customs clearance after arrival.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Zollbereich
+    en: Customs area
+status: active

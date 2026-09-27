@@ -14,6 +14,16 @@ Project goals  →  Ausprägungen (levels + complete workflow sets)  →  Workfl
      why              how deep / which AWFs                            how              what
 ```
 
+Beside that chain, usage scenarios describe how the building is used:
+
+```text
+Usage scenarios (user stories)  →  required room types
+        how the building works           which spaces that use needs
+```
+
+- **Usage scenarios (`UsageScenario`)** are Nutzungsszenarien: short user stories of how the building works. `scenario_group` gathers stories for one building or example (e.g. Flughafen). `required_room_types` lists the room types that use needs, in display order. The same room type may appear on several stories.
+- **Room types (`RoomType`)** are functional spaces a story can require (e.g. Check-in-Halle). They are catalog records with their own ids. The IFC `Reference` lists `raumliste-innen` and `raumliste-aussen` stay value sets on elements such as Innenraum. `attribute_presets` sets values for attributes of that element: `element` + `name` (+ `pset`) identify the attribute (e.g. Innenraum `PredefinedType`), and `value` is the preset (a string such as `INTERNAL`, a number, a boolean, or a localized text such as `LongName`). Attributes left off the list stay open on each room.
+- This program chain sits beside project goals. It does not replace the workflow “Szenarienentwicklung”, which is urban design variants, not a user story.
 - **Project goals** define *why* information is needed.
 - **Ausprägungen (`ProjectGoalLevel`)** are ordered levels of a goal (e.g. grosszügig → mittel → sensitiv). `sort_order` is the ordinal. Each level’s `activated_workflows` is the **complete set** of workflows activated when that level is selected. Higher levels list lower-level workflows explicitly (copied on save).
 - **Level selection:** choosing a level activates that level’s stored `activated_workflows` list.
@@ -30,7 +40,7 @@ Optional `service_kind` on a workflow records whether it is a **Grundleistung** 
 
 ### Jurisdiction (country vs general)
 
-`jurisdiction` is a multivalued list on **Workflow**, **Attribute**, **Model**, and **Document**:
+`jurisdiction` is a multivalued list on **Workflow**, **Attribute**, **Model**, **Document**, and **UsageScenario**:
 
 - `[general]` — not country-specific (omit the field to mean the same)
 - one or more ISO 3166-1 alpha-2 codes (lowercase), e.g. `[ch]` or `[ch, de, at]`
@@ -67,7 +77,7 @@ For ordering, only the domain is relevant. In the project, the actual model or d
 
 - `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
-- `examples/`: sample project goals (incl. levels and activated workflows), workflows, elements, values, domains, models, documents (incl. classifications, roles, and content requirements), and phases (incl. nested milestones)
+- `examples/`: sample usage scenarios and room types (Flughafen), project goals (incl. levels and activated workflows), workflows, elements, values, domains, models, documents (incl. classifications, roles, and content requirements), and phases (incl. nested milestones)
 - `scripts/schema_check.sh`: local schema validation entry point
 - `.github/workflows/schema-check.yml`: GitHub Actions workflow for automatic validation
 
@@ -78,7 +88,7 @@ The repository includes a minimal validation pipeline that checks:
 - all YAML files in `schema/` parse correctly
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
-- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `Workflow.service_kind`, `jurisdiction` on Workflow/Attribute/Model/Document, `ProjectGoalLevel.activated_workflows`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, `Element.attachment_link`, `Classification` and role slots on Model/Document, `DocumentRequirement` with `Document.content_requirements`/`metadata_requirements`, and `Attribute.name` as a string plus `link_uid`
+- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `Workflow.service_kind`, `jurisdiction` on Workflow/Attribute/Model/Document, `ProjectGoalLevel.activated_workflows`, `UsageScenario.required_room_types`, `RoomType.attribute_presets`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, `Element.attachment_link`, `Classification` and role slots on Model/Document, `DocumentRequirement` with `Document.content_requirements`/`metadata_requirements`, and `Attribute.name` as a string plus `link_uid`
 
 Run the check locally with:
 

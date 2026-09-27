@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/lift
+code: RT-10
+sort_order: 10
+name:
+  de: Lift
+  en: Lift
+definition:
+  de: Aufzug für den barrierefreien Weg zwischen Ebenen.
+  en: Elevator for a step-free route between levels.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Lift
+    en: Lift
+status: active

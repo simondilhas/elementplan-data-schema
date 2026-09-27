@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/sicherheitskontrolle
+code: RT-02
+sort_order: 2
+name:
+  de: Sicherheitskontrolle
+  en: Security screening
+definition:
+  de: Kontrolle von Personen und Handgepäck vor dem Eintritt in den Sicherheitsbereich.
+  en: Screening of people and cabin baggage before the secure area.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Sicherheitskontrolle
+    en: Security screening
+status: active

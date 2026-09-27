@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/fluggastbruecke
+code: RT-04
+sort_order: 4
+name:
+  de: Fluggastbrücke
+  en: Passenger boarding bridge
+definition:
+  de: Geschützter Übergang vom Gate ins Flugzeug.
+  en: Sheltered connection from the gate to the aircraft.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Fluggastbrücke
+    en: Passenger boarding bridge
+status: active

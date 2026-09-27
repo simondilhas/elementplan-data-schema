@@ -1,0 +1,18 @@
+id: pragmaticbim:usage-scenario/ankunft-mit-transfer
+code: US-02
+sort_order: 2
+name:
+  de: Ankunft mit Transfer
+  en: Arrival with transfer
+description:
+  de: Ankommende Transferpassagiere passieren die Passkontrolle, werden in der Transferkontrolle geprüft, holen bei Bedarf Gepäck und durchqueren den Zollbereich, bevor sie weiterreisen.
+  en: Arriving transfer passengers pass passport control, are checked at transfer control, collect baggage when needed, and cross the customs area before continuing their journey.
+scenario_group: Flughafen
+status: active
+jurisdiction:
+- general
+required_room_types:
+- pragmaticbim:room-type/passkontrolle
+- pragmaticbim:room-type/transferkontrolle
+- pragmaticbim:room-type/gepaeckausgabe
+- pragmaticbim:room-type/zollbereich

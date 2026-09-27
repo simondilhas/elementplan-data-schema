@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/transferkontrolle
+code: RT-06
+sort_order: 6
+name:
+  de: Transferkontrolle
+  en: Transfer screening
+definition:
+  de: Kontrolle von Transferpassagieren zwischen Ankunft und Weiterflug.
+  en: Screening of transfer passengers between arrival and onward flight.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Transferkontrolle
+    en: Transfer screening
+status: active

@@ -1,0 +1,23 @@
+id: pragmaticbim:room-type/gate-warteraum
+code: RT-03
+sort_order: 3
+name:
+  de: Gate-Warteraum
+  en: Gate lounge
+definition:
+  de: Warteraum am Gate bis zum Einstieg.
+  en: Waiting room at the gate until boarding.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Gate-Warteraum
+    en: Gate lounge
+- element: armasuisse:element/innenraum
+  name: IsExternal
+  pset: Pset_SpaceCommon
+  value: FALSE
+status: active

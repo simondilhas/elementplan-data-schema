@@ -520,6 +520,58 @@ slots:
     multivalued: true
     range: ProjectGoal
     inlined_as_list: true
+  scenario_group:
+    range: string
+    description: >-
+      Display group for a usage scenario (e.g. Flughafen). Same idea as
+      workflow_group: a plain label, not a separate catalog.
+  required_room_types:
+    multivalued: true
+    range: RoomType
+    inlined: false
+    description: >-
+      Room types this usage scenario needs, in display order. The same room
+      type may be required by several scenarios.
+  room_types:
+    multivalued: true
+    range: RoomType
+    inlined_as_list: true
+    description: >-
+      Functional room types a usage scenario can require. Distinct from
+      ValueSet room lists used as IFC Reference vocabularies.
+  usage_scenarios:
+    multivalued: true
+    range: UsageScenario
+    inlined_as_list: true
+    description: >-
+      Usage scenarios (Nutzungsszenarien / user stories) describing how the
+      building is used, each listing the room types that use requires.
+  element:
+    range: Element
+    inlined: false
+    description: >-
+      Element whose attribute a room-type preset sets (e.g. Innenraum for
+      IfcSpace).
+  value:
+    range: Any
+    any_of:
+      - range: string
+      - range: boolean
+      - range: integer
+      - range: float
+      - range: LocalizedText
+    description: >-
+      Preset value for one element attribute on a room type. A string for
+      enumerations such as PredefinedType (INTERNAL), a number or boolean for
+      measures and flags, or a LocalizedText when the attribute text differs
+      per language (e.g. LongName).
+  attribute_presets:
+    multivalued: true
+    range: AttributePreset
+    inlined_as_list: true
+    description: >-
+      Values fixed for element attributes when this room type is used. Omit
+      attributes that stay open on each room instance.
   levels:
     multivalued: true
     range: ProjectGoalLevel
@@ -741,6 +793,8 @@ classes:
       - models
       - documents
       - project_goals
+      - room_types
+      - usage_scenarios
       - workflows
       - valuesets
       - phase_schemes
@@ -827,6 +881,61 @@ classes:
         description: >-
           Short checkable list of required document contents, for LLM
           completeness/fit checks. Distinct from definition (catalog purpose).
+
+  AttributePreset:
+    description: >-
+      One preset value for an attribute of an element, applied when a room
+      type is used. element + name (+ pset) identify the attribute on the
+      element catalog, the same way an Attribute is named on IfcSpace
+      (Innenraum). When that attribute has allowed_values, value should be
+      one of those entries.
+    slots:
+      - element
+      - name
+      - pset
+      - value
+    slot_usage:
+      element:
+        required: true
+      name:
+        required: true
+        range: string
+        description: >-
+          IFC property or attribute name, matching Attribute.name on the
+          referenced element (e.g. PredefinedType, LongName, IsExternal).
+
+  RoomType:
+    description: >-
+      Functional space a usage scenario can require (e.g. Check-in-Halle).
+      Distinct from ValueSet room lists (raumliste-innen / raumliste-aussen)
+      used as IFC Reference vocabularies on elements such as Innenraum.
+      attribute_presets sets values for attributes of that element, such as
+      IfcSpace PredefinedType.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - status
+      - attribute_presets
+
+  UsageScenario:
+    description: >-
+      Nutzungsszenario / user story: how the building is used, and which room
+      types that use requires. scenario_group gathers stories for one building
+      or example (e.g. Flughafen). Distinct from Workflow Szenarienentwicklung,
+      which is urban design variants, not a user story.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - description
+      - scenario_group
+      - status
+      - jurisdiction
+      - required_room_types
 
   ProjectGoal:
     slots:

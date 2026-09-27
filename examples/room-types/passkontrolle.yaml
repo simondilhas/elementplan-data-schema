@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/passkontrolle
+code: RT-05
+sort_order: 5
+name:
+  de: Passkontrolle
+  en: Passport control
+definition:
+  de: Grenzkontrolle der Reisedokumente bei der Ankunft.
+  en: Border check of travel documents on arrival.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Passkontrolle
+    en: Passport control
+status: active
