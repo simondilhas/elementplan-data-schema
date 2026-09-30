@@ -28,9 +28,3 @@ classifications:
   - classification_scheme: AbstractModelClassification
     classification_code: ARC
     classification_label: Architecture
-responsible_role:
-  classification_scheme: AbstractRoles
-  classification_code: aec.architect
-reviewing_roles:
-  - classification_scheme: AbstractRoles
-    classification_code: aec.bim_coordinator

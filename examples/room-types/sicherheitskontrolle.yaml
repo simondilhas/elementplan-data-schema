@@ -16,4 +16,9 @@ attribute_presets:
   value:
     de: Sicherheitskontrolle
     en: Security screening
+restrictions:
+  min_area: 200
+  min_height: 3
+  min_length: 20
+  min_width: 8
 status: active

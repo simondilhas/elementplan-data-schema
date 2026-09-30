@@ -17,12 +17,12 @@ Project goals  →  Ausprägungen (levels + complete workflow sets)  →  Workfl
 Beside that chain, usage scenarios describe how the building is used:
 
 ```text
-Usage scenarios (user stories)  →  required room types
-        how the building works           which spaces that use needs
+Usage scenario  →  jobs  →  solutions  →  room types (nodes) and relationships (edges)
+ how it is used     tasks     alternatives         the spatial answer
 ```
 
-- **Usage scenarios (`UsageScenario`)** are Nutzungsszenarien: short user stories of how the building works. `scenario_group` gathers stories for one building or example (e.g. Flughafen). `required_room_types` lists the room types that use needs, in display order. The same room type may appear on several stories.
-- **Room types (`RoomType`)** are functional spaces a story can require (e.g. Check-in-Halle). They are catalog records with their own ids. The IFC `Reference` lists `raumliste-innen` and `raumliste-aussen` stay value sets on elements such as Innenraum. `attribute_presets` sets values for attributes of that element: `element` + `name` (+ `pset`) identify the attribute (e.g. Innenraum `PredefinedType`), and `value` is the preset (a string such as `INTERNAL`, a number, a boolean, or a localized text such as `LongName`). Attributes left off the list stay open on each room.
+- **Usage scenarios (`UsageScenario`)** are Nutzungsszenarien: short user stories of how the building works. `scenario_group` gathers stories for one building or example (e.g. Flughafen). `jobs` are the ordered tasks in the story. Each job has `solutions`, the alternative ways to fulfil it. A solution's `required_room_types` are the nodes and `room_relationships` are the directed edges (`from_room_type` → `to_room_type`); an optional `name` can label an edge (e.g. Zugang). Optional `max_distance` is the maximum distance in metres between the two room types. The same room type may appear in several solutions with different neighbors, because the edges live on the solution.
+- **Room types (`RoomType`)** are functional spaces a story can require (e.g. Check-in-Halle). They are catalog records with their own ids. The IFC `Reference` lists `raumliste-innen` and `raumliste-aussen` stay value sets on elements such as Innenraum. `attribute_presets` sets values for attributes of that element: `element` + `name` (+ `pset`) identify the attribute (e.g. Innenraum `PredefinedType`), and `value` is the preset (a string such as `INTERNAL`, a number, a boolean, or a localized text such as `LongName`). Attributes left off the list stay open on each room. `restrictions` sets the minimum size: `min_area` in square metres, and `min_height`, `min_length`, and `min_width` in metres. Omit any measure that is not set.
 - This program chain sits beside project goals. It does not replace the workflow “Szenarienentwicklung”, which is urban design variants, not a user story.
 - **Project goals** define *why* information is needed.
 - **Ausprägungen (`ProjectGoalLevel`)** are ordered levels of a goal (e.g. grosszügig → mittel → sensitiv). `sort_order` is the ordinal. Each level’s `activated_workflows` is the **complete set** of workflows activated when that level is selected. Higher levels list lower-level workflows explicitly (copied on save).
@@ -55,15 +55,13 @@ Do not mix `general` with country codes. A project with country `C` matches an e
 
 **Models** are optional delivery units (Teilmodelle) under a domain (e.g. Room model, Architecture element model, Facade model under Architecture). They may be predefined in master templates and inherited or extended by projects. Each model links to exactly one domain (`domain`). Optional `included_elements` is the template/default element set used as IDP pretags. Optional `scheduled_milestones` is a list of milestone catalog ids (e.g. `"11:B"`) for when the container is delivered; omit the field or use `[]` if unscheduled. There is no inlined `milestones:` block inside the container YAML.
 
-**Documents** have the same shape as models, for non-IFC containers (e.g. a 2D plan): a required parent `domain` and optional `included_elements` pretags. They may also be predefined in master templates and inherited or extended by projects. Optional `description` is a short checkable list of required contents (distinct from `definition`, the catalog purpose). The class is the container type: Model vs Document; the IDP shows both as columns.
+**Documents** have the same shape as models, for non-IFC containers (e.g. a 2D plan): a required parent `domain` and optional `included_elements` pretags. They may also be predefined in master templates and inherited or extended by projects. Optional `description` is short notes (distinct from `definition`, the catalog purpose). The class is the container type: Model vs Document; the IDP shows both as columns. Neither class carries content requirements or role assignments (audience, reviewer, responsible party, or approver).
 
-### Classifications, roles, and document requirements
+### Classifications and document requirements
 
 **Classifications** on Model and Document are `scheme + code` references to external vocabularies (`Classification`, same slot names as the [pragmatic BIM data contract](https://schema.pragmaticbim.ch/)): `classification_scheme` is the `dcterms:identifier` of the SKOS scheme published on schema.pragmaticbim.ch, `classification_code` its `skos:notation`. Expected schemes: `KBOBDocumentTypes2016` (KBOB/IPB Dokumenttypenkatalog, e.g. `V07100` Architekturplan) and `DocumentFunctionClassification` (e.g. `TEC-PLN`) on documents, `AbstractModelClassification` (e.g. `ARC`) on models. `code` (e.g. `ARC-DOC`) stays the pragmaticBIM-internal filename token and is not repeated in `classifications`. Vocabularies are not copied into this repository; codes are not validated against SKOS by the schema check.
 
-**Roles** are `Classification` entries with scheme `AbstractRoles` and codes such as `aec.architect`: `responsible_role` (single, produces the container), `reviewing_roles`, and `audience_roles` (readers). They are template defaults expressed as roles, not persons; projects override them.
-
-**Document requirements** are the document analog of Element attributes. `content_requirements` lists what must be inside the document (legend, scale, revision table, report sections; non-element content, distinct from `included_elements`), `metadata_requirements` what the file's own metadata must carry (revision index, status). Each `DocumentRequirement` has a required `name` and `needed_in_phases`, optional `needed_for_workflows`, `allowed_values`, `regex`, `status`, and `jurisdiction`, and no IFC datatype or `ifc_versions`. This closes the goal → workflow → requirement chain for documents: a document requirement can be justified by a workflow the same way an attribute is.
+**Document requirements** are the document analog of Element attributes, limited to file metadata. `metadata_requirements` lists what the file's own metadata must carry (revision index, status). Each `DocumentRequirement` has a required `name` and `needed_in_phases`, optional `needed_for_workflows`, `allowed_values`, `regex`, `status`, and `jurisdiction`, and no IFC datatype or `ifc_versions`. This closes the goal → workflow → requirement chain for document metadata: a requirement can be justified by a workflow the same way an attribute is. There is no content-requirement list.
 
 **Phases** are pickable catalogs (`Phase`): SIA codes, abstract stages, or other schemes, each with ordered `values` and nested milestones. **PhaseMapping** relates two catalogs (e.g. SIA → abstract) for display and phase-picker translation via `phases` and `milestones` source→target entries.
 
@@ -77,7 +75,7 @@ For ordering, only the domain is relevant. In the project, the actual model or d
 
 - `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
-- `examples/`: sample usage scenarios and room types (Flughafen), project goals (incl. levels and activated workflows), workflows, elements, values, domains, models, documents (incl. classifications, roles, and content requirements), and phases (incl. nested milestones)
+- `examples/`: sample usage scenarios and room types (Flughafen), project goals (incl. levels and activated workflows), workflows, elements, values, domains, models, documents (incl. classifications and metadata requirements), and phases (incl. nested milestones)
 - `scripts/schema_check.sh`: local schema validation entry point
 - `.github/workflows/schema-check.yml`: GitHub Actions workflow for automatic validation
 
@@ -88,7 +86,7 @@ The repository includes a minimal validation pipeline that checks:
 - all YAML files in `schema/` parse correctly
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
-- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `Workflow.service_kind`, `jurisdiction` on Workflow/Attribute/Model/Document, `ProjectGoalLevel.activated_workflows`, `UsageScenario.required_room_types`, `RoomType.attribute_presets`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, `Element.attachment_link`, `Classification` and role slots on Model/Document, `DocumentRequirement` with `Document.content_requirements`/`metadata_requirements`, and `Attribute.name` as a string plus `link_uid`
+- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `Workflow.service_kind`, `jurisdiction` on Workflow/Attribute/Model/Document, `ProjectGoalLevel.activated_workflows`, `UsageScenario.jobs`, `ScenarioJob.solutions`, `ScenarioSolution.required_room_types`, `RoomRelationship.max_distance`, `RoomType.restrictions`, `RoomType.attribute_presets`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, `Element.attachment_link`, `Classification` on Model/Document, `DocumentRequirement` with `Document.metadata_requirements`, and `Attribute.name` as a string plus `link_uid`
 
 Run the check locally with:
 

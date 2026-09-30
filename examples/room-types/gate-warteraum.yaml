@@ -20,4 +20,9 @@ attribute_presets:
   name: IsExternal
   pset: Pset_SpaceCommon
   value: FALSE
+restrictions:
+  min_area: 150
+  min_height: 3
+  min_length: 18
+  min_width: 10
 status: active

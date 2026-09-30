@@ -16,4 +16,9 @@ attribute_presets:
   value:
     de: Check-in-Halle
     en: Check-in hall
+restrictions:
+  min_area: 800
+  min_height: 4.5
+  min_length: 40
+  min_width: 20
 status: active

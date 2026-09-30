@@ -530,8 +530,61 @@ slots:
     range: RoomType
     inlined: false
     description: >-
-      Room types this usage scenario needs, in display order. The same room
-      type may be required by several scenarios.
+      Room types this solution needs, in display order. The same room
+      type may be required by several solutions.
+  from_room_type:
+    range: RoomType
+    inlined: false
+    description: Start node of a directed room relationship on a usage scenario.
+  to_room_type:
+    range: RoomType
+    inlined: false
+    description: End node of a directed room relationship on a usage scenario.
+  room_relationships:
+    multivalued: true
+    range: RoomRelationship
+    inlined_as_list: true
+    description: >-
+      Directed edges between room types for this solution. The room types
+      are the nodes; each relationship is one edge of that solution's graph.
+      The same room type may have different neighbors in another solution.
+  jobs:
+    multivalued: true
+    range: ScenarioJob
+    inlined_as_list: true
+    description: >-
+      Jobs in this usage scenario, in order. A job is something a person
+      needs to get done. Each job lists one or more solutions.
+  solutions:
+    multivalued: true
+    range: ScenarioSolution
+    inlined_as_list: true
+    description: >-
+      Alternative ways to fulfil this job. Each solution names the room
+      types it needs and the edges between them.
+  restrictions:
+    range: RoomTypeRestriction
+    inlined: true
+    description: >-
+      Minimum size of this room type. Omit the object, or any measure inside
+      it, when that limit is not set.
+  min_area:
+    range: float
+    description: Minimum floor area (size) in square metres.
+  min_height:
+    range: float
+    description: Minimum clear height in metres.
+  min_length:
+    range: float
+    description: Minimum clear length in metres.
+  min_width:
+    range: float
+    description: Minimum clear width in metres.
+  max_distance:
+    range: float
+    description: >-
+      Maximum distance in metres between the two room types of this edge.
+      Omit when the link has no distance limit.
   room_types:
     multivalued: true
     range: RoomType
@@ -640,7 +693,7 @@ slots:
       Identifier of the classification scheme, matching the dcterms:identifier
       of the SKOS ConceptScheme published on schema.pragmaticbim.ch (e.g.
       KBOBDocumentTypes2016, DocumentFunctionClassification,
-      AbstractModelClassification, AbstractRoles).
+      AbstractModelClassification).
   classification_code:
     range: string
     required: true
@@ -669,43 +722,14 @@ slots:
       TEC-PLN on a document, AbstractModelClassification / ARC on a model.
       The `code` slot remains the pragmaticBIM-internal container token; do not
       repeat it here.
-  responsible_role:
-    range: Classification
-    inlined: true
-    description: >-
-      Role responsible for producing the container. classification_scheme must
-      be AbstractRoles; classification_code is a role id such as aec.architect.
-      Template default; projects may override.
-  reviewing_roles:
-    multivalued: true
-    range: Classification
-    inlined_as_list: true
-    description: >-
-      Roles that review or approve the container. classification_scheme must be
-      AbstractRoles.
-  audience_roles:
-    multivalued: true
-    range: Classification
-    inlined_as_list: true
-    description: >-
-      Roles that consume the container (readers). classification_scheme must be
-      AbstractRoles.
-  content_requirements:
-    multivalued: true
-    range: DocumentRequirement
-    inlined_as_list: true
-    description: >-
-      Structured list of what must be inside the document (legend, scale,
-      revision table, report sections). Non-element content, distinct from
-      included_elements. Each item carries needed_in_phases and
-      needed_for_workflows like an Element attribute.
   metadata_requirements:
     multivalued: true
     range: DocumentRequirement
     inlined_as_list: true
     description: >-
       Structured list of what the document's own metadata must carry (revision
-      index, status code, originator). Same item type as content_requirements.
+      index, status code, originator). Documents do not carry a content
+      requirement list.
 
 classes:
   Any:
@@ -749,7 +773,7 @@ classes:
   Classification:
     description: >-
       Generic classification entry from an external scheme (KBOB document
-      types, document function, abstract model classification, abstract roles).
+      types, document function, abstract model classification).
       Same slot names as the pragmatic BIM data contract Classification class so
       records round-trip between both schemas. Vocabularies are the SKOS files
       published on schema.pragmaticbim.ch; this schema stores scheme + code only.
@@ -763,12 +787,11 @@ classes:
 
   DocumentRequirement:
     description: >-
-      One required item of a document: either content that must be inside it
-      (content_requirements) or metadata the file must carry
-      (metadata_requirements). The document analog of an Element Attribute:
-      needed_in_phases states when the item is required, needed_for_workflows
-      justifies it via the goal → workflow → requirement chain. No IFC datatype
-      or ifc_versions.
+      One metadata item the document file must carry (metadata_requirements).
+      The document analog of an Element Attribute: needed_in_phases states when
+      the item is required, needed_for_workflows justifies it via the goal →
+      workflow → requirement chain. No IFC datatype or ifc_versions, and no
+      content-requirement list.
     slots:
       - name
       - sort_order
@@ -821,8 +844,9 @@ classes:
       or extended by projects. Same slots as Domain, plus a required link to the
       parent domain, an optional included_elements pre-tag list, optional
       scheduled_milestones (catalog ids of delivery moments), optional external
-      classifications (e.g. AbstractModelClassification), and optional role
-      assignments (responsible_role, reviewing_roles, audience_roles).
+      classifications (e.g. AbstractModelClassification). No content
+      requirements and no role assignments (audience, reviewer, responsible
+      party, or approver).
     slots:
       - id
       - code
@@ -836,9 +860,6 @@ classes:
       - included_elements
       - scheduled_milestones
       - classifications
-      - responsible_role
-      - reviewing_roles
-      - audience_roles
     slot_usage:
       domain:
         required: true
@@ -849,12 +870,12 @@ classes:
       may be predefined in master templates and inherited or extended by
       projects. Same slots as Domain, plus a required link to the parent domain,
       an optional included_elements pre-tag list, optional scheduled_milestones
-      (catalog ids of delivery moments), and optional description (checkable
-      content list, distinct from definition). Optional external
-      classifications (KBOBDocumentTypes2016, DocumentFunctionClassification),
-      role assignments (responsible_role, reviewing_roles, audience_roles), and
-      structured requirement lists (content_requirements,
-      metadata_requirements) whose items link to phases and workflows.
+      (catalog ids of delivery moments), and optional description (distinct
+      from definition). Optional external classifications
+      (KBOBDocumentTypes2016, DocumentFunctionClassification) and
+      metadata_requirements whose items link to phases and workflows. No
+      content requirements and no role assignments (audience, reviewer,
+      responsible party, or approver).
     slots:
       - id
       - code
@@ -869,18 +890,15 @@ classes:
       - included_elements
       - scheduled_milestones
       - classifications
-      - responsible_role
-      - reviewing_roles
-      - audience_roles
-      - content_requirements
       - metadata_requirements
     slot_usage:
       domain:
         required: true
       description:
         description: >-
-          Short checkable list of required document contents, for LLM
-          completeness/fit checks. Distinct from definition (catalog purpose).
+          Short notes on the document, for LLM completeness/fit checks.
+          Distinct from definition (catalog purpose). Not a content-requirement
+          list.
 
   AttributePreset:
     description: >-
@@ -910,7 +928,8 @@ classes:
       Distinct from ValueSet room lists (raumliste-innen / raumliste-aussen)
       used as IFC Reference vocabularies on elements such as Innenraum.
       attribute_presets sets values for attributes of that element, such as
-      IfcSpace PredefinedType.
+      IfcSpace PredefinedType. restrictions sets the minimum size: floor
+      area, clear height, length, and width.
     slots:
       - id
       - code
@@ -919,13 +938,74 @@ classes:
       - definition
       - status
       - attribute_presets
+      - restrictions
+
+  RoomTypeRestriction:
+    description: >-
+      Minimum size of a room type. min_area is the floor area (size) in
+      square metres. min_height, min_length, and min_width are clear
+      dimensions in metres. Every measure is optional.
+    slots:
+      - min_area
+      - min_height
+      - min_length
+      - min_width
+
+  RoomRelationship:
+    description: >-
+      One directed edge of a solution's room graph. from_room_type and
+      to_room_type are the nodes. Optional name labels the edge (e.g. Zugang);
+      omit it when the edge is only the link. max_distance is the maximum
+      distance in metres between the two room types. Inlined on the solution, so it
+      has no id of its own. Either end may be a room type that is not also
+      listed in required_room_types.
+    slots:
+      - from_room_type
+      - to_room_type
+      - name
+      - max_distance
+    slot_usage:
+      from_room_type:
+        required: true
+      to_room_type:
+        required: true
+      name:
+        required: false
+        description: >-
+          Optional label for this edge (e.g. Zugang). Omit when the edge is
+          only the link.
+
+  ScenarioSolution:
+    description: >-
+      One way to fulfil a job. required_room_types are the nodes and
+      room_relationships are the directed edges of this solution. Inlined on
+      the job, so it has no id of its own. A job may list several solutions
+      as alternatives.
+    slots:
+      - sort_order
+      - name
+      - description
+      - required_room_types
+      - room_relationships
+
+  ScenarioJob:
+    description: >-
+      Something a person needs to get done inside a usage scenario. solutions
+      are the alternative spatial answers. Inlined on the scenario, so it has
+      no id of its own.
+    slots:
+      - sort_order
+      - name
+      - description
+      - solutions
 
   UsageScenario:
     description: >-
-      Nutzungsszenario / user story: how the building is used, and which room
-      types that use requires. scenario_group gathers stories for one building
-      or example (e.g. Flughafen). Distinct from Workflow Szenarienentwicklung,
-      which is urban design variants, not a user story.
+      Nutzungsszenario / user story: how the building is used. scenario_group
+      gathers stories for one building or example (e.g. Flughafen). jobs are
+      the ordered tasks in the story; each job has one or more solutions, and
+      each solution carries the room graph. Distinct from Workflow
+      Szenarienentwicklung, which is urban design variants, not a user story.
     slots:
       - id
       - code
@@ -935,7 +1015,7 @@ classes:
       - scenario_group
       - status
       - jurisdiction
-      - required_room_types
+      - jobs
 
   ProjectGoal:
     slots:

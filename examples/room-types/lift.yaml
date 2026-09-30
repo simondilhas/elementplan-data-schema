@@ -16,4 +16,9 @@ attribute_presets:
   value:
     de: Lift
     en: Lift
+restrictions:
+  min_area: 6
+  min_height: 2.4
+  min_length: 2.2
+  min_width: 1.6
 status: active

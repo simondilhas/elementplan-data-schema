@@ -169,9 +169,39 @@ if "UsageScenario" not in schema["classes"]:
     raise SystemExit("UsageScenario class is missing.")
 
 room_type_slots = schema["classes"]["RoomType"]["slots"]
-for slot_name in ("id", "code", "sort_order", "name", "definition", "status", "attribute_presets"):
+for slot_name in (
+    "id",
+    "code",
+    "sort_order",
+    "name",
+    "definition",
+    "status",
+    "attribute_presets",
+    "restrictions",
+):
     if slot_name not in room_type_slots:
         raise SystemExit(f"RoomType class is missing the {slot_name} slot.")
+
+if "RoomTypeRestriction" not in schema["classes"]:
+    raise SystemExit("RoomTypeRestriction class is missing.")
+restriction_slots = schema["classes"]["RoomTypeRestriction"]["slots"]
+for slot_name in ("min_area", "min_height", "min_length", "min_width"):
+    if slot_name not in restriction_slots:
+        raise SystemExit(f"RoomTypeRestriction class is missing the {slot_name} slot.")
+    measure = schema["slots"].get(slot_name)
+    if not measure or measure.get("range") != "float" or measure.get("required"):
+        raise SystemExit(f"{slot_name} slot must be an optional float.")
+
+restrictions_slot = schema["slots"].get("restrictions")
+if (
+    not restrictions_slot
+    or restrictions_slot.get("range") != "RoomTypeRestriction"
+    or restrictions_slot.get("multivalued")
+    or restrictions_slot.get("inlined") is not True
+):
+    raise SystemExit(
+        "restrictions slot must be a single inlined RoomTypeRestriction"
+    )
 
 if "AttributePreset" not in schema["classes"]:
     raise SystemExit("AttributePreset class is missing.")
@@ -212,10 +242,94 @@ for slot_name in (
     "scenario_group",
     "status",
     "jurisdiction",
-    "required_room_types",
+    "jobs",
 ):
     if slot_name not in usage_scenario_slots:
         raise SystemExit(f"UsageScenario class is missing the {slot_name} slot.")
+for slot_name in ("required_room_types", "room_relationships"):
+    if slot_name in usage_scenario_slots:
+        raise SystemExit(f"UsageScenario must not include {slot_name}; it lives on ScenarioSolution.")
+
+if "ScenarioJob" not in schema["classes"]:
+    raise SystemExit("ScenarioJob class is missing.")
+if "ScenarioSolution" not in schema["classes"]:
+    raise SystemExit("ScenarioSolution class is missing.")
+job_slots = schema["classes"]["ScenarioJob"]["slots"]
+for slot_name in ("sort_order", "name", "description", "solutions"):
+    if slot_name not in job_slots:
+        raise SystemExit(f"ScenarioJob class is missing the {slot_name} slot.")
+solution_slots = schema["classes"]["ScenarioSolution"]["slots"]
+for slot_name in ("sort_order", "name", "description", "required_room_types", "room_relationships"):
+    if slot_name not in solution_slots:
+        raise SystemExit(f"ScenarioSolution class is missing the {slot_name} slot.")
+
+jobs_slot = schema["slots"].get("jobs")
+if (
+    not jobs_slot
+    or jobs_slot.get("range") != "ScenarioJob"
+    or not jobs_slot.get("multivalued")
+    or not jobs_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "jobs slot must be multivalued ScenarioJob with inlined_as_list: true"
+    )
+solutions_slot = schema["slots"].get("solutions")
+if (
+    not solutions_slot
+    or solutions_slot.get("range") != "ScenarioSolution"
+    or not solutions_slot.get("multivalued")
+    or not solutions_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "solutions slot must be multivalued ScenarioSolution with inlined_as_list: true"
+    )
+if "jobs" in dataset_slots or "solutions" in dataset_slots:
+    raise SystemExit("jobs and solutions must not be dataset catalog slots.")
+
+if "RoomRelationship" not in schema["classes"]:
+    raise SystemExit("RoomRelationship class is missing.")
+relationship_slots = schema["classes"]["RoomRelationship"]["slots"]
+for slot_name in ("from_room_type", "to_room_type", "name", "max_distance"):
+    if slot_name not in relationship_slots:
+        raise SystemExit(f"RoomRelationship class is missing the {slot_name} slot.")
+max_distance_slot = schema["slots"].get("max_distance")
+if (
+    not max_distance_slot
+    or max_distance_slot.get("range") != "float"
+    or max_distance_slot.get("required")
+):
+    raise SystemExit("max_distance slot must be an optional float.")
+relationship_usage = schema["classes"]["RoomRelationship"].get("slot_usage", {})
+for slot_name in ("from_room_type", "to_room_type"):
+    usage = relationship_usage.get(slot_name, {})
+    if not usage.get("required"):
+        raise SystemExit(f"RoomRelationship.{slot_name} must be required.")
+if relationship_usage.get("name", {}).get("required") is not False:
+    raise SystemExit("RoomRelationship.name must be optional.")
+
+for slot_name in ("from_room_type", "to_room_type"):
+    slot = schema["slots"].get(slot_name)
+    if (
+        not slot
+        or slot.get("range") != "RoomType"
+        or slot.get("inlined") is not False
+    ):
+        raise SystemExit(
+            f"{slot_name} slot must be a RoomType reference with inlined: false"
+        )
+
+room_relationships_slot = schema["slots"].get("room_relationships")
+if (
+    not room_relationships_slot
+    or room_relationships_slot.get("range") != "RoomRelationship"
+    or not room_relationships_slot.get("multivalued")
+    or not room_relationships_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "room_relationships slot must be multivalued RoomRelationship with inlined_as_list: true"
+    )
+if "room_relationships" in dataset_slots:
+    raise SystemExit("room_relationships must not be a dataset catalog slot.")
 
 required_room_types_slot = schema["slots"].get("required_room_types")
 if (
@@ -252,7 +366,7 @@ if dataset_slots.index("room_types") >= dataset_slots.index("usage_scenarios"):
 if dataset_slots.index("usage_scenarios") >= dataset_slots.index("workflows"):
     raise SystemExit("usage_scenarios must appear before workflows on ElementplanDataset.")
 
-print("Schema contract OK: UsageScenario.required_room_types")
+print("Schema contract OK: UsageScenario.jobs")
 
 if "included_elements" not in schema["classes"]["Model"]["slots"]:
     raise SystemExit("Model class is missing the included_elements slot.")
@@ -472,33 +586,31 @@ if (
         "classifications slot must be multivalued Classification with inlined_as_list: true"
     )
 
-responsible_role_slot = schema["slots"].get("responsible_role")
-if (
-    not responsible_role_slot
-    or responsible_role_slot.get("range") != "Classification"
-    or responsible_role_slot.get("inlined") is not True
-    or responsible_role_slot.get("multivalued")
+for forbidden_slot in (
+    "responsible_role",
+    "reviewing_roles",
+    "approver_role",
+    "audience_roles",
+    "content_requirements",
 ):
-    raise SystemExit("responsible_role slot must be a single inlined Classification.")
-for slot_name in ("reviewing_roles", "audience_roles"):
-    slot = schema["slots"].get(slot_name)
-    if (
-        not slot
-        or slot.get("range") != "Classification"
-        or not slot.get("multivalued")
-        or not slot.get("inlined_as_list")
-    ):
-        raise SystemExit(
-            f"{slot_name} slot must be multivalued Classification with inlined_as_list: true"
-        )
+    if forbidden_slot in schema["slots"]:
+        raise SystemExit(f"{forbidden_slot} slot must not exist on Model or Document.")
 
 for class_name in ("Model", "Document"):
     class_slots = schema["classes"][class_name]["slots"]
-    for slot_name in ("classifications", "responsible_role", "reviewing_roles", "audience_roles"):
-        if slot_name not in class_slots:
-            raise SystemExit(f"{class_name} class is missing the {slot_name} slot.")
+    if "classifications" not in class_slots:
+        raise SystemExit(f"{class_name} class is missing the classifications slot.")
+    for forbidden_slot in (
+        "responsible_role",
+        "reviewing_roles",
+        "approver_role",
+        "audience_roles",
+        "content_requirements",
+    ):
+        if forbidden_slot in class_slots:
+            raise SystemExit(f"{class_name} must not include {forbidden_slot}.")
 
-print("Schema contract OK: Classification and roles on Model, Document")
+print("Schema contract OK: Classification on Model, Document")
 
 if "DocumentRequirement" not in schema["classes"]:
     raise SystemExit("DocumentRequirement class is missing.")
@@ -529,23 +641,24 @@ if not phases_usage.get("required") or phases_usage.get("minimum_cardinality") !
 if schema["classes"]["Attribute"].get("is_a"):
     raise SystemExit("Attribute must not inherit from another class.")
 
-for slot_name in ("content_requirements", "metadata_requirements"):
-    slot = schema["slots"].get(slot_name)
-    if (
-        not slot
-        or slot.get("range") != "DocumentRequirement"
-        or not slot.get("multivalued")
-        or not slot.get("inlined_as_list")
-    ):
-        raise SystemExit(
-            f"{slot_name} slot must be multivalued DocumentRequirement with inlined_as_list: true"
-        )
-    if slot_name not in schema["classes"]["Document"]["slots"]:
-        raise SystemExit(f"Document class is missing the {slot_name} slot.")
-    if slot_name in schema["classes"]["Model"]["slots"]:
-        raise SystemExit(f"Model must not include {slot_name}.")
+metadata_slot = schema["slots"].get("metadata_requirements")
+if (
+    not metadata_slot
+    or metadata_slot.get("range") != "DocumentRequirement"
+    or not metadata_slot.get("multivalued")
+    or not metadata_slot.get("inlined_as_list")
+):
+    raise SystemExit(
+        "metadata_requirements slot must be multivalued DocumentRequirement with inlined_as_list: true"
+    )
+if "metadata_requirements" not in schema["classes"]["Document"]["slots"]:
+    raise SystemExit("Document class is missing the metadata_requirements slot.")
+if "metadata_requirements" in schema["classes"]["Model"]["slots"]:
+    raise SystemExit("Model must not include metadata_requirements.")
+if "content_requirements" in schema["slots"] or "content_requirements" in schema["classes"]["Document"]["slots"]:
+    raise SystemExit("Document must not include content_requirements.")
 
-print("Schema contract OK: DocumentRequirement and Document.content_requirements")
+print("Schema contract OK: DocumentRequirement and Document.metadata_requirements")
 PY
 
 echo "Running LinkML metamodel validation..."
@@ -623,8 +736,35 @@ if "RoomType" not in compiled["$defs"]:
     raise SystemExit("Compiled JSON Schema is missing RoomType.")
 if "UsageScenario" not in compiled["$defs"]:
     raise SystemExit("Compiled JSON Schema is missing UsageScenario.")
-if "required_room_types" not in compiled["$defs"]["UsageScenario"]["properties"]:
-    raise SystemExit("Compiled JSON Schema UsageScenario is missing required_room_types.")
+if "jobs" not in compiled["$defs"]["UsageScenario"]["properties"]:
+    raise SystemExit("Compiled JSON Schema UsageScenario is missing jobs.")
+if "required_room_types" in compiled["$defs"]["UsageScenario"]["properties"]:
+    raise SystemExit("Compiled JSON Schema UsageScenario must not include required_room_types.")
+if "ScenarioJob" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing ScenarioJob.")
+if "ScenarioSolution" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing ScenarioSolution.")
+if "solutions" not in compiled["$defs"]["ScenarioJob"]["properties"]:
+    raise SystemExit("Compiled JSON Schema ScenarioJob is missing solutions.")
+if "required_room_types" not in compiled["$defs"]["ScenarioSolution"]["properties"]:
+    raise SystemExit("Compiled JSON Schema ScenarioSolution is missing required_room_types.")
+if "RoomRelationship" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing RoomRelationship.")
+if "room_relationships" not in compiled["$defs"]["ScenarioSolution"]["properties"]:
+    raise SystemExit("Compiled JSON Schema ScenarioSolution is missing room_relationships.")
+if "room_relationships" in compiled["$defs"]["UsageScenario"]["properties"]:
+    raise SystemExit("Compiled JSON Schema UsageScenario must not include room_relationships.")
+if "RoomTypeRestriction" not in compiled["$defs"]:
+    raise SystemExit("Compiled JSON Schema is missing RoomTypeRestriction.")
+if "restrictions" not in compiled["$defs"]["RoomType"]["properties"]:
+    raise SystemExit("Compiled JSON Schema RoomType is missing restrictions.")
+for measure_name in ("min_area", "min_height", "min_length", "min_width"):
+    if measure_name not in compiled["$defs"]["RoomTypeRestriction"]["properties"]:
+        raise SystemExit(f"Compiled JSON Schema RoomTypeRestriction is missing {measure_name}.")
+if "max_distance" not in compiled["$defs"]["RoomRelationship"]["properties"]:
+    raise SystemExit("Compiled JSON Schema RoomRelationship is missing max_distance.")
+if "room_relationships" in compiled["$defs"]["ElementplanDataset"]["properties"]:
+    raise SystemExit("Compiled JSON Schema ElementplanDataset must not include room_relationships.")
 if "AttributePreset" not in compiled["$defs"]:
     raise SystemExit("Compiled JSON Schema is missing AttributePreset.")
 if "attribute_presets" not in compiled["$defs"]["RoomType"]["properties"]:
@@ -634,7 +774,7 @@ for prop_name in ("room_types", "usage_scenarios"):
     if prop_name not in dataset_props:
         raise SystemExit(f"Compiled JSON Schema ElementplanDataset is missing {prop_name}.")
 
-print("JSON Schema OK: UsageScenario.required_room_types")
+print("JSON Schema OK: UsageScenario.jobs")
 
 model_props = compiled["$defs"]["Model"]["properties"]
 if "included_elements" not in model_props:
@@ -730,11 +870,19 @@ if not {"classification_scheme", "classification_code"} <= classification_requir
 
 for class_name in ("Model", "Document"):
     class_props = compiled["$defs"][class_name]["properties"]
-    for prop_name in ("classifications", "responsible_role", "reviewing_roles", "audience_roles"):
-        if prop_name not in class_props:
-            raise SystemExit(f"Compiled JSON Schema {class_name} is missing {prop_name}.")
+    if "classifications" not in class_props:
+        raise SystemExit(f"Compiled JSON Schema {class_name} is missing classifications.")
+    for prop_name in (
+        "responsible_role",
+        "reviewing_roles",
+        "approver_role",
+        "audience_roles",
+        "content_requirements",
+    ):
+        if prop_name in class_props:
+            raise SystemExit(f"Compiled JSON Schema {class_name} must not include {prop_name}.")
 
-print("JSON Schema OK: Classification and roles on Model, Document")
+print("JSON Schema OK: Classification on Model, Document")
 
 if "DocumentRequirement" not in compiled["$defs"]:
     raise SystemExit("Compiled JSON Schema is missing DocumentRequirement.")
@@ -750,13 +898,14 @@ if not {"name", "needed_in_phases"} <= requirement_required:
         "Compiled JSON Schema DocumentRequirement must require name and needed_in_phases."
     )
 
-for prop_name in ("content_requirements", "metadata_requirements"):
-    if prop_name not in document_props:
-        raise SystemExit(f"Compiled JSON Schema Document is missing {prop_name}.")
-    if prop_name in model_props:
-        raise SystemExit(f"Compiled JSON Schema Model must not include {prop_name}.")
+if "metadata_requirements" not in document_props:
+    raise SystemExit("Compiled JSON Schema Document is missing metadata_requirements.")
+if "metadata_requirements" in model_props:
+    raise SystemExit("Compiled JSON Schema Model must not include metadata_requirements.")
+if "content_requirements" in document_props or "content_requirements" in model_props:
+    raise SystemExit("Compiled JSON Schema must not include content_requirements.")
 
-print("JSON Schema OK: DocumentRequirement and Document.content_requirements")
+print("JSON Schema OK: DocumentRequirement and Document.metadata_requirements")
 PY
 
 echo "Schema check passed."

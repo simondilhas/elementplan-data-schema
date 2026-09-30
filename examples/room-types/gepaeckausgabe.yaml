@@ -16,4 +16,9 @@ attribute_presets:
   value:
     de: Gepäckausgabe
     en: Baggage reclaim
+restrictions:
+  min_area: 300
+  min_height: 4
+  min_length: 25
+  min_width: 12
 status: active

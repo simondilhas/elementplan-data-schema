@@ -16,4 +16,9 @@ attribute_presets:
   value:
     de: Zollbereich
     en: Customs area
+restrictions:
+  min_area: 80
+  min_height: 3
+  min_length: 12
+  min_width: 6
 status: active

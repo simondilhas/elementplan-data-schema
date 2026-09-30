@@ -11,8 +11,45 @@ scenario_group: Flughafen
 status: active
 jurisdiction:
 - general
-required_room_types:
-- pragmaticbim:room-type/passkontrolle
-- pragmaticbim:room-type/transferkontrolle
-- pragmaticbim:room-type/gepaeckausgabe
-- pragmaticbim:room-type/zollbereich
+jobs:
+- sort_order: 1
+  name:
+    de: Einreise und Transferprüfung
+    en: Entry and transfer check
+  description:
+    de: Transferpassagiere passieren die Passkontrolle und die Transferkontrolle.
+    en: Transfer passengers pass passport control and transfer screening.
+  solutions:
+  - sort_order: 1
+    name:
+      de: Pass- und Transferkontrolle
+      en: Passport and transfer control
+    required_room_types:
+    - pragmaticbim:room-type/passkontrolle
+    - pragmaticbim:room-type/transferkontrolle
+    room_relationships:
+    - from_room_type: pragmaticbim:room-type/passkontrolle
+      to_room_type: pragmaticbim:room-type/transferkontrolle
+      max_distance: 40
+- sort_order: 2
+  name:
+    de: Gepäck holen und verzollen
+    en: Collect baggage and clear customs
+  description:
+    de: Reisende holen bei Bedarf Gepäck und durchqueren den Zollbereich.
+    en: Passengers collect baggage when needed and cross the customs area.
+  solutions:
+  - sort_order: 1
+    name:
+      de: Gepäckausgabe und Zoll
+      en: Baggage reclaim and customs
+    required_room_types:
+    - pragmaticbim:room-type/gepaeckausgabe
+    - pragmaticbim:room-type/zollbereich
+    room_relationships:
+    - from_room_type: pragmaticbim:room-type/transferkontrolle
+      to_room_type: pragmaticbim:room-type/gepaeckausgabe
+      max_distance: 60
+    - from_room_type: pragmaticbim:room-type/gepaeckausgabe
+      to_room_type: pragmaticbim:room-type/zollbereich
+      max_distance: 30

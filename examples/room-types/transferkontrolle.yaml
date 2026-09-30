@@ -16,4 +16,9 @@ attribute_presets:
   value:
     de: Transferkontrolle
     en: Transfer screening
+restrictions:
+  min_area: 60
+  min_height: 3
+  min_length: 10
+  min_width: 6
 status: active

@@ -16,4 +16,9 @@ attribute_presets:
   value:
     de: Fluggastbrücke
     en: Passenger boarding bridge
+restrictions:
+  min_area: 40
+  min_height: 2.4
+  min_length: 20
+  min_width: 2
 status: active

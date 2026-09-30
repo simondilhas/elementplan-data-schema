@@ -16,4 +16,8 @@ attribute_presets:
   value:
     de: Ambulift-Standplatz
     en: Ambulift stand
+restrictions:
+  min_area: 50
+  min_length: 10
+  min_width: 5
 status: active

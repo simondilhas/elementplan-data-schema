@@ -11,8 +11,31 @@ scenario_group: Flughafen
 status: active
 jurisdiction:
 - general
-required_room_types:
-- pragmaticbim:room-type/betreuungs-warteraum
-- pragmaticbim:room-type/lift
-- pragmaticbim:room-type/gate-warteraum
-- pragmaticbim:room-type/ambulift-standplatz
+jobs:
+- sort_order: 1
+  name:
+    de: Barrierefrei zum Flugzeug gelangen
+    en: Reach the aircraft step-free
+  description:
+    de: Reisende werden betreut, fahren mit dem Lift zum Gate und steigen per Ambulift um.
+    en: Passengers are assisted, take the lift to the gate, and transfer by ambulift.
+  solutions:
+  - sort_order: 1
+    name:
+      de: Betreuung, Lift und Ambulift
+      en: Assistance, lift, and ambulift
+    required_room_types:
+    - pragmaticbim:room-type/betreuungs-warteraum
+    - pragmaticbim:room-type/lift
+    - pragmaticbim:room-type/gate-warteraum
+    - pragmaticbim:room-type/ambulift-standplatz
+    room_relationships:
+    - from_room_type: pragmaticbim:room-type/betreuungs-warteraum
+      to_room_type: pragmaticbim:room-type/lift
+      max_distance: 20
+    - from_room_type: pragmaticbim:room-type/lift
+      to_room_type: pragmaticbim:room-type/gate-warteraum
+      max_distance: 40
+    - from_room_type: pragmaticbim:room-type/gate-warteraum
+      to_room_type: pragmaticbim:room-type/ambulift-standplatz
+      max_distance: 30

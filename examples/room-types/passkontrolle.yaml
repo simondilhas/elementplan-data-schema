@@ -16,4 +16,9 @@ attribute_presets:
   value:
     de: Passkontrolle
     en: Passport control
+restrictions:
+  min_area: 80
+  min_height: 3
+  min_length: 12
+  min_width: 6
 status: active
