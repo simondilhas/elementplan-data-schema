@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/kueche
+code: RT-21
+sort_order: 21
+name:
+  de: Küche
+  en: Kitchen
+definition:
+  de: Raum zum Kochen in der Wohnung.
+  en: Room for cooking in the dwelling.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Küche
+    en: Kitchen
+status: active

@@ -232,120 +232,36 @@ if value_any_of != {"string", "boolean", "integer", "float", "LocalizedText"}:
         "value slot must accept string, boolean, integer, float, or LocalizedText."
     )
 
-usage_scenario_slots = schema["classes"]["UsageScenario"]["slots"]
-for slot_name in (
-    "id",
-    "code",
-    "sort_order",
-    "name",
-    "description",
-    "scenario_group",
-    "status",
-    "jurisdiction",
-    "jobs",
-):
-    if slot_name not in usage_scenario_slots:
-        raise SystemExit(f"UsageScenario class is missing the {slot_name} slot.")
-for slot_name in ("required_room_types", "room_relationships"):
-    if slot_name in usage_scenario_slots:
-        raise SystemExit(f"UsageScenario must not include {slot_name}; it lives on ScenarioSolution.")
+def require_class_slots(class_name, slot_names):
+    if class_name not in schema["classes"]:
+        raise SystemExit(f"{class_name} class is missing.")
+    class_slots = schema["classes"][class_name]["slots"]
+    for slot_name in slot_names:
+        if slot_name not in class_slots:
+            raise SystemExit(f"{class_name} class is missing the {slot_name} slot.")
 
-if "ScenarioJob" not in schema["classes"]:
-    raise SystemExit("ScenarioJob class is missing.")
-if "ScenarioSolution" not in schema["classes"]:
-    raise SystemExit("ScenarioSolution class is missing.")
-job_slots = schema["classes"]["ScenarioJob"]["slots"]
-for slot_name in ("sort_order", "name", "description", "solutions"):
-    if slot_name not in job_slots:
-        raise SystemExit(f"ScenarioJob class is missing the {slot_name} slot.")
-solution_slots = schema["classes"]["ScenarioSolution"]["slots"]
-for slot_name in ("sort_order", "name", "description", "required_room_types", "room_relationships"):
-    if slot_name not in solution_slots:
-        raise SystemExit(f"ScenarioSolution class is missing the {slot_name} slot.")
 
-jobs_slot = schema["slots"].get("jobs")
-if (
-    not jobs_slot
-    or jobs_slot.get("range") != "ScenarioJob"
-    or not jobs_slot.get("multivalued")
-    or not jobs_slot.get("inlined_as_list")
-):
-    raise SystemExit(
-        "jobs slot must be multivalued ScenarioJob with inlined_as_list: true"
-    )
-solutions_slot = schema["slots"].get("solutions")
-if (
-    not solutions_slot
-    or solutions_slot.get("range") != "ScenarioSolution"
-    or not solutions_slot.get("multivalued")
-    or not solutions_slot.get("inlined_as_list")
-):
-    raise SystemExit(
-        "solutions slot must be multivalued ScenarioSolution with inlined_as_list: true"
-    )
-if "jobs" in dataset_slots or "solutions" in dataset_slots:
-    raise SystemExit("jobs and solutions must not be dataset catalog slots.")
-
-if "RoomRelationship" not in schema["classes"]:
-    raise SystemExit("RoomRelationship class is missing.")
-relationship_slots = schema["classes"]["RoomRelationship"]["slots"]
-for slot_name in ("from_room_type", "to_room_type", "name", "max_distance"):
-    if slot_name not in relationship_slots:
-        raise SystemExit(f"RoomRelationship class is missing the {slot_name} slot.")
-max_distance_slot = schema["slots"].get("max_distance")
-if (
-    not max_distance_slot
-    or max_distance_slot.get("range") != "float"
-    or max_distance_slot.get("required")
-):
-    raise SystemExit("max_distance slot must be an optional float.")
-relationship_usage = schema["classes"]["RoomRelationship"].get("slot_usage", {})
-for slot_name in ("from_room_type", "to_room_type"):
-    usage = relationship_usage.get(slot_name, {})
+def require_required(class_name, slot_name):
+    usage = schema["classes"][class_name].get("slot_usage", {}).get(slot_name, {})
     if not usage.get("required"):
-        raise SystemExit(f"RoomRelationship.{slot_name} must be required.")
-if relationship_usage.get("name", {}).get("required") is not False:
-    raise SystemExit("RoomRelationship.name must be optional.")
+        raise SystemExit(f"{class_name}.{slot_name} must be required.")
 
-for slot_name in ("from_room_type", "to_room_type"):
+
+def require_reference(slot_name, range_name, multivalued):
     slot = schema["slots"].get(slot_name)
     if (
         not slot
-        or slot.get("range") != "RoomType"
+        or slot.get("range") != range_name
+        or bool(slot.get("multivalued")) != multivalued
         or slot.get("inlined") is not False
     ):
+        kind = "multivalued" if multivalued else "single"
         raise SystemExit(
-            f"{slot_name} slot must be a RoomType reference with inlined: false"
+            f"{slot_name} slot must be a {kind} {range_name} reference with inlined: false"
         )
 
-room_relationships_slot = schema["slots"].get("room_relationships")
-if (
-    not room_relationships_slot
-    or room_relationships_slot.get("range") != "RoomRelationship"
-    or not room_relationships_slot.get("multivalued")
-    or not room_relationships_slot.get("inlined_as_list")
-):
-    raise SystemExit(
-        "room_relationships slot must be multivalued RoomRelationship with inlined_as_list: true"
-    )
-if "room_relationships" in dataset_slots:
-    raise SystemExit("room_relationships must not be a dataset catalog slot.")
 
-required_room_types_slot = schema["slots"].get("required_room_types")
-if (
-    not required_room_types_slot
-    or required_room_types_slot.get("range") != "RoomType"
-    or not required_room_types_slot.get("multivalued")
-    or required_room_types_slot.get("inlined") is not False
-):
-    raise SystemExit(
-        "required_room_types slot must be multivalued RoomType with inlined: false"
-    )
-
-for slot_name, range_name in (
-    ("room_types", "RoomType"),
-    ("usage_scenarios", "UsageScenario"),
-):
+def require_inlined_list(slot_name, range_name):
     slot = schema["slots"].get(slot_name)
     if (
         not slot
@@ -356,17 +272,179 @@ for slot_name, range_name in (
         raise SystemExit(
             f"{slot_name} slot must be multivalued {range_name} with inlined_as_list: true"
         )
+
+
+for removed in ("ScenarioJob", "ScopeLevel", "Activity", "ScenarioSolution", "SolutionSize"):
+    if removed in schema["classes"]:
+        raise SystemExit(f"{removed} class must not exist.")
+for removed in (
+    "jobs",
+    "solutions",
+    "activities",
+    "scope_levels",
+    "scope_level",
+    "parent_scope_level",
+    "always_included",
+    "counted_room_types",
+    "scenario_group",
+):
+    if removed in schema["slots"]:
+        raise SystemExit(f"{removed} slot must not exist.")
+
+require_class_slots("Use", ("id", "code", "sort_order", "name", "definition", "status"))
+
+require_class_slots(
+    "UnitType",
+    (
+        "id",
+        "code",
+        "sort_order",
+        "name",
+        "definition",
+        "use",
+        "parent_unit_type",
+        "attribute_presets",
+        "restrictions",
+        "status",
+        "variants",
+    ),
+)
+require_required("UnitType", "use")
+require_class_slots(
+    "UnitVariant",
+    ("id", "code", "sort_order", "name", "definition", "restrictions", "unit_rooms"),
+)
+require_class_slots("UnitRoom", ("room_type", "count"))
+require_required("UnitRoom", "room_type")
+require_required("UnitRoom", "count")
+count_slot = schema["slots"].get("count")
+if not count_slot or count_slot.get("range") != "integer":
+    raise SystemExit("count slot must be an integer.")
+
+require_class_slots(
+    "UsageScenario",
+    (
+        "id",
+        "code",
+        "sort_order",
+        "name",
+        "description",
+        "use",
+        "status",
+        "jurisdiction",
+        "allows_multiple",
+        "options",
+    ),
+)
+require_required("UsageScenario", "use")
+usage_scenario_slots = schema["classes"]["UsageScenario"]["slots"]
+for slot_name in ("required_room_types", "room_relationships"):
+    if slot_name in usage_scenario_slots:
+        raise SystemExit(f"UsageScenario must not include {slot_name}; it lives on ScenarioOption.")
+allows_multiple_slot = schema["slots"].get("allows_multiple")
+if not allows_multiple_slot or allows_multiple_slot.get("range") != "boolean":
+    raise SystemExit("allows_multiple slot must be a boolean.")
+
+require_class_slots(
+    "ScenarioOption",
+    (
+        "id",
+        "sort_order",
+        "name",
+        "description",
+        "unit_type",
+        "sizes",
+        "required_room_types",
+        "unit_variants",
+        "room_relationships",
+    ),
+)
+require_class_slots("ScenarioOption", ("exclusive", "excludes"))
+exclusive_slot = schema["slots"].get("exclusive")
+if not exclusive_slot or exclusive_slot.get("range") != "boolean":
+    raise SystemExit("exclusive slot must be a boolean.")
+excludes_slot = schema["slots"].get("excludes") or {}
+excludes_ranges = {item.get("range") for item in excludes_slot.get("any_of") or []}
+if (
+    excludes_ranges != {"ScenarioOption", "UnitVariant"}
+    or not excludes_slot.get("multivalued")
+    or excludes_slot.get("inlined") is not False
+):
+    raise SystemExit(
+        "excludes slot must be multivalued, inlined: false, any_of ScenarioOption / UnitVariant."
+    )
+
+require_class_slots("ProjectGoal", ("is_boundary_condition",))
+boundary_slot = schema["slots"].get("is_boundary_condition")
+if not boundary_slot or boundary_slot.get("range") != "boolean":
+    raise SystemExit("is_boundary_condition slot must be a boolean.")
+require_class_slots("ProjectGoalLevel", ("unit_variants",))
+if schema["classes"]["ProjectGoalLevel"].get("slot_usage", {}).get("activated_workflows", {}).get("required"):
+    raise SystemExit("ProjectGoalLevel.activated_workflows must stay optional for boundary conditions.")
+
+require_class_slots("OptionSize", ("id", "sort_order", "name", "size_restrictions"))
+require_class_slots(
+    "SizeRestriction",
+    ("room_type", "min_area", "min_height", "min_length", "min_width"),
+)
+require_required("SizeRestriction", "room_type")
+
+for slot_name, range_name in (
+    ("use", "Use"),
+    ("unit_type", "UnitType"),
+    ("parent_unit_type", "UnitType"),
+    ("room_type", "RoomType"),
+    ("from_room_type", "RoomType"),
+    ("to_room_type", "RoomType"),
+):
+    require_reference(slot_name, range_name, multivalued=False)
+for slot_name, range_name in (
+    ("required_room_types", "RoomType"),
+    ("unit_variants", "UnitVariant"),
+):
+    require_reference(slot_name, range_name, multivalued=True)
+
+for slot_name, range_name in (
+    ("variants", "UnitVariant"),
+    ("unit_rooms", "UnitRoom"),
+    ("options", "ScenarioOption"),
+    ("sizes", "OptionSize"),
+    ("size_restrictions", "SizeRestriction"),
+    ("room_relationships", "RoomRelationship"),
+):
+    require_inlined_list(slot_name, range_name)
+    if slot_name in dataset_slots:
+        raise SystemExit(f"{slot_name} must not be a dataset catalog slot.")
+
+require_class_slots("RoomRelationship", ("from_room_type", "to_room_type", "name", "max_distance"))
+max_distance_slot = schema["slots"].get("max_distance")
+if (
+    not max_distance_slot
+    or max_distance_slot.get("range") != "float"
+    or max_distance_slot.get("required")
+):
+    raise SystemExit("max_distance slot must be an optional float.")
+require_required("RoomRelationship", "from_room_type")
+require_required("RoomRelationship", "to_room_type")
+if schema["classes"]["RoomRelationship"].get("slot_usage", {}).get("name", {}).get("required") is not False:
+    raise SystemExit("RoomRelationship.name must be optional.")
+
+catalog_order = ("project_goals", "uses", "unit_types", "room_types", "usage_scenarios", "workflows")
+for slot_name, range_name in (
+    ("uses", "Use"),
+    ("unit_types", "UnitType"),
+    ("room_types", "RoomType"),
+    ("usage_scenarios", "UsageScenario"),
+):
+    require_inlined_list(slot_name, range_name)
+for slot_name in catalog_order:
     if slot_name not in dataset_slots:
         raise SystemExit(f"ElementplanDataset is missing the {slot_name} slot.")
+for before, after in zip(catalog_order, catalog_order[1:]):
+    if dataset_slots.index(before) >= dataset_slots.index(after):
+        raise SystemExit(f"{before} must appear before {after} on ElementplanDataset.")
 
-if dataset_slots.index("project_goals") >= dataset_slots.index("room_types"):
-    raise SystemExit("project_goals must appear before room_types on ElementplanDataset.")
-if dataset_slots.index("room_types") >= dataset_slots.index("usage_scenarios"):
-    raise SystemExit("room_types must appear before usage_scenarios on ElementplanDataset.")
-if dataset_slots.index("usage_scenarios") >= dataset_slots.index("workflows"):
-    raise SystemExit("usage_scenarios must appear before workflows on ElementplanDataset.")
-
-print("Schema contract OK: UsageScenario.jobs")
+print("Schema contract OK: Use, UnitType variants, UsageScenario options")
 
 if "included_elements" not in schema["classes"]["Model"]["slots"]:
     raise SystemExit("Model class is missing the included_elements slot.")
@@ -671,6 +749,8 @@ python - <<'PY'
 import json
 from pathlib import Path
 
+import yaml
+
 compiled = json.loads(Path("/tmp/elementplan.schema.json").read_text(encoding="utf-8"))
 unit_property = compiled["$defs"]["Attribute"]["properties"].get("unit")
 if not unit_property or "string" not in unit_property.get("type", []):
@@ -736,22 +816,35 @@ if "RoomType" not in compiled["$defs"]:
     raise SystemExit("Compiled JSON Schema is missing RoomType.")
 if "UsageScenario" not in compiled["$defs"]:
     raise SystemExit("Compiled JSON Schema is missing UsageScenario.")
-if "jobs" not in compiled["$defs"]["UsageScenario"]["properties"]:
-    raise SystemExit("Compiled JSON Schema UsageScenario is missing jobs.")
-if "required_room_types" in compiled["$defs"]["UsageScenario"]["properties"]:
+defs = compiled["$defs"]
+for class_name in ("ScenarioJob", "ScopeLevel", "Activity", "ScenarioSolution", "SolutionSize"):
+    if class_name in defs:
+        raise SystemExit(f"Compiled JSON Schema must not include {class_name}.")
+for class_name, props in (
+    ("Use", ("id", "name", "definition")),
+    ("UnitType", ("id", "use", "parent_unit_type", "restrictions", "variants")),
+    ("UnitVariant", ("id", "restrictions", "unit_rooms")),
+    ("UnitRoom", ("room_type", "count")),
+    ("UsageScenario", ("use", "allows_multiple", "options")),
+    ("ScenarioOption", ("id", "unit_type", "sizes", "required_room_types", "unit_variants", "room_relationships", "exclusive", "excludes")),
+    ("ProjectGoal", ("is_boundary_condition",)),
+    ("ProjectGoalLevel", ("unit_variants",)),
+    ("OptionSize", ("size_restrictions",)),
+    ("SizeRestriction", ("room_type",)),
+):
+    if class_name not in defs:
+        raise SystemExit(f"Compiled JSON Schema is missing {class_name}.")
+    for prop_name in props:
+        if prop_name not in defs[class_name]["properties"]:
+            raise SystemExit(f"Compiled JSON Schema {class_name} is missing {prop_name}.")
+if "required_room_types" in defs["UsageScenario"]["properties"]:
     raise SystemExit("Compiled JSON Schema UsageScenario must not include required_room_types.")
-if "ScenarioJob" not in compiled["$defs"]:
-    raise SystemExit("Compiled JSON Schema is missing ScenarioJob.")
-if "ScenarioSolution" not in compiled["$defs"]:
-    raise SystemExit("Compiled JSON Schema is missing ScenarioSolution.")
-if "solutions" not in compiled["$defs"]["ScenarioJob"]["properties"]:
-    raise SystemExit("Compiled JSON Schema ScenarioJob is missing solutions.")
-if "required_room_types" not in compiled["$defs"]["ScenarioSolution"]["properties"]:
-    raise SystemExit("Compiled JSON Schema ScenarioSolution is missing required_room_types.")
+if defs["ScenarioOption"]["properties"]["unit_variants"].get("items", {}).get("type") != "string":
+    raise SystemExit("Compiled JSON Schema ScenarioOption.unit_variants must be a list of UnitVariant ids.")
 if "RoomRelationship" not in compiled["$defs"]:
     raise SystemExit("Compiled JSON Schema is missing RoomRelationship.")
-if "room_relationships" not in compiled["$defs"]["ScenarioSolution"]["properties"]:
-    raise SystemExit("Compiled JSON Schema ScenarioSolution is missing room_relationships.")
+if "room_relationships" not in compiled["$defs"]["ScenarioOption"]["properties"]:
+    raise SystemExit("Compiled JSON Schema ScenarioOption is missing room_relationships.")
 if "room_relationships" in compiled["$defs"]["UsageScenario"]["properties"]:
     raise SystemExit("Compiled JSON Schema UsageScenario must not include room_relationships.")
 if "RoomTypeRestriction" not in compiled["$defs"]:
@@ -770,11 +863,11 @@ if "AttributePreset" not in compiled["$defs"]:
 if "attribute_presets" not in compiled["$defs"]["RoomType"]["properties"]:
     raise SystemExit("Compiled JSON Schema RoomType is missing attribute_presets.")
 dataset_props = compiled["$defs"]["ElementplanDataset"]["properties"]
-for prop_name in ("room_types", "usage_scenarios"):
+for prop_name in ("uses", "unit_types", "room_types", "usage_scenarios"):
     if prop_name not in dataset_props:
         raise SystemExit(f"Compiled JSON Schema ElementplanDataset is missing {prop_name}.")
 
-print("JSON Schema OK: UsageScenario.jobs")
+print("JSON Schema OK: Use, UnitType variants, UsageScenario options")
 
 model_props = compiled["$defs"]["Model"]["properties"]
 if "included_elements" not in model_props:
@@ -906,6 +999,62 @@ if "content_requirements" in document_props or "content_requirements" in model_p
     raise SystemExit("Compiled JSON Schema must not include content_requirements.")
 
 print("JSON Schema OK: DocumentRequirement and Document.metadata_requirements")
+
+
+def load_examples(directory):
+    for path in sorted(Path("examples", directory).glob("*.yaml")):
+        with path.open("r", encoding="utf-8") as handle:
+            yield path, yaml.safe_load(handle)
+
+
+known = {kind: set() for kind in ("use", "unit_type", "unit_variant", "room_type", "option")}
+for _, record in load_examples("uses"):
+    known["use"].add(record["id"])
+for _, record in load_examples("room-types"):
+    known["room_type"].add(record["id"])
+for _, record in load_examples("unit-types"):
+    known["unit_type"].add(record["id"])
+    known["unit_variant"].update(variant["id"] for variant in record.get("variants") or [])
+scenarios = list(load_examples("usage-scenarios"))
+for _, record in scenarios:
+    known["option"].update(option["id"] for option in record.get("options") or [])
+
+reference_kinds = {
+    "use": ("use",),
+    "unit_type": ("unit_type",),
+    "parent_unit_type": ("unit_type",),
+    "unit_variants": ("unit_variant",),
+    "required_room_types": ("room_type",),
+    "room_type": ("room_type",),
+    "from_room_type": ("room_type",),
+    "to_room_type": ("room_type",),
+    "excludes": ("option", "unit_variant"),
+}
+
+
+def check_references(path, node):
+    if isinstance(node, list):
+        for item in node:
+            check_references(path, item)
+        return
+    if not isinstance(node, dict):
+        return
+    for key, value in node.items():
+        if key in reference_kinds and value is not None:
+            allowed = set().union(*(known[kind] for kind in reference_kinds[key]))
+            for ref in value if isinstance(value, list) else [value]:
+                if ref not in allowed:
+                    raise SystemExit(f"{path}: {key} references unknown id {ref}.")
+        check_references(path, value)
+    if "excludes" in node and node.get("id") in (node.get("excludes") or []):
+        raise SystemExit(f"{path}: {node['id']} must not exclude itself.")
+
+
+for directory in ("unit-types", "usage-scenarios", "project-goals"):
+    for path, record in load_examples(directory):
+        check_references(path, record)
+
+print("Example references OK: uses, unit types, room types, options, goal levels")
 PY
 
 echo "Schema check passed."

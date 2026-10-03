@@ -1,0 +1,53 @@
+id: pragmaticbim:project-goal/wohnungsmix
+sort_order: 100
+code: PG-MIX
+name:
+  de: Wohnungsmix
+  en: Dwelling mix
+description:
+  de: Rahmenbedingung, welche Wohnungsgrössen das Gebäude anbietet. Die Anzahl je Variante folgt im Raumprogramm.
+  en: Boundary condition for which dwelling sizes the building offers. The number of each variant follows in the room programme.
+picture_link: null
+status: active
+is_boundary_condition: true
+levels:
+- id: pragmaticbim:project-goal-level/wohnungsmix-kleinwohnungen
+  code: MIX-01
+  sort_order: 1
+  name:
+    de: Kleinwohnungen
+    en: Small dwellings
+  description:
+    de: Wohnungen für Einzelpersonen und Paare.
+    en: Dwellings for single people and couples.
+  status: active
+  unit_variants:
+  - pragmaticbim:unit-variant/wohnung-1-5-zi
+  - pragmaticbim:unit-variant/wohnung-2-5-zi
+- id: pragmaticbim:project-goal-level/wohnungsmix-gemischt
+  code: MIX-02
+  sort_order: 2
+  name:
+    de: gemischt
+    en: mixed
+  description:
+    de: Mischung aus kleinen, mittleren und grossen Wohnungen.
+    en: A mix of small, medium, and large dwellings.
+  status: active
+  unit_variants:
+  - pragmaticbim:unit-variant/wohnung-2-5-zi
+  - pragmaticbim:unit-variant/wohnung-3-5-zi
+  - pragmaticbim:unit-variant/wohnung-4-5-zi
+- id: pragmaticbim:project-goal-level/wohnungsmix-familien
+  code: MIX-03
+  sort_order: 3
+  name:
+    de: Familien
+    en: Families
+  description:
+    de: Grössere Wohnungen für Familien.
+    en: Larger dwellings for families.
+  status: active
+  unit_variants:
+  - pragmaticbim:unit-variant/wohnung-3-5-zi
+  - pragmaticbim:unit-variant/wohnung-4-5-zi

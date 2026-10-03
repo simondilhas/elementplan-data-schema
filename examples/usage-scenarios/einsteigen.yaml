@@ -1,0 +1,41 @@
+id: pragmaticbim:usage-scenario/einsteigen
+code: US-02
+sort_order: 2
+name:
+  de: Einsteigen
+  en: Board
+description:
+  de: Reisende warten am Gate und gelangen ins Flugzeug.
+  en: Passengers wait at the gate and reach the aircraft.
+use: pragmaticbim:use/flughafen
+status: active
+jurisdiction:
+- general
+options:
+- id: pragmaticbim:option/gate-mit-fluggastbruecke
+  sort_order: 1
+  name:
+    de: Gate mit Fluggastbrücke
+    en: Gate with passenger boarding bridge
+  required_room_types:
+  - pragmaticbim:room-type/gate-warteraum
+  - pragmaticbim:room-type/fluggastbruecke
+  room_relationships:
+  - from_room_type: pragmaticbim:room-type/sicherheitskontrolle
+    to_room_type: pragmaticbim:room-type/gate-warteraum
+    max_distance: 200
+  - from_room_type: pragmaticbim:room-type/gate-warteraum
+    to_room_type: pragmaticbim:room-type/fluggastbruecke
+    max_distance: 15
+- id: pragmaticbim:option/ambulift-ab-gate
+  sort_order: 2
+  name:
+    de: Ambulift ab Gate
+    en: Ambulift from the gate
+  required_room_types:
+  - pragmaticbim:room-type/gate-warteraum
+  - pragmaticbim:room-type/ambulift-standplatz
+  room_relationships:
+  - from_room_type: pragmaticbim:room-type/gate-warteraum
+    to_room_type: pragmaticbim:room-type/ambulift-standplatz
+    max_distance: 30

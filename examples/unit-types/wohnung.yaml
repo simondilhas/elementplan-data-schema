@@ -1,0 +1,73 @@
+id: pragmaticbim:unit-type/wohnung
+code: UT-01
+sort_order: 1
+name:
+  de: Wohnung
+  en: Dwelling
+definition:
+  de: Abgeschlossene Wohneinheit mit eigener Bruttofläche, die die Räume eines Haushalts enthält.
+  en: Self-contained dwelling unit with its own gross area that holds the rooms of one household.
+use: pragmaticbim:use/wohnen
+status: active
+variants:
+- id: pragmaticbim:unit-variant/wohnung-1-5-zi
+  code: UT-01-15
+  sort_order: 1
+  name:
+    de: Wohnung 1.5 Zi
+    en: 1.5-room dwelling
+  definition:
+    de: Kleinwohnung, in der Wohnen und Schlafen einen Raum teilen.
+    en: Small dwelling where living and sleeping share one room.
+  unit_rooms:
+  - room_type: pragmaticbim:room-type/wohnzimmer
+    count: 1
+  - room_type: pragmaticbim:room-type/kueche
+    count: 1
+  - room_type: pragmaticbim:room-type/badezimmer
+    count: 1
+- id: pragmaticbim:unit-variant/wohnung-2-5-zi
+  code: UT-01-25
+  sort_order: 2
+  name:
+    de: Wohnung 2.5 Zi
+    en: 2.5-room dwelling
+  unit_rooms:
+  - room_type: pragmaticbim:room-type/wohnzimmer
+    count: 1
+  - room_type: pragmaticbim:room-type/kueche
+    count: 1
+  - room_type: pragmaticbim:room-type/schlafzimmer
+    count: 1
+  - room_type: pragmaticbim:room-type/badezimmer
+    count: 1
+- id: pragmaticbim:unit-variant/wohnung-3-5-zi
+  code: UT-01-35
+  sort_order: 3
+  name:
+    de: Wohnung 3.5 Zi
+    en: 3.5-room dwelling
+  unit_rooms:
+  - room_type: pragmaticbim:room-type/wohnzimmer
+    count: 1
+  - room_type: pragmaticbim:room-type/kueche
+    count: 1
+  - room_type: pragmaticbim:room-type/schlafzimmer
+    count: 2
+  - room_type: pragmaticbim:room-type/badezimmer
+    count: 1
+- id: pragmaticbim:unit-variant/wohnung-4-5-zi
+  code: UT-01-45
+  sort_order: 4
+  name:
+    de: Wohnung 4.5 Zi
+    en: 4.5-room dwelling
+  unit_rooms:
+  - room_type: pragmaticbim:room-type/wohnzimmer
+    count: 1
+  - room_type: pragmaticbim:room-type/kueche
+    count: 1
+  - room_type: pragmaticbim:room-type/schlafzimmer
+    count: 3
+  - room_type: pragmaticbim:room-type/badezimmer
+    count: 2

@@ -14,4 +14,5 @@ description:
   en: Provide structured digital building documentation and operational data for the full lifecycle.
 picture_link: null
 status: active
+is_boundary_condition: false
 comment: ''

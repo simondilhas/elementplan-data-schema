@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/badezimmer
+code: RT-23
+sort_order: 23
+name:
+  de: Badezimmer
+  en: Bathroom
+definition:
+  de: Sanitärraum der Wohnung mit Dusche oder Badewanne, WC und Lavabo.
+  en: Sanitary room of the dwelling with shower or bathtub, toilet, and washbasin.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Badezimmer
+    en: Bathroom
+status: active

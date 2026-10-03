@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/waschkueche
+code: RT-29
+sort_order: 29
+name:
+  de: Waschküche
+  en: Communal laundry
+definition:
+  de: Gemeinschaftlicher Raum zum Waschen und Trocknen für alle Wohnungen des Gebäudes.
+  en: Shared room for washing and drying used by all dwellings of the building.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Waschküche
+    en: Communal laundry
+status: active

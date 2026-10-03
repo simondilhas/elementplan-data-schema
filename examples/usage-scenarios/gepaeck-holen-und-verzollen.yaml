@@ -1,0 +1,29 @@
+id: pragmaticbim:usage-scenario/gepaeck-holen-und-verzollen
+code: US-04
+sort_order: 4
+name:
+  de: Gepäck holen und verzollen
+  en: Collect baggage and clear customs
+description:
+  de: Reisende holen bei Bedarf Gepäck und durchqueren den Zollbereich, bevor sie weiterreisen.
+  en: Passengers collect baggage when needed and cross the customs area before continuing their journey.
+use: pragmaticbim:use/flughafen
+status: active
+jurisdiction:
+- general
+options:
+- id: pragmaticbim:option/gepaeckausgabe-und-zoll
+  sort_order: 1
+  name:
+    de: Gepäckausgabe und Zoll
+    en: Baggage reclaim and customs
+  required_room_types:
+  - pragmaticbim:room-type/gepaeckausgabe
+  - pragmaticbim:room-type/zollbereich
+  room_relationships:
+  - from_room_type: pragmaticbim:room-type/transferkontrolle
+    to_room_type: pragmaticbim:room-type/gepaeckausgabe
+    max_distance: 60
+  - from_room_type: pragmaticbim:room-type/gepaeckausgabe
+    to_room_type: pragmaticbim:room-type/zollbereich
+    max_distance: 30

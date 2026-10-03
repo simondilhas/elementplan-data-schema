@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/arbeitszimmer
+code: RT-30
+sort_order: 30
+name:
+  de: Arbeitszimmer
+  en: Home office
+definition:
+  de: Raum in der Wohnung zum Arbeiten von zu Hause.
+  en: Room in the dwelling for working from home.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Arbeitszimmer
+    en: Home office
+status: active

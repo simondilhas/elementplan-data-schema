@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/schlafzimmer
+code: RT-22
+sort_order: 22
+name:
+  de: Schlafzimmer
+  en: Bedroom
+definition:
+  de: Raum zum Schlafen in der Wohnung.
+  en: Room for sleeping in the dwelling.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Schlafzimmer
+    en: Bedroom
+status: active

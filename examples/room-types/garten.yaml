@@ -1,0 +1,10 @@
+id: pragmaticbim:room-type/garten
+code: RT-25
+sort_order: 25
+name:
+  de: Garten
+  en: Private garden
+definition:
+  de: Separater, privat genutzter Garten, der zur Wohnung gehört.
+  en: Separate garden for the private use of one dwelling.
+status: active

@@ -13,4 +13,5 @@ description:
   en: Ensure consistent, model-based quantities as the basis for cost and lifecycle analysis.
 picture_link: null
 status: active
+is_boundary_condition: false
 comment: ''

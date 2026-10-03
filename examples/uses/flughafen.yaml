@@ -1,0 +1,10 @@
+id: pragmaticbim:use/flughafen
+code: USE-10
+sort_order: 10
+name:
+  de: Flughafen
+  en: Airport
+definition:
+  de: Terminalbetrieb für abfliegende, ankommende und umsteigende Reisende.
+  en: Terminal operation for departing, arriving, and transfer passengers.
+status: active

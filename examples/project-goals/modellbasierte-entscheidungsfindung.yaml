@@ -16,4 +16,5 @@ description:
   en: Visualise variants, concepts and constraints in the model to make early, robust decisions.
 picture_link: null
 status: active
+is_boundary_condition: false
 comment: ''

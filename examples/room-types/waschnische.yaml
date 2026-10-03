@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/waschnische
+code: RT-28
+sort_order: 28
+name:
+  de: Waschnische
+  en: Laundry niche
+definition:
+  de: Nische in der Wohnung für Waschmaschine und Tumbler.
+  en: Niche in the dwelling for a washing machine and a dryer.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Waschnische
+    en: Laundry niche
+status: active

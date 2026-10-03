@@ -1,0 +1,19 @@
+id: pragmaticbim:room-type/wohnzimmer
+code: RT-20
+sort_order: 20
+name:
+  de: Wohnzimmer
+  en: Living room
+definition:
+  de: Gemeinsamer Aufenthaltsraum der Wohnung.
+  en: Shared living space of the dwelling.
+attribute_presets:
+- element: armasuisse:element/innenraum
+  name: PredefinedType
+  value: INTERNAL
+- element: armasuisse:element/innenraum
+  name: LongName
+  value:
+    de: Wohnzimmer
+    en: Living room
+status: active

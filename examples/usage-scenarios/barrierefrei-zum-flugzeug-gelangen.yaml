@@ -1,0 +1,34 @@
+id: pragmaticbim:usage-scenario/barrierefrei-zum-flugzeug-gelangen
+code: US-05
+sort_order: 5
+name:
+  de: Barrierefrei zum Flugzeug gelangen
+  en: Reach the aircraft step-free
+description:
+  de: Reisende mit eingeschränkter Mobilität werden im Betreuungs-Warteraum empfangen, erreichen das Gate barrierefrei mit dem Lift und steigen am Ambulift-Standplatz um.
+  en: Passengers with reduced mobility are received in the assistance waiting room, reach the gate step-free by lift, and transfer at the ambulift stand.
+use: pragmaticbim:use/flughafen
+status: active
+jurisdiction:
+- general
+options:
+- id: pragmaticbim:option/betreuung-lift-und-ambulift
+  sort_order: 1
+  name:
+    de: Betreuung, Lift und Ambulift
+    en: Assistance, lift, and ambulift
+  required_room_types:
+  - pragmaticbim:room-type/betreuungs-warteraum
+  - pragmaticbim:room-type/lift
+  - pragmaticbim:room-type/gate-warteraum
+  - pragmaticbim:room-type/ambulift-standplatz
+  room_relationships:
+  - from_room_type: pragmaticbim:room-type/betreuungs-warteraum
+    to_room_type: pragmaticbim:room-type/lift
+    max_distance: 20
+  - from_room_type: pragmaticbim:room-type/lift
+    to_room_type: pragmaticbim:room-type/gate-warteraum
+    max_distance: 40
+  - from_room_type: pragmaticbim:room-type/gate-warteraum
+    to_room_type: pragmaticbim:room-type/ambulift-standplatz
+    max_distance: 30

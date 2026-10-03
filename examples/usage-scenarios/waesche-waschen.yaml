@@ -1,0 +1,29 @@
+id: pragmaticbim:usage-scenario/waesche-waschen
+code: US-12
+sort_order: 12
+name:
+  de: Wäsche waschen
+  en: Doing laundry
+description:
+  de: Bewohnende waschen und trocknen ihre Wäsche, in der Wohnung oder gemeinschaftlich im Gebäude.
+  en: Occupants wash and dry their laundry, in the dwelling or shared in the building.
+use: pragmaticbim:use/wohnen
+status: active
+jurisdiction:
+- general
+options:
+- id: pragmaticbim:option/waschnische
+  sort_order: 1
+  name:
+    de: Waschnische in der Wohnung
+    en: Laundry niche in the dwelling
+  unit_type: pragmaticbim:unit-type/wohnung
+  required_room_types:
+  - pragmaticbim:room-type/waschnische
+- id: pragmaticbim:option/waschkueche
+  sort_order: 2
+  name:
+    de: Gemeinschaftliche Waschküche
+    en: Communal laundry
+  required_room_types:
+  - pragmaticbim:room-type/waschkueche

@@ -13,6 +13,7 @@ description:
   en: Controls quantity, cost and benchmarking depth via ordered levels.
 picture_link: null
 status: active
+is_boundary_condition: false
 comment: Prototype goal for Goal × Level → Workflow mapping (Kickoff / Konfigurator).
 levels:
 - id: pragmaticbim:project-goal-level/kosten-grosszuegig

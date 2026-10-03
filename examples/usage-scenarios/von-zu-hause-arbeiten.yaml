@@ -1,0 +1,30 @@
+id: pragmaticbim:usage-scenario/von-zu-hause-arbeiten
+code: US-13
+sort_order: 13
+name:
+  de: Von zu Hause arbeiten
+  en: Working from home
+description:
+  de: Bewohnende arbeiten in der Wohnung in einem eigenen Raum.
+  en: Occupants work in the dwelling in a room of their own.
+use: pragmaticbim:use/wohnen
+status: active
+jurisdiction:
+- general
+options:
+- id: pragmaticbim:option/kein-arbeitszimmer
+  sort_order: 1
+  name:
+    de: Kein
+    en: None
+  exclusive: true
+- id: pragmaticbim:option/arbeitszimmer
+  sort_order: 2
+  name:
+    de: Arbeitszimmer
+    en: Home office
+  unit_type: pragmaticbim:unit-type/wohnung
+  required_room_types:
+  - pragmaticbim:room-type/arbeitszimmer
+  excludes:
+  - pragmaticbim:unit-variant/wohnung-1-5-zi

@@ -13,4 +13,5 @@ description:
   en: Plan, simulate and control critical construction processes and progress using models.
 picture_link: null
 status: active
+is_boundary_condition: false
 comment: ''

@@ -1,0 +1,10 @@
+id: pragmaticbim:use/wohnen
+code: USE-01
+sort_order: 1
+name:
+  de: Wohnen
+  en: Housing
+definition:
+  de: Wohnungen und die Räume, die ihre Bewohnerinnen und Bewohner gemeinsam nutzen.
+  en: Dwellings and the rooms their occupants share.
+status: active
