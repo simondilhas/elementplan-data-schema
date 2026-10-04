@@ -16,6 +16,8 @@ jurisdiction:
 - general
 options:
 - id: pragmaticbim:option/waschnische
+  project_goal_levels:
+  - pragmaticbim:project-goal-level/kosten-grosszuegig
   sort_order: 1
   name:
     de: Waschnische in der Wohnung
@@ -24,6 +26,8 @@ options:
   adds:
   - pragmaticbim:room-type/waschnische
 - id: pragmaticbim:option/waschkueche
+  project_goal_levels:
+  - pragmaticbim:project-goal-level/kosten-sensitiv
   sort_order: 2
   name:
     de: Gemeinschaftliche Waschküche

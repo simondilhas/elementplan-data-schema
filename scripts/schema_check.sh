@@ -450,6 +450,7 @@ require_class_slots(
         "sort_order",
         "name",
         "description",
+        "project_goal_levels",
         "target",
         "sizes",
         "adds",
@@ -457,6 +458,8 @@ require_class_slots(
     ),
 )
 require_class_slots("ScenarioOption", ("exclusive", "excludes"))
+if schema["classes"]["ScenarioOption"].get("slot_usage", {}).get("project_goal_levels", {}).get("required"):
+    raise SystemExit("ScenarioOption.project_goal_levels must stay optional.")
 target_usage = schema["classes"]["ScenarioOption"].get("slot_usage", {}).get("target", {})
 if target_usage.get("range") != "RoomType" or target_usage.get("inlined") is not False:
     raise SystemExit("ScenarioOption.target must be a RoomType reference.")
@@ -923,7 +926,7 @@ for class_name, props in (
     ("RoomType", ("id", "room_type_kind", "extends", "contains", "legacy_ids", "configurations")),
     ("RoomTypeComponent", ("room_type",)),
     ("UsageScenario", ("tags", "allows_multiple", "options")),
-    ("ScenarioOption", ("id", "target", "sizes", "adds", "room_relationships", "exclusive", "excludes")),
+    ("ScenarioOption", ("id", "project_goal_levels", "target", "sizes", "adds", "room_relationships", "exclusive", "excludes")),
     ("ProjectGoal", ("is_boundary_condition",)),
     ("ProjectGoalLevel", ("activated_room_types",)),
     ("OptionSize", ("size_restrictions",)),
@@ -939,6 +942,10 @@ for old_prop in ("use", "topic", "required_room_types", "required_unit_types"):
         raise SystemExit(f"Compiled JSON Schema UsageScenario must not include {old_prop}.")
 if defs["ScenarioOption"]["properties"]["adds"].get("items", {}).get("type") != "string":
     raise SystemExit("Compiled JSON Schema ScenarioOption.adds must be a list of RoomType ids.")
+if defs["ScenarioOption"]["properties"]["project_goal_levels"].get("items", {}).get("type") != "string":
+    raise SystemExit("Compiled JSON Schema ScenarioOption.project_goal_levels must be a list of ProjectGoalLevel ids.")
+if "project_goal_levels" in set(defs["ScenarioOption"].get("required", [])):
+    raise SystemExit("Compiled JSON Schema ScenarioOption.project_goal_levels must stay optional.")
 if defs["ProjectGoalLevel"]["properties"]["activated_room_types"].get("items", {}).get("type") != "string":
     raise SystemExit("Compiled JSON Schema ProjectGoalLevel.activated_room_types must be a list of RoomType ids.")
 for class_name in ("UnitVariant", "UnitRoom"):

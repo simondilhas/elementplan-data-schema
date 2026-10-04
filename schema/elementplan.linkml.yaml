@@ -1142,11 +1142,15 @@ classes:
       no room types), which also makes the scenario optional. excludes
       names options or room types elsewhere that cannot be combined with
       this one; the rule is symmetric and declared on one side.
+      project_goal_levels optionally names the goal levels this option suits;
+      omit it when the option is independent of goal levels. A chosen level
+      can then select among the options.
     slots:
       - id
       - sort_order
       - name
       - description
+      - project_goal_levels
       - target
       - sizes
       - adds
@@ -1154,6 +1158,8 @@ classes:
       - exclusive
       - excludes
     slot_usage:
+      project_goal_levels:
+        required: false
       target:
         range: RoomType
         inlined: false

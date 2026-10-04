@@ -15,12 +15,16 @@ jurisdiction:
 - general
 options:
 - id: pragmaticbim:option/kein-aussenbezug
+  project_goal_levels:
+  - pragmaticbim:project-goal-level/kosten-sensitiv
   sort_order: 1
   name:
     de: Kein
     en: None
   exclusive: true
 - id: pragmaticbim:option/balkon-terrasse
+  project_goal_levels:
+  - pragmaticbim:project-goal-level/kosten-mittel
   sort_order: 2
   name:
     de: Balkon/Terrasse
@@ -54,6 +58,8 @@ options:
   adds:
   - pragmaticbim:room-type/balkon-terrasse
 - id: pragmaticbim:option/separater-garten
+  project_goal_levels:
+  - pragmaticbim:project-goal-level/kosten-grosszuegig
   sort_order: 3
   name:
     de: Separater Garten
