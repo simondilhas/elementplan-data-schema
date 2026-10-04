@@ -7,13 +7,21 @@ name:
 definition:
   de: Raum zum Kochen in der Wohnung.
   en: Room for cooking in the dwelling.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Küche
-    en: Kitchen
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/kueche-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Küche
+      en: Kitchen
+  status: active
 status: active

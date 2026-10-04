@@ -1,0 +1,26 @@
+id: pragmaticbim:room-type/wohnung-1-5
+legacy_ids:
+- pragmaticbim:unit-type/wohnung-1-5
+code: UT-01-15
+sort_order: 2
+name:
+  de: Wohnung 1.5 Zi
+  en: 1.5-room dwelling
+definition:
+  de: Kleinwohnung, in der Wohnen und Schlafen einen Raum teilen.
+  en: Small dwelling where living and sleeping share one room.
+room_type_kind: container
+extends: pragmaticbim:room-type/wohnung
+contains:
+- room_type: pragmaticbim:room-type/wohnzimmer
+- room_type: pragmaticbim:room-type/kueche
+- room_type: pragmaticbim:room-type/badezimmer
+status: active
+configurations:
+- id: pragmaticbim:room-type-configuration/wohnung-1-5
+  sort_order: 1
+  name:
+    de: Wohnung 1.5 Zi
+    en: 1.5-room dwelling
+  attribute_presets: []
+  status: active

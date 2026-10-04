@@ -7,13 +7,21 @@ name:
 definition:
   de: Gemeinschaftlicher Raum zum Waschen und Trocknen für alle Wohnungen des Gebäudes.
   en: Shared room for washing and drying used by all dwellings of the building.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Waschküche
-    en: Communal laundry
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/waschkueche-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Waschküche
+      en: Communal laundry
+  status: active
 status: active

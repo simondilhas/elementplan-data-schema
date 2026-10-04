@@ -7,18 +7,26 @@ name:
 definition:
   de: Aufzug für den barrierefreien Weg zwischen Ebenen.
   en: Elevator for a step-free route between levels.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Lift
-    en: Lift
-restrictions:
-  min_area: 6
-  min_height: 2.4
-  min_length: 2.2
-  min_width: 1.6
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/lift-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Lift
+      en: Lift
+  restrictions:
+    min_area: 6
+    min_height: 2.4
+    min_length: 2.2
+    min_width: 1.6
+  status: active
 status: active

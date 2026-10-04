@@ -1,13 +1,15 @@
 id: pragmaticbim:usage-scenario/wohnen-mit-aussenbezug
 code: US-11
-sort_order: 11
+sort_order: 1
 name:
   de: Wohnen mit Aussenbezug
   en: Living with outdoor access
 description:
   de: Bewohnende gehen vom Wohnzimmer direkt nach draussen.
   en: Occupants go from the living room directly outside.
-use: pragmaticbim:use/wohnen
+tags:
+- wohnen
+- aussenraum
 status: active
 jurisdiction:
 - general
@@ -23,7 +25,6 @@ options:
   name:
     de: Balkon/Terrasse
     en: Balcony/terrace
-  unit_type: pragmaticbim:unit-type/wohnung
   sizes:
   - id: pragmaticbim:option-size/balkon-terrasse-klein
     sort_order: 1
@@ -43,25 +44,26 @@ options:
     name:
       de: gross
       en: large
-  required_room_types:
-  - pragmaticbim:room-type/balkon-terrasse
   room_relationships:
   - from_room_type: pragmaticbim:room-type/wohnzimmer
     to_room_type: pragmaticbim:room-type/balkon-terrasse
     name:
       de: Zugang
       en: Access
+  target: pragmaticbim:room-type/wohnung
+  adds:
+  - pragmaticbim:room-type/balkon-terrasse
 - id: pragmaticbim:option/separater-garten
   sort_order: 3
   name:
     de: Separater Garten
     en: Separate garden
-  unit_type: pragmaticbim:unit-type/wohnung
-  required_room_types:
-  - pragmaticbim:room-type/garten
   room_relationships:
   - from_room_type: pragmaticbim:room-type/wohnzimmer
     to_room_type: pragmaticbim:room-type/garten
     name:
       de: Zugang
       en: Access
+  target: pragmaticbim:room-type/wohnung
+  adds:
+  - pragmaticbim:room-type/garten

@@ -5,6 +5,17 @@ name:
   de: Balkon oder Terrasse
   en: Balcony or terrace
 definition:
-  de: Privater, offener Aussenraum der Wohnung. In den Obergeschossen ein Balkon, im Erdgeschoss oder auf dem Dach eine Terrasse.
-  en: Private open outdoor space of the dwelling. A balcony on upper floors, a terrace at ground level or on the roof.
+  de: Privater, offener Aussenraum der Wohnung. In den Obergeschossen ein Balkon,
+    im Erdgeschoss oder auf dem Dach eine Terrasse.
+  en: Private open outdoor space of the dwelling. A balcony on upper floors, a terrace
+    at ground level or on the roof.
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/balkon-terrasse-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets: []
+  status: active
 status: active

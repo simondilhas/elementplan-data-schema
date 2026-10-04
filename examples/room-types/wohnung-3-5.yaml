@@ -1,0 +1,27 @@
+id: pragmaticbim:room-type/wohnung-3-5
+legacy_ids:
+- pragmaticbim:unit-type/wohnung-3-5
+code: UT-01-35
+sort_order: 4
+name:
+  de: Wohnung 3.5 Zi
+  en: 3.5-room dwelling
+definition:
+  de: Wohnung mit zwei Schlafzimmern.
+  en: Dwelling with two bedrooms.
+room_type_kind: container
+extends: pragmaticbim:room-type/wohnung
+contains:
+- room_type: pragmaticbim:room-type/wohnzimmer
+- room_type: pragmaticbim:room-type/kueche
+- room_type: pragmaticbim:room-type/schlafzimmer
+- room_type: pragmaticbim:room-type/badezimmer
+status: active
+configurations:
+- id: pragmaticbim:room-type-configuration/wohnung-3-5
+  sort_order: 1
+  name:
+    de: Wohnung 3.5 Zi
+    en: 3.5-room dwelling
+  attribute_presets: []
+  status: active

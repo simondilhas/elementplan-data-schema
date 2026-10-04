@@ -7,13 +7,21 @@ name:
 definition:
   de: Raum in der Wohnung zum Arbeiten von zu Hause.
   en: Room in the dwelling for working from home.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Arbeitszimmer
-    en: Home office
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/arbeitszimmer-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Arbeitszimmer
+      en: Home office
+  status: active
 status: active

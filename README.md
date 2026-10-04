@@ -17,26 +17,26 @@ Project goals  →  Ausprägungen (levels + complete workflow sets)  →  Workfl
 Beside that chain, usage scenarios describe how the building is used:
 
 ```text
-Use  →  Scenario (need)  →  Option  →  Size  →  Room types or unit variants
-            what + how         how        how big     the consequence
+Scenario (need)  →  Option  →  Size  →  Room-type graph  →  Configuration
+                          how        how big       consequence       explicit form
 ```
 
-- **Uses (`Use`)** are Nutzungen such as Wohnen, Büro, or Flughafen. One building can hold several uses. Unit types and usage scenarios each belong to one `use`.
-- **Unit types (`UnitType`)** are containers with their own gross area and volume that hold rooms, such as a Wohnung (in IFC usually an `IfcZone` grouping `IfcSpace`s). `restrictions` are gross values, and `parent_unit_type` is set when units nest. `variants` are the standard variants shipped with the catalog (`UnitVariant`, e.g. Wohnung 3.5 Zi). Each variant lists its `unit_rooms`: a `room_type` and a `count`. That count defines the variant (3.5 Zi has two bedrooms); it is not a project quantity.
-- **Usage scenarios (`UsageScenario`)** are Nutzungsszenarien: one need of a use, such as Wohnen mit Aussenbezug, with the `options` that meet it. What and how are one question:
-  - The "kein" option produces no room types and no unit variants and is marked `exclusive: true`. A scenario with a "kein" option is optional; one without is mandatory.
+- **Usage scenarios (`UsageScenario`)** are first-class catalog records: one need, such as Wohnen mit Aussenbezug, with the inline `options` that meet it. Optional string `tags` such as `wohnen` and `aussenraum` provide filtering and presentation grouping without separate Use or Topic entities.
+  - The "kein" option adds no room types and is marked `exclusive: true`. A scenario with a "kein" option is optional; one without is mandatory.
   - One option is chosen, unless `allows_multiple` is true. An `exclusive` option excludes every other option of its scenario.
   - With a single option and no "kein", the question is skipped and the option applies.
-- **Options (`ScenarioOption`)** answer *how*. An option produces `required_room_types`, `unit_variants`, or both. `unit_type` is the container its rooms go into (a balcony goes into the Wohnung); omit it when the rooms sit directly in the building (a communal laundry). `excludes` names options or unit variants, in any scenario or boundary condition, that cannot be chosen together with this option. The rule is symmetric: declare it on one side only, and the app reads it in both directions. Example: the option Arbeitszimmer excludes the unit variant Wohnung 1.5 Zi, so choosing a mix with 1.5 Zi rules out the home office.
+- **Options (`ScenarioOption`)** answer *how*. `adds` names the room or container types produced by the option. `target` is the container receiving added rooms (for example, Wohnung); omit it for building-level rooms. `excludes` names incompatible options or room types. The rule is symmetric: declare it on one side only, and the app reads it in both directions.
 - **Sizes (`OptionSize`)** are the ordered grades of an option (small, medium, large; `sort_order` is the ordinal). Each size's `size_restrictions` name a `room_type` and its minimum `min_area`, `min_height`, `min_length`, and `min_width`, because one option can produce several rooms. The size question is asked when the chosen option has `sizes`.
-- **Room types are the consequence of an option.** `room_relationships` are the directed edges between them (`from_room_type` → `to_room_type`). An optional `name` can label an edge (e.g. Zugang), and optional `max_distance` is the maximum distance in metres. An edge may start at a room another option or unit variant brings, such as the living room a balcony is reached from. The same room type may appear in several options with different neighbors, because the edges live on the option.
-- **How much and the programme tree live in the app.** The schema is a catalog. The app builds the programme from the choices (Gebäude > use > unit variant × count > room type × count) and stores the counts, the same way it stores a chosen project goal level.
-- **Room types (`RoomType`)** are functional spaces an option or unit variant can require (e.g. Check-in-Halle). They are catalog records with their own ids. The IFC `Reference` lists `raumliste-innen` and `raumliste-aussen` stay value sets on elements such as Innenraum. `attribute_presets` sets values for attributes of that element: `element` + `name` (+ `pset`) identify the attribute (e.g. Innenraum `PredefinedType`), and `value` is the preset (a string such as `INTERNAL`, a number, a boolean, or a localized text such as `LongName`). Attributes left off the list stay open on each room. `restrictions` sets the minimum size: `min_area` in square metres, and `min_height`, `min_length`, and `min_width` in metres. Omit any measure that is not set.
+- **Room types (`RoomType`)** form one graph. `room_type_kind: room` marks a functional room; `room_type_kind: container` marks a composition such as Wohnung. `contains` is composition, while `extends` specializes a more general room type. This replaces the separate UnitType catalog. `legacy_ids` keeps old `unit-type/*` identifiers resolvable during migration.
+- **Room relationships** are directed option-specific edges (`from_room_type` → `to_room_type`). An optional `name` labels an edge and `max_distance` limits it in metres.
+- **How much lives in the app.** The schema is a catalog. The app stores counts for chosen container and room types.
+- Every room type has at least one explicit `configuration`. A `RoomTypeConfiguration` contains its complete presets and minimum dimensions; configurations do not inherit or merge.
+- **External boundary:** IFC entities/properties and schema.pragmaticbim.ch classifications are referenced by stable identifiers. They are not reproduced as programme classes or controlled-vocabulary hierarchies.
 - This programme chain sits beside project goals. It does not replace the workflow “Szenarienentwicklung”, which is urban design variants, not a usage need.
 - **Project goals** define *why* information is needed.
 - **Ausprägungen (`ProjectGoalLevel`)** are ordered levels of a goal (e.g. grosszügig → mittel → sensitiv). `sort_order` is the ordinal. Each level’s `activated_workflows` is the **complete set** of workflows activated when that level is selected. Higher levels list lower-level workflows explicitly (copied on save).
 - **Level selection:** choosing a level activates that level’s stored `activated_workflows` list.
-- **Boundary conditions:** a project goal with `is_boundary_condition: true` sets a Rahmenbedingung instead of an information goal. Its levels list `unit_variants`, the complete set of unit variants the level activates, and `activated_workflows` may stay empty. Example: the goal Wohnungsmix has the levels Kleinwohnungen (1.5 and 2.5 Zi), gemischt (2.5, 3.5, and 4.5 Zi), and Familien (3.5 and 4.5 Zi). How many units of each variant lives in the app.
+- **Boundary conditions:** a project goal with `is_boundary_condition: true` sets a Rahmenbedingung instead of an information goal. Its levels list `activated_room_types`, the complete set of container room types the level activates, and `activated_workflows` may stay empty. Counts live in the app.
 - **Workflows** define *how* those goals are realized in project practice.
 - **Elements and attributes** define *what* must be delivered in the model (the technical IDS level). `Attribute.name` is the IFC property name (a string, e.g. `PredefinedType`), not a localized catalog title. Optional `regex` may be a string or `LocalizedText`. Optional `link_uid` is a legacy editor identifier.
 
@@ -85,7 +85,7 @@ For ordering, only the domain is relevant. In the project, the actual model or d
 
 - `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
-- `examples/`: sample uses, unit types with standard variants, usage scenarios, and room types (Wohnen, Flughafen), project goals (incl. levels and activated workflows), workflows, elements, values, domains, models, documents (incl. classifications and metadata requirements), and phases (incl. nested milestones)
+- `examples/`: sample usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, and phases
 - `scripts/schema_check.sh`: local schema validation entry point
 - `.github/workflows/schema-check.yml`: GitHub Actions workflow for automatic validation
 
@@ -96,8 +96,8 @@ The repository includes a minimal validation pipeline that checks:
 - all YAML files in `schema/` parse correctly
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
-- schema contracts for `Attribute.unit`, ProjectGoal above Workflow, `Workflow.service_kind`, `jurisdiction` on Workflow/Attribute/Model/Document, `ProjectGoalLevel.activated_workflows`, `ProjectGoal.is_boundary_condition` and `ProjectGoalLevel.unit_variants`, `Use`, `UnitType` with `variants` and `UnitRoom`, `UsageScenario.use` and `allows_multiple`, `ScenarioOption` `unit_type`, `unit_variants`, `required_room_types`, `exclusive`, `excludes`, and `sizes` with `SizeRestriction`, `RoomRelationship.max_distance`, `RoomType.restrictions`, `RoomType.attribute_presets`, `Model.included_elements`, `Document.included_elements`, `Model`/`Document.scheduled_milestones`, `Milestone`, `PhaseMapping`, `Element.needed_in_models`, `Element.attachment_link`, `Classification` on Model/Document, `DocumentRequirement` with `Document.metadata_requirements`, and `Attribute.name` as a string plus `link_uid`
-- every reference in the example uses, unit types, usage scenarios, and project goals (`use`, `unit_type`, `unit_variants`, room types, and `excludes`) points to an existing id, and no option excludes itself
+- schema contracts for the `RoomType` graph (`room_type_kind`, `extends`, `contains`, `legacy_ids`), tagged `UsageScenario` records, inline option `target`/`adds`/relationships, boundary-level `activated_room_types`, explicit room configurations, and the requirements-delivery classes
+- every room graph, scenario, option, goal-level, and legacy-alias reference points to an existing id; specialization and containment graphs are acyclic
 
 Run the check locally with:
 
@@ -116,7 +116,7 @@ make schema-check
 |-- LICENSE
 |-- Makefile
 |-- README.md
-|-- examples/
+|-- examples/          # usage scenarios, room/container types, goals, requirements
 |-- schema/
 `-- scripts/schema_check.sh
 ```

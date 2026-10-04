@@ -304,6 +304,11 @@ enums:
         description: Grundleistung (standard service in the base scope).
       special:
         description: Besondere Leistung (additional service, separately commissioned).
+  RoomTypeKindEnum:
+    description: Role of a node in the room-type graph.
+    permissible_values:
+      room: {}
+      container: {}
 
 slots:
   id:
@@ -520,57 +525,46 @@ slots:
     multivalued: true
     range: ProjectGoal
     inlined_as_list: true
-  use:
-    range: Use
+  tags:
+    multivalued: true
+    range: string
+    description: >-
+      Lightweight labels used to group and filter usage scenarios. Tags have
+      no catalog records, hierarchy, or foreign-key semantics.
+  room_type_kind:
+    range: RoomTypeKindEnum
+    description: >-
+      Whether a room type is a selectable room or a container composed of
+      other room types.
+  extends:
+    range: RoomType
     inlined: false
     description: >-
-      Use (Nutzung) this record belongs to, e.g. Wohnen or Flughafen. One
-      building can hold several uses.
-  uses:
+      More general room type specialized by this record. This is type
+      specialization, not spatial containment.
+  contains:
     multivalued: true
-    range: Use
+    range: RoomTypeComponent
     inlined_as_list: true
-    description: >-
-      Uses (Nutzungen) such as Wohnen, Büro, or Flughafen. Unit types and
-      usage scenarios belong to one use.
-  unit_types:
+    description: Ordered room types composed by a container room type.
+  legacy_ids:
     multivalued: true
-    range: UnitType
-    inlined_as_list: true
+    range: string
     description: >-
-      Unit types such as Wohnung: containers with their own gross area and
-      volume that hold rooms.
-  unit_type:
-    range: UnitType
+      Previous identifiers accepted as aliases while catalogs and saved
+      project selections migrate.
+  adds:
+    multivalued: true
+    range: RoomType
+    inlined: false
+    description: Room or container types produced by choosing this option.
+  activated_room_types:
+    multivalued: true
+    range: RoomType
     inlined: false
     description: >-
-      Unit type whose units hold the rooms this option produces (e.g.
-      Wohnung). Omit when the rooms sit directly in the building.
-  parent_unit_type:
-    range: UnitType
-    inlined: false
-    description: Enclosing unit type when units nest. Omit for top-level units.
-  variants:
-    multivalued: true
-    range: UnitVariant
-    inlined_as_list: true
-    description: >-
-      Standard variants of this unit type shipped with the catalog (e.g.
-      Wohnung 3.5 Zi), in order.
-  unit_rooms:
-    multivalued: true
-    range: UnitRoom
-    inlined_as_list: true
-    description: Rooms of this standard variant, each with its count.
-  unit_variants:
-    multivalued: true
-    range: UnitVariant
-    inlined: false
-    description: >-
-      Standard unit variants this record produces or activates: on an
-      option, the variants it brings; on a goal level, the complete set of
-      variants that level activates (e.g. a Wohnungsmix level). Counts per
-      variant live in the app.
+      Complete set of container room types activated by a boundary-condition
+      project-goal level.
   is_boundary_condition:
     range: boolean
     description: >-
@@ -587,29 +581,17 @@ slots:
     inlined: false
     any_of:
       - range: ScenarioOption
-      - range: UnitVariant
+      - range: RoomType
     description: >-
-      Options or unit variants that cannot be chosen together with this
+      Options or room types that cannot be chosen together with this
       option, in any scenario or boundary condition. Symmetric: declare the
       rule on one side only; the app reads it in both directions.
-  count:
-    range: integer
-    minimum_value: 1
-    description: Number of rooms of this room type in one unit of the variant.
   allows_multiple:
     range: boolean
     description: >-
       True when several options of this scenario can be chosen together.
       Exclusive options still exclude the others. Omit or false for a
       single choice.
-  required_room_types:
-    multivalued: true
-    range: RoomType
-    inlined: false
-    description: >-
-      Room types this option produces, in display order. They are the
-      consequence of choosing the option. The same room type may be
-      required by several options.
   sizes:
     multivalued: true
     range: OptionSize
@@ -648,15 +630,14 @@ slots:
     range: ScenarioOption
     inlined_as_list: true
     description: >-
-      Alternative ways to meet this scenario's need. Each option names
-      the room types or unit variants it produces and the edges between
-      them.
+      Alternative ways to meet this scenario's need. Each option names the
+      room types it adds and the edges between them.
   restrictions:
     range: RoomTypeRestriction
     inlined: true
     description: >-
-      Minimum size of this room type. Omit the object, or any measure inside
-      it, when that limit is not set.
+      Minimum size of this room configuration. Omit the object, or any measure
+      inside it, when that limit is not set.
   min_area:
     range: float
     description: Minimum floor area (size) in square metres.
@@ -679,21 +660,21 @@ slots:
     range: RoomType
     inlined_as_list: true
     description: >-
-      Functional room types a usage scenario can require. Distinct from
-      ValueSet room lists used as IFC Reference vocabularies.
+      Room and container types in one compositional graph. Distinct from
+      external room-name and IFC vocabularies.
   usage_scenarios:
     multivalued: true
     range: UsageScenario
     inlined_as_list: true
     description: >-
-      Usage scenarios (Nutzungsszenarien): one need of a use each, with the
-      options that meet it.
+      Usage scenarios (Nutzungsszenarien), with inline options that add room
+      types. Tags provide lightweight grouping without separate catalogs.
   element:
-    range: Element
-    inlined: false
+    range: string
     description: >-
-      Element whose attribute a room-type preset sets (e.g. Innenraum for
-      IfcSpace).
+      Opaque external element identifier whose attribute a room-type
+      configuration preset sets (e.g. armasuisse:element/innenraum). The
+      programme core does not require or inline that external catalog record.
   value:
     range: Any
     any_of:
@@ -703,22 +684,40 @@ slots:
       - range: float
       - range: LocalizedText
     description: >-
-      Preset value for one element attribute on a room type. A string for
-      enumerations such as PredefinedType (INTERNAL), a number or boolean for
-      measures and flags, or a LocalizedText when the attribute text differs
-      per language (e.g. LongName).
+      Preset value for one external element attribute on a room-type
+      configuration. A string for enumerations such as PredefinedType (INTERNAL), a
+      number or boolean for measures and flags, or a LocalizedText when the
+      attribute text differs per language (e.g. LongName).
   attribute_presets:
     multivalued: true
     range: AttributePreset
     inlined_as_list: true
     description: >-
-      Values fixed for element attributes when this room type is used. Omit
-      attributes that stay open on each room instance.
+      Complete set of values fixed for element attributes by a room type
+      configuration or unit type. Omit attributes that stay open on each
+      room or unit instance.
+  configurations:
+    multivalued: true
+    range: RoomTypeConfiguration
+    inlined_as_list: true
+    description: >-
+      Complete, explicit configurations available for this room type. Every
+      configuration carries its own attribute presets and restrictions;
+      values are never inherited or merged from the room type or another
+      configuration.
   levels:
     multivalued: true
     range: ProjectGoalLevel
     inlined_as_list: true
     description: Ordered Ausprägungen of a project goal (ordinal via sort_order).
+  project_goal_levels:
+    multivalued: true
+    range: ProjectGoalLevel
+    inlined: false
+    description: >-
+      Optional project goal levels this room configuration suits. Omit when
+      the configuration is not tied to a goal level. A chosen level can then
+      select among the configurations of a room type.
   activated_workflows:
     multivalued: true
     range: Workflow
@@ -905,8 +904,6 @@ classes:
       - models
       - documents
       - project_goals
-      - uses
-      - unit_types
       - room_types
       - usage_scenarios
       - workflows
@@ -994,10 +991,10 @@ classes:
   AttributePreset:
     description: >-
       One preset value for an attribute of an element, applied when a room
-      type is used. element + name (+ pset) identify the attribute on the
-      element catalog, the same way an Attribute is named on IfcSpace
-      (Innenraum). When that attribute has allowed_values, value should be
-      one of those entries.
+      configuration is used. element + name (+ pset) identify
+      the attribute on the element catalog, the same way an Attribute is
+      named on IfcSpace (Innenraum). When that attribute has allowed_values,
+      value should be one of those entries.
     slots:
       - element
       - name
@@ -1015,27 +1012,69 @@ classes:
 
   RoomType:
     description: >-
-      Functional space a usage scenario can require (e.g. Check-in-Halle).
-      Distinct from ValueSet room lists (raumliste-innen / raumliste-aussen)
-      used as IFC Reference vocabularies on elements such as Innenraum.
-      attribute_presets sets values for attributes of that element, such as
-      IfcSpace PredefinedType. restrictions sets the minimum size: floor
-      area, clear height, length, and width.
+      Room or container in a single spatial type graph. A container composes
+      room types through contains; extends expresses specialization. External
+      room-name and IFC vocabularies remain references rather than classes in
+      the programme core.
+      configurations are the complete selectable forms of the room. Each
+      configuration explicitly contains all fixed element attributes and its
+      minimum size; there is no inheritance between the room type and its
+      configurations.
     slots:
       - id
       - code
       - sort_order
       - name
       - definition
+      - room_type_kind
+      - extends
+      - contains
+      - legacy_ids
       - status
+      - configurations
+    slot_usage:
+      room_type_kind:
+        required: true
+      configurations:
+        required: true
+        minimum_cardinality: 1
+
+  RoomTypeComponent:
+    description: >-
+      One member of a container room type. Inlined because it has no identity
+      outside its parent composition.
+    slots:
+      - room_type
+    slot_usage:
+      room_type:
+        required: true
+
+  RoomTypeConfiguration:
+    description: >-
+      One complete selectable configuration of a room type. attribute_presets
+      is the full set of fixed element values for this configuration, not an
+      override or delta. restrictions contains its minimum dimensions.
+      project_goal_levels optionally names the goal levels this configuration
+      suits; omit it when the configuration is independent of goal levels.
+    slots:
+      - id
+      - sort_order
+      - name
+      - description
+      - project_goal_levels
       - attribute_presets
       - restrictions
+      - status
+    slot_usage:
+      attribute_presets:
+        required: true
 
   RoomTypeRestriction:
     description: >-
-      Minimum size of a room type, unit type, or unit variant (gross values
-      for units). min_area is the floor area (size) in square metres. min_height, min_length, and min_width are clear
-      dimensions in metres. Every measure is optional.
+      Minimum size of a room configuration. min_area is the floor area in
+      square metres.
+      min_height, min_length, and min_width are clear dimensions in metres.
+      Every measure is optional.
     slots:
       - min_area
       - min_height
@@ -1049,8 +1088,7 @@ classes:
       omit it when the edge is only the link. max_distance is the maximum
       distance in metres between the two room types. Inlined on the option, so it
       has no id of its own. Either end may be a room type that is not also
-      listed in required_room_types (e.g. the living room a balcony is
-      reached from).
+      listed in adds (e.g. the living room a balcony is reached from).
     slots:
       - from_room_type
       - to_room_type
@@ -1066,75 +1104,6 @@ classes:
         description: >-
           Optional label for this edge (e.g. Zugang). Omit when the edge is
           only the link.
-
-  Use:
-    description: >-
-      Use (Nutzung) such as Wohnen, Büro, or Flughafen. One building can hold
-      several uses. Unit types and usage scenarios belong to one use.
-    slots:
-      - id
-      - code
-      - sort_order
-      - name
-      - definition
-      - status
-
-  UnitType:
-    description: >-
-      Container with its own gross area and volume that holds rooms, e.g. a
-      Wohnung (in IFC usually an IfcZone grouping IfcSpaces). restrictions
-      are gross values. parent_unit_type is set when units nest. variants
-      are the standard variants shipped with the catalog.
-    slots:
-      - id
-      - code
-      - sort_order
-      - name
-      - definition
-      - use
-      - parent_unit_type
-      - attribute_presets
-      - restrictions
-      - status
-      - variants
-    slot_usage:
-      use:
-        required: true
-      restrictions:
-        description: >-
-          Minimum gross size of this unit type. Omit the object, or any
-          measure inside it, when that limit is not set.
-
-  UnitVariant:
-    description: >-
-      Standard variant of a unit type (e.g. Wohnung 3.5 Zi). unit_rooms are
-      the rooms of one unit with their counts; that is the definition of the
-      variant, not a project quantity. How many units a project orders lives
-      in the app.
-    slots:
-      - id
-      - code
-      - sort_order
-      - name
-      - definition
-      - restrictions
-      - unit_rooms
-    slot_usage:
-      restrictions:
-        description: >-
-          Minimum gross size of this variant. Omit the object, or any measure
-          inside it, when that limit is not set.
-
-  UnitRoom:
-    description: One room type of a unit variant and how many of it one unit has.
-    slots:
-      - room_type
-      - count
-    slot_usage:
-      room_type:
-        required: true
-      count:
-        required: true
 
   SizeRestriction:
     description: >-
@@ -1165,57 +1134,60 @@ classes:
 
   ScenarioOption:
     description: >-
-      One way to meet a scenario's need. required_room_types and
-      unit_variants are what it produces; room_relationships are the
-      directed edges between rooms. unit_type is the container the rooms go
-      into (omit for the building). exclusive marks an option that excludes
+      One way to meet a scenario's need. adds names the room or container
+      types it produces; room_relationships are directed edges between rooms.
+      target is the container receiving the added room types (omit for the
+      building). exclusive marks an option that excludes
       every other option of its scenario, such as "kein" (no room types and
-      no unit variants), which also makes the scenario optional. excludes
-      names options or unit variants elsewhere that cannot be combined with
+      no room types), which also makes the scenario optional. excludes
+      names options or room types elsewhere that cannot be combined with
       this one; the rule is symmetric and declared on one side.
     slots:
       - id
       - sort_order
       - name
       - description
-      - unit_type
+      - target
       - sizes
-      - required_room_types
-      - unit_variants
+      - adds
       - room_relationships
       - exclusive
       - excludes
+    slot_usage:
+      target:
+        range: RoomType
+        inlined: false
+        description: >-
+          Container room type to which this option adds room types. Omit when
+          the added room types belong directly to the building.
 
   UsageScenario:
     description: >-
-      Nutzungsszenario: one need of a use (e.g. Wohnen mit Aussenbezug) and
-      the options that meet it. A scenario with a "kein" option (exclusive,
-      producing nothing) is optional; one without is mandatory. One option
-      is chosen unless allows_multiple is true; with a single option and no
-      "kein", the question is skipped. Choices, counts, and the programme tree live in
-      the app. Distinct from Workflow Szenarienentwicklung, which is urban
-      design variants.
+      Nutzungsszenario: one need (e.g. Wohnen mit Aussenbezug) and the
+      options that meet it. Tags provide lightweight grouping. A scenario with a
+      "kein" option (exclusive, producing nothing) is optional; one without
+      is mandatory. One option is chosen unless allows_multiple is true;
+      with a single option and no "kein", the question is skipped. Choices,
+      counts, and the programme tree live in the app. Distinct from Workflow
+      Szenarienentwicklung, which is urban design variants.
     slots:
       - id
       - code
       - sort_order
       - name
       - description
-      - use
+      - tags
       - status
       - jurisdiction
       - allows_multiple
       - options
-    slot_usage:
-      use:
-        required: true
 
   ProjectGoal:
     description: >-
       Why information is needed, with ordered levels (Ausprägungen).
       is_boundary_condition marks a goal that sets a boundary condition
       (Rahmenbedingung) instead, such as the Wohnungsmix; its levels then
-      activate unit_variants rather than (or besides) workflows.
+      activate container room types rather than (or besides) workflows.
     slots:
       - id
       - code
@@ -1233,8 +1205,9 @@ classes:
       Ausprägung (ordered level) of a project goal. sort_order orders the scale
       and is used to copy lower-level workflows onto higher levels. activated_workflows
       is the complete Goal × Level → Workflow set for this level. On a
-      boundary-condition goal, unit_variants is the complete set of unit
-      variants the level activates; activated_workflows may then be empty.
+      boundary-condition goal, activated_room_types is the complete set of
+      container room types the level activates; activated_workflows may then
+      be empty.
     slots:
       - id
       - code
@@ -1243,8 +1216,15 @@ classes:
       - description
       - status
       - activated_workflows
-      - unit_variants
+      - activated_room_types
       - comment
+    slot_usage:
+      activated_room_types:
+        inlined: false
+        inlined_as_list: false
+        description: >-
+          Complete set of container room types this level activates (e.g. a
+          Wohnungsmix level). Counts per container live in the project.
 
   Workflow:
     description: >-

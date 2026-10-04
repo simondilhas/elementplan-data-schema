@@ -7,18 +7,26 @@ name:
 definition:
   de: Grenzkontrolle der Reisedokumente bei der Ankunft.
   en: Border check of travel documents on arrival.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Passkontrolle
-    en: Passport control
-restrictions:
-  min_area: 80
-  min_height: 3
-  min_length: 12
-  min_width: 6
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/passkontrolle-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Passkontrolle
+      en: Passport control
+  restrictions:
+    min_area: 80
+    min_height: 3
+    min_length: 12
+    min_width: 6
+  status: active
 status: active

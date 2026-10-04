@@ -7,18 +7,26 @@ name:
 definition:
   de: Geschützter Übergang vom Gate ins Flugzeug.
   en: Sheltered connection from the gate to the aircraft.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Fluggastbrücke
-    en: Passenger boarding bridge
-restrictions:
-  min_area: 40
-  min_height: 2.4
-  min_length: 20
-  min_width: 2
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/fluggastbruecke-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Fluggastbrücke
+      en: Passenger boarding bridge
+  restrictions:
+    min_area: 40
+    min_height: 2.4
+    min_length: 20
+    min_width: 2
+  status: active
 status: active

@@ -7,18 +7,26 @@ name:
 definition:
   de: Bereich, in dem ankommende Reisende aufgegebenes Gepäck abholen.
   en: Area where arriving passengers collect checked baggage.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Gepäckausgabe
-    en: Baggage reclaim
-restrictions:
-  min_area: 300
-  min_height: 4
-  min_length: 25
-  min_width: 12
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/gepaeckausgabe-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Gepäckausgabe
+      en: Baggage reclaim
+  restrictions:
+    min_area: 300
+    min_height: 4
+    min_length: 25
+    min_width: 12
+  status: active
 status: active

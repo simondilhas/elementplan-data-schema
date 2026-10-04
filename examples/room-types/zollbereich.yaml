@@ -7,18 +7,26 @@ name:
 definition:
   de: Bereich der Zollabfertigung nach der Ankunft.
   en: Area for customs clearance after arrival.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Zollbereich
-    en: Customs area
-restrictions:
-  min_area: 80
-  min_height: 3
-  min_length: 12
-  min_width: 6
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/zollbereich-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Zollbereich
+      en: Customs area
+  restrictions:
+    min_area: 80
+    min_height: 3
+    min_length: 12
+    min_width: 6
+  status: active
 status: active

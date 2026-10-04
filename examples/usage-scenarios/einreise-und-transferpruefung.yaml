@@ -1,13 +1,15 @@
 id: pragmaticbim:usage-scenario/einreise-und-transferpruefung
 code: US-03
-sort_order: 3
+sort_order: 1
 name:
   de: Einreise und Transferprüfung
   en: Entry and transfer check
 description:
   de: Ankommende Transferpassagiere passieren die Passkontrolle und die Transferkontrolle.
   en: Arriving transfer passengers pass passport control and transfer screening.
-use: pragmaticbim:use/flughafen
+tags:
+- flughafen
+- ankunft
 status: active
 jurisdiction:
 - general
@@ -17,10 +19,10 @@ options:
   name:
     de: Pass- und Transferkontrolle
     en: Passport and transfer control
-  required_room_types:
-  - pragmaticbim:room-type/passkontrolle
-  - pragmaticbim:room-type/transferkontrolle
   room_relationships:
   - from_room_type: pragmaticbim:room-type/passkontrolle
     to_room_type: pragmaticbim:room-type/transferkontrolle
     max_distance: 40
+  adds:
+  - pragmaticbim:room-type/passkontrolle
+  - pragmaticbim:room-type/transferkontrolle

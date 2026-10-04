@@ -5,19 +5,28 @@ name:
   de: Ambulift-Standplatz
   en: Ambulift stand
 definition:
-  de: Standplatz, an dem ein Ambulift Reisende mit eingeschränkter Mobilität zum Flugzeug bringt.
+  de: Standplatz, an dem ein Ambulift Reisende mit eingeschränkter Mobilität zum Flugzeug
+    bringt.
   en: Stand where an ambulift takes passengers with reduced mobility to the aircraft.
-attribute_presets:
-- element: armasuisse:element/aussenraum
-  name: PredefinedType
-  value: EXTERNAL
-- element: armasuisse:element/aussenraum
-  name: LongName
-  value:
-    de: Ambulift-Standplatz
-    en: Ambulift stand
-restrictions:
-  min_area: 50
-  min_length: 10
-  min_width: 5
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/ambulift-standplatz-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/aussenraum
+    name: PredefinedType
+    value: EXTERNAL
+  - element: armasuisse:element/aussenraum
+    name: LongName
+    value:
+      de: Ambulift-Standplatz
+      en: Ambulift stand
+  restrictions:
+    min_area: 50
+    min_length: 10
+    min_width: 5
+  status: active
 status: active

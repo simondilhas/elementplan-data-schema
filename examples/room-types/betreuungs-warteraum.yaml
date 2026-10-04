@@ -7,18 +7,26 @@ name:
 definition:
   de: Warteraum für Reisende, die Betreuung benötigen.
   en: Waiting room for passengers who need assistance.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Betreuungs-Warteraum
-    en: Assistance waiting room
-restrictions:
-  min_area: 30
-  min_height: 2.5
-  min_length: 6
-  min_width: 5
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/betreuungs-warteraum-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Betreuungs-Warteraum
+      en: Assistance waiting room
+  restrictions:
+    min_area: 30
+    min_height: 2.5
+    min_length: 6
+    min_width: 5
+  status: active
 status: active

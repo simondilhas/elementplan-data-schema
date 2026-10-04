@@ -1,0 +1,27 @@
+id: pragmaticbim:room-type/wohnung-4-5
+legacy_ids:
+- pragmaticbim:unit-type/wohnung-4-5
+code: UT-01-45
+sort_order: 5
+name:
+  de: Wohnung 4.5 Zi
+  en: 4.5-room dwelling
+definition:
+  de: Wohnung mit drei Schlafzimmern.
+  en: Dwelling with three bedrooms.
+room_type_kind: container
+extends: pragmaticbim:room-type/wohnung
+contains:
+- room_type: pragmaticbim:room-type/wohnzimmer
+- room_type: pragmaticbim:room-type/kueche
+- room_type: pragmaticbim:room-type/schlafzimmer
+- room_type: pragmaticbim:room-type/badezimmer
+status: active
+configurations:
+- id: pragmaticbim:room-type-configuration/wohnung-4-5
+  sort_order: 1
+  name:
+    de: Wohnung 4.5 Zi
+    en: 4.5-room dwelling
+  attribute_presets: []
+  status: active

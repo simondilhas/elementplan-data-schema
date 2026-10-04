@@ -1,0 +1,27 @@
+id: pragmaticbim:room-type/wohnung
+legacy_ids:
+- pragmaticbim:unit-type/wohnung
+code: UT-01
+sort_order: 1
+name:
+  de: Wohnung
+  en: Dwelling
+definition:
+  de: Abgeschlossene Wohneinheit mit eigener Bruttofläche, die die Räume eines Haushalts
+    enthält.
+  en: Self-contained dwelling unit with its own gross area that holds the rooms of
+    one household.
+room_type_kind: container
+contains:
+- room_type: pragmaticbim:room-type/wohnzimmer
+- room_type: pragmaticbim:room-type/kueche
+- room_type: pragmaticbim:room-type/badezimmer
+status: active
+configurations:
+- id: pragmaticbim:room-type-configuration/wohnung
+  sort_order: 1
+  name:
+    de: Wohnung
+    en: Dwelling
+  attribute_presets: []
+  status: active

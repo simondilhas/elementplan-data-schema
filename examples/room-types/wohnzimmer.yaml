@@ -7,13 +7,21 @@ name:
 definition:
   de: Gemeinsamer Aufenthaltsraum der Wohnung.
   en: Shared living space of the dwelling.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Wohnzimmer
-    en: Living room
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/wohnzimmer-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Wohnzimmer
+      en: Living room
+  status: active
 status: active

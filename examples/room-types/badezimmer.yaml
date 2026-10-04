@@ -7,13 +7,69 @@ name:
 definition:
   de: Sanitärraum der Wohnung mit Dusche oder Badewanne, WC und Lavabo.
   en: Sanitary room of the dwelling with shower or bathtub, toilet, and washbasin.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Badezimmer
-    en: Bathroom
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/badezimmer-low
+  sort_order: 1
+  name:
+    de: Einfach
+    en: Low
+  project_goal_levels:
+  - pragmaticbim:project-goal-level/kosten-sensitiv
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Badezimmer
+      en: Bathroom
+  - element: armasuisse:element/innenraum
+    name: FloorCovering
+    pset: Pset_SpaceCoveringRequirements
+    value: PVC
+  status: active
+- id: pragmaticbim:room-type-configuration/badezimmer-medium
+  sort_order: 2
+  name:
+    de: Mittel
+    en: Medium
+  project_goal_levels:
+  - pragmaticbim:project-goal-level/kosten-mittel
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Badezimmer
+      en: Bathroom
+  - element: armasuisse:element/innenraum
+    name: FloorCovering
+    pset: Pset_SpaceCoveringRequirements
+    value: Steinzeug glatt
+  status: active
+- id: pragmaticbim:room-type-configuration/badezimmer-high
+  sort_order: 3
+  name:
+    de: Hoch
+    en: High
+  project_goal_levels:
+  - pragmaticbim:project-goal-level/kosten-grosszuegig
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Badezimmer
+      en: Bathroom
+  - element: armasuisse:element/innenraum
+    name: FloorCovering
+    pset: Pset_SpaceCoveringRequirements
+    value: Naturstein allgemein
+  status: active
 status: active

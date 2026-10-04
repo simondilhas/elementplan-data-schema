@@ -7,18 +7,26 @@ name:
 definition:
   de: Kontrolle von Transferpassagieren zwischen Ankunft und Weiterflug.
   en: Screening of transfer passengers between arrival and onward flight.
-attribute_presets:
-- element: armasuisse:element/innenraum
-  name: PredefinedType
-  value: INTERNAL
-- element: armasuisse:element/innenraum
-  name: LongName
-  value:
-    de: Transferkontrolle
-    en: Transfer screening
-restrictions:
-  min_area: 60
-  min_height: 3
-  min_length: 10
-  min_width: 6
+room_type_kind: room
+configurations:
+- id: pragmaticbim:room-type-configuration/transferkontrolle-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  - element: armasuisse:element/innenraum
+    name: LongName
+    value:
+      de: Transferkontrolle
+      en: Transfer screening
+  restrictions:
+    min_area: 60
+    min_height: 3
+    min_length: 10
+    min_width: 6
+  status: active
 status: active

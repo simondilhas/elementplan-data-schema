@@ -1,0 +1,27 @@
+id: pragmaticbim:room-type/wohnung-2-5
+legacy_ids:
+- pragmaticbim:unit-type/wohnung-2-5
+code: UT-01-25
+sort_order: 3
+name:
+  de: Wohnung 2.5 Zi
+  en: 2.5-room dwelling
+definition:
+  de: Wohnung mit einem Schlafzimmer.
+  en: Dwelling with one bedroom.
+room_type_kind: container
+extends: pragmaticbim:room-type/wohnung
+contains:
+- room_type: pragmaticbim:room-type/wohnzimmer
+- room_type: pragmaticbim:room-type/kueche
+- room_type: pragmaticbim:room-type/schlafzimmer
+- room_type: pragmaticbim:room-type/badezimmer
+status: active
+configurations:
+- id: pragmaticbim:room-type-configuration/wohnung-2-5
+  sort_order: 1
+  name:
+    de: Wohnung 2.5 Zi
+    en: 2.5-room dwelling
+  attribute_presets: []
+  status: active
