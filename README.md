@@ -29,6 +29,11 @@ Scenario (need)  →  Option  →  Size  →  Room-type graph  →  Configuratio
 - **Sizes (`OptionSize`)** are the ordered grades of an option (small, medium, large; `sort_order` is the ordinal). Each size's `size_restrictions` name a `room_type` and its minimum `min_area`, `min_height`, `min_length`, and `min_width`, because one option can produce several rooms. The size question is asked when the chosen option has `sizes`.
 - **Room types (`RoomType`)** form one graph. `room_type_kind: room` marks a functional room; `room_type_kind: container` marks a composition such as Wohnung. `contains` is composition, while `extends` specializes a more general room type. This replaces the separate UnitType catalog. `legacy_ids` keeps old `unit-type/*` identifiers resolvable during migration.
 - **Room relationships** are directed option-specific edges (`from_room_type` → `to_room_type`). An optional `name` labels an edge and `max_distance` limits it in metres.
+- **Equipment and openings** say what a room contains and how it is reached and lit. Each `RoomTypeConfiguration` may list `equipment` and `openings`; both reference **components** and leave position to a generator.
+  - A **component (`Component`)** is a parametric geometry template for one placeable object: fixture, furniture, device space, plant item, door, window or clearance. `element` names the element whose applicability the placed object must satisfy. The component adds `parameters` (metres, keyed by name; `width` runs along the host wall), `clearances` that must stay free, `placement` rules, `connections` and optional `parts`.
+  - An **equipment item (`Equipment`)** lists allowed `components` (the generator picks one) and a `quantity`. A quantity is an integer or an `ItemQuantity` with `min`/`max`/`default`; with `per` the count scales with the room, for example one desk per 6 m² of net floor area. `params` narrows component parameters for this room type. `when` and `unless` switch the item by project goal level or scenario option.
+  - An **opening (`Opening`)** is declared by the room it leads into. `connects_to` takes exactly one of `relationships: incoming` (neighbours from the selected options' `room_relationships`), `room_types`, or `exterior: true`. A daylight opening with `quantity.min: 0` can name a `fallback`.
+- **Option quantities.** An option may name a count question in `quantity` (for example the number of bicycle spaces); the app stores the answer.
 - **How much lives in the app.** The schema is a catalog. The app stores counts for chosen container and room types.
 - Every room type has at least one explicit `configuration`. A `RoomTypeConfiguration` contains its complete presets and minimum dimensions; configurations do not inherit or merge.
 - **External boundary:** IFC entities/properties and schema.pragmaticbim.ch classifications are referenced by stable identifiers. They are not reproduced as programme classes or controlled-vocabulary hierarchies.
@@ -98,6 +103,8 @@ The repository includes a minimal validation pipeline that checks:
 - the main LinkML schema can be compiled to JSON Schema
 - schema contracts for the `RoomType` graph (`room_type_kind`, `extends`, `contains`, `legacy_ids`), tagged `UsageScenario` records, inline option `target`/`adds`/relationships, boundary-level `activated_room_types`, explicit room configurations, and the requirements-delivery classes
 - every room graph, scenario, option, goal-level, and legacy-alias reference points to an existing id; specialization and containment graphs are acyclic
+- every example record validates against the compiled JSON Schema with closed classes, so unknown fields fail
+- equipment and openings reference existing components, room types, goal levels and options, and each `connects_to` sets exactly one target
 
 Run the check locally with:
 
@@ -108,6 +115,13 @@ python -m pip install --upgrade pip linkml
 make schema-check
 ```
 
+To check a pragmaticBIM-reference checkout against this schema:
+
+```bash
+python scripts/validate_reference.py ../pragmaticBIM-reference                 # room_types, usage_scenarios, components
+python scripts/validate_reference.py ../pragmaticBIM-reference elements        # any dataset collection
+```
+
 ## Repository Layout
 
 ```text
@@ -116,9 +130,11 @@ make schema-check
 |-- LICENSE
 |-- Makefile
 |-- README.md
-|-- examples/          # usage scenarios, room/container types, goals, requirements
+|-- examples/          # usage scenarios, room/container types, components, goals, requirements
 |-- schema/
-`-- scripts/schema_check.sh
+`-- scripts/
+    |-- schema_check.sh
+    `-- validate_reference.py
 ```
 
 ## Suggested GitHub Setup

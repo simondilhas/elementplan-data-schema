@@ -29,6 +29,53 @@ configurations:
     name: FloorCovering
     pset: Pset_SpaceCoveringRequirements
     value: PVC
+  equipment:
+  - id: pragmaticbim:room-type-equipment/badezimmer-low-wc
+    sort_order: 1
+    function: toilet
+    components:
+    - pragmaticbim:component/wc-wandhaengend
+    quantity: 1
+    status: active
+  - id: pragmaticbim:room-type-equipment/badezimmer-low-waschtisch
+    sort_order: 2
+    function: washbasin
+    components:
+    - pragmaticbim:component/waschtisch
+    quantity:
+      min: 1
+      max: 2
+      default: 1
+    params:
+      width:
+        default: 0.6
+    unless:
+      project_goal_levels:
+      - pragmaticbim:project-goal-level/kosten-grosszuegig
+    status: active
+  openings:
+  - id: pragmaticbim:room-type-opening/badezimmer-low-zugang
+    sort_order: 1
+    function: access
+    components:
+    - pragmaticbim:component/tuer-dreh-innen
+    connects_to:
+      room_types:
+      - pragmaticbim:room-type/schlafzimmer
+    quantity: 1
+    status: active
+  - id: pragmaticbim:room-type-opening/badezimmer-low-fenster
+    sort_order: 2
+    function: daylight
+    components:
+    - pragmaticbim:component/fenster
+    connects_to:
+      exterior: true
+    quantity:
+      min: 0
+      default: 1
+    fallback: mechanical_ventilation
+    status: active
   status: active
 - id: pragmaticbim:room-type-configuration/badezimmer-medium
   sort_order: 2

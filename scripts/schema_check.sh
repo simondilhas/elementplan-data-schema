@@ -1298,4 +1298,105 @@ for old_directory in ("uses", "unit-types", "scenario-topics"):
 print("Example references OK: room graph, aliases, options, goal levels, configurations")
 PY
 
+python - <<'PY'
+import json
+from pathlib import Path
+
+import jsonschema
+import yaml
+
+schema = yaml.safe_load(Path("schema/elementplan.linkml.yaml").read_text(encoding="utf-8"))
+classes = schema["classes"]
+compiled = json.loads(Path("/tmp/elementplan.schema.json").read_text(encoding="utf-8"))
+defs = compiled["$defs"]
+
+# Components, equipment and openings
+if "components" not in classes["ElementplanDataset"]["slots"]:
+    raise SystemExit("ElementplanDataset is missing the components slot.")
+components_slot = schema["slots"].get("components") or {}
+if components_slot.get("range") != "Component" or not components_slot.get("inlined_as_list"):
+    raise SystemExit("components slot must be multivalued Component with inlined_as_list: true")
+configuration_slots = classes["RoomTypeConfiguration"]["slots"]
+for slot_name in ("equipment", "openings"):
+    if slot_name not in configuration_slots:
+        raise SystemExit(f"RoomTypeConfiguration is missing the {slot_name} slot.")
+if classes["RoomTypeConfiguration"].get("slot_usage", {}).get("name", {}).get("required") is not False:
+    raise SystemExit("RoomTypeConfiguration.name must be optional.")
+for class_name in (
+    "Component", "ComponentParameter", "ComponentPlacement", "Clearance", "Connection",
+    "ComponentPart", "ComponentRepresentation", "Equipment", "Opening", "ItemQuantity",
+    "QuantityPer", "ParamOverride", "Condition", "ConnectsTo", "OptionQuantity",
+):
+    if class_name not in defs:
+        raise SystemExit(f"Compiled JSON Schema is missing {class_name}.")
+for class_name in ("Equipment", "Opening"):
+    props = defs[class_name]["properties"]
+    if props["components"].get("items", {}).get("type") != "string":
+        raise SystemExit(f"{class_name}.components must be a list of Component ids.")
+    shapes = {json.dumps(item, sort_keys=True) for item in props["quantity"].get("anyOf", [])}
+    if shapes != {json.dumps({"type": "integer"}), json.dumps({"$ref": "#/$defs/ItemQuantity"}, sort_keys=True)}:
+        raise SystemExit(f"{class_name}.quantity must be an integer or an ItemQuantity.")
+if "ComponentParameter" not in json.dumps(defs["Component"]["properties"]["parameters"]):
+    raise SystemExit("Component.parameters must be keyed ComponentParameter records.")
+
+print("Schema contract OK: Component, Equipment, Opening")
+
+# Examples validate against the compiled schema (closed classes).
+folders = {
+    "domains": "domains", "models": "models", "documents": "documents",
+    "project_goals": "project-goals", "room_types": "room-types",
+    "usage_scenarios": "usage-scenarios", "workflows": "workflows", "valuesets": "values",
+    "elements": "elements", "components": "components",
+}
+dataset = {
+    slot: [yaml.safe_load(path.read_text(encoding="utf-8")) for path in sorted(Path("examples", folder).glob("*.yaml"))]
+    for slot, folder in folders.items()
+}
+validator = jsonschema.validators.validator_for(compiled)(compiled)
+errors = sorted(validator.iter_errors(dataset), key=lambda error: list(error.absolute_path))
+if errors:
+    for error in errors[:20]:
+        print("/".join(str(part) for part in error.absolute_path), error.message[:200])
+    raise SystemExit(f"{len(errors)} example record(s) do not match the schema.")
+
+print("Examples OK: every example record validates against the compiled schema")
+
+# References from equipment and openings
+component_ids = {record["id"] for record in dataset["components"]}
+room_type_ids = {record["id"] for record in dataset["room_types"]}
+goal_level_ids = {level["id"] for record in dataset["project_goals"] for level in record.get("levels") or []}
+option_ids = {option["id"] for record in dataset["usage_scenarios"] for option in record.get("options") or []}
+for record in dataset["components"]:
+    for part in record.get("parts") or []:
+        if part["component"] not in component_ids:
+            raise SystemExit(f"{record['id']}: part references unknown component {part['component']}.")
+seen = set()
+for record in dataset["room_types"]:
+    for configuration in record["configurations"]:
+        for key in ("equipment", "openings"):
+            for item in configuration.get(key) or []:
+                if item["id"] in seen:
+                    raise SystemExit(f"duplicate {key} id {item['id']}.")
+                seen.add(item["id"])
+                for component in item["components"]:
+                    if component not in component_ids:
+                        raise SystemExit(f"{item['id']}: unknown component {component}.")
+                for condition in (item.get("when"), item.get("unless")):
+                    for level in (condition or {}).get("project_goal_levels") or []:
+                        if level not in goal_level_ids:
+                            raise SystemExit(f"{item['id']}: unknown project goal level {level}.")
+                    for option in (condition or {}).get("scenario_options") or []:
+                        if option not in option_ids:
+                            raise SystemExit(f"{item['id']}: unknown scenario option {option}.")
+                connects_to = item.get("connects_to")
+                if key == "openings":
+                    if len(connects_to) != 1:
+                        raise SystemExit(f"{item['id']}: connects_to takes exactly one of relationships, room_types, exterior.")
+                    for room_type in connects_to.get("room_types") or []:
+                        if room_type not in room_type_ids:
+                            raise SystemExit(f"{item['id']}: unknown room type {room_type}.")
+
+print("Example references OK: components, equipment, openings")
+PY
+
 echo "Schema check passed."

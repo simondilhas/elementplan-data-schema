@@ -293,6 +293,9 @@ enums:
       IfcReal: {}
       IfcInteger: {}
       IfcThermalTransmittanceMeasure: {}
+      IfcURIReference: {}
+      IfcMonetaryMeasure: {}
+      IfcPowerMeasure: {}
   MilestoneKindEnum:
     permissible_values:
       B: {}
@@ -309,6 +312,166 @@ enums:
     permissible_values:
       room: {}
       container: {}
+
+  ComponentCategoryEnum:
+    description: Grouping of components for catalogues and generators.
+    permissible_values:
+      sanitary: {}
+      kitchen: {}
+      storage: {}
+      furniture: {}
+      laundry: {}
+      workplace: {}
+      counter: {}
+      seating: {}
+      lab: {}
+      medical: {}
+      device: {}
+      plant: {}
+      door: {}
+      window: {}
+      passage: {}
+      clearance: {}
+
+  ComponentHostEnum:
+    description: What a component rests on or cuts.
+    permissible_values:
+      floor:
+        description: Free-standing on the floor.
+      wall_face:
+        description: Back against one wall.
+      wall_corner:
+        description: Backs against two walls meeting in a corner.
+      wall_opening:
+        description: Cuts a wall and belongs to the rooms on both sides.
+
+  EdgeKindEnum:
+    description: Kind of room edge (wall) a component may sit on or in.
+    permissible_values:
+      interior: {}
+      exterior: {}
+      shaft: {}
+      party_wall: {}
+
+  ClearanceSideEnum:
+    description: >-
+      Side of the component a clearance sits on. front/back: width runs along
+      the component's width. left/right: width runs along the component's
+      depth. swing: door leaf sweep on the opening side.
+    permissible_values:
+      front: {}
+      back: {}
+      left: {}
+      right: {}
+      swing: {}
+
+  ConnectionMediumEnum:
+    description: Service a component connects to.
+    permissible_values:
+      drainage: {}
+      cold_water: {}
+      hot_water: {}
+      power: {}
+      exhaust_air: {}
+
+  ComponentBodyEnum:
+    description: How a generator builds the component's 3D body.
+    permissible_values:
+      box:
+        description: One extruded rectangle.
+      parts:
+        description: Built from the listed parts plus a carcass.
+      opening:
+        description: Cut in the host wall with a filling.
+      volume:
+        description: Flat or translucent proxy body for clearances and device spaces.
+
+  PartPositionEnum:
+    description: Where a part sits along its parent component.
+    permissible_values:
+      start: {}
+      centre: {}
+      end: {}
+      any: {}
+
+  EquipmentFunctionEnum:
+    description: Purpose an equipment item serves in its room.
+    permissible_values:
+      toilet: {}
+      washbasin: {}
+      bathing: {}
+      kitchen: {}
+      dining: {}
+      seating: {}
+      sleeping: {}
+      storage: {}
+      wardrobe: {}
+      working: {}
+      laundry: {}
+      utility_sink: {}
+      turning: {}
+      manoeuvring: {}
+      meeting: {}
+      teaching: {}
+      serving: {}
+      display: {}
+      dishwashing: {}
+      patient_care: {}
+      examination: {}
+      lab_work: {}
+      hazardous_storage: {}
+      changing: {}
+      lockers: {}
+      urinal: {}
+      waiting: {}
+      device: {}
+      plant: {}
+
+  OpeningFunctionEnum:
+    description: Purpose of an opening.
+    permissible_values:
+      access:
+        description: Door into the room.
+      connection:
+        description: Open passage or door between rooms of one unit.
+      daylight:
+        description: Window.
+      outdoor_access:
+        description: Door to a private outdoor space.
+
+  QuantityBasisEnum:
+    description: Room measure a scaled quantity is computed from.
+    permissible_values:
+      net_floor_area:
+        description: Net floor area from the room outline, falling back to NetPlannedArea.
+      peak_occupancy:
+        description: PeakOccupancy of the room configuration.
+
+  RelationshipDirectionEnum:
+    description: Which scenario room_relationships an opening follows.
+    permissible_values:
+      incoming:
+        description: Edges that lead into this room type.
+
+  OpeningFallbackEnum:
+    description: What replaces an optional opening when it is not possible.
+    permissible_values:
+      mechanical_ventilation: {}
+
+  RequirementKindEnum:
+    description: Kind of requirement an attribute expresses.
+    permissible_values:
+      performance: {}
+      identification: {}
+      material: {}
+
+  TargetOperatorEnum:
+    description: How a performance target compares with the delivered value.
+    permissible_values:
+      equals: {}
+      minimum: {}
+      maximum: {}
+      range: {}
 
 slots:
   id:
@@ -819,6 +982,49 @@ slots:
       index, status code, originator). Documents do not carry a content
       requirement list.
 
+  room_name:
+    range: string
+    description: >-
+      Identifier of the room name in the room-name vocabulary (e.g. RN-01-20-01).
+      An external reference, not a programme class.
+  quantity:
+    range: OptionQuantity
+    inlined: true
+    description: >-
+      Count question an option asks (e.g. number of bicycle spaces). The answer
+      is stored in the app.
+  performance_property_key:
+    range: string
+    description: >-
+      Key of the performance property this attribute sets a target for
+      (e.g. pbs:thermal_property_u_value).
+  requirement_kind:
+    range: RequirementKindEnum
+  target_operator:
+    range: TargetOperatorEnum
+  verified_by:
+    range: AttributeReference
+    inlined: true
+    description: Delivered attribute that proves a performance target.
+  components:
+    multivalued: true
+    range: Component
+    inlined_as_list: true
+    description: >-
+      Parametric geometry templates for placeable objects. Each references an
+      element and adds size, clearances, placement rules and connections.
+  equipment:
+    multivalued: true
+    range: Equipment
+    inlined_as_list: true
+    description: What a room of this configuration contains. Position is left to the generator.
+  openings:
+    multivalued: true
+    range: Opening
+    inlined_as_list: true
+    description: >-
+      How a room of this configuration is reached and lit. Declared by the room
+      the opening leads into.
 classes:
   Any:
     class_uri: linkml:Any
@@ -914,6 +1120,7 @@ classes:
       - phase_subphases
       - custom_pset_entities
       - elements
+      - components
 
   Domain:
     slots:
@@ -1027,6 +1234,7 @@ classes:
       - name
       - definition
       - room_type_kind
+      - room_name
       - extends
       - contains
       - legacy_ids
@@ -1056,6 +1264,8 @@ classes:
       override or delta. restrictions contains its minimum dimensions.
       project_goal_levels optionally names the goal levels this configuration
       suits; omit it when the configuration is independent of goal levels.
+      equipment and openings list what the room contains and how it is reached
+      and lit; both reference components and leave position to the generator.
     slots:
       - id
       - sort_order
@@ -1064,8 +1274,13 @@ classes:
       - project_goal_levels
       - attribute_presets
       - restrictions
+      - equipment
+      - openings
       - status
     slot_usage:
+      name:
+        required: false
+        description: Optional label of the configuration (e.g. Klein). Omit for the only one.
       attribute_presets:
         required: true
 
@@ -1080,6 +1295,332 @@ classes:
       - min_height
       - min_length
       - min_width
+
+  OptionQuantity:
+    description: >-
+      Count question of a scenario option, such as the number of bicycle
+      spaces. The catalog names the question; the app stores the answer.
+    slots:
+      - id
+      - sort_order
+      - name
+      - status
+
+  AttributeReference:
+    description: An attribute on the same element, named like AttributePreset (name + pset).
+    slots:
+      - name
+      - pset
+    slot_usage:
+      name:
+        required: true
+        range: string
+
+  Component:
+    description: >-
+      Parametric geometry template for one placeable object: fixture, built-in
+      or loose furniture, device space, plant item, door, window or clearance.
+      element names the element whose applicability the placed object must
+      satisfy; the component adds size, clearances, placement rules and
+      connections so a generator can place it in a room. predefined_type,
+      object_type and ifc_name must be allowed values of that element.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - element
+      - comment
+      - status
+    slot_usage:
+      element:
+        required: true
+    attributes:
+      predefined_type:
+        range: string
+        description: IFC PredefinedType token, allowed by the element's PredefinedType value list.
+      object_type:
+        range: LocalizedText
+        description: ObjectType per language, required when the element's applicability filters on it.
+      ifc_name:
+        range: LocalizedText
+        description: Value written to IFC Name when the element constrains Name with a value list.
+      category:
+        range: ComponentCategoryEnum
+        required: true
+      placement:
+        range: ComponentPlacement
+        inlined: true
+        required: true
+      parameters:
+        range: ComponentParameter
+        multivalued: true
+        inlined: true
+        required: true
+        description: Nominal dimensions in metres, keyed by name. width runs along the host wall, depth away from it.
+      clearances:
+        range: Clearance
+        multivalued: true
+        inlined_as_list: true
+      connections:
+        range: Connection
+        multivalued: true
+        inlined_as_list: true
+      parts:
+        range: ComponentPart
+        multivalued: true
+        inlined_as_list: true
+        description: Sub-objects written as their own IFC products, such as the sink in a kitchen run.
+      representation:
+        range: ComponentRepresentation
+        inlined: true
+        required: true
+
+  ComponentParameter:
+    description: One nominal dimension of a component, keyed by its name (width, depth, height, clear_width, ...).
+    attributes:
+      key:
+        identifier: true
+        range: string
+      default:
+        range: float
+        required: true
+      min:
+        range: float
+      max:
+        range: float
+      unit:
+        range: string
+        description: Always m.
+
+  ComponentPlacement:
+    description: Rules a generator follows when placing the component.
+    attributes:
+      host:
+        range: ComponentHostEnum
+        required: true
+      edge_kinds:
+        range: EdgeKindEnum
+        multivalued: true
+        description: Room edges the component may sit on or in; required for wall-hosted components.
+      side_distance_min:
+        range: float
+        description: Minimum distance from the component's side to a perpendicular wall, in metres.
+      axis_spacing_min:
+        range: float
+        description: Minimum axis distance between neighbouring components of the same kind, in metres.
+      elevation:
+        range: Any
+        any_of:
+          - range: float
+          - range: string
+        description: Underside above finished floor in metres, or the name of a component parameter.
+
+  Clearance:
+    description: >-
+      Rectangle that must stay free of other components and walls; clearances
+      may overlap each other. name is a token of the movement clearance name
+      value list. width and depth are metres or the name of a component parameter.
+    slots:
+      - name
+    attributes:
+      side:
+        range: ClearanceSideEnum
+        required: true
+      width:
+        range: Any
+        required: true
+        any_of:
+          - range: float
+          - range: string
+      depth:
+        range: Any
+        required: true
+        any_of:
+          - range: float
+          - range: string
+      offset:
+        range: float
+        description: Shift of the rectangle's centre along the component's width, in metres.
+      when:
+        range: Condition
+        inlined: true
+
+  Connection:
+    description: Service connection of a component.
+    attributes:
+      medium:
+        range: ConnectionMediumEnum
+        required: true
+      max_distance_to_shaft:
+        range: float
+
+  ComponentPart:
+    description: Sub-component of a component, such as the tall cabinet of a kitchen run.
+    attributes:
+      component:
+        range: Component
+        required: true
+      quantity:
+        range: integer
+      position:
+        range: PartPositionEnum
+
+  ComponentRepresentation:
+    description: How a generator draws the component in 3D and in plan.
+    attributes:
+      body:
+        range: ComponentBodyEnum
+        required: true
+      plan_symbol:
+        range: string
+        required: true
+        description: Key of the 2D plan symbol.
+
+  Condition:
+    description: >-
+      Applies when every listed key matches; within a key, any one entry is
+      enough. Used by when and unless.
+    slots:
+      - project_goal_levels
+    attributes:
+      scenario_options:
+        range: ScenarioOption
+        multivalued: true
+
+  ItemQuantity:
+    description: >-
+      Bounded count. With per, the target count is ceil(value / divisor),
+      clamped to min and max; default then does not apply.
+    attributes:
+      min:
+        range: integer
+        required: true
+      max:
+        range: integer
+      default:
+        range: integer
+      per:
+        range: QuantityPer
+        inlined: true
+
+  QuantityPer:
+    description: Room measure a count scales with.
+    attributes:
+      quantity:
+        range: QuantityBasisEnum
+        required: true
+      divisor:
+        range: float
+        required: true
+
+  ParamOverride:
+    description: Narrows one component parameter for a room type; the key must exist on every listed component.
+    attributes:
+      key:
+        identifier: true
+        range: string
+      default:
+        range: float
+      min:
+        range: float
+      max:
+        range: float
+
+  Equipment:
+    description: >-
+      One item a room of this configuration contains. components lists the
+      allowed components; the generator picks one per item. quantity is a
+      fixed count or an ItemQuantity. when and unless switch the item by
+      project goal level or scenario option.
+    slots:
+      - id
+      - sort_order
+      - comment
+      - status
+    attributes:
+      function:
+        range: EquipmentFunctionEnum
+        required: true
+      components:
+        range: Component
+        multivalued: true
+        required: true
+      quantity:
+        range: Any
+        required: true
+        any_of:
+          - range: integer
+          - range: ItemQuantity
+      params:
+        range: ParamOverride
+        multivalued: true
+        inlined: true
+      when:
+        range: Condition
+        inlined: true
+      unless:
+        range: Condition
+        inlined: true
+
+  ConnectsTo:
+    description: >-
+      What an opening connects to. Set exactly one of relationships
+      (neighbours from the selected scenario options' room_relationships),
+      room_types (named neighbours) or exterior.
+    attributes:
+      relationships:
+        range: RelationshipDirectionEnum
+      room_types:
+        range: RoomType
+        multivalued: true
+      exterior:
+        range: boolean
+
+  Opening:
+    description: >-
+      Door, window or passage of a room configuration, declared by the room it
+      leads into. components lists the allowed opening components. A daylight
+      opening with quantity min 0 can name a fallback.
+    slots:
+      - id
+      - sort_order
+      - comment
+      - status
+    attributes:
+      function:
+        range: OpeningFunctionEnum
+        required: true
+      components:
+        range: Component
+        multivalued: true
+        required: true
+      connects_to:
+        range: ConnectsTo
+        inlined: true
+        required: true
+      quantity:
+        range: Any
+        required: true
+        any_of:
+          - range: integer
+          - range: ItemQuantity
+      params:
+        range: ParamOverride
+        multivalued: true
+        inlined: true
+      glazing_to_floor_ratio_min:
+        range: float
+        description: Minimum glazing area as a share of net floor area (daylight openings).
+      fallback:
+        range: OpeningFallbackEnum
+      when:
+        range: Condition
+        inlined: true
+      unless:
+        range: Condition
+        inlined: true
 
   RoomRelationship:
     description: >-
@@ -1153,6 +1694,7 @@ classes:
       - project_goal_levels
       - target
       - sizes
+      - quantity
       - adds
       - room_relationships
       - exclusive
@@ -1411,6 +1953,10 @@ classes:
       - ifc_versions
       - needed_for_workflows
       - is_applicability
+      - requirement_kind
+      - performance_property_key
+      - target_operator
+      - verified_by
       - status
       - jurisdiction
       - link_uid
