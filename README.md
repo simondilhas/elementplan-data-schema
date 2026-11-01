@@ -81,6 +81,7 @@ A generator reads a component in its own local axes. All lengths are metres, or 
 - **Openings.** Doors size the opening with `clear_width`/`clear_height`, windows with `width`/`height`. A `swing` clearance opens into the room that declares the opening.
 - **Clearances.** `width` runs along the touched side, `depth` away from it. `offset` shifts the centre along the touched side: positive is to the right for `front`, `back` and `swing`, towards the front for `left` and `right`.
 - **`max_distance_to_shaft`** is the straight-line plan distance from the component centre to the nearest shaft edge.
+- **Mirroring.** A generator may mirror any component left to right. `left` and `right` clearances swap, offsets along `width` change sign, and a `wall_corner` component takes its side wall on the other side. Write one-sided components (WC transfer area, single bed) in one hand only; do not add a mirrored copy.
 
 `make schema-check` and `validate_reference.py` reject negative lengths, malformed parameter names, wall hosts without `edge_kinds`, and parameter names the component does not define.
 

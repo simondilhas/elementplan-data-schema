@@ -1422,6 +1422,9 @@ classes:
       away from the wall into the room, height upwards from the underside.
       Lengths are metres, or the name of one of the component's own
       parameters (resolved to the value chosen for the placed instance).
+      A generator may mirror any component left to right: left and right
+      clearances swap, offsets along width change sign, and for wall_corner
+      the side wall moves to the other side.
     attributes:
       host:
         range: ComponentHostEnum
