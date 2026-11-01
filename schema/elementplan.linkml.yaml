@@ -337,13 +337,22 @@ enums:
     description: What a component rests on or cuts.
     permissible_values:
       floor:
-        description: Free-standing on the floor.
+        description: >-
+          Free-standing on the floor. The back is the side the component is
+          oriented away from; no wall is required behind it.
       wall_face:
-        description: Back against one wall.
+        description: Back against one wall. width runs along that wall.
       wall_corner:
-        description: Backs against two walls meeting in a corner.
+        description: >-
+          Back against one wall and one side against a second wall meeting it
+          in a corner. width runs along the back wall, width_2 (when the
+          component has that parameter) along the side wall.
       wall_opening:
-        description: Cuts a wall and belongs to the rooms on both sides.
+        description: >-
+          Cuts a wall and belongs to the rooms on both sides. Its front is the
+          room that declares the opening; swing opens into that room. Doors
+          size the opening with clear_width and clear_height, windows with
+          width and height.
 
   EdgeKindEnum:
     description: Kind of room edge (wall) a component may sit on or in.
@@ -355,15 +364,22 @@ enums:
 
   ClearanceSideEnum:
     description: >-
-      Side of the component a clearance sits on. front/back: width runs along
-      the component's width. left/right: width runs along the component's
-      depth. swing: door leaf sweep on the opening side.
+      Side of the component a clearance sits on. Left and right are as seen
+      standing in front of the component, facing it. front/back: the
+      clearance width runs along the component's width. left/right: the
+      clearance width runs along the component's depth. swing: door leaf sweep
+      on the front side of a wall_opening.
     permissible_values:
-      front: {}
-      back: {}
-      left: {}
-      right: {}
-      swing: {}
+      front:
+        description: The room side, opposite the host wall.
+      back:
+        description: The host wall side.
+      left:
+        description: Left side, as seen standing in front of the component.
+      right:
+        description: Right side, as seen standing in front of the component.
+      swing:
+        description: Door leaf sweep into the room that declares the opening.
 
   ConnectionMediumEnum:
     description: Service a component connects to.
@@ -1358,7 +1374,11 @@ classes:
         multivalued: true
         inlined: true
         required: true
-        description: Nominal dimensions in metres, keyed by name. width runs along the host wall, depth away from it.
+        description: >-
+          Nominal dimensions in metres, keyed by name. width runs along the
+          host wall, depth away from it, height upwards. wall_corner components
+          use width_2 for the leg along the side wall; doors use clear_width
+          and clear_height for the opening.
       clearances:
         range: Clearance
         multivalued: true
@@ -1395,7 +1415,13 @@ classes:
         description: Always m.
 
   ComponentPlacement:
-    description: Rules a generator follows when placing the component.
+    description: >-
+      Rules a generator follows when placing the component. Local axes: the
+      origin is the back-left corner of the component, as seen standing in
+      front of it. width runs along the host wall from left to right, depth
+      away from the wall into the room, height upwards from the underside.
+      Lengths are metres, or the name of one of the component's own
+      parameters (resolved to the value chosen for the placed instance).
     attributes:
       host:
         range: ComponentHostEnum
@@ -1403,25 +1429,56 @@ classes:
       edge_kinds:
         range: EdgeKindEnum
         multivalued: true
-        description: Room edges the component may sit on or in; required for wall-hosted components.
+        minimum_cardinality: 1
+        description: >-
+          Room edges the component may sit on or in. Required when host is
+          wall_face, wall_corner or wall_opening; ignored for floor.
       side_distance_min:
         range: float
-        description: Minimum distance from the component's side to a perpendicular wall, in metres.
+        minimum_value: 0
+        description: >-
+          Minimum distance in metres from each side of the component that does
+          not stand against a wall to the nearest perpendicular wall. It has no
+          effect on the wall side of a wall_corner component.
       axis_spacing_min:
         range: float
-        description: Minimum axis distance between neighbouring components of the same kind, in metres.
+        minimum_value: 0
+        description: >-
+          Minimum distance in metres between the width axes (centre lines) of
+          two neighbouring placements of the same component id.
       elevation:
         range: Any
         any_of:
           - range: float
+            minimum_value: 0
           - range: string
-        description: Underside above finished floor in metres, or the name of a component parameter.
+            pattern: "^[a-z][a-z0-9_]*$"
+        description: >-
+          Height of the underside above finished floor, in metres or the name
+          of a component parameter. Defaults to 0 when omitted. For a
+          wall_opening it is the sill, the underside of the clear opening.
+    rules:
+      - description: Wall-hosted components must list the room edges they may sit on.
+        preconditions:
+          slot_conditions:
+            host:
+              any_of:
+                - equals_string: wall_face
+                - equals_string: wall_corner
+                - equals_string: wall_opening
+        postconditions:
+          slot_conditions:
+            edge_kinds:
+              required: true
 
   Clearance:
     description: >-
       Rectangle that must stay free of other components and walls; clearances
       may overlap each other. name is a token of the movement clearance name
-      value list. width and depth are metres or the name of a component parameter.
+      value list. side sets which side of the component it touches (left and
+      right as seen standing in front of the component). width and depth are
+      metres or the name of one of the component's own parameters, resolved
+      to the value chosen for the placed instance.
     slots:
       - name
     attributes:
@@ -1433,16 +1490,25 @@ classes:
         required: true
         any_of:
           - range: float
+            minimum_value: 0
           - range: string
+            pattern: "^[a-z][a-z0-9_]*$"
+        description: Extent along the touched side of the component.
       depth:
         range: Any
         required: true
         any_of:
           - range: float
+            minimum_value: 0
           - range: string
+            pattern: "^[a-z][a-z0-9_]*$"
+        description: Extent away from the touched side of the component.
       offset:
         range: float
-        description: Shift of the rectangle's centre along the component's width, in metres.
+        description: >-
+          Shift of the rectangle's centre along the touched side, in metres.
+          Positive moves it right (front and swing), towards the front
+          (left and right), as seen standing in front of the component.
       when:
         range: Condition
         inlined: true
@@ -1455,6 +1521,10 @@ classes:
         required: true
       max_distance_to_shaft:
         range: float
+        minimum_value: 0
+        description: >-
+          Maximum straight-line distance in plan, in metres, from the centre of
+          the component to the nearest edge of a shaft.
 
   ComponentPart:
     description: Sub-component of a component, such as the tall cabinet of a kitchen run.

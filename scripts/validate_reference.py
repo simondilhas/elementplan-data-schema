@@ -4,7 +4,8 @@ Usage: python scripts/validate_reference.py PATH/TO/pragmaticBIM-reference [coll
 
 Assembles an ElementplanDataset from the reference folders and validates it
 with the JSON Schema generated from schema/elementplan.linkml.yaml (closed
-classes, so unknown fields are reported). Collections default to the ones this
+classes, so unknown fields are reported). Components are also checked for
+lengths that name a parameter the component does not define. Collections default to the ones this
 schema models field by field: room_types, usage_scenarios, components.
 """
 
@@ -17,6 +18,8 @@ from pathlib import Path
 import jsonschema
 import yaml
 from linkml.generators.jsonschemagen import JsonSchemaGenerator
+
+from component_checks import parameter_reference_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "schema" / "elementplan.linkml.yaml"
@@ -52,6 +55,10 @@ def main(argv: list[str]) -> int:
     for error in errors:
         where = "/".join(str(p) for p in list(error.absolute_path)[:2])
         print(f"{where}: {error.message[:200]}")
+    for component in dataset.get("components") or []:
+        for message in parameter_reference_errors(component):
+            errors.append(message)
+            print(message)
     print()
     for slot in collections:
         print(f"{slot}: {len(dataset[slot])} records")
