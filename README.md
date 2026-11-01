@@ -53,6 +53,38 @@ Project complexity / package tags (`workflow_group`) stay a **separate** axis fr
 
 Optional `service_kind` on a workflow records whether it is a **Grundleistung** (`basic`) or a **besondere Leistung** (`special`). Omit it when the workflow is not yet classified. The badge is on the workflow, not on attributes: an attribute shows the kind of the workflows it is needed for.
 
+### Placement conventions (components)
+
+A generator reads a component in its own local axes. All lengths are metres, or the name of one of the component's own `parameters`, resolved to the value chosen for the placed instance.
+
+```
+            host wall (back)
+  origin ●━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+         ┃                                 ┃
+   left  ┃           component             ┃  right
+         ┃         ── width ──▶           ┃
+         ┃              │ depth            ┃
+         ┃              ▼                  ┃
+         ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+                  front (room side)
+
+       ▲ viewer: standing in front, facing the component
+```
+
+- **Axes.** The origin is the back-left corner. `width` runs along the host wall from left to right, `depth` away from the wall into the room, `height` upwards from the underside.
+- **Left and right** are as seen standing in front of the component, facing it.
+- **`host`.** `floor` needs no wall. `wall_face` has its back against one wall. `wall_corner` has its back against one wall and one side against a second; `width` runs along the back wall, `width_2` along the side wall. `wall_opening` cuts a wall; its front is the room that declares the opening.
+- **`edge_kinds`** is required for every wall host and ignored for `floor`.
+- **`side_distance_min`** applies to each side that does not stand against a wall (so not to the wall side of a `wall_corner`).
+- **`axis_spacing_min`** is the minimum distance between the centre lines of two neighbouring placements of the same component id.
+- **`elevation`** is the underside above finished floor, 0 when omitted. For a `wall_opening` it is the sill.
+- **Openings.** Doors size the opening with `clear_width`/`clear_height`, windows with `width`/`height`. A `swing` clearance opens into the room that declares the opening.
+- **Clearances.** `width` runs along the touched side, `depth` away from it. `offset` shifts the centre along the touched side: positive is to the right for `front`, `back` and `swing`, towards the front for `left` and `right`.
+- **`max_distance_to_shaft`** is the straight-line plan distance from the component centre to the nearest shaft edge.
+- **Mirroring.** A generator may mirror any component left to right. `left` and `right` clearances swap, offsets along `width` change sign, and a `wall_corner` component takes its side wall on the other side. Write one-sided components (WC transfer area, single bed) in one hand only; do not add a mirrored copy.
+
+`make schema-check` and `validate_reference.py` reject negative lengths, malformed parameter names, wall hosts without `edge_kinds`, and parameter names the component does not define.
+
 ### Jurisdiction (country vs general)
 
 `jurisdiction` is a multivalued list on **Workflow**, **Attribute**, **Model**, **Document**, and **UsageScenario**:

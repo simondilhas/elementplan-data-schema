@@ -1362,6 +1362,10 @@ if errors:
 print("Examples OK: every example record validates against the compiled schema")
 
 # References from equipment and openings
+import sys
+sys.path.insert(0, "scripts")
+from component_checks import parameter_reference_errors
+
 component_ids = {record["id"] for record in dataset["components"]}
 room_type_ids = {record["id"] for record in dataset["room_types"]}
 goal_level_ids = {level["id"] for record in dataset["project_goals"] for level in record.get("levels") or []}
@@ -1370,6 +1374,8 @@ for record in dataset["components"]:
     for part in record.get("parts") or []:
         if part["component"] not in component_ids:
             raise SystemExit(f"{record['id']}: part references unknown component {part['component']}.")
+    for message in parameter_reference_errors(record):
+        raise SystemExit(message)
 seen = set()
 for record in dataset["room_types"]:
     for configuration in record["configurations"]:
