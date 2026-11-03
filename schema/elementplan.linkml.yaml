@@ -1006,6 +1006,32 @@ slots:
     range: AttributeReference
     inlined: true
     description: Delivered attribute that proves a performance target.
+  product_sheets:
+    multivalued: true
+    range: ProductSheet
+    inlined_as_list: true
+    description: >-
+      Data sheets for abstract product classes. The class itself (notation,
+      label, definition, hierarchy, crosswalks) is named in the pragmatic BIM
+      data contract; the sheet adds tender text and application notes.
+  product_classification:
+    range: Classification
+    inlined: true
+    description: >-
+      Product class this sheet describes: classification_scheme is the
+      dcterms:identifier of the contract's product ConceptScheme (e.g.
+      AbstractWallSeparatorProduct), classification_code its skos:notation
+      (e.g. SWP-MASONRY). Labels are not repeated here.
+  tender_text:
+    range: LocalizedText
+    description: >-
+      Neutral tender text for the product class: build-up, execution and
+      typical application, written so it can seed a specification item.
+  application_notes:
+    range: LocalizedText
+    description: >-
+      Optional guidance on when to choose the product class and how it
+      combines with roles, materials or other classes.
   components:
     multivalued: true
     range: Component
@@ -1121,6 +1147,7 @@ classes:
       - custom_pset_entities
       - elements
       - components
+      - product_sheets
 
   Domain:
     slots:
@@ -1375,6 +1402,33 @@ classes:
       representation:
         range: ComponentRepresentation
         inlined: true
+        required: true
+
+  ProductSheet:
+    description: >-
+      Data sheet for one abstract product class. The pragmatic BIM data
+      contract names the class (notation, labels, definition, hierarchy,
+      crosswalks to KBOB, BKP and materials); the Reference describes it
+      with a tender text, application notes and media. The sheet carries no
+      name or definition of its own: readers resolve them from the contract
+      by product_classification. One sheet per top concept; LCA layer
+      concepts (narrower *-INS, *-MEM, ...) get none.
+    slots:
+      - id
+      - sort_order
+      - status
+      - product_classification
+      - tender_text
+      - application_notes
+      - picture_link
+      - attachment_link
+      - comment
+    slot_usage:
+      id:
+        pattern: "^pragmaticbim:product/[a-z0-9-]+$"
+      product_classification:
+        required: true
+      tender_text:
         required: true
 
   ComponentParameter:

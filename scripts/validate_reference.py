@@ -5,7 +5,8 @@ Usage: python scripts/validate_reference.py PATH/TO/pragmaticBIM-reference [coll
 Assembles an ElementplanDataset from the reference folders and validates it
 with the JSON Schema generated from schema/elementplan.linkml.yaml (closed
 classes, so unknown fields are reported). Collections default to the ones this
-schema models field by field: room_types, usage_scenarios, components.
+schema models field by field: room_types, usage_scenarios, components,
+product_sheets.
 """
 
 from __future__ import annotations
@@ -25,8 +26,9 @@ FOLDERS = {
     "usage_scenarios": "usage_scenarios",
     "components": "components",
     "elements": "elements",
+    "product_sheets": "products",
 }
-DEFAULT = ("room_types", "usage_scenarios", "components")
+DEFAULT = ("room_types", "usage_scenarios", "components", "product_sheets")
 
 
 def load_dataset(reference: Path, collections: tuple[str, ...]) -> dict:
