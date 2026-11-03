@@ -36,7 +36,9 @@ def load_dataset(reference: Path, collections: tuple[str, ...]) -> dict:
     for slot in collections:
         folder = reference / FOLDERS[slot]
         dataset[slot] = [
-            yaml.safe_load(path.read_text(encoding="utf-8")) for path in sorted(folder.glob("*.yaml"))
+            yaml.safe_load(path.read_text(encoding="utf-8"))
+            for path in sorted(folder.glob("*.yaml"))
+            if not path.name.startswith("_")  # generated indexes and config, not records
         ]
     return dataset
 
