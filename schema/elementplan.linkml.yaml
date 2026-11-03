@@ -1013,7 +1013,7 @@ slots:
     description: >-
       Data sheets for abstract product classes. The class itself (notation,
       label, definition, hierarchy, crosswalks) is named in the pragmatic BIM
-      data contract; the sheet adds tender text and application notes.
+      data contract; the sheet adds name, tender text and application notes.
   product_classification:
     range: Classification
     inlined: true
@@ -1021,7 +1021,7 @@ slots:
       Product class this sheet describes: classification_scheme is the
       dcterms:identifier of the contract's product ConceptScheme (e.g.
       AbstractWallSeparatorProduct), classification_code its skos:notation
-      (e.g. SWP-MASONRY). Labels are not repeated here.
+      (e.g. SWP-MASONRY).
   tender_text:
     range: LocalizedText
     description: >-
@@ -1407,16 +1407,17 @@ classes:
   ProductSheet:
     description: >-
       Data sheet for one abstract product class. The pragmatic BIM data
-      contract names the class (notation, labels, definition, hierarchy,
-      crosswalks to KBOB, BKP and materials); the Reference describes it
-      with a tender text, application notes and media. The sheet carries no
-      name or definition of its own: readers resolve them from the contract
-      by product_classification. One sheet per top concept; LCA layer
+      contract identifies the class (notation, short definition, hierarchy,
+      crosswalks to KBOB, BKP and materials); the Reference describes it with
+      a name in all catalog languages, a tender text, application notes and
+      media. The German and English name match the contract prefLabel; the
+      definition is not repeated. One sheet per top concept; LCA layer
       concepts (narrower *-INS, *-MEM, ...) get none.
     slots:
       - id
       - sort_order
       - status
+      - name
       - product_classification
       - tender_text
       - application_notes

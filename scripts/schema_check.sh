@@ -1407,8 +1407,8 @@ for record in dataset["product_sheets"]:
     seen_codes.add(code)
     if record["id"] != f"pragmaticbim:product/{code.lower()}":
         raise SystemExit(f"{record['id']}: id must be pragmaticbim:product/{code.lower()}.")
-    if "name" in record or "definition" in record:
-        raise SystemExit(f"{record['id']}: names and definitions come from the data contract.")
+    if "definition" in record:
+        raise SystemExit(f"{record['id']}: the short definition stays in the data contract.")
 
 print("Example references OK: product sheets")
 PY
