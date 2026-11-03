@@ -78,6 +78,8 @@ Do not mix `general` with country codes. A project with country `C` matches an e
 
 **Document requirements** are the document analog of Element attributes, limited to file metadata. `metadata_requirements` lists what the file's own metadata must carry (revision index, status). Each `DocumentRequirement` has a required `name` and `needed_in_phases`, optional `needed_for_workflows`, `allowed_values`, `regex`, `status`, and `jurisdiction`, and no IFC datatype or `ifc_versions`. This closes the goal → workflow → requirement chain for document metadata: a requirement can be justified by a workflow the same way an attribute is. There is no content-requirement list.
 
+**Product sheets (`ProductSheet`)** describe the abstract product classes that element attributes select (wall separator, floor covering, window connector and so on). The [pragmatic BIM data contract](https://schema.pragmaticbim.ch/) identifies the class: notation, a short definition of what it is, hierarchy, and crosswalks to KBOB, BKP and materials. The Reference describes it: a sheet carries `name` (German and English match the contract label), `product_classification` (scheme + code, e.g. `AbstractWallSeparatorProduct` / `SWP-MASONRY`), a required `tender_text`, and optional `application_notes`, `picture_link` and `attachment_link`. The definition is not repeated on the sheet. The id is `pragmaticbim:product/` plus the lower-case code, and there is one sheet per top concept; LCA layer concepts get none.
+
 **Phases** are pickable catalogs (`Phase`): SIA codes, abstract stages, or other schemes, each with ordered `values` and nested milestones. **PhaseMapping** relates two catalogs (e.g. SIA → abstract) for display and phase-picker translation via `phases` and `milestones` source→target entries.
 
 **Milestones** belong to a **Phase** (`Phase.milestones`): delivery moments with `kind` `B` (beginning), `M` (mid), or `E` (end), an optional `date`, and a phase code. Models and documents reference them only via `scheduled_milestones` ids (no `milestones:` block inside the container YAML). Attribute `needed_in_phases` and Element `needed_for_models` stay phase codes (when an attribute/element is required), distinct from when a container is delivered.
@@ -90,7 +92,7 @@ For ordering, only the domain is relevant. In the project, the actual model or d
 
 - `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
-- `examples/`: sample usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, and phases
+- `examples/`: sample usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, phases, and product sheets
 - `scripts/schema_check.sh`: local schema validation entry point
 - `.github/workflows/schema-check.yml`: GitHub Actions workflow for automatic validation
 
