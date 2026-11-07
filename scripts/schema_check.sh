@@ -347,7 +347,6 @@ for removed in (
     "SolutionSize",
     "UnitVariant",
     "UnitRoom",
-    "Use",
     "UnitType",
     "ScenarioTopic",
 ):
@@ -367,9 +366,7 @@ for removed in (
     "unit_variants",
     "unit_rooms",
     "count",
-    "use",
     "topic",
-    "uses",
     "unit_types",
     "unit_type",
     "parent_unit_type",
@@ -390,6 +387,10 @@ require_class_slots(
         "name",
         "definition",
         "room_type_kind",
+        "default_scope",
+        "activity",
+        "room_name",
+        "uses",
         "extends",
         "contains",
         "legacy_ids",
@@ -419,6 +420,9 @@ require_class_slots(
         "sort_order",
         "name",
         "description",
+        "scope",
+        "uses",
+        "use",
         "tags",
         "status",
         "jurisdiction",
@@ -428,7 +432,6 @@ require_class_slots(
 )
 usage_scenario_slots = schema["classes"]["UsageScenario"]["slots"]
 for slot_name in (
-    "use",
     "topic",
     "required_room_types",
     "required_unit_types",
@@ -442,6 +445,47 @@ if tags_slot.get("range") != "string" or not tags_slot.get("multivalued"):
 allows_multiple_slot = schema["slots"].get("allows_multiple")
 if not allows_multiple_slot or allows_multiple_slot.get("range") != "boolean":
     raise SystemExit("allows_multiple slot must be a boolean.")
+
+enums = schema.get("enums", {})
+if set(enums.get("ScopeLevel", {}).get("permissible_values", {})) != {"project", "use", "unit"}:
+    raise SystemExit("ScopeLevel must permit project, use, and unit.")
+scope_slot = schema["slots"].get("scope") or {}
+if scope_slot.get("range") != "ScopeLevel" or scope_slot.get("multivalued"):
+    raise SystemExit("scope slot must be a single ScopeLevel.")
+require_required("UsageScenario", "scope")
+require_reference("uses", "Use", multivalued=True)
+require_reference("use", "Use", multivalued=False)
+if not schema["slots"]["use"].get("deprecated"):
+    raise SystemExit("use slot must be marked deprecated in favour of uses.")
+require_class_slots("Use", ("id", "code", "sort_order", "name", "definition", "status"))
+dataset_uses = schema["classes"]["ElementplanDataset"].get("slot_usage", {}).get("uses", {})
+if not dataset_uses.get("inlined_as_list"):
+    raise SystemExit("ElementplanDataset.uses must be an inlined list of Use records.")
+
+default_scope_values = enums.get("DefaultScopeEnum", {}).get("permissible_values", {})
+if set(default_scope_values) != {"site", "building", "unit", "dwelling"}:
+    raise SystemExit("DefaultScopeEnum must permit site, building, unit, and dwelling.")
+if not (default_scope_values["dwelling"] or {}).get("deprecated"):
+    raise SystemExit("DefaultScopeEnum.dwelling must be marked deprecated.")
+if (schema["slots"].get("default_scope") or {}).get("range") != "DefaultScopeEnum":
+    raise SystemExit("default_scope slot must have range: DefaultScopeEnum")
+if (schema["slots"].get("activity") or {}).get("range") != "string":
+    raise SystemExit("activity slot must be a string.")
+
+container_rules = [
+    rule
+    for rule in schema["classes"]["RoomType"].get("rules") or []
+    if rule.get("preconditions", {}).get("slot_conditions", {}).get("room_type_kind", {}).get("equals_string") == "container"
+]
+container_uses = (
+    container_rules[0].get("postconditions", {}).get("slot_conditions", {}).get("uses", {})
+    if len(container_rules) == 1
+    else {}
+)
+if not container_uses.get("required") or container_uses.get("exact_cardinality") != 1:
+    raise SystemExit("RoomType must have a rule requiring exactly one use on containers.")
+
+print("Schema contract OK: UsageScenario.scope/uses and RoomType.default_scope/uses")
 
 require_class_slots(
     "ScenarioOption",
@@ -524,7 +568,7 @@ require_required("RoomRelationship", "to_room_type")
 if schema["classes"]["RoomRelationship"].get("slot_usage", {}).get("name", {}).get("required") is not False:
     raise SystemExit("RoomRelationship.name must be optional.")
 
-catalog_order = ("project_goals", "room_types", "usage_scenarios", "workflows")
+catalog_order = ("project_goals", "uses", "room_types", "usage_scenarios", "workflows")
 for slot_name, range_name in (
     ("room_types", "RoomType"),
     ("usage_scenarios", "UsageScenario"),
@@ -912,20 +956,19 @@ if "UsageScenario" not in compiled["$defs"]:
 defs = compiled["$defs"]
 for class_name in (
     "ScenarioJob",
-    "ScopeLevel",
     "Activity",
     "ScenarioSolution",
     "SolutionSize",
-    "Use",
     "UnitType",
     "ScenarioTopic",
 ):
     if class_name in defs:
         raise SystemExit(f"Compiled JSON Schema must not include {class_name}.")
 for class_name, props in (
-    ("RoomType", ("id", "room_type_kind", "extends", "contains", "legacy_ids", "configurations")),
+    ("RoomType", ("id", "room_type_kind", "default_scope", "activity", "room_name", "uses", "extends", "contains", "legacy_ids", "configurations")),
     ("RoomTypeComponent", ("room_type",)),
-    ("UsageScenario", ("tags", "allows_multiple", "options")),
+    ("UsageScenario", ("scope", "uses", "use", "tags", "allows_multiple", "options")),
+    ("Use", ("id", "code", "sort_order", "name", "definition", "status")),
     ("ScenarioOption", ("id", "project_goal_levels", "target", "sizes", "adds", "room_relationships", "exclusive", "excludes")),
     ("ProjectGoal", ("is_boundary_condition",)),
     ("ProjectGoalLevel", ("activated_room_types",)),
@@ -937,9 +980,16 @@ for class_name, props in (
     for prop_name in props:
         if prop_name not in defs[class_name]["properties"]:
             raise SystemExit(f"Compiled JSON Schema {class_name} is missing {prop_name}.")
-for old_prop in ("use", "topic", "required_room_types", "required_unit_types"):
+for old_prop in ("topic", "required_room_types", "required_unit_types"):
     if old_prop in defs["UsageScenario"]["properties"]:
         raise SystemExit(f"Compiled JSON Schema UsageScenario must not include {old_prop}.")
+if "scope" not in defs["UsageScenario"].get("required", []):
+    raise SystemExit("Compiled JSON Schema UsageScenario must require scope.")
+for class_name in ("UsageScenario", "RoomType"):
+    if defs[class_name]["properties"]["uses"].get("items", {}).get("type") != "string":
+        raise SystemExit(f"Compiled JSON Schema {class_name}.uses must be a list of Use ids.")
+if set(defs["ScopeLevel"].get("enum", [])) != {"project", "use", "unit"}:
+    raise SystemExit("Compiled JSON Schema ScopeLevel must permit project, use, and unit.")
 if defs["ScenarioOption"]["properties"]["adds"].get("items", {}).get("type") != "string":
     raise SystemExit("Compiled JSON Schema ScenarioOption.adds must be a list of RoomType ids.")
 if defs["ScenarioOption"]["properties"]["project_goal_levels"].get("items", {}).get("type") != "string":
@@ -1012,10 +1062,12 @@ element_ref_prop = compiled["$defs"]["AttributePreset"]["properties"].get("eleme
 if "string" not in element_ref_prop.get("type", []):
     raise SystemExit("Compiled JSON Schema AttributePreset.element must be a string.")
 dataset_props = compiled["$defs"]["ElementplanDataset"]["properties"]
-for prop_name in ("room_types", "usage_scenarios"):
+for prop_name in ("uses", "room_types", "usage_scenarios"):
     if prop_name not in dataset_props:
         raise SystemExit(f"Compiled JSON Schema ElementplanDataset is missing {prop_name}.")
-for prop_name in ("uses", "unit_types", "scenario_topics"):
+if dataset_props["uses"].get("items", {}).get("$ref") != "#/$defs/Use":
+    raise SystemExit("Compiled JSON Schema ElementplanDataset.uses must inline Use records.")
+for prop_name in ("unit_types", "scenario_topics"):
     if prop_name in dataset_props:
         raise SystemExit(f"Compiled JSON Schema ElementplanDataset must not include {prop_name}.")
 
@@ -1161,8 +1213,10 @@ def load_examples(directory):
 
 known = {
     kind: set()
-    for kind in ("room_type", "option", "project_goal_level")
+    for kind in ("room_type", "option", "project_goal_level", "use")
 }
+for _, record in load_examples("uses"):
+    known["use"].add(record["id"])
 for _, record in load_examples("room-types"):
     known["room_type"].add(record["id"])
 for _, record in load_examples("project-goals"):
@@ -1190,6 +1244,8 @@ for path, record in load_examples("room-types"):
         raise SystemExit(f"{path}: a room must not contain other room types.")
     if kind == "container" and not components:
         raise SystemExit(f"{path}: a container must contain at least one room type.")
+    if kind == "container" and len(record.get("uses") or []) != 1:
+        raise SystemExit(f"{path}: a container (unit type) must list exactly one use.")
     extends_graph[record["id"]] = record.get("extends")
     contains_graph[record["id"]] = [
         component.get("room_type") for component in components
@@ -1228,6 +1284,8 @@ reference_kinds = {
     "to_room_type": ("room_type",),
     "excludes": ("option", "room_type"),
     "project_goal_levels": ("project_goal_level",),
+    "uses": ("use",),
+    "use": ("use",),
 }
 
 
@@ -1257,6 +1315,24 @@ for path, record in scenarios:
     tags = record.get("tags") or []
     if any(not isinstance(tag, str) or not tag.strip() for tag in tags):
         raise SystemExit(f"{path}: tags must be non-empty strings.")
+
+room_types_by_id = {record["id"]: record for _, record in load_examples("room-types")}
+for path, record in scenarios:
+    if record.get("scope") not in {"project", "use", "unit"}:
+        raise SystemExit(f"{path}: scope must be project, use, or unit.")
+    if "use" in record and "uses" in record:
+        raise SystemExit(f"{path}: set uses or the deprecated use alias, not both.")
+    scenario_uses = record.get("uses") or ([record["use"]] if record.get("use") else [])
+    if record["scope"] != "unit":
+        continue
+    for option in record.get("options") or []:
+        target = room_types_by_id.get(option.get("target"))
+        if target is None:
+            continue
+        if target.get("room_type_kind") != "container":
+            raise SystemExit(f"{path}: {option['id']} target must be a unit type (container).")
+        if scenario_uses and target["uses"][0] not in scenario_uses:
+            raise SystemExit(f"{path}: {option['id']} targets a unit type whose use is not in the scenario's uses.")
 
 
 def assert_acyclic(graph, label):
@@ -1291,15 +1367,16 @@ for room_id, children in contains_graph.items():
     if room_id in children:
         raise SystemExit(f"{room_id}: room type must not contain itself.")
 
-for old_directory in ("uses", "unit-types", "scenario-topics"):
+for old_directory in ("unit-types", "scenario-topics"):
     if any(Path("examples", old_directory).glob("*.yaml")):
         raise SystemExit(f"examples/{old_directory} must not contain catalog records.")
 
-print("Example references OK: room graph, aliases, options, goal levels, configurations")
+print("Example references OK: room graph, aliases, options, goal levels, configurations, uses, scopes")
 PY
 
 python - <<'PY'
 import json
+import sys
 from pathlib import Path
 
 import jsonschema
@@ -1344,7 +1421,7 @@ print("Schema contract OK: Component, Equipment, Opening")
 # Examples validate against the compiled schema (closed classes).
 folders = {
     "domains": "domains", "models": "models", "documents": "documents",
-    "project_goals": "project-goals", "room_types": "room-types",
+    "project_goals": "project-goals", "uses": "uses", "room_types": "room-types",
     "usage_scenarios": "usage-scenarios", "workflows": "workflows", "valuesets": "values",
     "elements": "elements", "components": "components",
 }
@@ -1360,6 +1437,46 @@ if errors:
     raise SystemExit(f"{len(errors)} example record(s) do not match the schema.")
 
 print("Examples OK: every example record validates against the compiled schema")
+
+# Scope and uses: variants of example records the compiled schema must accept or reject.
+scenario = next(r for r in dataset["usage_scenarios"] if r["id"].endswith("/waesche-waschen"))
+container = next(r for r in dataset["room_types"] if r["id"].endswith("/wohnung"))
+room = next(r for r in dataset["room_types"] if r["id"].endswith("/kueche"))
+
+
+def without(record, key):
+    return {k: v for k, v in record.items() if k != key}
+
+
+def is_valid(slot, record):
+    return not list(validator.iter_errors({slot: [record]}))
+
+
+legacy_scenario = {**without(scenario, "uses"), "use": "pragmaticbim:use/wohnen"}
+cases = (
+    ("scenario without scope", "usage_scenarios", without(scenario, "scope"), False),
+    ("scenario with unknown scope", "usage_scenarios", {**scenario, "scope": "building"}, False),
+    ("scenario with deprecated use alias", "usage_scenarios", legacy_scenario, True),
+    ("scenario with both use and uses", "usage_scenarios", {**scenario, "use": "pragmaticbim:use/wohnen"}, False),
+    ("container without uses", "room_types", without(container, "uses"), False),
+    ("room with deprecated default_scope dwelling", "room_types", {**room, "default_scope": "dwelling"}, True),
+    ("room with unknown default_scope", "room_types", {**room, "default_scope": "floor"}, False),
+)
+for label, slot, record, expected in cases:
+    if is_valid(slot, record) != expected:
+        raise SystemExit(f"Compiled JSON Schema must {'accept' if expected else 'reject'} a {label}.")
+
+
+sys.path.insert(0, "scripts")
+from validate_reference import container_use_errors
+
+two_uses = {**container, "uses": ["pragmaticbim:use/wohnen", "pragmaticbim:use/verkehr"]}
+if not container_use_errors([two_uses]) or container_use_errors(dataset["room_types"]):
+    raise SystemExit("validate_reference must reject a container with more than one use.")
+if container_use_errors([{**room, "uses": ["pragmaticbim:use/wohnen", "pragmaticbim:use/verkehr"]}]):
+    raise SystemExit("validate_reference must allow a room with several uses.")
+
+print("Scope checks OK: scope required, use alias, default_scope, one use per container")
 
 # References from equipment and openings
 component_ids = {record["id"] for record in dataset["components"]}

@@ -8,6 +8,7 @@ definition:
   de: Separater, privat genutzter Garten, der zur Wohnung gehört.
   en: Separate garden for the private use of one dwelling.
 room_type_kind: room
+default_scope: unit
 configurations:
 - id: pragmaticbim:room-type-configuration/garten-standard
   sort_order: 1

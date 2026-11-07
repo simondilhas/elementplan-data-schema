@@ -8,6 +8,9 @@ definition:
   de: Raum zum Kochen in der Wohnung.
   en: Room for cooking in the dwelling.
 room_type_kind: room
+default_scope: unit
+activity: M-RES
+room_name: RN-01-20-01
 configurations:
 - id: pragmaticbim:room-type-configuration/kueche-standard
   sort_order: 1

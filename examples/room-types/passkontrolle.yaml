@@ -8,6 +8,7 @@ definition:
   de: Grenzkontrolle der Reisedokumente bei der Ankunft.
   en: Border check of travel documents on arrival.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/passkontrolle-standard
   sort_order: 1

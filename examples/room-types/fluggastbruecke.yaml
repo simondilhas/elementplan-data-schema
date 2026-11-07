@@ -8,6 +8,7 @@ definition:
   de: Geschützter Übergang vom Gate ins Flugzeug.
   en: Sheltered connection from the gate to the aircraft.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/fluggastbruecke-standard
   sort_order: 1

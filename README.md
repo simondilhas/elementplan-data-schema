@@ -21,13 +21,19 @@ Scenario (need)  →  Option  →  Size  →  Room-type graph  →  Configuratio
                           how        how big       consequence       explicit form
 ```
 
-- **Usage scenarios (`UsageScenario`)** are first-class catalog records: one need, such as Wohnen mit Aussenbezug, with the inline `options` that meet it. Optional string `tags` such as `wohnen` and `aussenraum` provide filtering and presentation grouping without separate Use or Topic entities.
+- **Usage scenarios (`UsageScenario`)** are first-class catalog records: one need, such as Wohnen mit Aussenbezug, with the inline `options` that meet it. Optional string `tags` such as `wohnen` and `aussenraum` provide filtering and presentation grouping without a separate Topic entity.
   - The "kein" option adds no room types and is marked `exclusive: true`. A scenario with a "kein" option is optional; one without is mandatory.
   - One option is chosen, unless `allows_multiple` is true. An `exclusive` option excludes every other option of its scenario.
   - With a single option and no "kein", the question is skipped and the option applies.
-- **Options (`ScenarioOption`)** answer *how*. `adds` names the room or container types produced by the option. `target` is the container receiving added rooms (for example, Wohnung); omit it for building-level rooms. `excludes` names incompatible options or room types. The rule is symmetric: declare it on one side only, and the app reads it in both directions. Optional `project_goal_levels` names the goal levels this option suits, the same way a room configuration does; omit it when the option does not follow a goal. A chosen level can then select among the options.
+- **Scope and uses.** Functional requirements follow the hierarchy Project → Use → Unit type; buildings are optional tags. **Uses (`Use`)** such as Wohnen or Arbeit are catalog records. Every scenario states the required `scope` it is answered on (`ScopeLevel`):
+  - `project`: once for the whole project, for example a shared waste room.
+  - `use`: once per use of the project.
+  - `unit`: once per unit type. A unit scenario applies to a unit type when the unit type's use is in the scenario's `uses`.
+
+  `uses` lists the uses a scenario applies to; omit it to apply to every use. A scenario such as Abfall entsorgen can list several uses, so a mixed-use project answers it once instead of once per use. The answers live in the project, per scope node (project, use, unit type). `use` is a deprecated single-value alias of `uses`, kept for one release; do not set both.
+- **Options (`ScenarioOption`)** answer *how*. `adds` names the room or container types produced by the option. `target` is the container receiving added rooms (for example, Wohnung); omit it for building-level rooms. On a `unit` scenario, an omitted `target` means the unit type being answered. `excludes` names incompatible options or room types. The rule is symmetric: declare it on one side only, and the app reads it in both directions. Optional `project_goal_levels` names the goal levels this option suits, the same way a room configuration does; omit it when the option does not follow a goal. A chosen level can then select among the options.
 - **Sizes (`OptionSize`)** are the ordered grades of an option (small, medium, large; `sort_order` is the ordinal). Each size's `size_restrictions` name a `room_type` and its minimum `min_area`, `min_height`, `min_length`, and `min_width`, because one option can produce several rooms. The size question is asked when the chosen option has `sizes`.
-- **Room types (`RoomType`)** form one graph. `room_type_kind: room` marks a functional room; `room_type_kind: container` marks a composition such as Wohnung. `contains` is composition, while `extends` specializes a more general room type. This replaces the separate UnitType catalog. `legacy_ids` keeps old `unit-type/*` identifiers resolvable during migration.
+- **Room types (`RoomType`)** form one graph. `room_type_kind: room` marks a functional room; `room_type_kind: container` marks a composition such as Wohnung. `contains` is composition, while `extends` specializes a more general room type. This replaces the separate UnitType catalog. `legacy_ids` keeps old `unit-type/*` identifiers resolvable during migration. A container is a unit type and lists exactly one use in `uses`. `default_scope` places a room on the `site`, in the `building`, or in a `unit` (`dwelling` is a deprecated alias of `unit`). `activity` and `room_name` reference the external activity and room-name vocabularies.
 - **Room relationships** are directed option-specific edges (`from_room_type` → `to_room_type`). An optional `name` labels an edge and `max_distance` limits it in metres.
 - **Equipment and openings** say what a room contains and how it is reached and lit. Each `RoomTypeConfiguration` may list `equipment` and `openings`; both reference **components** and leave position to a generator.
   - A **component (`Component`)** is a parametric geometry template for one placeable object: fixture, furniture, device space, plant item, door, window or clearance. `element` names the element whose applicability the placed object must satisfy. The component adds `parameters` (metres, keyed by name; `width` runs along the host wall), `clearances` that must stay free, `placement` rules, `connections` and optional `parts`.
@@ -90,7 +96,7 @@ For ordering, only the domain is relevant. In the project, the actual model or d
 
 - `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
-- `examples/`: sample usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, and phases
+- `examples/`: sample uses, usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, and phases
 - `scripts/schema_check.sh`: local schema validation entry point
 - `.github/workflows/schema-check.yml`: GitHub Actions workflow for automatic validation
 
@@ -102,8 +108,9 @@ The repository includes a minimal validation pipeline that checks:
 - the main LinkML schema passes LinkML metamodel validation
 - the main LinkML schema can be compiled to JSON Schema
 - schema contracts for the `RoomType` graph (`room_type_kind`, `extends`, `contains`, `legacy_ids`), tagged `UsageScenario` records, inline option `target`/`adds`/relationships, boundary-level `activated_room_types`, explicit room configurations, and the requirements-delivery classes
-- every room graph, scenario, option, goal-level, and legacy-alias reference points to an existing id; specialization and containment graphs are acyclic
+- every room graph, scenario, option, goal-level, use, and legacy-alias reference points to an existing id; specialization and containment graphs are acyclic
 - every example record validates against the compiled JSON Schema with closed classes, so unknown fields fail
+- every scenario has a `scope`; every container lists exactly one use; a `unit` scenario only targets unit types of its uses
 - equipment and openings reference existing components, room types, goal levels and options, and each `connects_to` sets exactly one target
 
 Run the check locally with:
@@ -121,6 +128,8 @@ To check a pragmaticBIM-reference checkout against this schema:
 python scripts/validate_reference.py ../pragmaticBIM-reference                 # room_types, usage_scenarios, components
 python scripts/validate_reference.py ../pragmaticBIM-reference elements        # any dataset collection
 ```
+
+It also reports container room types that list more than one use, which the generated JSON Schema cannot express.
 
 ## Repository Layout
 

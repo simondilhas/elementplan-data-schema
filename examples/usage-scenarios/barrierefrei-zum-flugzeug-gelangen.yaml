@@ -10,6 +10,9 @@ description:
     um.
   en: Passengers with reduced mobility are received in the assistance waiting room,
     reach the gate step-free by lift, and transfer at the ambulift stand.
+scope: use
+uses:
+- pragmaticbim:use/verkehr
 tags:
 - flughafen
 - abflug

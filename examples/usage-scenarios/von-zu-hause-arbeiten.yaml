@@ -7,6 +7,9 @@ name:
 description:
   de: Bewohnende arbeiten in der Wohnung in einem eigenen Raum.
   en: Occupants work in the dwelling in a room of their own.
+scope: unit
+uses:
+- pragmaticbim:use/wohnen
 tags:
 - wohnen
 - arbeiten
@@ -32,6 +35,5 @@ options:
     en: Home office
   excludes:
   - pragmaticbim:room-type/wohnung-1-5
-  target: pragmaticbim:room-type/wohnung
   adds:
   - pragmaticbim:room-type/arbeitszimmer

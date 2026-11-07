@@ -313,6 +313,33 @@ enums:
       room: {}
       container: {}
 
+  ScopeLevel:
+    description: >-
+      Level of the functional requirements hierarchy (Project → Use → Unit
+      type) at which a usage scenario is answered.
+    permissible_values:
+      project:
+        description: Answered once for the whole project.
+      use:
+        description: Answered once per use of the project that the scenario applies to.
+      unit:
+        description: >-
+          Answered once per unit type (container room type) whose use the
+          scenario applies to.
+
+  DefaultScopeEnum:
+    description: Where a room type sits by default.
+    permissible_values:
+      site:
+        description: On the site, outside the building.
+      building:
+        description: In the building, shared by its units.
+      unit:
+        description: Inside a unit (dwelling, hotel room, patient room, office unit).
+      dwelling:
+        description: Deprecated alias of unit; read as unit.
+        deprecated: Use unit.
+
   ComponentCategoryEnum:
     description: Grouping of components for catalogues and generators.
     permissible_values:
@@ -694,6 +721,35 @@ slots:
     description: >-
       Lightweight labels used to group and filter usage scenarios. Tags have
       no catalog records, hierarchy, or foreign-key semantics.
+  scope:
+    range: ScopeLevel
+    description: >-
+      Level at which a usage scenario is answered: project, use, or unit
+      (unit type).
+  uses:
+    multivalued: true
+    range: Use
+    inlined: false
+    description: >-
+      Uses this record applies to. Omit or leave empty to apply to every use.
+      A container room type (unit type) lists exactly one use.
+  use:
+    range: Use
+    inlined: false
+    deprecated: Use uses; kept as an alias for one release.
+    description: >-
+      Deprecated single-value alias of uses. Read use X as uses [X]; do not
+      set both.
+  default_scope:
+    range: DefaultScopeEnum
+    description: >-
+      Where the room type sits by default: on the site, in the building, or
+      inside a unit. dwelling is a deprecated alias of unit.
+  activity:
+    range: string
+    description: >-
+      Identifier of the activity in the activity vocabulary (e.g. M-RES).
+      An external reference, not a programme class.
   room_type_kind:
     range: RoomTypeKindEnum
     description: >-
@@ -1110,6 +1166,7 @@ classes:
       - models
       - documents
       - project_goals
+      - uses
       - room_types
       - usage_scenarios
       - workflows
@@ -1121,6 +1178,13 @@ classes:
       - custom_pset_entities
       - elements
       - components
+    slot_usage:
+      uses:
+        inlined: true
+        inlined_as_list: true
+        description: >-
+          Uses (Nutzungen) of the functional requirements hierarchy, such as
+          Wohnen or Arbeit.
 
   Domain:
     slots:
@@ -1227,6 +1291,10 @@ classes:
       configuration explicitly contains all fixed element attributes and its
       minimum size; there is no inheritance between the room type and its
       configurations.
+      A container room type is a unit type and has exactly one use; a unit
+      scenario applies to it when that use is in the scenario's uses.
+      default_scope, activity and room_name place and name a room by
+      reference to external vocabularies.
     slots:
       - id
       - code
@@ -1234,7 +1302,10 @@ classes:
       - name
       - definition
       - room_type_kind
+      - default_scope
+      - activity
       - room_name
+      - uses
       - extends
       - contains
       - legacy_ids
@@ -1246,6 +1317,17 @@ classes:
       configurations:
         required: true
         minimum_cardinality: 1
+    rules:
+      - description: A container room type (unit type) has exactly one use.
+        preconditions:
+          slot_conditions:
+            room_type_kind:
+              equals_string: container
+        postconditions:
+          slot_conditions:
+            uses:
+              required: true
+              exact_cardinality: 1
 
   RoomTypeComponent:
     description: >-
@@ -1678,7 +1760,8 @@ classes:
       One way to meet a scenario's need. adds names the room or container
       types it produces; room_relationships are directed edges between rooms.
       target is the container receiving the added room types (omit for the
-      building). exclusive marks an option that excludes
+      building, or on a unit scenario for the unit type being answered).
+      exclusive marks an option that excludes
       every other option of its scenario, such as "kein" (no room types and
       no room types), which also makes the scenario optional. excludes
       names options or room types elsewhere that cannot be combined with
@@ -1707,7 +1790,8 @@ classes:
         inlined: false
         description: >-
           Container room type to which this option adds room types. Omit when
-          the added room types belong directly to the building.
+          the added room types belong directly to the building. On a unit
+          scenario, omitting it means the unit type being answered.
 
   UsageScenario:
     description: >-
@@ -1718,17 +1802,52 @@ classes:
       with a single option and no "kein", the question is skipped. Choices,
       counts, and the programme tree live in the app. Distinct from Workflow
       Szenarienentwicklung, which is urban design variants.
+      scope is the level the scenario is answered on: project (once), use
+      (once per use in uses), or unit (once per unit type whose use is in
+      uses). Omit uses to apply to every use. The answers live in the project
+      per scope node (project, use, unit type), not in this catalog. use is a
+      deprecated single-value alias of uses, kept for one release.
     slots:
       - id
       - code
       - sort_order
       - name
       - description
+      - scope
+      - uses
+      - use
       - tags
       - status
       - jurisdiction
       - allows_multiple
       - options
+    slot_usage:
+      scope:
+        required: true
+    rules:
+      - description: use is an alias of uses; set only one of them.
+        preconditions:
+          slot_conditions:
+            use:
+              value_presence: PRESENT
+        postconditions:
+          slot_conditions:
+            uses:
+              value_presence: ABSENT
+
+  Use:
+    description: >-
+      Nutzung (e.g. Wohnen, Arbeit): the middle level of the functional
+      requirements hierarchy Project → Use → Unit type. A project picks its
+      uses; each unit type (container room type) belongs to exactly one use,
+      and usage scenarios name the uses they apply to.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - status
 
   ProjectGoal:
     description: >-

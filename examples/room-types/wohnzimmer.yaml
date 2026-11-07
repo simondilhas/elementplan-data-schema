@@ -8,6 +8,7 @@ definition:
   de: Gemeinsamer Aufenthaltsraum der Wohnung.
   en: Shared living space of the dwelling.
 room_type_kind: room
+default_scope: unit
 configurations:
 - id: pragmaticbim:room-type-configuration/wohnzimmer-standard
   sort_order: 1

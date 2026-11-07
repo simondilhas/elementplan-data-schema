@@ -8,6 +8,7 @@ definition:
   de: Kontrolle von Personen und Handgepäck vor dem Eintritt in den Sicherheitsbereich.
   en: Screening of people and cabin baggage before the secure area.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/sicherheitskontrolle-standard
   sort_order: 1
