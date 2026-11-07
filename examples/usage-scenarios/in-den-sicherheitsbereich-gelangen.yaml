@@ -8,6 +8,9 @@ description:
   de: Abfliegende Reisende geben in der Stosszeit das Gepäck auf und passieren die
     Sicherheitskontrolle.
   en: During the peak departure rush, passengers drop baggage and pass security screening.
+scope: use
+uses:
+- pragmaticbim:use/verkehr
 tags:
 - flughafen
 - abflug

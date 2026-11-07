@@ -1,0 +1,10 @@
+id: pragmaticbim:use/wohnen
+code: USE-WH
+sort_order: 1
+name:
+  de: Wohnen
+  en: Housing
+definition:
+  de: Dauerhaftes Wohnen von Haushalten.
+  en: Permanent residence of households.
+status: active

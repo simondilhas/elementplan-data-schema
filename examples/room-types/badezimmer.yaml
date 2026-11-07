@@ -8,6 +8,7 @@ definition:
   de: Sanitärraum der Wohnung mit Dusche oder Badewanne, WC und Lavabo.
   en: Sanitary room of the dwelling with shower or bathtub, toilet, and washbasin.
 room_type_kind: room
+default_scope: unit
 configurations:
 - id: pragmaticbim:room-type-configuration/badezimmer-low
   sort_order: 1

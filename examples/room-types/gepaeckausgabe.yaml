@@ -8,6 +8,7 @@ definition:
   de: Bereich, in dem ankommende Reisende aufgegebenes Gepäck abholen.
   en: Area where arriving passengers collect checked baggage.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/gepaeckausgabe-standard
   sort_order: 1

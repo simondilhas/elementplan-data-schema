@@ -8,6 +8,7 @@ definition:
   de: Kontrolle von Transferpassagieren zwischen Ankunft und Weiterflug.
   en: Screening of transfer passengers between arrival and onward flight.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/transferkontrolle-standard
   sort_order: 1

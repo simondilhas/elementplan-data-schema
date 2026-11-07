@@ -8,6 +8,7 @@ definition:
   de: Raum in der Wohnung zum Arbeiten von zu Hause.
   en: Room in the dwelling for working from home.
 room_type_kind: room
+default_scope: unit
 configurations:
 - id: pragmaticbim:room-type-configuration/arbeitszimmer-standard
   sort_order: 1

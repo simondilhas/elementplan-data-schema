@@ -10,6 +10,8 @@ definition:
   de: Wohnung mit einem Schlafzimmer.
   en: Dwelling with one bedroom.
 room_type_kind: container
+uses:
+- pragmaticbim:use/wohnen
 extends: pragmaticbim:room-type/wohnung
 contains:
 - room_type: pragmaticbim:room-type/wohnzimmer

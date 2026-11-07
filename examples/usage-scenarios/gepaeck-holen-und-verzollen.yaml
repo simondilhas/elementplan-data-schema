@@ -9,6 +9,9 @@ description:
     weiterreisen.
   en: Passengers collect baggage when needed and cross the customs area before continuing
     their journey.
+scope: use
+uses:
+- pragmaticbim:use/verkehr
 tags:
 - flughafen
 - ankunft

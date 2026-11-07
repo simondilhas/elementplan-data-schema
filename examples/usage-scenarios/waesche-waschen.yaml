@@ -8,6 +8,9 @@ description:
   de: Bewohnende waschen und trocknen ihre Wäsche, in der Wohnung oder gemeinschaftlich
     im Gebäude.
   en: Occupants wash and dry their laundry, in the dwelling or shared in the building.
+scope: use
+uses:
+- pragmaticbim:use/wohnen
 tags:
 - wohnen
 - haushalt

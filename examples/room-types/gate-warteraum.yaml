@@ -8,6 +8,7 @@ definition:
   de: Warteraum am Gate bis zum Einstieg.
   en: Waiting room at the gate until boarding.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/gate-warteraum-standard
   sort_order: 1

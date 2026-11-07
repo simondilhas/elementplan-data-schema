@@ -7,6 +7,9 @@ name:
 description:
   de: Bewohnende gehen vom Wohnzimmer direkt nach draussen.
   en: Occupants go from the living room directly outside.
+scope: unit
+uses:
+- pragmaticbim:use/wohnen
 tags:
 - wohnen
 - aussenraum

@@ -8,6 +8,7 @@ definition:
   de: Bereich der Zollabfertigung nach der Ankunft.
   en: Area for customs clearance after arrival.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/zollbereich-standard
   sort_order: 1

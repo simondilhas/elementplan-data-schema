@@ -8,6 +8,7 @@ definition:
   de: Gemeinschaftlicher Raum zum Waschen und Trocknen für alle Wohnungen des Gebäudes.
   en: Shared room for washing and drying used by all dwellings of the building.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/waschkueche-standard
   sort_order: 1

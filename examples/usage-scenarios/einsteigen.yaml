@@ -7,6 +7,9 @@ name:
 description:
   de: Reisende warten am Gate und gelangen ins Flugzeug.
   en: Passengers wait at the gate and reach the aircraft.
+scope: use
+uses:
+- pragmaticbim:use/verkehr
 tags:
 - flughafen
 - abflug

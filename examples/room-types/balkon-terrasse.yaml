@@ -10,6 +10,7 @@ definition:
   en: Private open outdoor space of the dwelling. A balcony on upper floors, a terrace
     at ground level or on the roof.
 room_type_kind: room
+default_scope: unit
 configurations:
 - id: pragmaticbim:room-type-configuration/balkon-terrasse-standard
   sort_order: 1
