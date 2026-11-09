@@ -530,6 +530,29 @@ require_reference("activated_room_types", "RoomType", True)
 if schema["classes"]["ProjectGoalLevel"].get("slot_usage", {}).get("activated_workflows", {}).get("required"):
     raise SystemExit("ProjectGoalLevel.activated_workflows must stay optional for boundary conditions.")
 
+require_class_slots("ProjectGoal", ("group", "uses", "allows_multiple"))
+if set(enums.get("ProjectGoalGroupEnum", {}).get("permissible_values", {})) != {"ziele", "rahmenbedingungen"}:
+    raise SystemExit("ProjectGoalGroupEnum must permit ziele and rahmenbedingungen.")
+group_slot = schema["slots"].get("group") or {}
+if group_slot.get("range") != "ProjectGoalGroupEnum" or group_slot.get("multivalued"):
+    raise SystemExit("group slot must be a single ProjectGoalGroupEnum.")
+goal_allows_multiple = schema["classes"]["ProjectGoal"].get("slot_usage", {}).get("allows_multiple", {})
+if str(goal_allows_multiple.get("ifabsent")).lower() != "false":
+    raise SystemExit("ProjectGoal.allows_multiple must default to false.")
+require_class_slots("ProjectGoalLevel", ("exclusive",))
+require_class_slots("Use", ("reference_quantity", "typical_levels"))
+require_reference("typical_levels", "ProjectGoalLevel", multivalued=True)
+reference_quantity_slot = schema["slots"].get("reference_quantity") or {}
+if (
+    reference_quantity_slot.get("range") != "ReferenceQuantity"
+    or reference_quantity_slot.get("multivalued")
+    or reference_quantity_slot.get("inlined") is not True
+):
+    raise SystemExit("reference_quantity slot must be a single inlined ReferenceQuantity.")
+require_class_slots("ReferenceQuantity", ("id", "code", "sort_order", "name", "unit", "status"))
+
+print("Schema contract OK: ProjectGoal group/uses/allows_multiple, exclusive levels, Use typical_levels/reference_quantity")
+
 require_class_slots("OptionSize", ("id", "sort_order", "name", "size_restrictions"))
 require_class_slots(
     "SizeRestriction",
@@ -968,10 +991,11 @@ for class_name, props in (
     ("RoomType", ("id", "room_type_kind", "default_scope", "activity", "room_name", "uses", "extends", "contains", "legacy_ids", "configurations")),
     ("RoomTypeComponent", ("room_type",)),
     ("UsageScenario", ("scope", "uses", "use", "tags", "allows_multiple", "options")),
-    ("Use", ("id", "code", "sort_order", "name", "definition", "status")),
+    ("Use", ("id", "code", "sort_order", "name", "definition", "status", "reference_quantity", "typical_levels")),
+    ("ReferenceQuantity", ("id", "code", "sort_order", "name", "unit", "status")),
     ("ScenarioOption", ("id", "project_goal_levels", "target", "sizes", "adds", "room_relationships", "exclusive", "excludes")),
-    ("ProjectGoal", ("is_boundary_condition",)),
-    ("ProjectGoalLevel", ("activated_room_types",)),
+    ("ProjectGoal", ("is_boundary_condition", "group", "uses", "allows_multiple")),
+    ("ProjectGoalLevel", ("activated_room_types", "exclusive")),
     ("OptionSize", ("size_restrictions",)),
     ("SizeRestriction", ("room_type",)),
 ):
@@ -985,9 +1009,15 @@ for old_prop in ("topic", "required_room_types", "required_unit_types"):
         raise SystemExit(f"Compiled JSON Schema UsageScenario must not include {old_prop}.")
 if "scope" not in defs["UsageScenario"].get("required", []):
     raise SystemExit("Compiled JSON Schema UsageScenario must require scope.")
-for class_name in ("UsageScenario", "RoomType"):
+for class_name in ("UsageScenario", "RoomType", "ProjectGoal"):
     if defs[class_name]["properties"]["uses"].get("items", {}).get("type") != "string":
         raise SystemExit(f"Compiled JSON Schema {class_name}.uses must be a list of Use ids.")
+if defs["Use"]["properties"]["typical_levels"].get("items", {}).get("type") != "string":
+    raise SystemExit("Compiled JSON Schema Use.typical_levels must be a list of ProjectGoalLevel ids.")
+if {"$ref": "#/$defs/ReferenceQuantity"} not in defs["Use"]["properties"]["reference_quantity"].get("anyOf", []):
+    raise SystemExit("Compiled JSON Schema Use.reference_quantity must inline a ReferenceQuantity.")
+if set(defs["ProjectGoalGroupEnum"].get("enum", [])) != {"ziele", "rahmenbedingungen"}:
+    raise SystemExit("Compiled JSON Schema ProjectGoalGroupEnum must permit ziele and rahmenbedingungen.")
 if set(defs["ScopeLevel"].get("enum", [])) != {"project", "use", "unit"}:
     raise SystemExit("Compiled JSON Schema ScopeLevel must permit project, use, and unit.")
 if defs["ScenarioOption"]["properties"]["adds"].get("items", {}).get("type") != "string":
@@ -1284,6 +1314,7 @@ reference_kinds = {
     "to_room_type": ("room_type",),
     "excludes": ("option", "room_type"),
     "project_goal_levels": ("project_goal_level",),
+    "typical_levels": ("project_goal_level",),
     "uses": ("use",),
     "use": ("use",),
 }
@@ -1307,7 +1338,7 @@ def check_references(path, node):
         raise SystemExit(f"{path}: {node['id']} must not exclude itself.")
 
 
-for directory in ("usage-scenarios", "project-goals", "room-types"):
+for directory in ("usage-scenarios", "project-goals", "room-types", "uses"):
     for path, record in load_examples(directory):
         check_references(path, record)
 
@@ -1477,6 +1508,34 @@ if container_use_errors([{**room, "uses": ["pragmaticbim:use/wohnen", "pragmatic
     raise SystemExit("validate_reference must allow a room with several uses.")
 
 print("Scope checks OK: scope required, use alias, default_scope, one use per container")
+
+# Project goals: picked levels must respect allows_multiple and exclusive levels.
+from validate_reference import goal_level_errors
+
+certification = next(r for r in dataset["project_goals"] if r["id"].endswith("/zertifizierung"))
+dwelling_mix = next(r for r in dataset["project_goals"] if r["id"].endswith("/wohnungsmix"))
+none_level, eco_level, snbs_level = (level["id"] for level in certification["levels"])
+mix_levels = [level["id"] for level in dwelling_mix["levels"]]
+single_choice = {**certification, "allows_multiple": False}
+goal_cases = (
+    ("two levels of a multiple-choice goal", [certification], [eco_level, snbs_level], True),
+    ("an exclusive level with another level", [certification], [none_level, snbs_level], False),
+    ("an exclusive level alone", [certification], [none_level], True),
+    ("two levels of a goal with allows_multiple: false", [single_choice], [eco_level, snbs_level], False),
+    ("two levels of a goal without allows_multiple", [dwelling_mix], mix_levels[:2], False),
+    ("one level of a single-choice goal", [dwelling_mix], mix_levels[:1], True),
+)
+for label, goals, picked, expected in goal_cases:
+    if (not goal_level_errors(goals, picked)) != expected:
+        raise SystemExit(f"Project validation must {'accept' if expected else 'reject'} {label}.")
+for label, slot, record in (
+    ("goal with unknown group", "project_goals", {**certification, "group": "sonstiges"}),
+    ("use with an inline typical level", "uses", {**dataset["uses"][0], "typical_levels": [certification["levels"][0]]}),
+):
+    if is_valid(slot, record):
+        raise SystemExit(f"Compiled JSON Schema must reject a {label}.")
+
+print("Project goal checks OK: group, allows_multiple, exclusive levels, typical_levels")
 
 # References from equipment and openings
 component_ids = {record["id"] for record in dataset["components"]}

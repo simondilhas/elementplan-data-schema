@@ -1,0 +1,48 @@
+id: pragmaticbim:project-goal/zertifizierung
+sort_order: 110
+code: PG-ZER
+name:
+  de: Zertifizierung
+  en: Certification
+description:
+  de: Rahmenbedingung, welche Labels das Gebäude erhält. Mehrere Labels lassen sich
+    kombinieren.
+  en: Boundary condition for which labels the building receives. Several labels can
+    be combined.
+picture_link: null
+status: active
+group: rahmenbedingungen
+is_boundary_condition: true
+allows_multiple: true
+levels:
+- id: pragmaticbim:project-goal-level/zertifizierung-keine
+  code: ZER-01
+  sort_order: 1
+  name:
+    de: Keine
+    en: None
+  description:
+    de: Das Gebäude wird nicht zertifiziert.
+    en: The building is not certified.
+  status: active
+  exclusive: true
+- id: pragmaticbim:project-goal-level/zertifizierung-minergie-eco
+  code: ZER-02
+  sort_order: 2
+  name:
+    de: Minergie-ECO
+    en: Minergie-ECO
+  description:
+    de: Minergie mit zusätzlichen Anforderungen an Gesundheit und Bauökologie.
+    en: Minergie with additional requirements for health and building ecology.
+  status: active
+- id: pragmaticbim:project-goal-level/zertifizierung-snbs
+  code: ZER-03
+  sort_order: 3
+  name:
+    de: SNBS Hochbau
+    en: SNBS Building Construction
+  description:
+    de: Standard Nachhaltiges Bauen Schweiz.
+    en: Swiss Sustainable Building Standard.
+  status: active

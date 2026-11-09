@@ -340,6 +340,14 @@ enums:
         description: Deprecated alias of unit; read as unit.
         deprecated: Use unit.
 
+  ProjectGoalGroupEnum:
+    description: Section of the goals step in which a project goal is asked.
+    permissible_values:
+      ziele:
+        description: Goals (Ziele) that say why information is needed.
+      rahmenbedingungen:
+        description: Boundary conditions (Rahmenbedingungen) the project is set within.
+
   ComponentCategoryEnum:
     description: Grouping of components for catalogues and generators.
     permissible_values:
@@ -793,8 +801,9 @@ slots:
   exclusive:
     range: boolean
     description: >-
-      True when choosing this option excludes every other option of the
-      same scenario (e.g. "kein"). Omit or false otherwise.
+      True when choosing this option or level excludes every other option of
+      the same scenario or level of the same goal (e.g. "kein", "Keine").
+      Omit or false otherwise.
   excludes:
     multivalued: true
     inlined: false
@@ -808,9 +817,28 @@ slots:
   allows_multiple:
     range: boolean
     description: >-
-      True when several options of this scenario can be chosen together.
-      Exclusive options still exclude the others. Omit or false for a
-      single choice.
+      True when several options of this scenario, or levels of this goal,
+      can be chosen together. Exclusive options and levels still exclude the
+      others. Omit or false for a single choice.
+  group:
+    range: ProjectGoalGroupEnum
+    description: >-
+      Section of the goals step in which the goal is asked: ziele or
+      rahmenbedingungen.
+  typical_levels:
+    multivalued: true
+    range: ProjectGoalLevel
+    inlined: false
+    description: >-
+      Project goal levels typically chosen for this use, suggested when a
+      project picks the use. A suggestion, not a rule; the project may
+      choose other levels.
+  reference_quantity:
+    range: ReferenceQuantity
+    inlined: true
+    description: >-
+      Quantity a use is sized by (Bezugsgrösse), such as the number of
+      workstations for Arbeit.
   sizes:
     multivalued: true
     range: OptionSize
@@ -1840,13 +1868,29 @@ classes:
       Nutzung (e.g. Wohnen, Arbeit): the middle level of the functional
       requirements hierarchy Project → Use → Unit type. A project picks its
       uses; each unit type (container room type) belongs to exactly one use,
-      and usage scenarios name the uses they apply to.
+      and usage scenarios name the uses they apply to. reference_quantity is
+      the quantity the use is sized by; typical_levels suggests the goal
+      levels a project with this use usually chooses.
     slots:
       - id
       - code
       - sort_order
       - name
       - definition
+      - status
+      - reference_quantity
+      - typical_levels
+
+  ReferenceQuantity:
+    description: >-
+      Bezugsgrösse of a use, such as the number of workstations or beds.
+      The project records the value. Omit unit for a count.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - unit
       - status
 
   ProjectGoal:
@@ -1855,6 +1899,12 @@ classes:
       is_boundary_condition marks a goal that sets a boundary condition
       (Rahmenbedingung) instead, such as the Wohnungsmix; its levels then
       activate container room types rather than (or besides) workflows.
+      group is the section of the goals step the goal is asked in. uses
+      names the uses the goal applies to; omit it for a general goal asked
+      in every project. One level is chosen unless allows_multiple is true;
+      an exclusive level (e.g. "Keine") is never combined with another. A
+      goal whose levels set activated_room_types defines unit types and is
+      answered in Functional requirements, not in the goals step.
     slots:
       - id
       - code
@@ -1864,8 +1914,21 @@ classes:
       - picture_link
       - status
       - comment
+      - group
+      - uses
       - is_boundary_condition
+      - allows_multiple
       - levels
+    slot_usage:
+      uses:
+        description: >-
+          Uses this goal applies to. Omit or leave empty for a general goal
+          asked in every project.
+      allows_multiple:
+        ifabsent: "false"
+        description: >-
+          True when several levels of this goal can be chosen together (e.g.
+          Minergie-ECO and SNBS Hochbau). Omit or false for a single choice.
 
   ProjectGoalLevel:
     description: >-
@@ -1874,7 +1937,8 @@ classes:
       is the complete Goal × Level → Workflow set for this level. On a
       boundary-condition goal, activated_room_types is the complete set of
       container room types the level activates; activated_workflows may then
-      be empty.
+      be empty. exclusive marks a level (e.g. "Keine") that cannot be chosen
+      together with any other level of its goal.
     slots:
       - id
       - code
@@ -1882,10 +1946,15 @@ classes:
       - name
       - description
       - status
+      - exclusive
       - activated_workflows
       - activated_room_types
       - comment
     slot_usage:
+      exclusive:
+        description: >-
+          True when this level cannot be chosen together with any other level
+          of its goal (e.g. "Keine"). Omit or false otherwise.
       activated_room_types:
         inlined: false
         inlined_as_list: false
