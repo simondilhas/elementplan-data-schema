@@ -1,0 +1,11 @@
+id: door/2.04-2.03
+opening_kind: door
+function: access
+component: pragmaticbim:component/tuer-dreh-innen
+host: space/2.03
+edge: 3
+offset: 0.4
+connects_to: space/2.04
+width: 0.8
+parameters:
+  hinge: left

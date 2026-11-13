@@ -1,0 +1,5 @@
+id: programme/balkon
+label: Balkon je Wohnung
+room_type: pragmaticbim:room-type/balkon-terrasse
+count: 12
+from_option: pragmaticbim:option/balkon-terrasse

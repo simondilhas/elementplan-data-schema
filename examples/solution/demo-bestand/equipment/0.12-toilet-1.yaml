@@ -1,0 +1,8 @@
+id: space/0.12/toilet-1
+function: toilet
+component: pragmaticbim:component/wc-wandhaengend
+parent_space: space/0.12
+edge: 1
+offset: 0.3
+origin: {kind: plan_scan, document: plans/EG_1978.pdf, page: 1, region: "470,230,490,250"}
+review_status: proposed
