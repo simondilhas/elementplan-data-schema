@@ -1,0 +1,8 @@
+id: door/0.10-0.12
+opening_kind: door
+host: space/0.12
+edge: 3
+offset: 0.5
+width: 0.8
+origin: {kind: plan_scan, document: plans/EG_1978.pdf, page: 1}
+review_status: proposed

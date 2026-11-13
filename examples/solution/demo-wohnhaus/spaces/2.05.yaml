@@ -1,0 +1,9 @@
+id: space/2.05
+label: Balkon 2.1
+room_type: pragmaticbim:room-type/balkon-terrasse
+fulfils: [programme/balkon]
+parent_level: level/02
+parent_unit: unit/2.1
+origin: {kind: requirement, option: pragmaticbim:option/balkon-terrasse}
+outline: [[0.0, -1.8], [4.0, -1.8], [4.0, 0.0], [0.0, 0.0]]
+edge_kinds: [exterior, exterior, exterior, exterior]

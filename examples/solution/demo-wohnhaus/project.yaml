@@ -1,0 +1,4 @@
+id: project/demo-wohnhaus
+label: Wohnhaus Demo
+origin: {kind: authored}
+placement: {crs: "EPSG:2056", x: 2600000.0, y: 1200000.0, z: 540.0}

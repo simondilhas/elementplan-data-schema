@@ -1399,4 +1399,11 @@ for record in dataset["room_types"]:
 print("Example references OK: components, equipment, openings")
 PY
 
+# Solution schema: compiles, and every example project passes its checks.
+gen-json-schema schema/solution.linkml.yaml > /dev/null
+echo "Solution schema OK: compiles to JSON Schema"
+for project in examples/solution/*/; do
+  python scripts/check_solution.py "$project"
+done
+
 echo "Schema check passed."

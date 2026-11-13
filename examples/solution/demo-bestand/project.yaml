@@ -1,0 +1,3 @@
+id: project/demo-bestand
+label: Bestandesbau Demo (aus Plan digitalisiert)
+origin: {kind: plan_scan, document: plans/EG_1978.pdf}

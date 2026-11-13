@@ -1,0 +1,5 @@
+id: override/2.03-toilet
+target: space/2.03/equipment/toilet#1
+set:
+  offset: 0.45
+reason: Vorwandelement passt erst ab 0.45 m Abstand zur Ecke.

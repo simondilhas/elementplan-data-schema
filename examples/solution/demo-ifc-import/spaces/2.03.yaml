@@ -1,0 +1,20 @@
+id: space/2.03
+label: "2.03"
+room_type: pragmaticbim:room-type/badezimmer
+parent_level: level/02
+origin: {kind: ifc_import, document: deliveries/arc/ARC_Demo_2026-11-12.ifc, region: 2O2Fr$t4X7Zf8NOew3FLOH}
+outline: [[4.0, 0.0], [6.4, 0.0], [6.4, 2.1], [4.0, 2.1]]
+height: 2.4
+values:
+  FloorCovering: {value: Naturstein allgemein, source: ifc-arc}
+ifc:
+  global_id: 2O2Fr$t4X7Zf8NOew3FLOH
+  entity: IfcSpace
+  psets:
+    ARC_Custom:
+      Raumgruppe: Nasszellen
+    Pset_SpaceCommon:
+      IsExternal: false
+      NetPlannedArea: 5.04
+    Pset_SpaceCoveringRequirements:
+      FloorCovering: Naturstein allgemein
