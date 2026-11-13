@@ -1,0 +1,12 @@
+id: system/ventilation-apartments
+system_kind: ventilation
+label: Kontrollierte Wohnungslüftung
+parent_building: building/a
+shafts: []
+serves:
+  - space: space/2.03
+    values:
+      ExhaustAirFlow: {value: 40, unit: m3/h}
+  - space: space/2.04
+    values:
+      SupplyAirFlow: {value: 30, unit: m3/h}

@@ -1,0 +1,6 @@
+id: project/demo-ifc
+label: Demo IFC Import
+origin: {kind: ifc_import, document: deliveries/arc/ARC_Demo_2026-11-12.ifc, region: 0YvctVUKr0kugbFTf53O9L}
+ifc:
+  global_id: 0YvctVUKr0kugbFTf53O9L
+  entity: IfcProject

@@ -1,0 +1,9 @@
+id: space/2.04
+label: "2.04"
+room_type: pragmaticbim:room-type/schlafzimmer
+parent_level: level/02
+parent_unit: unit/2.1
+origin: {kind: requirement}
+outline: [[0.0, 0.0], [4.0, 0.0], [4.0, 3.5], [0.0, 3.5]]
+edge_kinds: [exterior, interior, interior, party_wall]
+height: 2.5

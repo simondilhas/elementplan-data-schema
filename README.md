@@ -86,9 +86,40 @@ Element catalog membership is `needed_in_domain`. IDP assignment lives on the El
 
 For ordering, only the domain is relevant. In the project, the actual model or document matters — that is what is delivered and named.
 
+## Solution schema
+
+`schema/solution.linkml.yaml` is the authoring layer next to the requirements: what is designed, or what exists. It imports the Elementplan schema, so every link to a room type, configuration or option points at a real catalog record.
+
+```text
+requirements (Elementplan)  →  solution (decisions)  →  generators  →  IFC, contract graph
+                                      ↑
+          authoring · IFC import (ifc2yaml) · plan scans
+```
+
+- **Decisions only.** A space stores its room type, configuration, outline and edge kinds. Equipment positions, walls and ducts are derived; a hand change to a derived item is an `Override` with a reason.
+- **Three links to Elementplan.** `room_type` + `configuration` say what a record is, `fulfils` names the programme item it meets, `origin.option` names the scenario option that required it.
+- **One format for every source.** `origin.kind` is `requirement`, `authored`, `survey`, `plan_scan` or `ifc_import`. `review_status` (`proposed`, `confirmed`, `rejected`, `superseded`) applies to a record or a single value. A bare value means confirmed; the long form `{value, source, review_status}` is for imported or uncertain values.
+- **Programme items** have stable ids that are the same for every variant and competition entry, so entries can be compared item by item.
+- **IFC data as delivered.** Imported records keep all IFC properties in an `ifc` bucket (`global_id`, `entity`, `psets`). `values` holds the mapped attributes.
+- **Local geometry.** Outlines are in metres in the level frame; placements chain up to LV95 at the project.
+- **One record per file**, stable ids (`space/2.03`, `door/2.01-2.03`), references pointing one way (child to parent, instance to type, zone and system to what they group or serve).
+
+A project is a folder: `selection.yaml`, `project.yaml`, `programme/`, `contexts/`, `units/`, `spaces/`, `openings/`, `equipment/`, `zones/`, `systems/`, `overrides/`. `scripts/check_solution.py` loads the folder, validates it against the schema and checks what JSON Schema cannot: references resolve, configurations belong to their room type and suit the selected goal levels, openings fit on their edge, and the programme is met.
+
+```bash
+python scripts/check_solution.py examples/solution/demo-wohnhaus
+```
+
+Examples: `demo-wohnhaus` (new design), `demo-bestand` (plan scan), `demo-ifc-import` (IFC delivery with `ifc` bucket).
+
+Open: zone and system kinds are placeholder enums until Elementplan has zone and system types; the data contract namespace (`pbdc:`) needs confirming.
+
 ## What Is Included
 
 - `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
+- `schema/solution.linkml.yaml`: solution (authoring) schema, see above
+- `scripts/check_solution.py`: checks a solution project folder
+- `examples/solution/`: three solution example projects
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
 - `examples/`: sample usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, and phases
 - `scripts/schema_check.sh`: local schema validation entry point
