@@ -1,0 +1,9 @@
+id: window/2.03-1
+opening_kind: window
+function: daylight
+component: pragmaticbim:component/fenster
+host: space/2.03
+edge: 0
+offset: 0.9
+exterior: true
+width: 0.6

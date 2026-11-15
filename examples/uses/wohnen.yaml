@@ -1,0 +1,20 @@
+id: pragmaticbim:use/wohnen
+code: USE-WH
+sort_order: 1
+name:
+  de: Wohnen
+  en: Housing
+definition:
+  de: Dauerhaftes Wohnen von Haushalten.
+  en: Permanent residence of households.
+reference_quantity:
+  id: pragmaticbim:quantity/wohnen-wohnungen
+  code: USE-WH-Q
+  sort_order: 1
+  name:
+    de: Anzahl Wohnungen
+    en: Number of dwellings
+  status: active
+typical_levels:
+- pragmaticbim:project-goal-level/wohnungsmix-gemischt
+status: active

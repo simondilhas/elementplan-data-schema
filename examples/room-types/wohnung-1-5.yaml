@@ -10,6 +10,8 @@ definition:
   de: Kleinwohnung, in der Wohnen und Schlafen einen Raum teilen.
   en: Small dwelling where living and sleeping share one room.
 room_type_kind: container
+uses:
+- pragmaticbim:use/wohnen
 extends: pragmaticbim:room-type/wohnung
 contains:
 - room_type: pragmaticbim:room-type/wohnzimmer

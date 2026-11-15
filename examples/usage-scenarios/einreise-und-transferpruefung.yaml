@@ -7,6 +7,9 @@ name:
 description:
   de: Ankommende Transferpassagiere passieren die Passkontrolle und die Transferkontrolle.
   en: Arriving transfer passengers pass passport control and transfer screening.
+scope: use
+uses:
+- pragmaticbim:use/verkehr
 tags:
 - flughafen
 - ankunft

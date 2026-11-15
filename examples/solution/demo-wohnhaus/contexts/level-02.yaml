@@ -1,0 +1,5 @@
+id: level/02
+kind: level
+label: 2. Obergeschoss
+parent_building: building/a
+elevation: 6.0

@@ -1,0 +1,16 @@
+id: space/0.12
+label: "0.12 WC Herren"
+room_type: pragmaticbim:room-type/badezimmer
+review_status: proposed
+parent_level: level/eg
+origin:
+  kind: plan_scan
+  document: plans/EG_1978.pdf
+  page: 1
+  region: "412,220,498,301"
+  tool: vision-model 2026-11, prompt v3
+outline: [[0.0, 0.0], [2.2, 0.0], [2.2, 3.1], [0.0, 3.1]]
+edge_kinds: [interior, interior, exterior, interior]
+values:
+  LongName: {value: WC Herren, source: plan-scan, review_status: proposed}
+note: Raumtyp vorgeschlagen aus Beschriftung "WC H"; kein passender Typ WC-Anlage im Beispielkatalog.

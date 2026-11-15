@@ -1,0 +1,18 @@
+id: pragmaticbim:use/verkehr
+code: USE-VK
+sort_order: 2
+name:
+  de: Verkehr
+  en: Transport
+definition:
+  de: Abfertigung von Reisenden an Bahnhöfen und Flughäfen.
+  en: Handling of travellers at stations and airports.
+reference_quantity:
+  id: pragmaticbim:quantity/verkehr-reisende
+  code: USE-VK-Q
+  sort_order: 1
+  name:
+    de: Reisende pro Jahr
+    en: Travellers per year
+  status: active
+status: active

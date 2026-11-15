@@ -1,0 +1,9 @@
+id: parcel/a
+kind: parcel
+parent_project: project/demo-wohnhaus
+element: armasuisse:element/planungsperimeter-projektperimeter
+origin: {kind: authored, tool: elementplan context editor}
+geometry: {geometry_reference: geometry/parcel-a.geojson, geometry_format: geojson, representation: footprint}
+values:
+  LandID: {value: CH123456789012, source: oereb, review_status: confirmed}
+  PostalCode: {value: "3000", source: geo.admin.ch, review_status: proposed}

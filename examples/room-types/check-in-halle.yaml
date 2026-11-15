@@ -8,6 +8,7 @@ definition:
   de: Halle, in der abfliegende Reisende ankommen und Gepäck aufgeben.
   en: Hall where departing passengers arrive and drop baggage.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/check-in-halle-standard
   sort_order: 1

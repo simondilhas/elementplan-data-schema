@@ -1,0 +1,12 @@
+id: level/02
+kind: level
+label: 2. OG
+parent_project: project/demo-ifc
+elevation: 6.0
+origin: {kind: ifc_import, document: deliveries/arc/ARC_Demo_2026-11-12.ifc, region: 1kTvXnbbzCWw8lcMd1dR4o}
+ifc:
+  global_id: 1kTvXnbbzCWw8lcMd1dR4o
+  entity: IfcBuildingStorey
+  psets:
+    Pset_BuildingStoreyCommon:
+      AboveGround: true

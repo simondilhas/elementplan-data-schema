@@ -1,0 +1,12 @@
+id: space/2.03
+label: "2.03"
+room_type: pragmaticbim:room-type/badezimmer
+configuration: pragmaticbim:room-type-configuration/badezimmer-medium
+parent_level: level/02
+parent_unit: unit/2.1
+origin: {kind: requirement}
+outline: [[4.0, 0.0], [6.4, 0.0], [6.4, 2.1], [4.0, 2.1]]
+edge_kinds: [exterior, shaft, interior, interior]
+height: 2.4
+values:
+  FloorCovering: Naturstein allgemein

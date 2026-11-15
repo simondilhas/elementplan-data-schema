@@ -1,0 +1,9 @@
+# Export metadata of one delivery. Changes on every export, so it lives here
+# and not in the records. Not loaded by the checker.
+delivery: arc-2026-11-12
+trade: arc
+document: deliveries/arc/ARC_Demo_2026-11-12.ifc
+schema: IFC4
+authoring_tool: Revit 2026
+exported_at: "2026-11-12T16:40:00+01:00"
+sha256: 3f1c0d9e2b7a4c5d8e6f0a1b2c3d4e5f60718293a4b5c6d7e8f90123456789ab

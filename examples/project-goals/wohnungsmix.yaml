@@ -11,6 +11,9 @@ description:
     of each dwelling container type follows in the room programme.
 picture_link: null
 status: active
+group: rahmenbedingungen
+uses:
+- pragmaticbim:use/wohnen
 is_boundary_condition: true
 levels:
 - id: pragmaticbim:project-goal-level/wohnungsmix-kleinwohnungen

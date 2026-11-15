@@ -8,6 +8,7 @@ definition:
   de: Warteraum für Reisende, die Betreuung benötigen.
   en: Waiting room for passengers who need assistance.
 room_type_kind: room
+default_scope: building
 configurations:
 - id: pragmaticbim:room-type-configuration/betreuungs-warteraum-standard
   sort_order: 1

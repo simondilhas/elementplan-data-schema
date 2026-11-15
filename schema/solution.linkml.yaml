@@ -1,0 +1,616 @@
+id: https://pragmaticbim.ch/id/solution
+name: elementplan_solution
+title: Elementplan solution schema
+description: >-
+  Authoring layer for what is designed or what exists. Every record is a
+  decision made against the Elementplan requirements: a space instantiates a
+  room type and configuration, a value fills an element attribute, a room
+  fulfils a programme item. Only decisions are stored. Equipment positions,
+  walls, ducts and fire dampers are derived by generators; a hand change to
+  a derived item is an explicit Override.
+
+  The same records are filled from three sources: authoring (editor, LLM),
+  IFC import, and plan scans. origin and per-value review_status say which
+  one and how certain it is.
+
+  Conventions:
+  - One record per file, stable ids (space/2.03, level/02, door/2.01-2.03).
+  - References point one way: child to parent, instance to type, zone and
+    system to what they group or serve.
+  - Geometry is local. A context with a placement defines a local frame in
+    metres; its children use that frame. The top placement is in LV95
+    (EPSG:2056).
+  - Slot and class names follow the Pragmatic BIM data contract where a
+    concept exists there (parent_* slots, contract_class mapping), so a
+    generated contract graph can join on the same ids.
+
+version: 0.1.0
+license: Apache-2.0
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  pragmaticbim: https://pragmaticbim.ch/id/
+  solution: https://pragmaticbim.ch/id/solution/
+  # TODO: confirm the namespace of the Pragmatic BIM data contract.
+  pbdc: https://schema.pragmaticbim.ch/
+
+default_prefix: solution
+default_range: string
+
+imports:
+  - linkml:types
+  - elementplan.linkml
+
+# ---------------------------------------------------------------- enums
+
+enums:
+  ReviewStatusEnum:
+    description: How certain a record or value is. Plain values count as confirmed.
+    permissible_values:
+      proposed:
+        description: Written by a model, an import or a scan; not yet reviewed.
+      confirmed:
+        description: Accepted by a person, or legally binding (ÖREB).
+      rejected:
+        description: Reviewed and found wrong; kept so a re-run does not propose it again.
+      superseded:
+        description: Replaced by a newer survey or delivery; kept for history.
+
+  OriginKindEnum:
+    description: Why the record exists.
+    permissible_values:
+      requirement:
+        description: Required by a selected scenario option or programme item.
+      authored:
+        description: Decided by a designer without a programme link (e.g. extra storage).
+      survey:
+        description: Found in an existing building on site.
+      plan_scan:
+        description: Read from an existing plan by a vision model.
+      ifc_import:
+        description: Taken from a delivered IFC model.
+
+  ContextKindEnum:
+    description: Spatial context of a record. Maps to the data contract SpatialContext subclasses.
+    permissible_values:
+      perimeter:
+        meaning: pbdc:PerimeterContext
+      parcel:
+        meaning: pbdc:LegalSiteContext
+      building:
+        meaning: pbdc:BuildingContext
+      level:
+        meaning: pbdc:LevelContext
+
+  OpeningKindEnum:
+    description: Physical kind of an opening. Maps to the data contract connection_physical_type.
+    permissible_values:
+      door: {}
+      window: {}
+      gate: {}
+      passage:
+        description: Opening without a leaf.
+      hatch:
+        description: Revision or access hatch.
+
+  ZoneKindEnum:
+    description: >-
+      Purpose of a zone. Placeholder until Elementplan has zone types with
+      configurations like room types.
+    permissible_values:
+      fire_compartment: {}
+      ventilation: {}
+      thermal: {}
+      acoustic: {}
+      security: {}
+      usage: {}
+
+  SystemKindEnum:
+    description: >-
+      Discipline of a system. Placeholder until Elementplan has system types
+      with configurations like room types.
+    permissible_values:
+      ventilation: {}
+      heating: {}
+      cooling: {}
+      sanitary: {}
+      electrical: {}
+      building_automation: {}
+      facade: {}
+      structure: {}
+
+# ---------------------------------------------------------------- classes
+
+classes:
+
+  SolutionDataset:
+    tree_root: true
+    description: All records of one project, as loaded from the solution folder.
+    attributes:
+      selection:
+        range: Selection
+        inlined: true
+      programme_items:
+        range: ProgrammeItem
+        multivalued: true
+        inlined_as_list: true
+      projects:
+        range: Project
+        multivalued: true
+        inlined_as_list: true
+      contexts:
+        range: SpatialContext
+        multivalued: true
+        inlined_as_list: true
+      units:
+        range: Unit
+        multivalued: true
+        inlined_as_list: true
+      spaces:
+        range: Space
+        multivalued: true
+        inlined_as_list: true
+      openings:
+        range: OpeningInstance
+        multivalued: true
+        inlined_as_list: true
+      equipment:
+        range: EquipmentInstance
+        multivalued: true
+        inlined_as_list: true
+      zones:
+        range: Zone
+        multivalued: true
+        inlined_as_list: true
+      systems:
+        range: System
+        multivalued: true
+        inlined_as_list: true
+      overrides:
+        range: Override
+        multivalued: true
+        inlined_as_list: true
+
+  # --- project-level choices and programme -------------------------------
+
+  Selection:
+    description: >-
+      The project's answers to the Elementplan questions: chosen goal levels,
+      scenario options, sizes and counts. Conditions (when / unless) and
+      configuration choices are checked against this record.
+    attributes:
+      goal_levels:
+        range: ProjectGoalLevel
+        multivalued: true
+        inlined: false
+      options:
+        range: ScenarioOption
+        multivalued: true
+        inlined: false
+      sizes:
+        range: OptionSize
+        multivalued: true
+        inlined: false
+      counts:
+        range: CountAnswer
+        multivalued: true
+        inlined_as_list: true
+
+  CountAnswer:
+    description: Answer to a count question (option quantity or container count).
+    attributes:
+      subject:
+        description: Option or container room type the count belongs to.
+        required: true
+      count:
+        range: integer
+        required: true
+        minimum_value: 0
+
+  ProgrammeItem:
+    description: >-
+      One required room (or group of identical rooms) of this project, with
+      an id that is the same for every competition entry and every variant.
+      Produced from the selection (option adds room type, count) or taken
+      from a competition brief. Spaces point at it with fulfils.
+    attributes:
+      id:
+        identifier: true
+        required: true
+      label:
+      room_type:
+        range: RoomType
+        inlined: false
+        required: true
+      count:
+        range: integer
+        minimum_value: 1
+        ifabsent: int(1)
+      min_area:
+        range: float
+        unit: {ucum_code: m2}
+        description: Minimum net area per room; overrides the configuration minimum when the brief is stricter.
+      from_option:
+        range: ScenarioOption
+        inlined: false
+      brief_reference:
+        description: Section or page of the brief that states the item.
+
+  # --- shared building blocks ---------------------------------------------
+
+  Record:
+    abstract: true
+    description: Common slots of every authored or imported record.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        pattern: "^[a-z][a-z0-9-]*(/[A-Za-z0-9._#-]+)+$"
+      label:
+        description: Short human label, e.g. the room number on the plan.
+      origin:
+        range: Origin
+        inlined: true
+      review_status:
+        range: ReviewStatusEnum
+        description: Status of the record as a whole. Omit for confirmed.
+      element:
+        description: >-
+          Elementplan element whose attributes values fill. Optional when it
+          follows from the type (a space's configuration presets name it).
+      values:
+        range: AttributeValue
+        multivalued: true
+        inlined: true
+        description: Filled attributes, keyed by Attribute.name (IFC property name).
+      geometry:
+        range: GeometryReference
+        inlined: true
+      ifc:
+        range: Any
+        description: >-
+          All IFC data of an imported record as delivered: global_id, entity
+          and psets (pset -> property -> value), sorted, units normalized.
+          Properties on the per-tool exclusion list (internal ids, export
+          timestamps) are left out. values holds the mapped attributes as
+          understood; a difference between both points to a mapping problem.
+          Not exported to RDF unless a shape references it.
+      note:
+
+  Origin:
+    description: Why a record exists and where it came from.
+    attributes:
+      kind:
+        range: OriginKindEnum
+        required: true
+      option:
+        range: ScenarioOption
+        inlined: false
+        description: Option that required it (kind requirement).
+      document:
+        description: Plan, IFC file or report it was taken from (path or URI).
+      page:
+        range: integer
+      region:
+        description: >-
+          Where on the source: a page box "x1,y1,x2,y2" in page units, or an
+          IFC GlobalId, so a reviewer can jump to it.
+      tool:
+        description: Model, importer or editor that wrote it, with version.
+
+  AttributeValue:
+    description: >-
+      One filled attribute with provenance. A record may write the long form
+      only where provenance matters; tools load a bare value as
+      {value, review_status: confirmed}.
+    attributes:
+      attribute:
+        key: true
+        description: Attribute.name of the element, e.g. FloorCovering.
+      value:
+        range: Any
+        required: true
+      unit:
+      source:
+        description: oereb, geo.admin.ch, preset, plan-scan, ifc-arc, site-check, user ...
+      review_status:
+        range: ReviewStatusEnum
+
+  GeometryReference:
+    description: >-
+      Link to geometry kept outside the record (GeoJSON, IFC, DXF, point
+      cloud). Follows the data contract GeometryRepresentation.
+    class_uri: pbdc:GeometryRepresentation
+    attributes:
+      geometry_reference:
+        required: true
+        description: Path or URI of the payload, relative to the solution folder.
+      geometry_format:
+        description: geojson, ifc, dxf, e57 ...
+      representation:
+        description: footprint, body, outline, point_cloud ...
+
+  Placement:
+    description: >-
+      Local frame of a context. x/y/z is the origin in the parent frame, or in
+      LV95 east/north/height for the top context. Children use local metres.
+    attributes:
+      crs:
+        description: Only on the top placement, e.g. EPSG:2056.
+      x:
+        range: float
+        required: true
+      y:
+        range: float
+        required: true
+      z:
+        range: float
+        ifabsent: float(0)
+      rotation:
+        range: float
+        description: Degrees, counter-clockwise from the parent x axis.
+        ifabsent: float(0)
+
+  # --- spatial structure --------------------------------------------------
+
+  Project:
+    is_a: Record
+    description: The project root. Its placement anchors the local frames in LV95.
+    class_uri: pbdc:Project
+    attributes:
+      placement:
+        range: Placement
+        inlined: true
+
+  SpatialContext:
+    is_a: Record
+    description: >-
+      Perimeter, parcel, building or level. One class with a kind keeps the
+      folder simple; contract_class maps each kind to the data contract.
+    class_uri: pbdc:SpatialContext
+    attributes:
+      kind:
+        range: ContextKindEnum
+        required: true
+      parent_project:
+        range: Project
+        inlined: false
+      parent_building:
+        range: SpatialContext
+        inlined: false
+        description: For levels.
+      placement:
+        range: Placement
+        inlined: true
+      elevation:
+        range: float
+        description: Level finished floor height in the building frame, metres.
+
+  Unit:
+    is_a: Record
+    description: >-
+      Instance of a container room type, e.g. Wohnung 2.1 of type
+      wohnung-3-5. Spaces belong to it with parent_unit.
+    attributes:
+      room_type:
+        range: RoomType
+        inlined: false
+        required: true
+      configuration:
+        range: RoomTypeConfiguration
+        inlined: false
+      fulfils:
+        range: ProgrammeItem
+        multivalued: true
+        inlined: false
+      parent_building:
+        range: SpatialContext
+        inlined: false
+
+  Space:
+    is_a: Record
+    description: >-
+      Instance of a room type. The decisions needed to generate the room:
+      type, configuration, outline, edge kinds. Openings and equipment are
+      separate records; equipment in a designed space is derived.
+    class_uri: pbdc:Space
+    attributes:
+      room_type:
+        range: RoomType
+        inlined: false
+        description: Required when origin is requirement or authored; may wait for review on scans and imports.
+      configuration:
+        range: RoomTypeConfiguration
+        inlined: false
+      fulfils:
+        range: ProgrammeItem
+        multivalued: true
+        inlined: false
+        description: Programme items this space meets. A list, because an entry may merge items.
+      parent_level:
+        range: SpatialContext
+        inlined: false
+        required: true
+      parent_unit:
+        range: Unit
+        inlined: false
+      outline:
+        description: Polygon in the level frame, metres, counter-clockwise, not closed.
+        range: float
+        array:
+          exact_number_dimensions: 2
+          dimensions:
+            - minimum_cardinality: 3
+            - exact_cardinality: 2
+      edge_kinds:
+        range: EdgeKindEnum
+        multivalued: true
+        description: One per outline edge, edge i runs from point i to point i+1.
+      height:
+        range: float
+        description: Clear height, metres.
+
+  # --- what connects and fills spaces --------------------------------------
+
+  OpeningInstance:
+    is_a: Record
+    description: >-
+      A door, window or passage. Hosted on one edge of a space and connecting
+      it to another space or to the exterior. Authored, surveyed or imported
+      the same way.
+    attributes:
+      opening_kind:
+        range: OpeningKindEnum
+        required: true
+      function:
+        range: OpeningFunctionEnum
+      component:
+        range: Component
+        inlined: false
+      host:
+        range: Space
+        inlined: false
+        required: true
+      edge:
+        range: integer
+        required: true
+        minimum_value: 0
+      offset:
+        range: float
+        required: true
+        description: Distance from the start of the edge to the near side of the opening, metres.
+      connects_to:
+        range: Space
+        inlined: false
+        description: Other space; omit with exterior.
+      exterior:
+        range: boolean
+      width:
+        range: float
+      height:
+        range: float
+      parameters:
+        range: ParameterValue
+        multivalued: true
+        inlined: true
+        description: Component parameters chosen for this instance (hinge, sill height ...).
+
+  EquipmentInstance:
+    is_a: Record
+    description: >-
+      A placed fixture, device or furniture item. Authored in a survey or an
+      import. In a designed space equipment is derived; use Override to change
+      a derived item instead.
+    attributes:
+      function:
+        range: EquipmentFunctionEnum
+      component:
+        range: Component
+        inlined: false
+      parent_space:
+        range: Space
+        inlined: false
+        required: true
+      edge:
+        range: integer
+        description: Host edge for wall-placed items.
+      offset:
+        range: float
+      position:
+        range: float
+        multivalued: true
+        description: x, y in the level frame for free-standing items.
+      rotation:
+        range: float
+      parent_system:
+        range: System
+        inlined: false
+      parameters:
+        range: ParameterValue
+        multivalued: true
+        inlined: true
+
+  ParameterValue:
+    description: One component or generator parameter, keyed by its name.
+    attributes:
+      parameter:
+        key: true
+      value:
+        range: Any
+        required: true
+
+  # --- groupings ----------------------------------------------------------
+
+  Zone:
+    is_a: Record
+    description: Group of spaces for one purpose (fire compartment, ventilation zone ...).
+    attributes:
+      zone_kind:
+        range: ZoneKindEnum
+        required: true
+      members:
+        range: Space
+        multivalued: true
+        inlined: false
+        required: true
+
+  System:
+    is_a: Record
+    description: >-
+      Design decisions of one building system: what it serves and with which
+      parameters. Ducts, dampers and terminals are derived from it.
+    class_uri: pbdc:System
+    attributes:
+      system_kind:
+        range: SystemKindEnum
+        required: true
+      parent_building:
+        range: SpatialContext
+        inlined: false
+      serves:
+        range: ServedItem
+        multivalued: true
+        inlined_as_list: true
+      shafts:
+        range: Space
+        multivalued: true
+        inlined: false
+        description: Shaft spaces the system runs in.
+
+  ServedItem:
+    description: One space or zone a system serves, with its design values (airflow, heat load ...).
+    attributes:
+      space:
+        range: Space
+        inlined: false
+      zone:
+        range: Zone
+        inlined: false
+      values:
+        range: AttributeValue
+        multivalued: true
+        inlined: true
+
+  # --- hand changes to derived items --------------------------------------
+
+  Override:
+    description: >-
+      A hand change to a derived item. target is the deterministic id the
+      generator gives the item, e.g. space/2.03/equipment/toilet#1. The
+      generator applies set after placing; the check reports overrides whose
+      target no longer exists.
+    attributes:
+      id:
+        identifier: true
+        required: true
+      target:
+        required: true
+      set:
+        range: ParameterValue
+        multivalued: true
+        inlined: true
+        required: true
+      reason:
+        required: true
+      review_status:
+        range: ReviewStatusEnum
