@@ -9,6 +9,7 @@ definition:
     bringt.
   en: Stand where an ambulift takes passengers with reduced mobility to the aircraft.
 room_type_kind: room
+default_scope: site
 configurations:
 - id: pragmaticbim:room-type-configuration/ambulift-standplatz-standard
   sort_order: 1

@@ -1,0 +1,15 @@
+id: window/2.03-1
+opening_kind: window
+host: space/2.03
+edge: 0
+offset: 0.9
+exterior: true
+width: 0.6
+origin: {kind: ifc_import, document: deliveries/arc/ARC_Demo_2026-11-12.ifc, region: 3Ax9kQm0n5Hf2bLr7TzW1c}
+ifc:
+  global_id: 3Ax9kQm0n5Hf2bLr7TzW1c
+  entity: IfcWindow
+  psets:
+    Pset_WindowCommon:
+      IsExternal: true
+      ThermalTransmittance: 0.9

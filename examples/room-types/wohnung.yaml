@@ -12,6 +12,8 @@ definition:
   en: Self-contained dwelling unit with its own gross area that holds the rooms of
     one household.
 room_type_kind: container
+uses:
+- pragmaticbim:use/wohnen
 contains:
 - room_type: pragmaticbim:room-type/wohnzimmer
 - room_type: pragmaticbim:room-type/kueche

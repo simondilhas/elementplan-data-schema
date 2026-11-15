@@ -1,0 +1,7 @@
+id: unit/2.1
+label: Wohnung 2.1
+room_type: pragmaticbim:room-type/wohnung-3-5
+configuration: pragmaticbim:room-type-configuration/wohnung-3-5
+fulfils: [programme/wohnung-3-5]
+parent_building: building/a
+origin: {kind: requirement}

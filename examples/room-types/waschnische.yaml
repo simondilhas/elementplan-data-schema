@@ -8,6 +8,7 @@ definition:
   de: Nische in der Wohnung für Waschmaschine und Tumbler.
   en: Niche in the dwelling for a washing machine and a dryer.
 room_type_kind: room
+default_scope: unit
 configurations:
 - id: pragmaticbim:room-type-configuration/waschnische-standard
   sort_order: 1

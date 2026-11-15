@@ -7,6 +7,12 @@ with the JSON Schema generated from schema/elementplan.linkml.yaml (closed
 classes, so unknown fields are reported). Components are also checked for
 lengths that name a parameter the component does not define. Collections default to the ones this
 schema models field by field: room_types, usage_scenarios, components.
+Container room types (unit types) must list exactly one use. The schema
+requires uses on containers; the generated JSON Schema cannot cap it at one,
+so more than one use is checked here.
+
+goal_level_errors checks the levels a project picked: one per goal unless the
+goal allows_multiple, and an exclusive level never together with another.
 """
 
 from __future__ import annotations
@@ -24,6 +30,8 @@ from component_checks import parameter_reference_errors
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "schema" / "elementplan.linkml.yaml"
 FOLDERS = {
+    "project_goals": "project_goals",
+    "uses": "uses",
     "room_types": "room_types",
     "usage_scenarios": "usage_scenarios",
     "components": "components",
@@ -40,6 +48,28 @@ def load_dataset(reference: Path, collections: tuple[str, ...]) -> dict:
             yaml.safe_load(path.read_text(encoding="utf-8")) for path in sorted(folder.glob("*.yaml"))
         ]
     return dataset
+
+
+def container_use_errors(room_types: list[dict]) -> list[str]:
+    return [
+        f"{record.get('id')}: a container (unit type) must list exactly one use, found {len(record['uses'])}"
+        for record in room_types
+        if record.get("room_type_kind") == "container" and len(record.get("uses") or []) > 1
+    ]
+
+
+def goal_level_errors(project_goals: list[dict], picked_levels: list[str]) -> list[str]:
+    errors = []
+    for goal in project_goals:
+        picked = [level for level in goal.get("levels") or [] if level["id"] in picked_levels]
+        if len(picked) < 2:
+            continue
+        if not goal.get("allows_multiple"):
+            errors.append(f"{goal['id']}: allows one level, found {len(picked)}")
+        for level in picked:
+            if level.get("exclusive"):
+                errors.append(f"{goal['id']}: {level['id']} is exclusive and cannot be combined with other levels")
+    return errors
 
 
 def main(argv: list[str]) -> int:
@@ -59,11 +89,15 @@ def main(argv: list[str]) -> int:
         for message in parameter_reference_errors(component):
             errors.append(message)
             print(message)
+    rule_errors = container_use_errors(dataset.get("room_types", []))
+    for message in rule_errors:
+        print(f"room_types: {message}")
     print()
     for slot in collections:
         print(f"{slot}: {len(dataset[slot])} records")
-    print(f"{len(errors)} error(s)")
-    return 1 if errors else 0
+    total = len(errors) + len(rule_errors)
+    print(f"{total} error(s)")
+    return 1 if total else 0
 
 
 if __name__ == "__main__":

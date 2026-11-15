@@ -1,0 +1,5 @@
+id: zone/fire-compartment-unit-2.1
+zone_kind: fire_compartment
+members: [space/2.03, space/2.04]
+values:
+  FireRating: EI 30

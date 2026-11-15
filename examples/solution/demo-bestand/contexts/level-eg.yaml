@@ -1,0 +1,4 @@
+id: level/eg
+kind: level
+parent_project: project/demo-bestand
+origin: {kind: plan_scan, document: plans/EG_1978.pdf, page: 1}
