@@ -14,6 +14,10 @@ definition:
 element: pragmaticbim:element/mep-sanitary-terminal
 predefined_type: WASHHANDBASIN
 category: sanitary
+jurisdiction:
+- ch
+edition: SMS Nasszellen 2020
+valid_from: "2020-01-01"
 placement:
   host: wall_face
   edge_kinds:

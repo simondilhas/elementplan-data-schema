@@ -18,11 +18,14 @@ from __future__ import annotations
 
 import math
 import os
+import re
 import sys
 from pathlib import Path
 
 import yaml
 from linkml.validator import validate
+
+JURISDICTION_PATTERN = re.compile(r"^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$")
 
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA_DIR = ROOT / "schema"
@@ -33,6 +36,7 @@ SINGLE = {
     "selection.yaml": "selection",
     "project.yaml": "projects",
     "solution.yaml": "solution",
+    "check.yaml": "check",
 }
 FOLDERS = {
     "programme": "programme_items",
@@ -75,7 +79,7 @@ def _load_folder(folder: Path, data: dict, files: dict[str, Path]) -> None:
             continue
         record = yaml.safe_load(path.read_text())
         _normalize_values(record)
-        if key in ("selection", "solution"):
+        if key in ("selection", "solution", "check"):
             data[key] = record
         else:
             data.setdefault(key, []).append(record)
@@ -239,14 +243,59 @@ def _check_outlines(rid: str, outlines: list[dict] | None, by_id: dict, report: 
 
 def check(data: dict, catalog: dict[str, dict], report: Report) -> None:
     for key, records in data.items():
-        if key in ("selection", "solution"):
+        if key in ("selection", "solution", "check"):
             continue
         for rec in records:
             _check_values(rec["id"], rec.get("values"), report)
             for served in rec.get("serves") or []:
                 _check_values(rec["id"], served.get("values"), report)
-    ids = {r["id"] for key in data if key not in ("selection", "solution") for r in data[key]}
-    by_id = {r["id"]: r for key in data if key not in ("selection", "solution") for r in data[key]}
+    ids = {
+        r["id"]
+        for key in data
+        if key not in ("selection", "solution", "check")
+        for r in data[key]
+    }
+    by_id = {
+        r["id"]: r
+        for key in data
+        if key not in ("selection", "solution", "check")
+        for r in data[key]
+    }
+
+    for project in data.get("projects") or []:
+        jur = project.get("jurisdiction")
+        if jur and not JURISDICTION_PATTERN.match(str(jur)):
+            report.error(project["id"], f"jurisdiction {jur!r} must match ISO pattern")
+
+    # Solution-option parameter sets: a key used anywhere must be in general
+    # or in every country-level set of that option.
+    for dim in catalog.values():
+        if "scope" not in dim or not isinstance(dim.get("options"), list):
+            continue
+        for opt in dim["options"]:
+            sets = opt.get("parameters") or []
+            if not sets or isinstance(sets, dict):
+                continue
+            by_j: dict[str, set[str]] = {}
+            for entry in sets:
+                j = entry.get("jurisdiction") or "general"
+                vals = entry.get("values") or {}
+                by_j[j] = set(vals) if isinstance(vals, dict) else set()
+            if not by_j:
+                continue
+            all_keys = set().union(*by_j.values())
+            general_keys = by_j.get("general")
+            country_sets = {
+                j: ks for j, ks in by_j.items() if JURISDICTION_PATTERN.match(j) and j != "general" and "-" not in j
+            }
+            for key in all_keys:
+                in_general = general_keys is not None and key in general_keys
+                in_all_countries = bool(country_sets) and all(key in ks for ks in country_sets.values())
+                if not in_general and not in_all_countries:
+                    report.error(
+                        opt["id"],
+                        f"parameter {key} must exist in general or every country set",
+                    )
     selection = data.get("selection") or {}
     goal_levels = set(selection.get("goal_levels") or [])
     options = set(selection.get("options") or [])
@@ -477,7 +526,7 @@ def main(folder: str) -> int:
     n = sum(
         len(v)
         for k, v in data.items()
-        if k not in ("selection", "solution") and isinstance(v, list)
+        if k not in ("selection", "solution", "check") and isinstance(v, list)
     )
     site_note = f" (+site {site_dir})" if site_dir else ""
     print(f"{folder}{site_note}: {n} records, {len(report.errors)} errors, {len(report.warnings)} warnings")
