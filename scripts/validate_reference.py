@@ -5,10 +5,10 @@ Usage: python scripts/validate_reference.py PATH/TO/pragmaticBIM-reference [coll
 Assembles an ElementplanDataset from the reference folders and validates it
 with the JSON Schema generated from schema/elementplan.linkml.yaml (closed
 classes, so unknown fields are reported). Collections default to the ones this
-schema models field by field: room_types, usage_scenarios, components.
-Container room types (unit types) must list exactly one use. The schema
-requires uses on containers; the generated JSON Schema cannot cap it at one,
-so more than one use is checked here.
+schema models field by field: room_types, usage_scenarios, components,
+product_sheets. Container room types (unit types) must list exactly one use.
+The schema requires uses on containers; the generated JSON Schema cannot cap
+it at one, so more than one use is checked here.
 
 goal_level_errors checks the levels a project picked: one per goal unless the
 goal allows_multiple, and an exclusive level never together with another.
@@ -33,10 +33,11 @@ FOLDERS = {
     "usage_scenarios": "usage_scenarios",
     "components": "components",
     "elements": "elements",
+    "product_sheets": "products",
     "rules": "rules",
     "workflows": "workflows",
 }
-DEFAULT = ("room_types", "usage_scenarios", "components")
+DEFAULT = ("room_types", "usage_scenarios", "components", "product_sheets")
 
 
 def load_dataset(reference: Path, collections: tuple[str, ...]) -> dict:
@@ -44,7 +45,9 @@ def load_dataset(reference: Path, collections: tuple[str, ...]) -> dict:
     for slot in collections:
         folder = reference / FOLDERS[slot]
         dataset[slot] = [
-            yaml.safe_load(path.read_text(encoding="utf-8")) for path in sorted(folder.glob("*.yaml"))
+            yaml.safe_load(path.read_text(encoding="utf-8"))
+            for path in sorted(folder.glob("*.yaml"))
+            if not path.name.startswith("_")  # generated indexes and config, not records
         ]
     return dataset
 

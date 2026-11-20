@@ -1480,6 +1480,7 @@ folders = {
     "rules": "rules", "derived_values": "derived-values",
     "workflows": "workflows", "valuesets": "values",
     "elements": "elements", "components": "components",
+    "product_sheets": "product-sheets",
 }
 dataset = {
     slot: [yaml.safe_load(path.read_text(encoding="utf-8")) for path in sorted(Path("examples", folder).glob("*.yaml"))]
@@ -1598,6 +1599,20 @@ for record in dataset["room_types"]:
                             raise SystemExit(f"{item['id']}: unknown room type {room_type}.")
 
 print("Example references OK: components, equipment, openings")
+
+# Product sheets: one sheet per classification code, id derived from the code.
+seen_codes = set()
+for record in dataset["product_sheets"]:
+    code = record["product_classification"]["classification_code"]
+    if code in seen_codes:
+        raise SystemExit(f"{record['id']}: duplicate product sheet for {code}.")
+    seen_codes.add(code)
+    if record["id"] != f"pragmaticbim:product/{code.lower()}":
+        raise SystemExit(f"{record['id']}: id must be pragmaticbim:product/{code.lower()}.")
+    if "definition" in record:
+        raise SystemExit(f"{record['id']}: the short definition stays in the data contract.")
+
+print("Example references OK: product sheets")
 PY
 
 # Solution schema: compiles, and every example project passes its checks.
