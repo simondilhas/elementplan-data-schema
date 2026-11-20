@@ -1,0 +1,7 @@
+id: pragmaticbim:derived-value/building-height-category
+name: building_height_category
+source_attribute: spaces-gross-volume.Height
+thresholds:
+  low: 11
+  medium: 30
+  # high_rise: above medium

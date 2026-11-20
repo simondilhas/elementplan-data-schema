@@ -102,6 +102,19 @@ Element catalog membership is `needed_in_domain`. IDP assignment lives on the El
 
 For ordering, only the domain is relevant. In the project, the actual model or document matters — that is what is delivered and named.
 
+### Rules (conditional requirements → SHACL)
+
+`Rule` records express context-dependent requirements that fixed room configurations cannot: e.g. fire rating of a wall depends on building height and the rooms it separates.
+
+- **YAML** holds metadata, `uses`, `applies_to` (element), shared `when` conditions, and `cases` with `requires` values. Norm citations sit in `source` (`norm`, `clause`, `edition`); top-level `edition` / `valid_from` / `valid_until` pin the edition for matching.
+- **Patterns** under `shacl/patterns/` are parameterised templates (`adjacent-space-attribute`, `separating-units`, …). `scripts/generate_shacl.py` writes plain W3C SHACL to `shacl/generated/*.ttl`.
+- **Escape hatch:** set `shacl` to a hand-written `.ttl` and omit `pattern`.
+- **`DerivedValue`** documents how condition inputs such as `building_height_category` are computed from the model (e.g. Height thresholds 11 m / 30 m).
+
+```bash
+python scripts/generate_shacl.py
+```
+
 ## Solution schema
 
 `schema/solution.linkml.yaml` is the authoring layer next to the requirements: what is designed, or what exists. It imports the Elementplan schema, so every link to a room type, configuration or option points at a real catalog record.
@@ -166,6 +179,9 @@ Open: zone and system kinds are placeholder enums until Elementplan has zone and
 - `scripts/check_solution.py`: checks a solution project folder
 - `examples/solution-dimensions/`: solution-box catalog rows
 - `examples/solutions/`: shared `site/` plus per-solution folders
+- `examples/rules/`, `examples/derived-values/`: conditional requirements and derived condition values
+- `shacl/patterns/`, `shacl/generated/`: SHACL templates and compiled shapes
+- `scripts/generate_shacl.py`: compiles rule YAML to SHACL Turtle
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
 - `examples/`: sample uses, usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, and phases
 - `scripts/schema_check.sh`: local schema validation entry point

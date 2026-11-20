@@ -1,0 +1,5 @@
+{
+  "id": "separating-units",
+  "description": "Require attribute values on an element that separates units, with cases by building height category.",
+  "template": "separating-units.ttl.j2"
+}

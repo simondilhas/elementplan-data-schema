@@ -1,0 +1,14 @@
+id: pragmaticbim:workflow/qas-fire-protection
+code: AWF-QAS-FP
+sort_order: 900
+name:
+  de: QS Brandschutz
+  en: QA fire protection
+description:
+  de: Qualitätsprüfung der Brandschutzanforderungen im Modell.
+  en: Quality check of fire-protection requirements in the model.
+status: active
+jurisdiction:
+- ch
+needed_in_domain:
+- armasuisse:domain/architektur

@@ -1,0 +1,45 @@
+id: pragmaticbim:rule/fr-wh-01
+code: FR-WH-01
+sort_order: 1
+name:
+  de: Tragende Treppenhauswände
+  en: Load-bearing stairwell walls
+definition:
+  de: Tragende Wände am Treppenhaus brauchen einen Feuerwiderstand nach Gebäudehöhe (VKF).
+  en: Load-bearing walls at the stairwell need a fire rating by building height (VKF).
+rule_kind: model
+pattern: adjacent-space-attribute
+uses:
+- pragmaticbim:use/wohnen
+jurisdiction:
+- ch
+edition: BSV 2015
+valid_from: "2015-01-01"
+source:
+  norm: VKF BSR 15-15
+  clause: "3.7.1, Tabellen 1-3"
+  edition: BSV 2015
+applies_to: pragmaticbim:element/architecture-wall-interior-loadbearing
+when:
+  adjacent_room_types:
+  - pragmaticbim:room-type/treppenhaus
+  fire_protection_concept: structural
+  attributes:
+    LoadBearing: true
+cases:
+- when:
+    building_height_category: low
+  requires:
+    FireRating: REI 30
+- when:
+    building_height_category: medium
+  requires:
+    FireRating: REI 60
+- when:
+    building_height_category: high_rise
+  requires:
+    FireRating: REI 90
+severity: violation
+needed_for_workflows:
+- pragmaticbim:workflow/qas-fire-protection
+status: active
