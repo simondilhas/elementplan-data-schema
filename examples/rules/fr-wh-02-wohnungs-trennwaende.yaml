@@ -1,0 +1,42 @@
+id: pragmaticbim:rule/fr-wh-02
+code: FR-WH-02
+sort_order: 2
+name:
+  de: Wohnungstrennwände
+  en: Dwelling separating walls
+definition:
+  de: Wände zwischen Wohnungen brauchen einen Feuerwiderstand nach Gebäudehöhe.
+  en: Walls between dwellings need a fire rating by building height.
+rule_kind: model
+pattern: separating-units
+uses:
+- pragmaticbim:use/wohnen
+jurisdiction:
+- ch
+edition: BSV 2015
+valid_from: "2015-01-01"
+source:
+  norm: VKF BSR 15-15
+  clause: "3.7.1"
+  edition: BSV 2015
+applies_to: pragmaticbim:element/architecture-wall-interior-loadbearing
+when:
+  separates_units: true
+  fire_protection_concept: structural
+cases:
+- when:
+    building_height_category: low
+  requires:
+    FireRating: REI 30
+- when:
+    building_height_category: medium
+  requires:
+    FireRating: REI 60
+- when:
+    building_height_category: high_rise
+  requires:
+    FireRating: REI 90
+severity: violation
+needed_for_workflows:
+- pragmaticbim:workflow/qas-fire-protection
+status: active

@@ -16,7 +16,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcAlarm
 entity_ifc4_3: null
-picture_link: null
+picture_link: alarmgerat.png
+picture_print_link: alarmgerat-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcAlarm
 attributes:

@@ -12,11 +12,29 @@ definition:
 room_type_kind: room
 default_scope: unit
 configurations:
-- id: pragmaticbim:room-type-configuration/balkon-terrasse-standard
+- id: pragmaticbim:room-type-configuration/balkon-terrasse-klein
   sort_order: 1
   name:
-    de: Standard
-    en: Standard
+    de: klein
+    en: small
   attribute_presets: []
   status: active
+- id: pragmaticbim:room-type-configuration/balkon-terrasse-mittel
+  sort_order: 2
+  name:
+    de: mittel
+    en: medium
+  attribute_presets: []
+  status: active
+  restrictions:
+    min_area: 8
+- id: pragmaticbim:room-type-configuration/balkon-terrasse-gross
+  sort_order: 3
+  name:
+    de: gross
+    en: large
+  attribute_presets: []
+  status: active
+  restrictions:
+    min_area: 12
 status: active

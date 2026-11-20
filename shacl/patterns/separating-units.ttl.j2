@@ -1,0 +1,25 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rule: <https://pragmaticbim.ch/id/rule/> .
+@prefix pb: <https://pragmaticbim.ch/id/> .
+
+# Generated from {{ rule.id }} via pattern separating-units.
+
+rule:{{ rule_slug }} a sh:NodeShape ;
+    sh:name "{{ rule.name.de | replace('"', '\\"') }}"@de{% if rule.name.get('en') %},
+        "{{ rule.name.en | replace('"', '\\"') }}"@en{% endif %} ;
+    sh:severity {% if rule.severity == 'warning' %}sh:Warning{% else %}sh:Violation{% endif %} ;
+    sh:targetClass pb:Element ;
+{% for case in rule.cases %}
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Rule {{ rule.code }} case {{ case.when.building_height_category }}: required {{ case.requires }}" ;
+        sh:select """
+            SELECT $this WHERE {
+                # Placeholder: separates_units and height {{ case.when.building_height_category }}
+                # then require {{ case.requires }}
+                FILTER (false)
+            }
+        """
+    ] ;{% endfor %}
+    .

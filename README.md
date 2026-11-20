@@ -32,7 +32,7 @@ Scenario (need)  →  Option  →  Size  →  Room-type graph  →  Configuratio
 
   `uses` lists the uses a scenario applies to; omit it to apply to every use. A scenario such as Abfall entsorgen can list several uses, so a mixed-use project answers it once instead of once per use. The answers live in the project, per scope node (project, use, unit type). `use` is a deprecated single-value alias of `uses`, kept for one release; do not set both.
 
-  A use names its Bezugsgrösse in `reference_quantity` (for example the number of workstations, with an optional `unit` such as m²); the project records the value. `typical_levels` lists the project goal levels a project with this use usually chooses. They are suggestions, not rules.
+  A use names its Bezugsgrösse in `reference_quantity` (for example the number of workstations, with an optional `unit` such as m²); the project records the value. `typical_levels` lists the project goal levels a project with this use usually chooses. They are suggestions, not rules. `use_kind` is `main` (selected by the project) or `support` (Keller, Technik, Parkierung — always present, never selected). Optional `classifications` and `uri` link external schemes and definitions.
 - **Options (`ScenarioOption`)** answer *how*. `adds` names the room or container types produced by the option. `target` is the container receiving added rooms (for example, Wohnung); omit it for building-level rooms. On a `unit` scenario, an omitted `target` means the unit type being answered. `excludes` names incompatible options or room types. The rule is symmetric: declare it on one side only, and the app reads it in both directions. Optional `project_goal_levels` names the goal levels this option suits, the same way a room configuration does; omit it when the option does not follow a goal. A chosen level can then select among the options.
 - **Sizes (`OptionSize`)** are the ordered grades of an option (small, medium, large; `sort_order` is the ordinal). Each size's `size_restrictions` name a `room_type` and its minimum `min_area`, `min_height`, `min_length`, and `min_width`, because one option can produce several rooms. The size question is asked when the chosen option has `sizes`.
 - **Room types (`RoomType`)** form one graph. `room_type_kind: room` marks a functional room; `room_type_kind: container` marks a composition such as Wohnung. `contains` is composition, while `extends` specializes a more general room type. This replaces the separate UnitType catalog. `legacy_ids` keeps old `unit-type/*` identifiers resolvable during migration. A container is a unit type and lists exactly one use in `uses`. `default_scope` places a room on the `site`, in the `building`, or in a `unit` (`dwelling` is a deprecated alias of `unit`). `activity` and `room_name` reference the external activity and room-name vocabularies.
@@ -49,7 +49,7 @@ Scenario (need)  →  Option  →  Size  →  Room-type graph  →  Configuratio
 - **Project goals** define *why* information is needed. `group` is the section of the goals step the goal is asked in (`ziele` or `rahmenbedingungen`). `uses` names the uses the goal applies to; omit it for a general goal asked in every project.
 - **Ausprägungen (`ProjectGoalLevel`)** are ordered levels of a goal (e.g. grosszügig → mittel → sensitiv). `sort_order` is the ordinal. Each level’s `activated_workflows` is the **complete set** of workflows activated when that level is selected. Higher levels list lower-level workflows explicitly (copied on save).
 - **Level selection:** choosing a level activates that level’s stored `activated_workflows` list. One level is chosen per goal unless the goal sets `allows_multiple: true` (default false), as Zertifizierung does so that Minergie-ECO and SNBS Hochbau can be combined. An `exclusive` level such as "Keine" is never combined with another level. The picks live in the project; `goal_level_errors` in `scripts/validate_reference.py` checks them.
-- **Boundary conditions:** a project goal with `is_boundary_condition: true` sets a Rahmenbedingung instead of an information goal. Its levels list `activated_room_types`, the complete set of container room types the level activates, and `activated_workflows` may stay empty. Counts live in the app.
+- **Boundary conditions:** a project goal with `is_boundary_condition: true` sets a Rahmenbedingung instead of an information goal. Its levels list `activated_room_types`, the complete set of container room types the level activates, and `activated_workflows` may stay empty. Counts live in the app. Levels may set `performance_targets` (default values on target attributes) and `implied_levels` (minimums on other goals). A boundary condition may also ask for `quantities` (e.g. Anzahl Wohnungen) instead of, or besides, levels.
 - **Goals that define unit types:** a goal whose levels set `activated_room_types` (such as Wohnungsmix) defines the project's unit types. It is answered in Functional requirements, not in the goals step.
 - **Workflows** define *how* those goals are realized in project practice.
 - **Elements and attributes** define *what* must be delivered in the model (the technical IDS level). `Attribute.name` is the IFC property name (a string, e.g. `PredefinedType`), not a localized catalog title. Optional `regex` may be a string or `LocalizedText`. Optional `link_uid` is a legacy editor identifier.
@@ -62,16 +62,23 @@ Project complexity / package tags (`workflow_group`) stay a **separate** axis fr
 
 Optional `service_kind` on a workflow records whether it is a **Grundleistung** (`basic`) or a **besondere Leistung** (`special`). Omit it when the workflow is not yet classified. The badge is on the workflow, not on attributes: an attribute shows the kind of the workflows it is needed for.
 
-### Jurisdiction (country vs general)
+### Jurisdiction (country, canton, edition)
 
-`jurisdiction` is a multivalued list on **Workflow**, **Attribute**, **Model**, **Document**, and **UsageScenario**:
+`jurisdiction` is a multivalued list of codes matching `^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$`:
 
-- `[general]` — not country-specific (omit the field to mean the same)
-- one or more ISO 3166-1 alpha-2 codes (lowercase), e.g. `[ch]` or `[ch, de, at]`
+- `general` — everywhere (omit the field to mean the same)
+- ISO 3166-1 alpha-2 country codes (lowercase), e.g. `ch`, `de`
+- ISO 3166-2 subdivisions, e.g. `ch-zh`, `ch-be`
 
-Do not mix `general` with country codes. A project with country `C` matches an entity if the list is `[general]` (or omitted) **or** contains `C`.
+Uppercase is invalid. Do not mix `general` with codes.
 
-**ValueSets** have no jurisdiction field; they inherit applicability via `Attribute.allowed_values`. Phase catalogs stay country-ish by scheme identity (e.g. SIA vs abstract), not via this slot.
+**Matching.** A project in `ch-zh` matches `general`, `ch` and `ch-zh`, but not `ch-be`. The project stores its code on `Project.jurisdiction` (often from the parcel / ÖREB canton).
+
+**Where it applies.** Workflow, Attribute, Model, Document, UsageScenario (as before), plus ProjectGoalLevel (e.g. Minergie `ch`, DGNB `de`), RoomTypeConfiguration (national min sizes), Component (module sizes), ValueSet (explicit set wins over the attribute's jurisdiction), SolutionOption parameter sets, and Rule (when present).
+
+**Editions.** `edition`, `valid_from` and `valid_until` on ValueSet, RoomTypeConfiguration, Component (and Rule) pin the norm edition. A solution may set `check_date` in `check.yaml` (default today); matching uses jurisdiction and that date. Two configurations of the same room type must not share the same jurisdiction with overlapping validity.
+
+**Solution-box parameters.** Each option lists `{jurisdiction, values}` sets. Generators take the most specific match (`ch-zh` before `ch` before `general`). A parameter key used in one set must exist in the `general` set or in every country set of that option.
 
 ### Domains, models, and documents
 
@@ -97,6 +104,19 @@ Element catalog membership is `needed_in_domain`. IDP assignment lives on the El
 
 For ordering, only the domain is relevant. In the project, the actual model or document matters — that is what is delivered and named.
 
+### Rules (conditional requirements → SHACL)
+
+`Rule` records express context-dependent requirements that fixed room configurations cannot: e.g. fire rating of a wall depends on building height and the rooms it separates.
+
+- **YAML** holds metadata, `uses`, `applies_to` (element), shared `when` conditions, and `cases` with `requires` values. Norm citations sit in `source` (`norm`, `clause`, `edition`); top-level `edition` / `valid_from` / `valid_until` pin the edition for matching.
+- **Patterns** under `shacl/patterns/` are parameterised templates (`adjacent-space-attribute`, `separating-units`, …). `scripts/generate_shacl.py` writes plain W3C SHACL to `shacl/generated/*.ttl`.
+- **Escape hatch:** set `shacl` to a hand-written `.ttl` and omit `pattern`.
+- **`DerivedValue`** documents how condition inputs such as `building_height_category` are computed from the model (e.g. Height thresholds 11 m / 30 m).
+
+```bash
+python scripts/generate_shacl.py
+```
+
 ## Solution schema
 
 `schema/solution.linkml.yaml` is the authoring layer next to the requirements: what is designed, or what exists. It imports the Elementplan schema, so every link to a room type, configuration or option points at a real catalog record.
@@ -107,30 +127,63 @@ requirements (Elementplan)  →  solution (decisions)  →  generators  →  IFC
           authoring · IFC import (ifc2yaml) · plan scans
 ```
 
-- **Decisions only.** A space stores its room type, configuration, outline and edge kinds. Equipment positions, walls and ducts are derived; a hand change to a derived item is an `Override` with a reason.
+- **Decisions only.** A space stores its room type, configuration, outline or bubble and edge kinds. Equipment positions, walls and ducts are derived; a hand change to a derived item is an `Override` with a reason.
 - **Three links to Elementplan.** `room_type` + `configuration` say what a record is, `fulfils` names the programme item it meets, `origin.option` names the scenario option that required it.
 - **One format for every source.** `origin.kind` is `requirement`, `authored`, `survey`, `plan_scan` or `ifc_import`. `review_status` (`proposed`, `confirmed`, `rejected`, `superseded`) applies to a record or a single value. A bare value means confirmed; the long form `{value, source, review_status}` is for imported or uncertain values.
 - **Programme items** have stable ids that are the same for every variant and competition entry, so entries can be compared item by item.
 - **IFC data as delivered.** Imported records keep all IFC properties in an `ifc` bucket (`global_id`, `entity`, `psets`). `values` holds the mapped attributes.
 - **Local geometry.** Outlines are in metres in the level frame; placements chain up to LV95 at the project.
-- **One record per file**, stable ids (`space/2.03`, `door/2.01-2.03`), references pointing one way (child to parent, instance to type, zone and system to what they group or serve).
+- **Envelope context.** `kind: envelope` is the max building volume (Bauenvelope) on a parcel or perimeter. It carries `parent_site`, `outline`, `base_elevation`, `height`, optional `storeys` and `basement_levels` (default 0). Id pattern `envelope/<slug>`, file `contexts/envelope-<slug>.yaml`. A building may point at it with `parent_envelope`. Element defaults to `pragmaticbim:element/architecture-planning-constraint` with `values.Name: Bauenvelope`. A volume that steps back by storey is several envelope records.
+- **One record per file**, stable ids (`space/2.03`, `door/2.01-2.03`, `envelope/a`), references pointing one way (child to parent, instance to type, zone and system to what they group or serve).
 
-A project is a folder: `selection.yaml`, `project.yaml`, `programme/`, `contexts/`, `units/`, `spaces/`, `openings/`, `equipment/`, `zones/`, `systems/`, `overrides/`. `scripts/check_solution.py` loads the folder, validates it against the schema and checks what JSON Schema cannot: references resolve, configurations belong to their room type and suit the selected goal levels, openings fit on their edge, and the programme is met.
+### Solution box
 
-```bash
-python scripts/check_solution.py examples/solution/demo-wohnhaus
+Strategic choices (access typology, grid, …) follow the same pattern as project-goal levels. Catalog rows live under `examples/solution-dimensions/`:
+
+- **`SolutionDimension`**: one row (`scope` `project` | `site` | `building` | `unit`, optional `uses`, `step` for the generator, inline `options`).
+- **`SolutionOption`**: one cell (`exclusive` for "Keine", `excludes` for cross-dimension conflicts, `parameters` as metres keyed by name).
+
+Answers use `solution_options` (chosen option ids) and `open_dimensions` (left open on purpose). Project- and site-scope answers sit on `Selection`; building-scope on the building `SpatialContext`; unit-scope on `Selection.unit_type_answers` (one entry per container room type). A dimension with neither is unanswered.
+
+### Bubbles and outlines
+
+The Solution step works in two phases: topology then exact shapes.
+
+- **`Bubble`**: centre (`x`, `y`) and target `area` in the level frame. A space or unit with a bubble and no outline is valid.
+- **`Unit.outlines` / building `outlines`**: list of `{level, outline, outline_kind}` — one footprint per occupied level.
+- **`outline_kind`**: `axis` (wall centre line; default for authored/generated) or `net` (usable interior edge; typical for IFC imports).
+- **Net area of an axis outline**: inset every edge by half the wall thickness from the building's Bauweise answer (catalog in the reference). Bauweise option `parameters` are keyed by `EdgeKindEnum` values such as `wall_exterior`, `wall_party_wall`, `wall_interior`, `wall_shaft` (metres). If Bauweise is unanswered or open, net area is the min/max range over that row's options. Gross floor area comes from building `outlines`, never from spaces.
+- **`adjacent_to`**: project-specific neighbours on spaces and units, on top of catalog `room_relationships`.
+
+### Several solutions per project
+
+```text
+examples/solutions/site/       shared givens (Project, parcel, envelope); slug reserved
+examples/solutions/<slug>/     one design or entry; must include solution.yaml
 ```
 
-Examples: `demo-wohnhaus` (new design), `demo-bestand` (plan scan), `demo-ifc-import` (IFC delivery with `ifc` bucket).
+`SolutionInfo` (`solution.yaml`) carries `source` (`authored` | `generated` | `ifc_import` | `plan_scan`), optional `author` / `submitted_at` / `based_on`, and `status` (`draft` | `submitted` | `checked`). Records in a solution may reference the site folder, never another solution slug.
+
+`scripts/check_solution.py` loads a folder (merging sibling `site/` when present), validates against the schema, and checks references, solution-box rules, envelopes, openings and programme coverage.
+
+```bash
+python scripts/check_solution.py examples/solutions/authored
+```
+
+Examples: `site` (shared givens), `authored` (new design), `entry-01` (IFC delivery), `bestand` (plan scan, self-contained).
 
 Open: zone and system kinds are placeholder enums until Elementplan has zone and system types; the data contract namespace (`pbdc:`) needs confirming.
 
 ## What Is Included
 
-- `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
+- `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema (including solution-box dimensions)
 - `schema/solution.linkml.yaml`: solution (authoring) schema, see above
 - `scripts/check_solution.py`: checks a solution project folder
-- `examples/solution/`: three solution example projects
+- `examples/solution-dimensions/`: solution-box catalog rows
+- `examples/solutions/`: shared `site/` plus per-solution folders
+- `examples/rules/`, `examples/derived-values/`: conditional requirements and derived condition values
+- `shacl/patterns/`, `shacl/generated/`: SHACL templates and compiled shapes
+- `scripts/generate_shacl.py`: compiles rule YAML to SHACL Turtle
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
 - `examples/`: sample usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, phases, and product sheets
 - `examples/`: sample uses, usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, and phases

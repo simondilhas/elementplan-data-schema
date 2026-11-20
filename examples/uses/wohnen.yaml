@@ -5,8 +5,8 @@ name:
   de: Wohnen
   en: Housing
 definition:
-  de: Dauerhaftes Wohnen von Haushalten.
-  en: Permanent residence of households.
+  de: Dauerhaftes Wohnen von Haushalten. Bezugsgrösse ist die Anzahl Wohnungen.
+  en: Permanent living of households. The reference quantity is the number of dwellings.
 reference_quantity:
   id: pragmaticbim:quantity/wohnen-wohnungen
   code: USE-WH-Q
@@ -15,6 +15,16 @@ reference_quantity:
     de: Anzahl Wohnungen
     en: Number of dwellings
   status: active
+use_kind: main
+classifications:
+- classification_scheme: BuildingSpaceActivityClassification
+  classification_code: M-RES
+  classification_label: Wohnflaechen
+- classification_scheme: SIA 380/1
+  classification_code: I
+  classification_label: Wohnen MFH
 typical_levels:
 - pragmaticbim:project-goal-level/wohnungsmix-gemischt
 status: active
+jurisdiction:
+- general

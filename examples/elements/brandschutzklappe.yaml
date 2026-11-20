@@ -17,7 +17,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcDamper
 entity_ifc4_3: null
-picture_link: null
+picture_link: brandschutzklappe.png
+picture_print_link: brandschutzklappe-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcDamper
 attributes:

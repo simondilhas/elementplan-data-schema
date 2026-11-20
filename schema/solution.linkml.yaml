@@ -77,6 +77,12 @@ enums:
         meaning: pbdc:PerimeterContext
       parcel:
         meaning: pbdc:LegalSiteContext
+      envelope:
+        description: >-
+          Max building volume (Bauenvelope). Data-contract class TBD; leave
+          meaning unset until confirmed. Element defaults to
+          pragmaticbim:element/architecture-planning-constraint with
+          values.Name = Bauenvelope.
       building:
         meaning: pbdc:BuildingContext
       level:
@@ -119,14 +125,51 @@ enums:
       facade: {}
       structure: {}
 
+  OutlineKindEnum:
+    description: >-
+      Whether an outline runs on wall centre lines (axis) or on the usable
+      interior edge (net). Authored and generated solutions default to axis;
+      IFC imports usually deliver net.
+    permissible_values:
+      axis:
+        description: >-
+          Outline on the wall centre line; neighbours share edges. Net area
+          is the outline inset by half the Bauweise wall thickness per edge.
+      net:
+        description: Usable interior edge, with gaps for walls, as delivered.
+
+  SolutionSourceEnum:
+    description: How a solution was produced.
+    permissible_values:
+      authored: {}
+      generated: {}
+      ifc_import: {}
+      plan_scan: {}
+
+  SolutionStatusEnum:
+    description: Lifecycle of a solution (competition entry or design variant).
+    permissible_values:
+      draft: {}
+      submitted: {}
+      checked: {}
+
 # ---------------------------------------------------------------- classes
 
 classes:
 
   SolutionDataset:
     tree_root: true
-    description: All records of one project, as loaded from the solution folder.
+    description: >-
+      All records of one solution folder, optionally merged with the shared
+      site folder. Site holds Project, parcel, perimeter and envelope; each
+      other slug holds designed or imported records plus solution.yaml.
     attributes:
+      solution:
+        range: SolutionInfo
+        inlined: true
+      check:
+        range: CheckConfig
+        inlined: true
       selection:
         range: Selection
         inlined: true
@@ -173,11 +216,38 @@ classes:
 
   # --- project-level choices and programme -------------------------------
 
+  SolutionInfo:
+    description: >-
+      Metadata of one solution (competition entry or design variant). File
+      solutions/<slug>/solution.yaml. Slug site is reserved for shared givens.
+    attributes:
+      id:
+        identifier: true
+        required: true
+        pattern: "^solution/[a-z][a-z0-9-]*$"
+      label:
+        required: true
+      source:
+        range: SolutionSourceEnum
+        required: true
+      author:
+        description: Team or office that authored the solution.
+      submitted_at:
+        range: date
+      based_on:
+        range: SolutionInfo
+        inlined: false
+        description: Another solution this is a variant of.
+      status:
+        range: SolutionStatusEnum
+        ifabsent: string(draft)
+
   Selection:
     description: >-
       The project's answers to the Elementplan questions: chosen goal levels,
-      scenario options, sizes and counts. Conditions (when / unless) and
-      configuration choices are checked against this record.
+      scenario options, sizes and counts, plus project- and site-scope
+      solution-box answers. Conditions (when / unless) and configuration
+      choices are checked against this record.
     attributes:
       goal_levels:
         range: ProjectGoalLevel
@@ -195,6 +265,84 @@ classes:
         range: CountAnswer
         multivalued: true
         inlined_as_list: true
+      solution_options:
+        range: SolutionOption
+        multivalued: true
+        inlined: false
+        description: Chosen solution-box option ids for project- and site-scope dimensions.
+      open_dimensions:
+        range: SolutionDimension
+        multivalued: true
+        inlined: false
+        description: >-
+          Dimension ids left open on purpose; generators try every option.
+          A dimension with neither a selected option nor open is unanswered.
+      unit_type_answers:
+        range: UnitTypeAnswer
+        multivalued: true
+        inlined_as_list: true
+        description: Solution-box answers per container room type (unit scope).
+
+  UnitTypeAnswer:
+    description: >-
+      Solution-box answers for one container room type; applies to every unit
+      of that type.
+    attributes:
+      room_type:
+        range: RoomType
+        inlined: false
+        required: true
+      solution_options:
+        range: SolutionOption
+        multivalued: true
+        inlined: false
+      open_dimensions:
+        range: SolutionDimension
+        multivalued: true
+        inlined: false
+
+  Bubble:
+    description: >-
+      Topology result before a shape exists: centre in the level frame and
+      target area. A space or unit with a bubble and no outline is valid.
+    attributes:
+      x:
+        range: float
+        required: true
+      y:
+        range: float
+        required: true
+      area:
+        range: float
+        required: true
+        description: Target area, square metres.
+        unit: {ucum_code: m2}
+      review_status:
+        range: ReviewStatusEnum
+        description: proposed = generated, may be replaced; omit or confirmed = pinned.
+
+  LevelOutline:
+    description: >-
+      Footprint of a unit or building on one level. outline uses the same
+      array definition as Space.outline.
+    attributes:
+      level:
+        range: SpatialContext
+        inlined: false
+        required: true
+      outline:
+        range: float
+        required: true
+        array:
+          exact_number_dimensions: 2
+          dimensions:
+            - minimum_cardinality: 3
+            - exact_cardinality: 2
+      outline_kind:
+        range: OutlineKindEnum
+        ifabsent: string(axis)
+      review_status:
+        range: ReviewStatusEnum
 
   CountAnswer:
     description: Answer to a count question (option quantity or container count).
@@ -355,18 +503,39 @@ classes:
 
   Project:
     is_a: Record
-    description: The project root. Its placement anchors the local frames in LV95.
+    description: >-
+      The project root. Its placement anchors the local frames in LV95.
+      jurisdiction is the country plus optional canton (e.g. ch-zh), often set
+      from the Context step's parcel (canton from ÖREB).
     class_uri: pbdc:Project
     attributes:
       placement:
         range: Placement
         inlined: true
+      jurisdiction:
+        range: string
+        pattern: "^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$"
+        description: >-
+          Project country and optional subdivision. Matching uses this code
+          against catalog jurisdiction lists (see Elementplan Jurisdiction).
+
+  CheckConfig:
+    description: >-
+      Optional solutions/<slug>/check.yaml (or site/check.yaml). Pins the date
+      the project is checked against for edition validity; default is today.
+    attributes:
+      check_date:
+        range: date
+        description: Date used when matching valid_from / valid_until on catalog records.
 
   SpatialContext:
     is_a: Record
     description: >-
-      Perimeter, parcel, building or level. One class with a kind keeps the
-      folder simple; contract_class maps each kind to the data contract.
+      Perimeter, parcel, envelope, building or level. One class with a kind
+      keeps the folder simple; contract_class maps each kind to the data
+      contract. An envelope that steps back by storey is stored as several
+      envelope contexts (id pattern envelope/<slug>, file
+      contexts/envelope-<slug>.yaml).
     class_uri: pbdc:SpatialContext
     attributes:
       kind:
@@ -375,6 +544,16 @@ classes:
       parent_project:
         range: Project
         inlined: false
+      parent_site:
+        range: SpatialContext
+        inlined: false
+        description: >-
+          For envelopes: the parcel or perimeter the volume lies on.
+      parent_envelope:
+        range: SpatialContext
+        inlined: false
+        description: >-
+          For buildings: the envelope the building must stay inside.
       parent_building:
         range: SpatialContext
         inlined: false
@@ -385,12 +564,70 @@ classes:
       elevation:
         range: float
         description: Level finished floor height in the building frame, metres.
+      outline:
+        description: >-
+          Footprint in the parent frame (envelope) or level frame (space),
+          metres, counter-clockwise, not closed. Same array shape as Space.outline.
+        range: float
+        array:
+          exact_number_dimensions: 2
+          dimensions:
+            - minimum_cardinality: 3
+            - exact_cardinality: 2
+      outlines:
+        range: LevelOutline
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          For kind building: the building form's footprint per level, inside
+          the envelope. Gross floor area comes from these outlines, never
+          from spaces.
+      solution_options:
+        range: SolutionOption
+        multivalued: true
+        inlined: false
+        description: Chosen building-scope solution-box options.
+      open_dimensions:
+        range: SolutionDimension
+        multivalued: true
+        inlined: false
+        description: Building-scope dimensions left open on purpose.
+      base_elevation:
+        range: float
+        description: Envelope base height in the parent frame, metres.
+      height:
+        range: float
+        description: Envelope height above base_elevation, metres.
+      storeys:
+        range: integer
+        description: Allowed storeys above ground for an envelope.
+        minimum_value: 0
+      basement_levels:
+        range: integer
+        description: Basement levels allowed under an envelope.
+        minimum_value: 0
+        ifabsent: int(0)
+    rules:
+      - description: An envelope needs parent_site, outline and height.
+        preconditions:
+          slot_conditions:
+            kind:
+              equals_string: envelope
+        postconditions:
+          slot_conditions:
+            parent_site:
+              required: true
+            outline:
+              required: true
+            height:
+              required: true
 
   Unit:
     is_a: Record
     description: >-
       Instance of a container room type, e.g. Wohnung 2.1 of type
-      wohnung-3-5. Spaces belong to it with parent_unit.
+      wohnung-3-5. Spaces belong to it with parent_unit. A bubble without
+      outlines is the topology result; outlines pin the shape per level.
     attributes:
       room_type:
         range: RoomType
@@ -406,13 +643,30 @@ classes:
       parent_building:
         range: SpatialContext
         inlined: false
+      bubble:
+        range: Bubble
+        inlined: true
+      adjacent_to:
+        range: Unit
+        multivalued: true
+        inlined: false
+        description: Project-specific neighbours, on top of catalog room_relationships.
+      outlines:
+        range: LevelOutline
+        multivalued: true
+        inlined_as_list: true
+        description: One footprint per level the unit occupies (maisonette has two).
+      outline_kind:
+        range: OutlineKindEnum
+        ifabsent: string(axis)
+        description: Default for this unit when an outline entry omits outline_kind.
 
   Space:
     is_a: Record
     description: >-
       Instance of a room type. The decisions needed to generate the room:
-      type, configuration, outline, edge kinds. Openings and equipment are
-      separate records; equipment in a designed space is derived.
+      type, configuration, outline or bubble, edge kinds. Openings and
+      equipment are separate records; equipment in a designed space is derived.
     class_uri: pbdc:Space
     attributes:
       room_type:
@@ -434,6 +688,15 @@ classes:
       parent_unit:
         range: Unit
         inlined: false
+      bubble:
+        range: Bubble
+        inlined: true
+        description: Topology result before a shape exists.
+      adjacent_to:
+        range: Space
+        multivalued: true
+        inlined: false
+        description: Project-specific neighbours, on top of catalog room_relationships.
       outline:
         description: Polygon in the level frame, metres, counter-clockwise, not closed.
         range: float
@@ -442,6 +705,9 @@ classes:
           dimensions:
             - minimum_cardinality: 3
             - exact_cardinality: 2
+      outline_kind:
+        range: OutlineKindEnum
+        ifabsent: string(axis)
       edge_kinds:
         range: EdgeKindEnum
         multivalued: true

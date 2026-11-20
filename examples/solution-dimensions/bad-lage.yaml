@@ -1,0 +1,30 @@
+id: pragmaticbim:solution-dimension/bad-lage
+code: SD-BATH
+sort_order: 30
+name:
+  de: Badlage
+  en: Bathroom placement
+description:
+  de: Wo das Bad in der Wohnung liegt.
+  en: Where the bathroom sits in the dwelling.
+status: active
+scope: unit
+step: spaces
+uses:
+- pragmaticbim:use/wohnen
+allows_multiple: false
+options:
+- id: pragmaticbim:solution-option/bad-innenliegend
+  code: BATH-01
+  sort_order: 1
+  name:
+    de: Innenliegend
+    en: Internal
+  status: active
+- id: pragmaticbim:solution-option/bad-aussenwand
+  code: BATH-02
+  sort_order: 2
+  name:
+    de: An der Aussenwand
+    en: On the exterior wall
+  status: active

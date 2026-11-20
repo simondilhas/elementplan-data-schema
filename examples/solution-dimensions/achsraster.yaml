@@ -1,0 +1,35 @@
+id: pragmaticbim:solution-dimension/achsraster
+code: SD-GRID
+sort_order: 20
+name:
+  de: Achsraster
+  en: Axis grid
+description:
+  de: Modul und Achsabstände für die Gebäudeform.
+  en: Module and axis spacing for the building form.
+status: active
+scope: building
+step: grid
+allows_multiple: false
+options:
+- id: pragmaticbim:solution-option/achsraster-keine
+  code: GRID-00
+  sort_order: 0
+  name:
+    de: Keine
+    en: None
+  exclusive: true
+  status: active
+- id: pragmaticbim:solution-option/achsraster-3-90
+  code: GRID-01
+  sort_order: 1
+  name:
+    de: 3.90 m
+    en: 3.90 m
+  status: active
+  parameters:
+  - jurisdiction: general
+    values:
+      module: {value: 3.9}
+      axis_x: {value: 3.9}
+      axis_y: {value: 3.9}

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Elementplan data model</title>
+<style>
+  :root {
+    --ink: #1f2937;
+    --muted: #6b7280;
+    --line: #d1d5db;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    background: #fff;
+  }
+  #page {
+    position: relative;
+    width: 2900px;
+    padding: 40px 70px 40px 90px;
+  }
+  header h1 { margin: 0 0 6px; font-size: 34px; letter-spacing: -0.02em; }
+  header .sub { color: var(--muted); font-size: 16px; margin-bottom: 18px; }
+  .chains { display: flex; gap: 60px; margin-bottom: 34px; font-size: 15px; }
+  .chain { display: flex; align-items: center; gap: 10px; }
+  .chain .step {
+    padding: 6px 12px; border-radius: 999px; font-weight: 600;
+    border: 1.5px solid currentColor; background: #fff;
+  }
+  .chain .arrow { color: var(--muted); font-size: 18px; }
+  .chain .lbl { color: var(--muted); font-size: 12px; font-weight: 500; margin-left: 4px; }
+
+  #columns { display: flex; gap: 120px; align-items: flex-start; position: relative; z-index: 2; }
+  .area { width: 420px; flex: none; }
+  .area > h2 {
+    margin: 0 0 14px; font-size: 18px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--c); border-bottom: 3px solid var(--c); padding-bottom: 6px;
+  }
+  .area > .cls { margin-bottom: 26px; }
+
+  .cls {
+    background: #fff;
+    border: 1.5px solid var(--c);
+    border-radius: 8px;
+    font-size: 13px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  }
+  .cls .head {
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+    background: var(--tint); padding: 7px 10px; border-radius: 7px 7px 0 0;
+    border-bottom: 1px solid var(--c);
+  }
+  .cls .head .slot { color: var(--muted); font-family: ui-monospace, "JetBrains Mono", monospace; font-size: 12px; }
+  .cls .head .name { font-weight: 700; font-size: 15px; }
+  .cls.nested .head .name { font-size: 14px; }
+  .cls .head .note { color: var(--muted); font-size: 11.5px; margin-left: auto; font-family: ui-monospace, monospace; }
+  .cls .body { padding: 5px 10px 8px; }
+  .cls .body:empty { display: none; }
+  .row {
+    font-family: ui-monospace, "JetBrains Mono", monospace; font-size: 12px;
+    padding: 1.5px 0; white-space: nowrap;
+  }
+  .row .t { color: var(--muted); }
+  .row.ref .f { font-weight: 600; }
+  .row.ref .to { color: var(--c); font-weight: 600; }
+  .row .card { color: var(--muted); }
+  .cls.nested { margin: 6px 0 4px; }
+  .cls.nested:last-child { margin-bottom: 2px; }
+
+  #wires { position: absolute; left: 0; top: 0; z-index: 3; pointer-events: none; overflow: visible; }
+  #wires path { fill: none; stroke-width: 1.6; opacity: 0.75; }
+  #wires path.soft { stroke-dasharray: 6 4; }
+
+  .legend {
+    margin-top: 10px; display: flex; gap: 46px; align-items: flex-start;
+    font-size: 13.5px; color: var(--ink); border-top: 1px solid var(--line); padding-top: 18px;
+  }
+  .legend .item { display: flex; align-items: center; gap: 10px; }
+  .legend .text { color: var(--muted); max-width: 520px; line-height: 1.45; }
+  .legend code { font-size: 12.5px; color: var(--ink); }
+</style>
+</head>
+<body>
+<div id="page">
+  <header>
+    <h1>Elementplan data model</h1>
+    <div class="sub">pragmaticBIM Elementplan LinkML schema &middot; <code>schema/elementplan.linkml.yaml</code></div>
+    <div class="chains">
+      <div class="chain" style="color:#b45309">
+        <span class="step">Project goals</span><span class="lbl">why</span><span class="arrow">&rarr;</span>
+        <span class="step">Ausprägungen</span><span class="lbl">how deep</span><span class="arrow">&rarr;</span>
+        <span class="step">Workflows</span><span class="lbl">how</span><span class="arrow">&rarr;</span>
+        <span class="step" style="color:#1d4ed8">BIM requirements</span><span class="lbl">what</span>
+      </div>
+      <div class="chain" style="color:#047857">
+        <span class="step">Scenario</span><span class="lbl">need</span><span class="arrow">&rarr;</span>
+        <span class="step">Option</span><span class="lbl">how</span><span class="arrow">&rarr;</span>
+        <span class="step">Room-type graph</span><span class="lbl">consequence</span><span class="arrow">&rarr;</span>
+        <span class="step">Configuration</span><span class="lbl">explicit form, incl. size</span>
+      </div>
+    </div>
+  </header>
+  <div id="columns"></div>
+  <div class="legend">
+    <div class="item">
+      <svg width="64" height="34"><rect x="1" y="1" width="62" height="32" rx="5" fill="#fff" stroke="#9ca3af" stroke-width="1.5"/><rect x="12" y="12" width="40" height="16" rx="3" fill="#f3f4f6" stroke="#9ca3af"/></svg>
+      <div class="text"><b>Nested box</b> = inlined in the parent record (one YAML file, no own id).</div>
+    </div>
+    <div class="item">
+      <svg width="64" height="14"><defs><marker id="lg1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4b5563"/></marker></defs><path d="M2,7 H58" stroke="#4b5563" stroke-width="1.6" marker-end="url(#lg1)"/></svg>
+      <div class="text"><b>Solid arrow</b> = reference by id (<code>inlined: false</code>). <code>[*]</code> many, <code>[1..*]</code> at least one, <code>&#x21bb;</code> points to the same class.</div>
+    </div>
+    <div class="item">
+      <svg width="64" height="14"><path d="M2,7 H58" stroke="#4b5563" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#lg1)"/></svg>
+      <div class="text"><b>Dashed arrow</b> = matched by <code>element</code> + <code>pset</code> + <code>name</code> (opaque, not an id reference).</div>
+    </div>
+    <div class="item">
+      <div class="text">
+        Top-level boxes are the catalogs of the tree root <code>ElementplanDataset</code>.
+        Records with identity also carry <code>id</code>, <code>code</code>, <code>sort_order</code>, <code>status</code> (wip | active | deprecated) and
+        <code>name</code> / <code>definition</code> as LocalizedText (de, fr, it, en); these are omitted here.
+      </div>
+    </div>
+  </div>
+  <svg id="wires"></svg>
+</div>
+
+<script>
+const AREAS = [
+  {
+    id: "rooms", title: "Usage scenarios & rooms", c: "#059669", tint: "#ecfdf5",
+    classes: [
+      {
+        name: "UsageScenario", note: "usage-scenarios/",
+        fields: [["tags[]"], ["allows_multiple", "bool"], ["jurisdiction[]"]],
+        refs: [["uses", "Use", "*"]],
+        children: [
+          {
+            slot: "options [*]", name: "ScenarioOption",
+            fields: [["exclusive", "bool"]],
+            refs: [
+              ["adds", "RoomType", "*"],
+              ["target", "RoomType", "0..1", "container"],
+              ["excludes", "ScenarioOption | RoomType", "*", null, "skip"],
+              ["project_goal_levels", "ProjectGoalLevel", "*"],
+            ],
+            children: [
+              {
+                slot: "room_relationships [*]", name: "RoomRelationship",
+                fields: [["name"], ["max_distance", "m"]],
+                refs: [["from_room_type", "RoomType"], ["to_room_type", "RoomType"]],
+              },
+              {
+                slot: "quantity", name: "QuantityDefinition",
+                fields: [["unit"]],
+                refs: [["counted_room_type", "RoomType", "0..1"]],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "RoomType", note: "room-types/", target: "RoomType",
+        fields: [["room_type_kind", "room | container"], ["legacy_ids[]"]],
+        refs: [["uses", "Use", "*"], ["extends", "RoomType", "0..1", null, "self"]],
+        children: [
+          {
+            slot: "contains [*]", name: "RoomTypeComponent",
+            refs: [["room_type", "RoomType", null, null, "self"]],
+          },
+          {
+            slot: "configurations [1..*]", name: "RoomTypeConfiguration",
+            refs: [["project_goal_levels", "ProjectGoalLevel", "*"]],
+            children: [
+              {
+                slot: "attribute_presets [1..*]", name: "AttributePreset",
+                fields: [["value", "string | number | bool | LocalizedText"]],
+                refs: [["element + pset + name", "Attribute", null, null, "soft"]],
+              },
+              {
+                slot: "restrictions", name: "RoomTypeRestriction",
+                fields: [["min_area", "m²"], ["min_height / min_length / min_width", "m"]],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "goals", title: "Goals & workflows", c: "#d97706", tint: "#fffbeb",
+    classes: [
+      {
+        name: "Use", note: "uses/", target: "Use",
+        fields: [["use_kind", "main | support"], ["uri"]],
+        refs: [["typical_levels", "ProjectGoalLevel", "*"]],
+        children: [
+          {
+            slot: "reference_quantity", name: "QuantityDefinition",
+            fields: [["unit"]],
+            refs: [["counted_room_type", "RoomType", "0..1"]],
+          },
+          {
+            slot: "classifications [*]", name: "Classification",
+            fields: [["classification_scheme + classification_code"]],
+          },
+        ],
+      },
+      {
+        name: "ProjectGoal", note: "project-goals/",
+        fields: [["is_boundary_condition", "bool"], ["picture_link"], ["comment"]],
+        refs: [["uses", "Use", "*"]],
+        children: [
+          {
+            slot: "levels [*]", name: "ProjectGoalLevel", target: "ProjectGoalLevel",
+            fields: [["comment"]],
+            refs: [
+              ["activated_workflows", "Workflow", "*"],
+              ["activated_room_types", "RoomType", "*", "container"],
+              ["implied_levels", "ProjectGoalLevel", "*", null, "self"],
+            ],
+            children: [
+              {
+                slot: "performance_targets [*]", name: "PerformanceTarget",
+                fields: [["value", "default target, optional"]],
+                refs: [["element + pset + name", "Attribute", null, null, "soft"]],
+              },
+            ],
+          },
+          {
+            slot: "quantities [*]", name: "QuantityDefinition",
+            fields: [["unit"]],
+            refs: [["counted_room_type", "RoomType", "0..1"]],
+          },
+        ],
+      },
+      {
+        name: "Workflow", note: "workflows/", target: "Workflow",
+        fields: [["workflow_group"], ["service_kind", "basic | special"], ["picture_link"], ["jurisdiction[]"]],
+        refs: [
+          ["parent_workflow", "Workflow", "0..1", null, "self"],
+          ["uses", "Use", "*"],
+          ["needed_in_domain", "Domain", "*"],
+        ],
+      },
+    ],
+  },
+  {
+    id: "elements", title: "Elements & attributes", c: "#2563eb", tint: "#eff6ff",
+    classes: [
+      {
+        name: "Element", note: "elements/", target: "Element",
+        fields: [
+          ["entity_ifc2x3 / entity_ifc4 / entity_ifc4_3"],
+          ["applicability", "string | LocalizedText"],
+          ["needed_for_models", "container id → phase ids"],
+          ["picture_link / attachment_link"],
+        ],
+        refs: [
+          ["needed_in_domain", "Domain", "*"],
+          ["needed_in_models", "Model | Document", "*", null, null, "Model"],
+          ["custom_psets", "CustomPset", "*"],
+        ],
+        children: [
+          {
+            slot: "attributes [*]", name: "Attribute", target: "Attribute",
+            fields: [
+              ["name", "IFC property name"],
+              ["pset"],
+              ["datatype", "IfcLabel | IfcReal | …"],
+              ["unit"],
+              ["regex", "string | LocalizedText"],
+              ["needed_in_phases[1..*]", "phase codes"],
+              ["ifc_versions[1..*]", "ifc2x3 | ifc4 | ifc4x3"],
+              ["is_applicability", "bool"],
+              ["requirement_kind", "identification | performance | material"],
+              ["performance_property_key", "e.g. pbs:thermal_property_u_value"],
+              ["target_operator", "equals | minimum | maximum | range"],
+              ["jurisdiction[]"],
+            ],
+            refs: [
+              ["allowed_values", "ValueSet", "0..1"],
+              ["needed_for_workflows", "Workflow", "*"],
+            ],
+            children: [
+              {
+                slot: "verified_by", name: "AttributeReference",
+                fields: [["name + pset", "attribute on the same element"]],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "CustomPset", target: "CustomPset",
+        children: [
+          { slot: "attributes [1..*]", name: "Attribute", fields: [["same shape as Element.attributes"]] },
+        ],
+      },
+      {
+        name: "ValueSet", note: "values/", target: "ValueSet",
+        fields: [["year"], ["norm_reference"], ["values", "LocalizedStringList"]],
+      },
+    ],
+  },
+  {
+    id: "delivery", title: "Delivery", c: "#7c3aed", tint: "#f5f3ff",
+    classes: [
+      {
+        name: "Domain", note: "domains/", target: "Domain",
+        fields: [["file_name"]],
+      },
+      {
+        name: "Model", note: "models/", target: "Model",
+        fields: [["file_name"], ["jurisdiction[]"]],
+        refs: [
+          ["domain", "Domain", "1"],
+          ["included_elements", "Element", "*"],
+          ["scheduled_milestones", "Milestone", "*"],
+        ],
+        children: [
+          {
+            slot: "classifications [*]", name: "Classification",
+            fields: [["classification_scheme + classification_code"], ["e.g. AbstractModelClassification / ARC", ""]],
+          },
+        ],
+      },
+      {
+        name: "Document", note: "documents/",
+        fields: [["description"], ["file_name"], ["jurisdiction[]"]],
+        refs: [
+          ["domain", "Domain", "1"],
+          ["included_elements", "Element", "*"],
+          ["scheduled_milestones", "Milestone", "*"],
+        ],
+        children: [
+          {
+            slot: "classifications [*]", name: "Classification",
+            fields: [["classification_scheme + classification_code"], ["e.g. KBOBDocumentTypes2016 / V07100", ""]],
+          },
+          {
+            slot: "metadata_requirements [*]", name: "DocumentRequirement",
+            fields: [["regex"], ["needed_in_phases[1..*]", "phase codes"], ["jurisdiction[]"]],
+            refs: [
+              ["allowed_values", "ValueSet", "0..1"],
+              ["needed_for_workflows", "Workflow", "*"],
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "phases", title: "Phases", c: "#db2777", tint: "#fdf2f8",
+    classes: [
+      {
+        name: "Phase", note: "phases/", target: "Phase",
+        fields: [["values[]", "ordered phase codes"]],
+        children: [
+          {
+            slot: "milestones [*]", name: "Milestone", target: "Milestone",
+            fields: [["phase", "phase code"], ["kind", "B | M | E"], ["date"]],
+          },
+        ],
+      },
+      {
+        name: "PhaseMapping", note: "phases/",
+        fields: [["comment", "LocalizedText"]],
+        refs: [["source", "Phase", "1"], ["target", "Phase", "1"]],
+        children: [
+          {
+            slot: "phases [*] / milestones [*]", name: "PhaseMapEntry",
+            fields: [["source → target", "code pair"]],
+          },
+        ],
+      },
+      {
+        name: "PhaseSubphase",
+        refs: [["phase", "Phase", "0..1"]],
+      },
+      { name: "PhaseScheme" },
+    ],
+  },
+];
+
+const targets = {};
+const wires = [];
+
+function el(tag, cls, html) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (html != null) e.innerHTML = html;
+  return e;
+}
+
+function renderClass(spec, area, colIndex, nested) {
+  const box = el("div", "cls" + (nested ? " nested" : ""));
+  const head = el("div", "head");
+  if (spec.slot) head.appendChild(el("span", "slot", spec.slot));
+  head.appendChild(el("span", "name", spec.name));
+  if (spec.note) head.appendChild(el("span", "note", spec.note));
+  box.appendChild(head);
+  const body = el("div", "body");
+  for (const [f, t] of spec.fields || []) {
+    body.appendChild(el("div", "row", `<span class="f">${f}</span>${t ? ` <span class="t">${t}</span>` : ""}`));
+  }
+  for (const [f, to, card, hint, mode, wireTo] of spec.refs || []) {
+    const glyph = mode === "self" ? "&#x21bb;" : mode === "soft" ? "&#x21e2;" : "&rarr;";
+    const row = el("div", "row ref",
+      `<span class="f">${f}</span> ${glyph} <span class="to">${to}</span>` +
+      (card ? ` <span class="card">[${card}]</span>` : "") +
+      (hint ? ` <span class="t">${hint}</span>` : ""));
+    body.appendChild(row);
+    if (mode !== "self" && mode !== "skip") {
+      wires.push({ row, to: wireTo || to, soft: mode === "soft", color: area.c, col: colIndex });
+    }
+  }
+  for (const child of spec.children || []) body.appendChild(renderClass(child, area, colIndex, true));
+  box.appendChild(body);
+  if (spec.target) targets[spec.target] = { box, col: colIndex };
+  if (!nested) (colBoxes[colIndex] = colBoxes[colIndex] || []).push(box);
+  return box;
+}
+
+const colBoxes = [];
+
+function roundedPath(pts, r) {
+  let d = `M${pts[0][0]},${pts[0][1]}`;
+  for (let i = 1; i < pts.length - 1; i++) {
+    const [px, py] = pts[i - 1], [x, y] = pts[i], [nx, ny] = pts[i + 1];
+    const r1 = Math.min(r, Math.hypot(x - px, y - py) / 2, Math.hypot(nx - x, ny - y) / 2);
+    const ax = x - Math.sign(x - px) * r1, ay = y - Math.sign(y - py) * r1;
+    const bx = x + Math.sign(nx - x) * r1, by = y + Math.sign(ny - y) * r1;
+    d += ` L${ax},${ay} Q${x},${y} ${bx},${by}`;
+  }
+  const last = pts[pts.length - 1];
+  return d + ` L${last[0]},${last[1]}`;
+}
+
+const columns = document.getElementById("columns");
+AREAS.forEach((area, i) => {
+  const col = el("div", "area");
+  col.style.setProperty("--c", area.c);
+  col.style.setProperty("--tint", area.tint);
+  col.appendChild(el("h2", null, area.title));
+  for (const spec of area.classes) col.appendChild(renderClass(spec, area, i, false));
+  columns.appendChild(col);
+});
+
+function drawWires() {
+  const page = document.getElementById("page");
+  const svg = document.getElementById("wires");
+  const origin = page.getBoundingClientRect();
+  svg.setAttribute("width", page.scrollWidth);
+  svg.setAttribute("height", page.scrollHeight);
+  const rect = (e) => {
+    const r = e.getBoundingClientRect();
+    return { l: r.left - origin.left, r: r.right - origin.left, t: r.top - origin.top, b: r.bottom - origin.top };
+  };
+
+  const ns = "http://www.w3.org/2000/svg";
+  const defs = document.createElementNS(ns, "defs");
+  const colors = [...new Set(wires.map((w) => w.color))];
+  colors.forEach((c, i) => {
+    const m = document.createElementNS(ns, "marker");
+    m.setAttribute("id", "ah" + i);
+    m.setAttribute("viewBox", "0 0 10 10");
+    m.setAttribute("refX", "9");
+    m.setAttribute("refY", "5");
+    m.setAttribute("markerWidth", "7");
+    m.setAttribute("markerHeight", "7");
+    m.setAttribute("orient", "auto");
+    const p = document.createElementNS(ns, "path");
+    p.setAttribute("d", "M0,0 L10,5 L0,10 z");
+    p.setAttribute("fill", c);
+    m.appendChild(p);
+    defs.appendChild(m);
+  });
+  svg.appendChild(defs);
+
+  const plans = wires.map((w) => {
+    const t = targets[w.to];
+    if (!t) throw new Error("No target box for " + w.to);
+    const s = rect(w.row);
+    const tb = rect(t.box);
+    let side, sx;
+    if (t.col === w.col) {
+      side = "left";
+      sx = rect(w.row.closest(".area")).l;
+    } else if (t.col > w.col) {
+      side = "left";
+      sx = rect(w.row.closest(".area")).r;
+    } else {
+      side = "right";
+      sx = rect(w.row.closest(".area")).l;
+    }
+    const sy = (s.t + s.b) / 2;
+    return { w, s, sx, sy, tb, side, key: w.to + ":" + side, rowX: t.col >= w.col && t.col !== w.col ? s.r : s.l };
+  });
+
+  const groups = {};
+  for (const p of plans) (groups[p.key] = groups[p.key] || []).push(p);
+  for (const list of Object.values(groups)) {
+    list.sort((a, b) => a.sy - b.sy);
+    const tb = list[0].tb;
+    const span = Math.min(tb.b - tb.t - 16, Math.max(24, list.length * 11));
+    list.forEach((p, i) => {
+      p.ty = tb.t + 14 + (list.length === 1 ? 0 : (span * i) / (list.length - 1));
+      p.tx = p.side === "left" ? tb.l : tb.r;
+    });
+  }
+
+  const areaRects = [...document.querySelectorAll(".area")].map(rect);
+  let spanIndex = 0;
+  for (const p of plans) {
+    const color = p.w.color;
+    const path = document.createElementNS(ns, "path");
+    let d;
+    const tc = targets[p.w.to].col;
+    const rowEdge = p.side === "left" && p.w.col !== tc ? p.s.r : p.s.l;
+    const rowEnd = p.w.col === tc ? p.s.l : rowEdge;
+    const toArea = p.sx;
+    if (Math.abs(tc - p.w.col) > 1) {
+      const dir = Math.sign(tc - p.w.col);
+      const mid = p.w.col + dir;
+      const boxes = colBoxes[mid].map(rect).sort((a, b) => a.t - b.t);
+      const gaps = boxes.map((b, i) => (i + 1 < boxes.length ? (b.b + boxes[i + 1].t) / 2 : Math.max(b.b + 24, (p.sy + p.ty) / 2)));
+      const want = (p.sy + p.ty) / 2;
+      const gy = gaps.reduce((best, y) => (Math.abs(y - want) < Math.abs(best - want) ? y : best));
+      const off = (spanIndex++ % 3) * 10 - 10;
+      const src = areaRects[p.w.col], dst = areaRects[tc];
+      const g1 = dir > 0 ? src.r + 60 + off : src.l - 60 + off;
+      const g2 = dir > 0 ? dst.l - 60 + off : dst.r + 60 + off;
+      const end = dir > 0 ? p.tx - 1 : p.tx + 1;
+      d = roundedPath([[rowEnd, p.sy], [g1, p.sy], [g1, gy], [g2, gy], [g2, p.ty], [end, p.ty]], 12);
+    } else if (p.w.col === tc) {
+      const bulge = 46 + Math.abs(p.sy - p.ty) * 0.06;
+      d = `M${rowEnd},${p.sy} H${toArea} C${toArea - bulge},${p.sy} ${p.tx - bulge},${p.ty} ${p.tx - 1},${p.ty}`;
+    } else {
+      const dx = Math.abs(p.tx - toArea) * 0.45;
+      const c1 = p.side === "left" ? toArea + dx : toArea - dx;
+      const c2 = p.side === "left" ? p.tx - dx : p.tx + dx;
+      const end = p.side === "left" ? p.tx - 1 : p.tx + 1;
+      d = `M${rowEnd},${p.sy} H${toArea} C${c1},${p.sy} ${c2},${p.ty} ${end},${p.ty}`;
+    }
+    path.setAttribute("d", d);
+    path.setAttribute("stroke", color);
+    path.setAttribute("marker-end", `url(#ah${colors.indexOf(color)})`);
+    if (p.w.soft) path.setAttribute("class", "soft");
+    svg.appendChild(path);
+  }
+  document.body.dataset.ready = "1";
+}
+
+document.fonts.ready.then(drawWires);
+</script>
+</body>
+</html>

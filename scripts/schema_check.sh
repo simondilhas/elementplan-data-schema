@@ -67,29 +67,39 @@ if "needed_for_project_goals" in schema["slots"]:
 
 print("Schema contract OK: Workflow without needed_for_project_goals")
 
-if "JurisdictionEnum" not in schema.get("enums", {}):
-    raise SystemExit("JurisdictionEnum is missing.")
-jurisdiction_values = set(
-    schema["enums"]["JurisdictionEnum"].get("permissible_values", {})
-)
-for required_code in ("general", "ch", "de", "at"):
-    if required_code not in jurisdiction_values:
-        raise SystemExit(f"JurisdictionEnum must include {required_code}.")
-
 jurisdiction_slot = schema["slots"].get("jurisdiction")
 if not jurisdiction_slot:
     raise SystemExit("jurisdiction slot is missing.")
-if jurisdiction_slot.get("range") != "JurisdictionEnum":
-    raise SystemExit("jurisdiction slot must have range: JurisdictionEnum")
+if jurisdiction_slot.get("range") != "string":
+    raise SystemExit("jurisdiction slot must have range: string")
+if jurisdiction_slot.get("pattern") != "^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$":
+    raise SystemExit("jurisdiction slot must use the ISO 3166 pattern.")
 if not jurisdiction_slot.get("multivalued"):
     raise SystemExit("jurisdiction slot must be multivalued.")
+for slot_name in ("edition", "valid_from", "valid_until"):
+    if slot_name not in schema["slots"]:
+        raise SystemExit(f"{slot_name} slot is missing.")
 
-for class_name in ("Workflow", "Attribute", "Model", "Document"):
-    class_slots = schema["classes"][class_name]["slots"]
+for class_name in (
+    "Workflow", "Attribute", "Model", "Document", "UsageScenario",
+    "ProjectGoalLevel", "RoomTypeConfiguration", "Component", "ValueSet",
+):
+    class_def = schema["classes"][class_name]
+    class_slots = class_def.get("slots") or []
     if "jurisdiction" not in class_slots:
         raise SystemExit(f"{class_name} class is missing the jurisdiction slot.")
+for class_name in ("RoomTypeConfiguration", "Component", "ValueSet"):
+    class_slots = schema["classes"][class_name]["slots"]
+    for slot_name in ("edition", "valid_from", "valid_until"):
+        if slot_name not in class_slots:
+            raise SystemExit(f"{class_name} is missing {slot_name}.")
+if "SolutionParameterSet" not in schema["classes"]:
+    raise SystemExit("SolutionParameterSet class is missing.")
+param_attr = schema["classes"]["SolutionOption"]["attributes"]["parameters"]
+if param_attr.get("range") != "SolutionParameterSet":
+    raise SystemExit("SolutionOption.parameters must be SolutionParameterSet list.")
 
-print("Schema contract OK: jurisdiction on Workflow, Attribute, Model, Document")
+print("Schema contract OK: jurisdiction pattern, editions, parameter sets")
 
 if "ServiceKindEnum" not in schema.get("enums", {}):
     raise SystemExit("ServiceKindEnum is missing.")
@@ -513,12 +523,12 @@ if not exclusive_slot or exclusive_slot.get("range") != "boolean":
 excludes_slot = schema["slots"].get("excludes") or {}
 excludes_ranges = {item.get("range") for item in excludes_slot.get("any_of") or []}
 if (
-    excludes_ranges != {"ScenarioOption", "RoomType"}
+    excludes_ranges != {"ScenarioOption", "SolutionOption", "RoomType"}
     or not excludes_slot.get("multivalued")
     or excludes_slot.get("inlined") is not False
 ):
     raise SystemExit(
-        "excludes slot must be multivalued, inlined: false, any_of ScenarioOption / RoomType."
+        "excludes slot must be multivalued, inlined: false, any_of ScenarioOption / SolutionOption / RoomType."
     )
 
 require_class_slots("ProjectGoal", ("is_boundary_condition",))
@@ -540,8 +550,21 @@ goal_allows_multiple = schema["classes"]["ProjectGoal"].get("slot_usage", {}).ge
 if str(goal_allows_multiple.get("ifabsent")).lower() != "false":
     raise SystemExit("ProjectGoal.allows_multiple must default to false.")
 require_class_slots("ProjectGoalLevel", ("exclusive",))
-require_class_slots("Use", ("reference_quantity", "typical_levels"))
+require_class_slots("Use", ("reference_quantity", "typical_levels", "use_kind"))
 require_reference("typical_levels", "ProjectGoalLevel", multivalued=True)
+if "UseKindEnum" not in enums:
+    raise SystemExit("UseKindEnum is missing.")
+if set(enums["UseKindEnum"].get("permissible_values", {})) != {"main", "support"}:
+    raise SystemExit("UseKindEnum must permit main and support.")
+if schema["classes"]["Use"].get("slot_usage", {}).get("use_kind", {}).get("required") is not True:
+    raise SystemExit("Use.use_kind must be required.")
+for class_name, slots in (
+    ("ProjectGoal", ("quantities",)),
+    ("ProjectGoalLevel", ("implied_levels", "performance_targets")),
+):
+    require_class_slots(class_name, slots)
+if "QuantityDefinition" not in schema["classes"] or "PerformanceTarget" not in schema["classes"]:
+    raise SystemExit("QuantityDefinition and PerformanceTarget classes are required.")
 reference_quantity_slot = schema["slots"].get("reference_quantity") or {}
 if (
     reference_quantity_slot.get("range") != "ReferenceQuantity"
@@ -991,7 +1014,7 @@ for class_name, props in (
     ("RoomType", ("id", "room_type_kind", "default_scope", "activity", "room_name", "uses", "extends", "contains", "legacy_ids", "configurations")),
     ("RoomTypeComponent", ("room_type",)),
     ("UsageScenario", ("scope", "uses", "use", "tags", "allows_multiple", "options")),
-    ("Use", ("id", "code", "sort_order", "name", "definition", "status", "reference_quantity", "typical_levels")),
+    ("Use", ("id", "code", "sort_order", "name", "definition", "status", "reference_quantity", "typical_levels", "use_kind")),
     ("ReferenceQuantity", ("id", "code", "sort_order", "name", "unit", "status")),
     ("ScenarioOption", ("id", "project_goal_levels", "target", "sizes", "adds", "room_relationships", "exclusive", "excludes")),
     ("ProjectGoal", ("is_boundary_condition", "group", "uses", "allows_multiple")),
@@ -1453,8 +1476,11 @@ print("Schema contract OK: Component, Equipment, Opening")
 folders = {
     "domains": "domains", "models": "models", "documents": "documents",
     "project_goals": "project-goals", "uses": "uses", "room_types": "room-types",
-    "usage_scenarios": "usage-scenarios", "workflows": "workflows", "valuesets": "values",
-    "elements": "elements", "components": "components", "product_sheets": "product-sheets",
+    "usage_scenarios": "usage-scenarios", "solution_dimensions": "solution-dimensions",
+    "rules": "rules", "derived_values": "derived-values",
+    "workflows": "workflows", "valuesets": "values",
+    "elements": "elements", "components": "components",
+    "product_sheets": "product-sheets",
 }
 dataset = {
     slot: [yaml.safe_load(path.read_text(encoding="utf-8")) for path in sorted(Path("examples", folder).glob("*.yaml"))]
@@ -1590,9 +1616,188 @@ print("Example references OK: product sheets")
 PY
 
 # Solution schema: compiles, and every example project passes its checks.
+python - <<'PY'
+from pathlib import Path
+
+import yaml
+
+solution = yaml.safe_load(Path("schema/solution.linkml.yaml").read_text(encoding="utf-8"))
+kinds = set(solution["enums"]["ContextKindEnum"]["permissible_values"])
+for required in ("perimeter", "parcel", "envelope", "building", "level"):
+    if required not in kinds:
+        raise SystemExit(f"ContextKindEnum must include {required}.")
+envelope = solution["enums"]["ContextKindEnum"]["permissible_values"]["envelope"]
+if envelope.get("meaning"):
+    raise SystemExit("envelope meaning must stay unset until the data-contract class is confirmed.")
+
+attrs = solution["classes"]["SpatialContext"]["attributes"]
+for required in (
+    "parent_site",
+    "parent_envelope",
+    "outline",
+    "base_elevation",
+    "height",
+    "storeys",
+    "basement_levels",
+):
+    if required not in attrs:
+        raise SystemExit(f"SpatialContext is missing {required}.")
+if attrs["basement_levels"].get("ifabsent") != "int(0)":
+    raise SystemExit("basement_levels must default to 0.")
+
+rules = solution["classes"]["SpatialContext"].get("rules") or []
+if not any("envelope" in (r.get("description") or "").lower() for r in rules):
+    raise SystemExit("SpatialContext needs a rule that an envelope requires parent_site, outline and height.")
+
+envelope_example = Path("examples/solutions/site/contexts/envelope-a.yaml")
+if not envelope_example.exists():
+    raise SystemExit(f"missing {envelope_example}")
+building = yaml.safe_load(
+    Path("examples/solutions/authored/contexts/building-a.yaml").read_text(encoding="utf-8")
+)
+if building.get("parent_envelope") != "envelope/a":
+    raise SystemExit("building-a.yaml must point parent_envelope at envelope/a.")
+
+# Solution box + bubbles / multi-solution layout
+elementplan = yaml.safe_load(Path("schema/elementplan.linkml.yaml").read_text(encoding="utf-8"))
+for enum_name, values in (
+    ("SolutionScopeEnum", {"project", "site", "building", "unit"}),
+    ("SolutionStepEnum", {"form", "access", "grid", "units", "spaces"}),
+):
+    got = set(elementplan["enums"][enum_name]["permissible_values"])
+    if got != values:
+        raise SystemExit(f"{enum_name} must permit exactly {sorted(values)}.")
+for class_name in ("SolutionDimension", "SolutionOption", "SolutionParameter"):
+    if class_name not in elementplan["classes"]:
+        raise SystemExit(f"missing {class_name}")
+if "solution_dimensions" not in elementplan["classes"]["ElementplanDataset"]["slots"]:
+    raise SystemExit("ElementplanDataset is missing solution_dimensions.")
+if not list(Path("examples/solution-dimensions").glob("*.yaml")):
+    raise SystemExit("examples/solution-dimensions must contain catalog records.")
+
+for class_name in ("Bubble", "LevelOutline", "UnitTypeAnswer", "SolutionInfo"):
+    if class_name not in solution["classes"]:
+        raise SystemExit(f"solution schema missing {class_name}")
+for enum_name in ("OutlineKindEnum", "SolutionSourceEnum", "SolutionStatusEnum"):
+    if enum_name not in solution["enums"]:
+        raise SystemExit(f"solution schema missing {enum_name}")
+
+for required in ("authored", "entry-01", "site", "bestand"):
+    if not (Path("examples/solutions") / required).is_dir():
+        raise SystemExit(f"missing examples/solutions/{required}/")
+for slug in ("authored", "entry-01", "bestand"):
+    if not (Path("examples/solutions") / slug / "solution.yaml").exists():
+        raise SystemExit(f"missing examples/solutions/{slug}/solution.yaml")
+if (Path("examples/solutions/site/solution.yaml")).exists():
+    raise SystemExit("site must not have solution.yaml")
+
+print("Schema contract OK: envelope context kind and slots")
+print("Schema contract OK: solution box, bubbles, multi-solution layout")
+
+# Jurisdiction validation: uppercase rejected; overlapping room-type configs rejected.
+import re
+from datetime import date
+
+jur_pat = re.compile(r"^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$")
+for bad in ("CH", "ch-ZH", "switzerland"):
+    if jur_pat.match(bad):
+        raise SystemExit(f"jurisdiction pattern must reject {bad!r}")
+for good in ("general", "ch", "de", "ch-zh", "ch-be"):
+    if not jur_pat.match(good):
+        raise SystemExit(f"jurisdiction pattern must accept {good!r}")
+
+# Overlapping validity for same room type + jurisdiction
+room_types = [
+    yaml.safe_load(p.read_text(encoding="utf-8"))
+    for p in sorted(Path("examples/room-types").glob("*.yaml"))
+]
+
+
+def intervals(conf):
+    start = conf.get("valid_from") or "0001-01-01"
+    end = conf.get("valid_until") or "9999-12-31"
+    return start, end
+
+
+def overlaps(a, b):
+    return a[0] <= b[1] and b[0] <= a[1]
+
+
+def is_editioned(conf):
+    return bool(conf.get("edition") or conf.get("valid_from") or conf.get("valid_until"))
+
+
+for rt in room_types:
+    by_jur: dict = {}
+    for conf in rt.get("configurations") or []:
+        if not is_editioned(conf):
+            continue  # size/quality alternatives coexist under the same jurisdiction
+        for j in conf.get("jurisdiction") or ["general"]:
+            by_jur.setdefault(j, []).append(conf)
+    for j, confs in by_jur.items():
+        for i, left in enumerate(confs):
+            for right in confs[i + 1 :]:
+                if overlaps(intervals(left), intervals(right)):
+                    raise SystemExit(
+                        f"{rt['id']}: configurations {left['id']} and {right['id']} "
+                        f"overlap for jurisdiction {j}"
+                    )
+
+# Parameter-set coverage on solution options
+for path in sorted(Path("examples/solution-dimensions").glob("*.yaml")):
+    dim = yaml.safe_load(path.read_text(encoding="utf-8"))
+    for opt in dim.get("options") or []:
+        sets = opt.get("parameters") or []
+        if not sets or isinstance(sets, dict):
+            continue
+        by_j = {
+            (e.get("jurisdiction") or "general"): set((e.get("values") or {}))
+            for e in sets
+        }
+        all_keys = set().union(*by_j.values()) if by_j else set()
+        general = by_j.get("general")
+        countries = {j: ks for j, ks in by_j.items() if j != "general" and "-" not in j}
+        for key in all_keys:
+            ok = (general is not None and key in general) or (
+                bool(countries) and all(key in ks for ks in countries.values())
+            )
+            if not ok:
+                raise SystemExit(f"{opt['id']}: parameter {key} missing from general/country sets")
+
+print("Validation OK: jurisdiction pattern, config overlap, parameter sets")
+
+# Rules + SHACL generator
+import subprocess
+import sys
+
+elementplan = yaml.safe_load(Path("schema/elementplan.linkml.yaml").read_text(encoding="utf-8"))
+for class_name in ("Rule", "RuleCondition", "RuleCase", "RuleSource", "DerivedValue"):
+    if class_name not in elementplan["classes"]:
+        raise SystemExit(f"missing {class_name}")
+for enum_name in ("RuleKindEnum", "RuleSeverityEnum", "BuildingHeightCategoryEnum"):
+    if enum_name not in elementplan["enums"]:
+        raise SystemExit(f"missing {enum_name}")
+if "rules" not in elementplan["classes"]["ElementplanDataset"]["slots"]:
+    raise SystemExit("ElementplanDataset is missing rules.")
+if len(list(Path("examples/rules").glob("*.yaml"))) < 2:
+    raise SystemExit("examples/rules needs at least two Wohnen rules.")
+if not list(Path("shacl/patterns").glob("*.json")):
+    raise SystemExit("shacl/patterns is empty.")
+
+subprocess.check_call([sys.executable, "scripts/generate_shacl.py"])
+generated = Path("shacl/generated/fr-wh-01.ttl")
+if not generated.exists() or "sh:NodeShape" not in generated.read_text(encoding="utf-8"):
+    raise SystemExit("generate_shacl.py must write shacl/generated/fr-wh-01.ttl with a NodeShape")
+print("Schema contract OK: Rule class and SHACL generation")
+PY
 gen-json-schema schema/solution.linkml.yaml > /dev/null
 echo "Solution schema OK: compiles to JSON Schema"
-for project in examples/solution/*/; do
+python scripts/check_solution.py examples/solutions/site
+for project in examples/solutions/*/; do
+  name="$(basename "$project")"
+  if [[ "$name" == "site" ]]; then
+    continue
+  fi
   python scripts/check_solution.py "$project"
 done
 

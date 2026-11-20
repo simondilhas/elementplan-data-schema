@@ -16,7 +16,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcBurner
 entity_ifc4_3: null
-picture_link: null
+picture_link: brenner.png
+picture_print_link: brenner-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcBurner
 attributes:
