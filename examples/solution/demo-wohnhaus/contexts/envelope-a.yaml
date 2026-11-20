@@ -1,0 +1,12 @@
+id: envelope/a
+kind: envelope
+parent_site: parcel/a
+element: pragmaticbim:element/architecture-planning-constraint
+origin: {kind: authored, tool: elementplan context editor}
+outline: [[0.0, 0.0], [24.0, 0.0], [24.0, 16.0], [0.0, 16.0]]
+base_elevation: 0.0
+height: 12.5
+storeys: 4
+basement_levels: 1
+values:
+  Name: Bauenvelope

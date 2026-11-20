@@ -205,8 +205,37 @@ def check(data: dict, catalog: dict[str, dict], report: Report) -> None:
             report.warn(rid, "proposed, needs review")
 
     for ctx in data.get("contexts", []):
-        ref(ctx["id"], ctx.get("parent_project"), "parent_project")
-        ref(ctx["id"], ctx.get("parent_building"), "parent_building")
+        rid = ctx["id"]
+        kind = ctx.get("kind")
+        ref(rid, ctx.get("parent_project"), "parent_project")
+        ref(rid, ctx.get("parent_site"), "parent_site")
+        ref(rid, ctx.get("parent_envelope"), "parent_envelope")
+        ref(rid, ctx.get("parent_building"), "parent_building")
+        if kind == "envelope":
+            if not ctx.get("parent_site"):
+                report.error(rid, "envelope needs parent_site")
+            else:
+                site = by_id.get(ctx["parent_site"])
+                if site and site.get("kind") not in ("parcel", "perimeter"):
+                    report.error(
+                        rid,
+                        f"parent_site {ctx['parent_site']} must be parcel or perimeter",
+                    )
+            if not ctx.get("outline"):
+                report.error(rid, "envelope needs outline")
+            elif len(ctx["outline"]) < 3:
+                report.error(rid, "outline needs at least three points")
+            if ctx.get("height") is None:
+                report.error(rid, "envelope needs height")
+            if not rid.startswith("envelope/"):
+                report.warn(rid, "envelope id should use the envelope/<slug> pattern")
+        if kind == "building" and ctx.get("parent_envelope"):
+            env = by_id.get(ctx["parent_envelope"])
+            if env and env.get("kind") != "envelope":
+                report.error(
+                    rid,
+                    f"parent_envelope {ctx['parent_envelope']} must be an envelope",
+                )
 
     def edge_length(space: dict, edge: int) -> float | None:
         pts = space.get("outline") or []

@@ -77,6 +77,12 @@ enums:
         meaning: pbdc:PerimeterContext
       parcel:
         meaning: pbdc:LegalSiteContext
+      envelope:
+        description: >-
+          Max building volume (Bauenvelope). Data-contract class TBD; leave
+          meaning unset until confirmed. Element defaults to
+          pragmaticbim:element/architecture-planning-constraint with
+          values.Name = Bauenvelope.
       building:
         meaning: pbdc:BuildingContext
       level:
@@ -365,8 +371,11 @@ classes:
   SpatialContext:
     is_a: Record
     description: >-
-      Perimeter, parcel, building or level. One class with a kind keeps the
-      folder simple; contract_class maps each kind to the data contract.
+      Perimeter, parcel, envelope, building or level. One class with a kind
+      keeps the folder simple; contract_class maps each kind to the data
+      contract. An envelope that steps back by storey is stored as several
+      envelope contexts (id pattern envelope/<slug>, file
+      contexts/envelope-<slug>.yaml).
     class_uri: pbdc:SpatialContext
     attributes:
       kind:
@@ -375,6 +384,16 @@ classes:
       parent_project:
         range: Project
         inlined: false
+      parent_site:
+        range: SpatialContext
+        inlined: false
+        description: >-
+          For envelopes: the parcel or perimeter the volume lies on.
+      parent_envelope:
+        range: SpatialContext
+        inlined: false
+        description: >-
+          For buildings: the envelope the building must stay inside.
       parent_building:
         range: SpatialContext
         inlined: false
@@ -385,6 +404,45 @@ classes:
       elevation:
         range: float
         description: Level finished floor height in the building frame, metres.
+      outline:
+        description: >-
+          Footprint in the parent frame (envelope) or level frame (space),
+          metres, counter-clockwise, not closed. Same array shape as Space.outline.
+        range: float
+        array:
+          exact_number_dimensions: 2
+          dimensions:
+            - minimum_cardinality: 3
+            - exact_cardinality: 2
+      base_elevation:
+        range: float
+        description: Envelope base height in the parent frame, metres.
+      height:
+        range: float
+        description: Envelope height above base_elevation, metres.
+      storeys:
+        range: integer
+        description: Allowed storeys above ground for an envelope.
+        minimum_value: 0
+      basement_levels:
+        range: integer
+        description: Basement levels allowed under an envelope.
+        minimum_value: 0
+        ifabsent: int(0)
+    rules:
+      - description: An envelope needs parent_site, outline and height.
+        preconditions:
+          slot_conditions:
+            kind:
+              equals_string: envelope
+        postconditions:
+          slot_conditions:
+            parent_site:
+              required: true
+            outline:
+              required: true
+            height:
+              required: true
 
   Unit:
     is_a: Record
