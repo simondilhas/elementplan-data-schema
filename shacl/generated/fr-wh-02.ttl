@@ -1,0 +1,43 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rule: <https://pragmaticbim.ch/id/rule/> .
+@prefix pb: <https://pragmaticbim.ch/id/> .
+
+# Generated from pragmaticbim:rule/fr-wh-02 via pattern separating-units.
+
+rule:fr-wh-02 a sh:NodeShape ;
+    sh:name "Wohnungstrennwände"@de,
+        "Dwelling separating walls"@en ;
+    sh:severity sh:Violation ;
+    sh:targetClass pb:Element ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Rule FR-WH-02 case low: required {'FireRating': 'REI 30'}" ;
+        sh:select """
+            SELECT $this WHERE {
+                # Placeholder: separates_units and height low
+                # then require {'FireRating': 'REI 30'}
+                FILTER (false)
+            }
+        """
+    ] ;    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Rule FR-WH-02 case medium: required {'FireRating': 'REI 60'}" ;
+        sh:select """
+            SELECT $this WHERE {
+                # Placeholder: separates_units and height medium
+                # then require {'FireRating': 'REI 60'}
+                FILTER (false)
+            }
+        """
+    ] ;    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "Rule FR-WH-02 case high_rise: required {'FireRating': 'REI 90'}" ;
+        sh:select """
+            SELECT $this WHERE {
+                # Placeholder: separates_units and height high_rise
+                # then require {'FireRating': 'REI 90'}
+                FILTER (false)
+            }
+        """
+    ] ;    .

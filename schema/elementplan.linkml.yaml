@@ -125,6 +125,34 @@ enums:
       units: {}
       spaces: {}
 
+  RuleKindEnum:
+    description: Whether a rule checks a model or a process deliverable.
+    permissible_values:
+      model: {}
+      process: {}
+
+  RuleSeverityEnum:
+    description: How a failed rule is reported.
+    permissible_values:
+      violation: {}
+      warning: {}
+
+  BuildingHeightCategoryEnum:
+    description: >-
+      Derived from spaces-gross-volume.Height: low ≤ 11 m, medium ≤ 30 m,
+      high_rise > 30 m (VKF).
+    permissible_values:
+      low: {}
+      medium: {}
+      high_rise: {}
+
+  FireProtectionConceptEnum:
+    description: Fire-protection concept named in a rule condition.
+    permissible_values:
+      structural: {}
+      sprinkler: {}
+      mixed: {}
+
   ProjectGoalGroupEnum:
     description: Section of the goals step in which a project goal is asked.
     permissible_values:
@@ -624,6 +652,32 @@ slots:
   step:
     range: SolutionStepEnum
     description: Generator step this solution dimension feeds.
+  rules:
+    multivalued: true
+    range: Rule
+    inlined_as_list: true
+    description: >-
+      Conditional requirements (model or process) compiled to SHACL. One file
+      per rule under rules/.
+  derived_values:
+    multivalued: true
+    range: DerivedValue
+    inlined_as_list: true
+    description: How derived condition values (e.g. building_height_category) are computed.
+  rule_kind:
+    range: RuleKindEnum
+  severity:
+    range: RuleSeverityEnum
+  pattern:
+    range: string
+    description: SHACL pattern id (e.g. adjacent-space-attribute); omit when shacl is set.
+  applies_to:
+    range: Element
+    inlined: false
+    description: Element the rule constrains.
+  shacl:
+    range: string
+    description: Path to a hand-written SHACL shape when no pattern fits.
   allows_multiple:
     range: boolean
     description: >-
@@ -1047,6 +1101,8 @@ classes:
       - room_types
       - usage_scenarios
       - solution_dimensions
+      - rules
+      - derived_values
       - workflows
       - valuesets
       - phase_schemes
@@ -1648,6 +1704,136 @@ classes:
       - name
       - description
       - size_restrictions
+
+  RuleSource:
+    description: Norm citation for a rule.
+    attributes:
+      norm:
+        range: string
+        required: true
+      clause:
+        range: string
+      edition:
+        range: string
+
+  RuleCondition:
+    description: >-
+      Shared or per-case conditions for a rule. Attribute matches on the
+      element itself use attributes (e.g. LoadBearing: true).
+    attributes:
+      building_height_category:
+        range: BuildingHeightCategoryEnum
+      fire_protection_concept:
+        range: FireProtectionConceptEnum
+      adjacent_room_types:
+        range: RoomType
+        multivalued: true
+        inlined: false
+      adjacent_activities:
+        range: string
+        multivalued: true
+      separates_units:
+        range: boolean
+      below_terrain:
+        range: boolean
+      top_storey:
+        range: boolean
+      attributes:
+        range: Any
+        description: >-
+          Attribute name to required value on the element itself
+          (e.g. LoadBearing -> true).
+
+  RuleCase:
+    description: >-
+      One case of a rule with additional when conditions and required
+      attribute values.
+    attributes:
+      when:
+        range: RuleCondition
+        inlined: true
+      requires:
+        range: Any
+        required: true
+        description: >-
+          Attribute name to required value, e.g. FireRating -> REI 30.
+
+  DerivedValue:
+    description: >-
+      How a derived condition value is computed from the model. The first
+      entry defines building_height_category from spaces-gross-volume.Height.
+    attributes:
+      id:
+        identifier: true
+        required: true
+      name:
+        range: string
+        required: true
+      source_attribute:
+        range: string
+        required: true
+        description: Attribute that supplies the input (e.g. spaces-gross-volume.Height).
+      thresholds:
+        range: Any
+        description: >-
+          Named thresholds, e.g. {low: 11, medium: 30} with high_rise above medium.
+
+  Rule:
+    description: >-
+      Conditional requirement linked to uses and compiled to SHACL. Values live
+      only in the YAML; a small set of patterns covers most logic. Escape hatch:
+      set shacl to a hand-written .ttl and omit pattern. The same pattern can
+      emit a validation shape and a SHACL-AF rule (check and aufinformieren).
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - status
+      - jurisdiction
+      - edition
+      - valid_from
+      - valid_until
+      - rule_kind
+      - pattern
+      - uses
+      - applies_to
+      - severity
+      - needed_for_workflows
+      - shacl
+    attributes:
+      source:
+        range: RuleSource
+        inlined: true
+      when:
+        range: RuleCondition
+        inlined: true
+        description: Conditions shared by all cases.
+      cases:
+        range: RuleCase
+        multivalued: true
+        inlined_as_list: true
+      milestone:
+        range: string
+        description: Process rules only — by when the proof must exist.
+    slot_usage:
+      rule_kind:
+        required: true
+      severity:
+        required: true
+      applies_to:
+        required: true
+    rules:
+      - description: pattern or shacl must be set, not both omitted.
+        preconditions:
+          slot_conditions:
+            pattern:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            shacl:
+              required: true
 
   SolutionParameter:
     description: >-

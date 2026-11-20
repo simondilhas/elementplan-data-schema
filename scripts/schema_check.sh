@@ -1477,6 +1477,7 @@ folders = {
     "domains": "domains", "models": "models", "documents": "documents",
     "project_goals": "project-goals", "uses": "uses", "room_types": "room-types",
     "usage_scenarios": "usage-scenarios", "solution_dimensions": "solution-dimensions",
+    "rules": "rules", "derived_values": "derived-values",
     "workflows": "workflows", "valuesets": "values",
     "elements": "elements", "components": "components",
 }
@@ -1749,6 +1750,30 @@ for path in sorted(Path("examples/solution-dimensions").glob("*.yaml")):
                 raise SystemExit(f"{opt['id']}: parameter {key} missing from general/country sets")
 
 print("Validation OK: jurisdiction pattern, config overlap, parameter sets")
+
+# Rules + SHACL generator
+import subprocess
+import sys
+
+elementplan = yaml.safe_load(Path("schema/elementplan.linkml.yaml").read_text(encoding="utf-8"))
+for class_name in ("Rule", "RuleCondition", "RuleCase", "RuleSource", "DerivedValue"):
+    if class_name not in elementplan["classes"]:
+        raise SystemExit(f"missing {class_name}")
+for enum_name in ("RuleKindEnum", "RuleSeverityEnum", "BuildingHeightCategoryEnum"):
+    if enum_name not in elementplan["enums"]:
+        raise SystemExit(f"missing {enum_name}")
+if "rules" not in elementplan["classes"]["ElementplanDataset"]["slots"]:
+    raise SystemExit("ElementplanDataset is missing rules.")
+if len(list(Path("examples/rules").glob("*.yaml"))) < 2:
+    raise SystemExit("examples/rules needs at least two Wohnen rules.")
+if not list(Path("shacl/patterns").glob("*.json")):
+    raise SystemExit("shacl/patterns is empty.")
+
+subprocess.check_call([sys.executable, "scripts/generate_shacl.py"])
+generated = Path("shacl/generated/fr-wh-01.ttl")
+if not generated.exists() or "sh:NodeShape" not in generated.read_text(encoding="utf-8"):
+    raise SystemExit("generate_shacl.py must write shacl/generated/fr-wh-01.ttl with a NodeShape")
+print("Schema contract OK: Rule class and SHACL generation")
 PY
 gen-json-schema schema/solution.linkml.yaml > /dev/null
 echo "Solution schema OK: compiles to JSON Schema"

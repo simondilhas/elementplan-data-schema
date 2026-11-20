@@ -1,0 +1,27 @@
+id: pragmaticbim:element/architecture-wall-interior-loadbearing
+code: EL-WALL-IL
+sort_order: 50
+name:
+  de: Tragende Innenwand
+  en: Load-bearing interior wall
+definition:
+  de: Tragende Innenwand für Brandschutz und Statik.
+  en: Load-bearing interior wall for fire protection and structure.
+status: active
+needed_in_domain:
+- armasuisse:domain/architektur
+attributes:
+- name: FireRating
+  sort_order: 1
+  ifc_versions:
+  - ifc4
+  needed_in_phases:
+  - "32"
+  status: active
+- name: LoadBearing
+  sort_order: 2
+  ifc_versions:
+  - ifc4
+  needed_in_phases:
+  - "32"
+  status: active
