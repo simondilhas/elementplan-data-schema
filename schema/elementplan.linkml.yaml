@@ -313,6 +313,22 @@ enums:
       room: {}
       container: {}
 
+  UseKindEnum:
+    description: >-
+      Role of a use, aligned with the main (M) and support (S) classes of
+      BuildingSpaceActivityClassification and the HNF / NNF, VF, FF split of
+      SIA 416.
+    permissible_values:
+      main:
+        description: >-
+          Hauptnutzung. Selected by the project; filters goals, boundary
+          conditions, usage scenarios, and workflows.
+      support:
+        description: >-
+          Unterstützende Nutzung (Keller, Technik, Parkierung).
+          Present in every project, never selected; names shared volumes in
+          the massing.
+
   ScopeLevel:
     description: >-
       Level of the functional requirements hierarchy (Project → Use → Unit
@@ -839,6 +855,45 @@ slots:
     description: >-
       Quantity a use is sized by (Bezugsgrösse), such as the number of
       workstations for Arbeit.
+  use_kind:
+    range: UseKindEnum
+    description: Whether a use is a main use or a support use.
+  uri:
+    range: uriorcurie
+    description: >-
+      Canonical URI/CURIE of the record's concept, e.g. an external
+      definition of a use. Distinct from classification_uri, which points to
+      a classification concept.
+  quantities:
+    multivalued: true
+    range: QuantityDefinition
+    inlined_as_list: true
+    description: >-
+      Quantities a boundary condition asks for (e.g. Anzahl Sitzplätze),
+      ordered via sort_order.
+  counted_room_type:
+    range: RoomType
+    inlined: false
+    description: >-
+      Container room type a boundary-condition quantity counts (e.g. the
+      number of single hotel rooms).
+  implied_levels:
+    multivalued: true
+    range: ProjectGoalLevel
+    inlined: false
+    description: >-
+      Levels of other project goals that choosing this level presets as
+      minimums (e.g. Minergie-ECO presets at least Minergie). The project may
+      raise an implied goal above its preset level, not below it.
+  performance_targets:
+    multivalued: true
+    range: PerformanceTarget
+    inlined_as_list: true
+    description: >-
+      Target attributes this goal level activates on elements, with the
+      default target value. Choosing the level presets each value; the
+      project may tighten it. A target without value is activated and set
+      in the project.
   sizes:
     multivalued: true
     range: OptionSize
@@ -1866,11 +1921,13 @@ classes:
   Use:
     description: >-
       Nutzung (e.g. Wohnen, Arbeit): the middle level of the functional
-      requirements hierarchy Project → Use → Unit type. A project picks its
-      uses; each unit type (container room type) belongs to exactly one use,
-      and usage scenarios name the uses they apply to. reference_quantity is
-      the quantity the use is sized by; typical_levels suggests the goal
-      levels a project with this use usually chooses.
+      requirements hierarchy Project → Use → Unit type. Main uses are picked
+      by the project at setup and filter goals, scenarios, and workflows;
+      support uses are always present and name shared volumes in the massing.
+      reference_quantity is the quantity the use is sized by; typical_levels
+      suggests the goal levels a project with this use usually chooses.
+      classifications link to external schemes; uri links an external
+      definition of the use.
     slots:
       - id
       - code
@@ -1880,6 +1937,13 @@ classes:
       - status
       - reference_quantity
       - typical_levels
+      - use_kind
+      - classifications
+      - uri
+      - jurisdiction
+    slot_usage:
+      use_kind:
+        required: true
 
   ReferenceQuantity:
     description: >-
@@ -1893,6 +1957,46 @@ classes:
       - unit
       - status
 
+  QuantityDefinition:
+    description: >-
+      A quantity the project fills in: a boundary-condition count (Anzahl
+      Sitzplätze) or share. counted_room_type names the container the
+      quantity counts; a value above zero activates it.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - description
+      - unit
+      - counted_room_type
+      - status
+      - comment
+    slot_usage:
+      unit:
+        description: Unit of the value (e.g. %). Omit for plain counts.
+
+  PerformanceTarget:
+    description: >-
+      Default value a project goal level sets for one target attribute of an
+      element (requirement_kind performance). element + name (+ pset)
+      identify the attribute like on AttributePreset. value is optional: when
+      omitted, the level activates the target and the project sets the value.
+    slots:
+      - element
+      - name
+      - pset
+      - value
+    slot_usage:
+      element:
+        required: true
+      name:
+        required: true
+        range: string
+        description: >-
+          IFC property name of the target attribute on the referenced element
+          (e.g. ThermalTransmittanceMax).
+
   ProjectGoal:
     description: >-
       Why information is needed, with ordered levels (Ausprägungen).
@@ -1903,8 +2007,9 @@ classes:
       names the uses the goal applies to; omit it for a general goal asked
       in every project. One level is chosen unless allows_multiple is true;
       an exclusive level (e.g. "Keine") is never combined with another. A
-      goal whose levels set activated_room_types defines unit types and is
-      answered in Functional requirements, not in the goals step.
+      boundary condition may ask for quantities instead of, or besides,
+      levels. A goal whose levels set activated_room_types defines unit
+      types and is answered in Functional requirements, not in the goals step.
     slots:
       - id
       - code
@@ -1919,6 +2024,7 @@ classes:
       - is_boundary_condition
       - allows_multiple
       - levels
+      - quantities
     slot_usage:
       uses:
         description: >-
@@ -1938,7 +2044,9 @@ classes:
       boundary-condition goal, activated_room_types is the complete set of
       container room types the level activates; activated_workflows may then
       be empty. exclusive marks a level (e.g. "Keine") that cannot be chosen
-      together with any other level of its goal.
+      together with any other level of its goal. implied_levels presets
+      minimums on other goals; performance_targets presets target attribute
+      values for checking workflows.
     slots:
       - id
       - code
@@ -1949,6 +2057,8 @@ classes:
       - exclusive
       - activated_workflows
       - activated_room_types
+      - implied_levels
+      - performance_targets
       - comment
     slot_usage:
       exclusive:

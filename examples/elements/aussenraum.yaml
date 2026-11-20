@@ -38,7 +38,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcSpace
 entity_ifc4_3: null
-picture_link: aussenraum.jpg
+picture_link: aussenraum.png
+picture_print_link: aussenraum-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcSpace
 attributes:

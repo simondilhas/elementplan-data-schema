@@ -1,0 +1,56 @@
+id: pragmaticbim:project-goal/schallschutz
+sort_order: 120
+code: PG-SLS
+name:
+  de: Schallschutz
+  en: Sound insulation
+description:
+  de: Rahmenbedingung, ob die Mindestanforderungen oder die erhöhten
+    Anforderungen nach SIA 181 gelten. Die Stufe setzt Sollwerte an
+    Trennwänden und Decken.
+  en: Boundary condition for whether the SIA 181 minimum or increased
+    requirements apply. The level sets target values on partitions and slabs.
+picture_link: null
+status: active
+group: rahmenbedingungen
+is_boundary_condition: true
+comment: ''
+levels:
+- id: pragmaticbim:project-goal-level/schallschutz-minimum
+  code: SLS-01
+  sort_order: 1
+  name:
+    de: Mindestanforderungen SIA 181
+    en: SIA 181 minimum requirements
+  description:
+    de: Luft- und Trittschalldämmung erfüllen die Mindestanforderungen.
+    en: Airborne and impact sound insulation meet the minimum requirements.
+  status: active
+  comment: ''
+  performance_targets:
+  - element: pragmaticbim:element/architecture-wall-interior
+    name: AirborneSoundInsulationMin
+    pset: ePset_WallRequirement
+    value: 52
+  - element: pragmaticbim:element/architecture-slab-floor
+    name: ImpactSoundLevelMax
+    pset: ePset_SlabRequirement
+    value: 53
+- id: pragmaticbim:project-goal-level/schallschutz-besonders
+  code: SLS-03
+  sort_order: 3
+  name:
+    de: Besondere Anforderungen
+    en: Special requirements
+  description:
+    de: Die Bauakustik legt die Werte je Raumpaar fest.
+    en: The acoustic consultant sets the values for each pair of spaces.
+  status: active
+  comment: ''
+  performance_targets:
+  - element: pragmaticbim:element/architecture-wall-interior
+    name: AirborneSoundInsulationMin
+    pset: ePset_WallRequirement
+  - element: pragmaticbim:element/architecture-slab-floor
+    name: ImpactSoundLevelMax
+    pset: ePset_SlabRequirement

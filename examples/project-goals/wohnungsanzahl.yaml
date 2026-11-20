@@ -1,0 +1,35 @@
+id: pragmaticbim:project-goal/wohnungsanzahl
+sort_order: 110
+code: PG-ANZ
+name:
+  de: Wohnungsanzahl
+  en: Number of dwellings
+description:
+  de: Rahmenbedingung, wie viele Wohnungen je Grösse das Gebäude aufnimmt.
+    Eine Anzahl über null aktiviert den Wohnungs-Container.
+  en: Boundary condition for how many dwellings of each size the building
+    holds. A number above zero activates the dwelling container.
+picture_link: null
+status: active
+group: rahmenbedingungen
+uses:
+- pragmaticbim:use/wohnen
+is_boundary_condition: true
+comment: ''
+quantities:
+- id: pragmaticbim:quantity/wohnungsanzahl-2-5
+  code: ANZ-01
+  sort_order: 1
+  name:
+    de: Anzahl 2.5-Zimmer-Wohnungen
+    en: Number of 2.5-room dwellings
+  counted_room_type: pragmaticbim:room-type/wohnung-2-5
+  status: active
+- id: pragmaticbim:quantity/wohnungsanzahl-gemeinnuetzig
+  code: ANZ-02
+  sort_order: 2
+  name:
+    de: Anteil gemeinnütziger Wohnungen
+    en: Share of non-profit dwellings
+  unit: '%'
+  status: active

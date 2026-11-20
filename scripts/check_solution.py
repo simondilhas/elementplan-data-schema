@@ -14,6 +14,7 @@ Exit code 1 when an error is found. Warnings do not fail.
 from __future__ import annotations
 
 import math
+import os
 import sys
 from pathlib import Path
 
@@ -21,7 +22,8 @@ import yaml
 from linkml.validator import validate
 
 ROOT = Path(__file__).resolve().parent.parent
-SCHEMA = ROOT / "schema" / "solution.linkml.yaml"
+SCHEMA_DIR = ROOT / "schema"
+SCHEMA = SCHEMA_DIR / "solution.linkml.yaml"
 CATALOG = ROOT / "examples"
 
 SINGLE = {"selection.yaml": "selection", "project.yaml": "projects"}
@@ -259,7 +261,13 @@ def check(data: dict, catalog: dict[str, dict], report: Report) -> None:
 def main(folder: str) -> int:
     data, _ = load_dataset(Path(folder))
     report = Report()
-    result = validate(data, str(SCHEMA), "SolutionDataset")
+    # Imports resolve relative to CWD; run validation from schema/.
+    prev = Path.cwd()
+    try:
+        os.chdir(SCHEMA_DIR)
+        result = validate(data, SCHEMA.name, "SolutionDataset")
+    finally:
+        os.chdir(prev)
     for r in result.results:
         report.errors.append(f"schema: {r.message}")
     check(data, load_catalog(), report)

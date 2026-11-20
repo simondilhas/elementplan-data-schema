@@ -23,7 +23,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcClassificationReference
 entity_ifc4_3: null
-picture_link: sia416-werte-fur-klassifizierung.jpg
+picture_link: sia416-werte-fur-klassifizierung.png
+picture_print_link: sia416-werte-fur-klassifizierung-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcClassificationReference
 attributes:

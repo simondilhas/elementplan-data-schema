@@ -45,7 +45,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcBuilding
 entity_ifc4_3: null
-picture_link: gebaude-bauwerke.jpg
+picture_link: gebaude-bauwerke.png
+picture_print_link: null
 attachment_link: null
 applicability: entity_ifc4=IfcBuilding
 attributes:

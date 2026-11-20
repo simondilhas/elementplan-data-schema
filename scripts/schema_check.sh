@@ -540,8 +540,21 @@ goal_allows_multiple = schema["classes"]["ProjectGoal"].get("slot_usage", {}).ge
 if str(goal_allows_multiple.get("ifabsent")).lower() != "false":
     raise SystemExit("ProjectGoal.allows_multiple must default to false.")
 require_class_slots("ProjectGoalLevel", ("exclusive",))
-require_class_slots("Use", ("reference_quantity", "typical_levels"))
+require_class_slots("Use", ("reference_quantity", "typical_levels", "use_kind"))
 require_reference("typical_levels", "ProjectGoalLevel", multivalued=True)
+if "UseKindEnum" not in enums:
+    raise SystemExit("UseKindEnum is missing.")
+if set(enums["UseKindEnum"].get("permissible_values", {})) != {"main", "support"}:
+    raise SystemExit("UseKindEnum must permit main and support.")
+if schema["classes"]["Use"].get("slot_usage", {}).get("use_kind", {}).get("required") is not True:
+    raise SystemExit("Use.use_kind must be required.")
+for class_name, slots in (
+    ("ProjectGoal", ("quantities",)),
+    ("ProjectGoalLevel", ("implied_levels", "performance_targets")),
+):
+    require_class_slots(class_name, slots)
+if "QuantityDefinition" not in schema["classes"] or "PerformanceTarget" not in schema["classes"]:
+    raise SystemExit("QuantityDefinition and PerformanceTarget classes are required.")
 reference_quantity_slot = schema["slots"].get("reference_quantity") or {}
 if (
     reference_quantity_slot.get("range") != "ReferenceQuantity"
@@ -991,7 +1004,7 @@ for class_name, props in (
     ("RoomType", ("id", "room_type_kind", "default_scope", "activity", "room_name", "uses", "extends", "contains", "legacy_ids", "configurations")),
     ("RoomTypeComponent", ("room_type",)),
     ("UsageScenario", ("scope", "uses", "use", "tags", "allows_multiple", "options")),
-    ("Use", ("id", "code", "sort_order", "name", "definition", "status", "reference_quantity", "typical_levels")),
+    ("Use", ("id", "code", "sort_order", "name", "definition", "status", "reference_quantity", "typical_levels", "use_kind")),
     ("ReferenceQuantity", ("id", "code", "sort_order", "name", "unit", "status")),
     ("ScenarioOption", ("id", "project_goal_levels", "target", "sizes", "adds", "room_relationships", "exclusive", "excludes")),
     ("ProjectGoal", ("is_boundary_condition", "group", "uses", "allows_multiple")),
