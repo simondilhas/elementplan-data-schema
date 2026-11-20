@@ -62,16 +62,23 @@ Project complexity / package tags (`workflow_group`) stay a **separate** axis fr
 
 Optional `service_kind` on a workflow records whether it is a **Grundleistung** (`basic`) or a **besondere Leistung** (`special`). Omit it when the workflow is not yet classified. The badge is on the workflow, not on attributes: an attribute shows the kind of the workflows it is needed for.
 
-### Jurisdiction (country vs general)
+### Jurisdiction (country, canton, edition)
 
-`jurisdiction` is a multivalued list on **Workflow**, **Attribute**, **Model**, **Document**, and **UsageScenario**:
+`jurisdiction` is a multivalued list of codes matching `^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$`:
 
-- `[general]` — not country-specific (omit the field to mean the same)
-- one or more ISO 3166-1 alpha-2 codes (lowercase), e.g. `[ch]` or `[ch, de, at]`
+- `general` — everywhere (omit the field to mean the same)
+- ISO 3166-1 alpha-2 country codes (lowercase), e.g. `ch`, `de`
+- ISO 3166-2 subdivisions, e.g. `ch-zh`, `ch-be`
 
-Do not mix `general` with country codes. A project with country `C` matches an entity if the list is `[general]` (or omitted) **or** contains `C`.
+Uppercase is invalid. Do not mix `general` with codes.
 
-**ValueSets** have no jurisdiction field; they inherit applicability via `Attribute.allowed_values`. Phase catalogs stay country-ish by scheme identity (e.g. SIA vs abstract), not via this slot.
+**Matching.** A project in `ch-zh` matches `general`, `ch` and `ch-zh`, but not `ch-be`. The project stores its code on `Project.jurisdiction` (often from the parcel / ÖREB canton).
+
+**Where it applies.** Workflow, Attribute, Model, Document, UsageScenario (as before), plus ProjectGoalLevel (e.g. Minergie `ch`, DGNB `de`), RoomTypeConfiguration (national min sizes), Component (module sizes), ValueSet (explicit set wins over the attribute's jurisdiction), SolutionOption parameter sets, and Rule (when present).
+
+**Editions.** `edition`, `valid_from` and `valid_until` on ValueSet, RoomTypeConfiguration, Component (and Rule) pin the norm edition. A solution may set `check_date` in `check.yaml` (default today); matching uses jurisdiction and that date. Two configurations of the same room type must not share the same jurisdiction with overlapping validity.
+
+**Solution-box parameters.** Each option lists `{jurisdiction, values}` sets. Generators take the most specific match (`ch-zh` before `ch` before `general`). A parameter key used in one set must exist in the `general` set or in every country set of that option.
 
 ### Domains, models, and documents
 

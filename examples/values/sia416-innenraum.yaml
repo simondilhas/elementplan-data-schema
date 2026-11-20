@@ -12,6 +12,10 @@ description:
 year: 2025
 norm_reference: null
 status: active
+jurisdiction:
+- ch
+edition: "SIA 416:2003"
+valid_from: "2003-01-01"
 values:
   de:
   - ^(HNF[1-6]|NNF|FF|VF|BUF|UUF|ANF|AVF|AFF)$

@@ -17,6 +17,10 @@ configurations:
     en: Low
   project_goal_levels:
   - pragmaticbim:project-goal-level/kosten-sensitiv
+  jurisdiction:
+  - de
+  edition: DIN 18040-2:2011
+  valid_from: "2011-01-01"
   attribute_presets:
   - element: armasuisse:element/innenraum
     name: PredefinedType
@@ -85,6 +89,10 @@ configurations:
     en: Medium
   project_goal_levels:
   - pragmaticbim:project-goal-level/kosten-mittel
+  jurisdiction:
+  - ch
+  edition: "SIA 500:2009"
+  valid_from: "2009-01-01"
   attribute_presets:
   - element: armasuisse:element/innenraum
     name: PredefinedType

@@ -167,6 +167,9 @@ classes:
       solution:
         range: SolutionInfo
         inlined: true
+      check:
+        range: CheckConfig
+        inlined: true
       selection:
         range: Selection
         inlined: true
@@ -500,12 +503,30 @@ classes:
 
   Project:
     is_a: Record
-    description: The project root. Its placement anchors the local frames in LV95.
+    description: >-
+      The project root. Its placement anchors the local frames in LV95.
+      jurisdiction is the country plus optional canton (e.g. ch-zh), often set
+      from the Context step's parcel (canton from ÖREB).
     class_uri: pbdc:Project
     attributes:
       placement:
         range: Placement
         inlined: true
+      jurisdiction:
+        range: string
+        pattern: "^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$"
+        description: >-
+          Project country and optional subdivision. Matching uses this code
+          against catalog jurisdiction lists (see Elementplan Jurisdiction).
+
+  CheckConfig:
+    description: >-
+      Optional solutions/<slug>/check.yaml (or site/check.yaml). Pins the date
+      the project is checked against for edition validity; default is today.
+    attributes:
+      check_date:
+        range: date
+        description: Date used when matching valid_from / valid_until on catalog records.
 
   SpatialContext:
     is_a: Record

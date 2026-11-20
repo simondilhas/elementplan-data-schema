@@ -67,29 +67,39 @@ if "needed_for_project_goals" in schema["slots"]:
 
 print("Schema contract OK: Workflow without needed_for_project_goals")
 
-if "JurisdictionEnum" not in schema.get("enums", {}):
-    raise SystemExit("JurisdictionEnum is missing.")
-jurisdiction_values = set(
-    schema["enums"]["JurisdictionEnum"].get("permissible_values", {})
-)
-for required_code in ("general", "ch", "de", "at"):
-    if required_code not in jurisdiction_values:
-        raise SystemExit(f"JurisdictionEnum must include {required_code}.")
-
 jurisdiction_slot = schema["slots"].get("jurisdiction")
 if not jurisdiction_slot:
     raise SystemExit("jurisdiction slot is missing.")
-if jurisdiction_slot.get("range") != "JurisdictionEnum":
-    raise SystemExit("jurisdiction slot must have range: JurisdictionEnum")
+if jurisdiction_slot.get("range") != "string":
+    raise SystemExit("jurisdiction slot must have range: string")
+if jurisdiction_slot.get("pattern") != "^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$":
+    raise SystemExit("jurisdiction slot must use the ISO 3166 pattern.")
 if not jurisdiction_slot.get("multivalued"):
     raise SystemExit("jurisdiction slot must be multivalued.")
+for slot_name in ("edition", "valid_from", "valid_until"):
+    if slot_name not in schema["slots"]:
+        raise SystemExit(f"{slot_name} slot is missing.")
 
-for class_name in ("Workflow", "Attribute", "Model", "Document"):
-    class_slots = schema["classes"][class_name]["slots"]
+for class_name in (
+    "Workflow", "Attribute", "Model", "Document", "UsageScenario",
+    "ProjectGoalLevel", "RoomTypeConfiguration", "Component", "ValueSet",
+):
+    class_def = schema["classes"][class_name]
+    class_slots = class_def.get("slots") or []
     if "jurisdiction" not in class_slots:
         raise SystemExit(f"{class_name} class is missing the jurisdiction slot.")
+for class_name in ("RoomTypeConfiguration", "Component", "ValueSet"):
+    class_slots = schema["classes"][class_name]["slots"]
+    for slot_name in ("edition", "valid_from", "valid_until"):
+        if slot_name not in class_slots:
+            raise SystemExit(f"{class_name} is missing {slot_name}.")
+if "SolutionParameterSet" not in schema["classes"]:
+    raise SystemExit("SolutionParameterSet class is missing.")
+param_attr = schema["classes"]["SolutionOption"]["attributes"]["parameters"]
+if param_attr.get("range") != "SolutionParameterSet":
+    raise SystemExit("SolutionOption.parameters must be SolutionParameterSet list.")
 
-print("Schema contract OK: jurisdiction on Workflow, Attribute, Model, Document")
+print("Schema contract OK: jurisdiction pattern, editions, parameter sets")
 
 if "ServiceKindEnum" not in schema.get("enums", {}):
     raise SystemExit("ServiceKindEnum is missing.")
@@ -1667,6 +1677,78 @@ if (Path("examples/solutions/site/solution.yaml")).exists():
 
 print("Schema contract OK: envelope context kind and slots")
 print("Schema contract OK: solution box, bubbles, multi-solution layout")
+
+# Jurisdiction validation: uppercase rejected; overlapping room-type configs rejected.
+import re
+from datetime import date
+
+jur_pat = re.compile(r"^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$")
+for bad in ("CH", "ch-ZH", "switzerland"):
+    if jur_pat.match(bad):
+        raise SystemExit(f"jurisdiction pattern must reject {bad!r}")
+for good in ("general", "ch", "de", "ch-zh", "ch-be"):
+    if not jur_pat.match(good):
+        raise SystemExit(f"jurisdiction pattern must accept {good!r}")
+
+# Overlapping validity for same room type + jurisdiction
+room_types = [
+    yaml.safe_load(p.read_text(encoding="utf-8"))
+    for p in sorted(Path("examples/room-types").glob("*.yaml"))
+]
+
+
+def intervals(conf):
+    start = conf.get("valid_from") or "0001-01-01"
+    end = conf.get("valid_until") or "9999-12-31"
+    return start, end
+
+
+def overlaps(a, b):
+    return a[0] <= b[1] and b[0] <= a[1]
+
+
+def is_editioned(conf):
+    return bool(conf.get("edition") or conf.get("valid_from") or conf.get("valid_until"))
+
+
+for rt in room_types:
+    by_jur: dict = {}
+    for conf in rt.get("configurations") or []:
+        if not is_editioned(conf):
+            continue  # size/quality alternatives coexist under the same jurisdiction
+        for j in conf.get("jurisdiction") or ["general"]:
+            by_jur.setdefault(j, []).append(conf)
+    for j, confs in by_jur.items():
+        for i, left in enumerate(confs):
+            for right in confs[i + 1 :]:
+                if overlaps(intervals(left), intervals(right)):
+                    raise SystemExit(
+                        f"{rt['id']}: configurations {left['id']} and {right['id']} "
+                        f"overlap for jurisdiction {j}"
+                    )
+
+# Parameter-set coverage on solution options
+for path in sorted(Path("examples/solution-dimensions").glob("*.yaml")):
+    dim = yaml.safe_load(path.read_text(encoding="utf-8"))
+    for opt in dim.get("options") or []:
+        sets = opt.get("parameters") or []
+        if not sets or isinstance(sets, dict):
+            continue
+        by_j = {
+            (e.get("jurisdiction") or "general"): set((e.get("values") or {}))
+            for e in sets
+        }
+        all_keys = set().union(*by_j.values()) if by_j else set()
+        general = by_j.get("general")
+        countries = {j: ks for j, ks in by_j.items() if j != "general" and "-" not in j}
+        for key in all_keys:
+            ok = (general is not None and key in general) or (
+                bool(countries) and all(key in ks for ks in countries.values())
+            )
+            if not ok:
+                raise SystemExit(f"{opt['id']}: parameter {key} missing from general/country sets")
+
+print("Validation OK: jurisdiction pattern, config overlap, parameter sets")
 PY
 gen-json-schema schema/solution.linkml.yaml > /dev/null
 echo "Solution schema OK: compiles to JSON Schema"

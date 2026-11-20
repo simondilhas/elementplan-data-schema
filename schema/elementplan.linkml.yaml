@@ -15,264 +15,10 @@ enums:
       active: {}
       deprecated: {}
 
-  JurisdictionEnum:
-    description: >-
-      Geographic applicability. `general` is not tied to a specific country;
-      otherwise an ISO 3166-1 alpha-2 country code (lowercase), e.g. `at`,
-      `ch`, `us`. Used in a multivalued jurisdiction list: either [general]
-      alone, or one or more country codes. Do not mix general with country
-      codes.
-    permissible_values:
-      general: {}
-      "ad": {}
-      "ae": {}
-      "af": {}
-      "ag": {}
-      "ai": {}
-      "al": {}
-      "am": {}
-      "ao": {}
-      "aq": {}
-      "ar": {}
-      "as": {}
-      "at": {}
-      "au": {}
-      "aw": {}
-      "ax": {}
-      "az": {}
-      "ba": {}
-      "bb": {}
-      "bd": {}
-      "be": {}
-      "bf": {}
-      "bg": {}
-      "bh": {}
-      "bi": {}
-      "bj": {}
-      "bl": {}
-      "bm": {}
-      "bn": {}
-      "bo": {}
-      "bq": {}
-      "br": {}
-      "bs": {}
-      "bt": {}
-      "bv": {}
-      "bw": {}
-      "by": {}
-      "bz": {}
-      "ca": {}
-      "cc": {}
-      "cd": {}
-      "cf": {}
-      "cg": {}
-      "ch": {}
-      "ci": {}
-      "ck": {}
-      "cl": {}
-      "cm": {}
-      "cn": {}
-      "co": {}
-      "cr": {}
-      "cu": {}
-      "cv": {}
-      "cw": {}
-      "cx": {}
-      "cy": {}
-      "cz": {}
-      "de": {}
-      "dj": {}
-      "dk": {}
-      "dm": {}
-      "do": {}
-      "dz": {}
-      "ec": {}
-      "ee": {}
-      "eg": {}
-      "eh": {}
-      "er": {}
-      "es": {}
-      "et": {}
-      "fi": {}
-      "fj": {}
-      "fk": {}
-      "fm": {}
-      "fo": {}
-      "fr": {}
-      "ga": {}
-      "gb": {}
-      "gd": {}
-      "ge": {}
-      "gf": {}
-      "gg": {}
-      "gh": {}
-      "gi": {}
-      "gl": {}
-      "gm": {}
-      "gn": {}
-      "gp": {}
-      "gq": {}
-      "gr": {}
-      "gs": {}
-      "gt": {}
-      "gu": {}
-      "gw": {}
-      "gy": {}
-      "hk": {}
-      "hm": {}
-      "hn": {}
-      "hr": {}
-      "ht": {}
-      "hu": {}
-      "id": {}
-      "ie": {}
-      "il": {}
-      "im": {}
-      "in": {}
-      "io": {}
-      "iq": {}
-      "ir": {}
-      "is": {}
-      "it": {}
-      "je": {}
-      "jm": {}
-      "jo": {}
-      "jp": {}
-      "ke": {}
-      "kg": {}
-      "kh": {}
-      "ki": {}
-      "km": {}
-      "kn": {}
-      "kp": {}
-      "kr": {}
-      "kw": {}
-      "ky": {}
-      "kz": {}
-      "la": {}
-      "lb": {}
-      "lc": {}
-      "li": {}
-      "lk": {}
-      "lr": {}
-      "ls": {}
-      "lt": {}
-      "lu": {}
-      "lv": {}
-      "ly": {}
-      "ma": {}
-      "mc": {}
-      "md": {}
-      "me": {}
-      "mf": {}
-      "mg": {}
-      "mh": {}
-      "mk": {}
-      "ml": {}
-      "mm": {}
-      "mn": {}
-      "mo": {}
-      "mp": {}
-      "mq": {}
-      "mr": {}
-      "ms": {}
-      "mt": {}
-      "mu": {}
-      "mv": {}
-      "mw": {}
-      "mx": {}
-      "my": {}
-      "mz": {}
-      "na": {}
-      "nc": {}
-      "ne": {}
-      "nf": {}
-      "ng": {}
-      "ni": {}
-      "nl": {}
-      "no": {}
-      "np": {}
-      "nr": {}
-      "nu": {}
-      "nz": {}
-      "om": {}
-      "pa": {}
-      "pe": {}
-      "pf": {}
-      "pg": {}
-      "ph": {}
-      "pk": {}
-      "pl": {}
-      "pm": {}
-      "pn": {}
-      "pr": {}
-      "ps": {}
-      "pt": {}
-      "pw": {}
-      "py": {}
-      "qa": {}
-      "re": {}
-      "ro": {}
-      "rs": {}
-      "ru": {}
-      "rw": {}
-      "sa": {}
-      "sb": {}
-      "sc": {}
-      "sd": {}
-      "se": {}
-      "sg": {}
-      "sh": {}
-      "si": {}
-      "sj": {}
-      "sk": {}
-      "sl": {}
-      "sm": {}
-      "sn": {}
-      "so": {}
-      "sr": {}
-      "ss": {}
-      "st": {}
-      "sv": {}
-      "sx": {}
-      "sy": {}
-      "sz": {}
-      "tc": {}
-      "td": {}
-      "tf": {}
-      "tg": {}
-      "th": {}
-      "tj": {}
-      "tk": {}
-      "tl": {}
-      "tm": {}
-      "tn": {}
-      "to": {}
-      "tr": {}
-      "tt": {}
-      "tv": {}
-      "tw": {}
-      "tz": {}
-      "ua": {}
-      "ug": {}
-      "um": {}
-      "us": {}
-      "uy": {}
-      "uz": {}
-      "va": {}
-      "vc": {}
-      "ve": {}
-      "vg": {}
-      "vi": {}
-      "vn": {}
-      "vu": {}
-      "wf": {}
-      "ws": {}
-      "ye": {}
-      "yt": {}
-      "za": {}
-      "zm": {}
-      "zw": {}
+  # Jurisdiction codes are free-form strings matching
+  # ^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$ on the jurisdiction slot
+  # (ISO 3166-1 alpha-2 plus optional ISO 3166-2 subdivision).
+
   IFCVersionEnum:
     permissible_values:
       ifc2x3: {}
@@ -568,12 +314,25 @@ slots:
 
   jurisdiction:
     multivalued: true
-    range: JurisdictionEnum
+    range: string
+    pattern: "^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$"
     description: >-
-      Geographic applicability. Use [general] when not country-specific;
-      otherwise one or more ISO 3166-1 alpha-2 codes (lowercase), e.g.
-      [ch] or [ch, de, at]. Do not mix general with country codes. Omit
-      to mean [general].
+      Geographic applicability. Each entry is `general`, an ISO 3166-1
+      alpha-2 country code (lowercase), or an ISO 3166-2 subdivision
+      (`ch-zh`, `ch-be`). Uppercase is invalid. Use [general] (or omit)
+      for everywhere; do not mix general with codes. A project in ch-zh
+      matches general, ch and ch-zh, but not ch-be. On ValueSet an
+      explicit jurisdiction wins over the one inherited from the attribute.
+  edition:
+    range: string
+    description: >-
+      Norm edition this record follows, e.g. "VKF 2015" or "SIA 416:2003".
+  valid_from:
+    range: date
+    description: First day this record applies (inclusive).
+  valid_until:
+    range: date
+    description: Last day this record applies (inclusive). Omit when still valid.
   name:
     required: true
     range: LocalizedText
@@ -1467,6 +1226,8 @@ classes:
       suits; omit it when the configuration is independent of goal levels.
       equipment and openings list what the room contains and how it is reached
       and lit; both reference components and leave position to the generator.
+      A room type may have one configuration per jurisdiction; edition and
+      validity pin the norm edition used when the project was checked.
     slots:
       - id
       - sort_order
@@ -1478,12 +1239,20 @@ classes:
       - equipment
       - openings
       - status
+      - jurisdiction
+      - edition
+      - valid_from
+      - valid_until
     slot_usage:
       name:
         required: false
         description: Optional label of the configuration (e.g. Klein). Omit for the only one.
       attribute_presets:
         required: true
+      jurisdiction:
+        description: >-
+          National or cantonal applicability of this configuration (e.g. min
+          sizes from SIA 500 vs DIN 18040). Omit or [general] for everywhere.
 
   RoomTypeRestriction:
     description: >-
@@ -1525,6 +1294,8 @@ classes:
       satisfy; the component adds size, clearances, placement rules and
       connections so a generator can place it in a room. predefined_type,
       object_type and ifc_name must be allowed values of that element.
+      jurisdiction distinguishes national module sizes (e.g. 55 cm SMS kitchen
+      modules in ch vs 60 cm EU).
     slots:
       - id
       - code
@@ -1534,6 +1305,10 @@ classes:
       - element
       - comment
       - status
+      - jurisdiction
+      - edition
+      - valid_from
+      - valid_until
     slot_usage:
       element:
         required: true
@@ -1887,11 +1662,27 @@ classes:
         range: float
         required: true
 
+  SolutionParameterSet:
+    description: >-
+      Generator parameters for one jurisdiction. Generators take the most
+      specific match (ch-zh before ch before general). A key used in any set
+      must exist in the general set or in every country set of that option.
+    attributes:
+      jurisdiction:
+        range: string
+        pattern: "^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$"
+        description: Omit or general for the base set.
+      values:
+        range: SolutionParameter
+        multivalued: true
+        inlined: true
+        required: true
+
   SolutionOption:
     description: >-
       One cell of a solution-box dimension. exclusive marks "Keine". excludes
       names incompatible options of other dimensions (symmetric, declare on
-      one side). parameters are numbers in metres read by generators.
+      one side). parameters are jurisdiction-keyed sets of numbers in metres.
     attributes:
       id:
         identifier: true
@@ -1922,10 +1713,12 @@ classes:
           Options of other dimensions that cannot be combined with this one.
           Symmetric; declare on one side only.
       parameters:
-        range: SolutionParameter
+        range: SolutionParameterSet
         multivalued: true
-        inlined: true
-        description: Generator parameters in metres, keyed by name.
+        inlined_as_list: true
+        description: >-
+          Parameter sets by jurisdiction. Generators pick the most specific
+          match for the project.
 
   SolutionDimension:
     description: >-
@@ -2166,9 +1959,11 @@ classes:
       boundary-condition goal, activated_room_types is the complete set of
       container room types the level activates; activated_workflows may then
       be empty. exclusive marks a level (e.g. "Keine") that cannot be chosen
-      together with any other level of its goal. implied_levels presets
-      minimums on other goals; performance_targets presets target attribute
-      values for checking workflows.
+      together with any other level of its goal. jurisdiction scopes a level
+      (e.g. SNBS and Minergie are ch, DGNB de, LEED general); the goal itself
+      stays general. implied_levels presets minimums on other goals;
+      performance_targets presets target attribute values for checking
+      workflows.
     slots:
       - id
       - code
@@ -2182,6 +1977,7 @@ classes:
       - implied_levels
       - performance_targets
       - comment
+      - jurisdiction
     slot_usage:
       exclusive:
         description: >-
@@ -2214,6 +2010,11 @@ classes:
       - comment
 
   ValueSet:
+    description: >-
+      Controlled vocabulary for an attribute. Optional jurisdiction (e.g. ch
+      for SIA 416 / eBKP-H / KBOB) wins over the jurisdiction inherited from
+      the attribute when both are set. edition and validity pin the norm
+      edition for reproducible checks.
     slots:
       - id
       - code
@@ -2223,6 +2024,10 @@ classes:
       - norm_reference
       - status
       - values
+      - jurisdiction
+      - edition
+      - valid_from
+      - valid_until
     slot_usage:
       values:
         range: LocalizedStringList

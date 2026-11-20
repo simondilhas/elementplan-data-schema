@@ -28,6 +28,8 @@ options:
     en: 3.90 m
   status: active
   parameters:
-    module: {value: 3.9}
-    axis_x: {value: 3.9}
-    axis_y: {value: 3.9}
+  - jurisdiction: general
+    values:
+      module: {value: 3.9}
+      axis_x: {value: 3.9}
+      axis_y: {value: 3.9}
