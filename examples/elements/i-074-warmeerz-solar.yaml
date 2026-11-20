@@ -20,7 +20,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcDistributionSystem
 entity_ifc4_3: null
-picture_link: i-074-warmeerz-solar.jpg
+picture_link: i-074-warmeerz-solar.png
+picture_print_link: i-074-warmeerz-solar-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcDistributionSystem
 attributes:

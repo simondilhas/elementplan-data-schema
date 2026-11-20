@@ -15,264 +15,10 @@ enums:
       active: {}
       deprecated: {}
 
-  JurisdictionEnum:
-    description: >-
-      Geographic applicability. `general` is not tied to a specific country;
-      otherwise an ISO 3166-1 alpha-2 country code (lowercase), e.g. `at`,
-      `ch`, `us`. Used in a multivalued jurisdiction list: either [general]
-      alone, or one or more country codes. Do not mix general with country
-      codes.
-    permissible_values:
-      general: {}
-      "ad": {}
-      "ae": {}
-      "af": {}
-      "ag": {}
-      "ai": {}
-      "al": {}
-      "am": {}
-      "ao": {}
-      "aq": {}
-      "ar": {}
-      "as": {}
-      "at": {}
-      "au": {}
-      "aw": {}
-      "ax": {}
-      "az": {}
-      "ba": {}
-      "bb": {}
-      "bd": {}
-      "be": {}
-      "bf": {}
-      "bg": {}
-      "bh": {}
-      "bi": {}
-      "bj": {}
-      "bl": {}
-      "bm": {}
-      "bn": {}
-      "bo": {}
-      "bq": {}
-      "br": {}
-      "bs": {}
-      "bt": {}
-      "bv": {}
-      "bw": {}
-      "by": {}
-      "bz": {}
-      "ca": {}
-      "cc": {}
-      "cd": {}
-      "cf": {}
-      "cg": {}
-      "ch": {}
-      "ci": {}
-      "ck": {}
-      "cl": {}
-      "cm": {}
-      "cn": {}
-      "co": {}
-      "cr": {}
-      "cu": {}
-      "cv": {}
-      "cw": {}
-      "cx": {}
-      "cy": {}
-      "cz": {}
-      "de": {}
-      "dj": {}
-      "dk": {}
-      "dm": {}
-      "do": {}
-      "dz": {}
-      "ec": {}
-      "ee": {}
-      "eg": {}
-      "eh": {}
-      "er": {}
-      "es": {}
-      "et": {}
-      "fi": {}
-      "fj": {}
-      "fk": {}
-      "fm": {}
-      "fo": {}
-      "fr": {}
-      "ga": {}
-      "gb": {}
-      "gd": {}
-      "ge": {}
-      "gf": {}
-      "gg": {}
-      "gh": {}
-      "gi": {}
-      "gl": {}
-      "gm": {}
-      "gn": {}
-      "gp": {}
-      "gq": {}
-      "gr": {}
-      "gs": {}
-      "gt": {}
-      "gu": {}
-      "gw": {}
-      "gy": {}
-      "hk": {}
-      "hm": {}
-      "hn": {}
-      "hr": {}
-      "ht": {}
-      "hu": {}
-      "id": {}
-      "ie": {}
-      "il": {}
-      "im": {}
-      "in": {}
-      "io": {}
-      "iq": {}
-      "ir": {}
-      "is": {}
-      "it": {}
-      "je": {}
-      "jm": {}
-      "jo": {}
-      "jp": {}
-      "ke": {}
-      "kg": {}
-      "kh": {}
-      "ki": {}
-      "km": {}
-      "kn": {}
-      "kp": {}
-      "kr": {}
-      "kw": {}
-      "ky": {}
-      "kz": {}
-      "la": {}
-      "lb": {}
-      "lc": {}
-      "li": {}
-      "lk": {}
-      "lr": {}
-      "ls": {}
-      "lt": {}
-      "lu": {}
-      "lv": {}
-      "ly": {}
-      "ma": {}
-      "mc": {}
-      "md": {}
-      "me": {}
-      "mf": {}
-      "mg": {}
-      "mh": {}
-      "mk": {}
-      "ml": {}
-      "mm": {}
-      "mn": {}
-      "mo": {}
-      "mp": {}
-      "mq": {}
-      "mr": {}
-      "ms": {}
-      "mt": {}
-      "mu": {}
-      "mv": {}
-      "mw": {}
-      "mx": {}
-      "my": {}
-      "mz": {}
-      "na": {}
-      "nc": {}
-      "ne": {}
-      "nf": {}
-      "ng": {}
-      "ni": {}
-      "nl": {}
-      "no": {}
-      "np": {}
-      "nr": {}
-      "nu": {}
-      "nz": {}
-      "om": {}
-      "pa": {}
-      "pe": {}
-      "pf": {}
-      "pg": {}
-      "ph": {}
-      "pk": {}
-      "pl": {}
-      "pm": {}
-      "pn": {}
-      "pr": {}
-      "ps": {}
-      "pt": {}
-      "pw": {}
-      "py": {}
-      "qa": {}
-      "re": {}
-      "ro": {}
-      "rs": {}
-      "ru": {}
-      "rw": {}
-      "sa": {}
-      "sb": {}
-      "sc": {}
-      "sd": {}
-      "se": {}
-      "sg": {}
-      "sh": {}
-      "si": {}
-      "sj": {}
-      "sk": {}
-      "sl": {}
-      "sm": {}
-      "sn": {}
-      "so": {}
-      "sr": {}
-      "ss": {}
-      "st": {}
-      "sv": {}
-      "sx": {}
-      "sy": {}
-      "sz": {}
-      "tc": {}
-      "td": {}
-      "tf": {}
-      "tg": {}
-      "th": {}
-      "tj": {}
-      "tk": {}
-      "tl": {}
-      "tm": {}
-      "tn": {}
-      "to": {}
-      "tr": {}
-      "tt": {}
-      "tv": {}
-      "tw": {}
-      "tz": {}
-      "ua": {}
-      "ug": {}
-      "um": {}
-      "us": {}
-      "uy": {}
-      "uz": {}
-      "va": {}
-      "vc": {}
-      "ve": {}
-      "vg": {}
-      "vi": {}
-      "vn": {}
-      "vu": {}
-      "wf": {}
-      "ws": {}
-      "ye": {}
-      "yt": {}
-      "za": {}
-      "zm": {}
-      "zw": {}
+  # Jurisdiction codes are free-form strings matching
+  # ^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$ on the jurisdiction slot
+  # (ISO 3166-1 alpha-2 plus optional ISO 3166-2 subdivision).
+
   IFCVersionEnum:
     permissible_values:
       ifc2x3: {}
@@ -313,6 +59,22 @@ enums:
       room: {}
       container: {}
 
+  UseKindEnum:
+    description: >-
+      Role of a use, aligned with the main (M) and support (S) classes of
+      BuildingSpaceActivityClassification and the HNF / NNF, VF, FF split of
+      SIA 416.
+    permissible_values:
+      main:
+        description: >-
+          Hauptnutzung. Selected by the project; filters goals, boundary
+          conditions, usage scenarios, and workflows.
+      support:
+        description: >-
+          Unterstützende Nutzung (Keller, Technik, Parkierung).
+          Present in every project, never selected; names shared volumes in
+          the massing.
+
   ScopeLevel:
     description: >-
       Level of the functional requirements hierarchy (Project → Use → Unit
@@ -339,6 +101,57 @@ enums:
       dwelling:
         description: Deprecated alias of unit; read as unit.
         deprecated: Use unit.
+
+  SolutionScopeEnum:
+    description: >-
+      Tree node a solution-box dimension is answered on. Distinct from
+      ScopeLevel (usage scenarios): site and building replace use.
+    permissible_values:
+      project:
+        description: Answered once per solution on Selection.
+      site:
+        description: Answered once per solution on Selection (may differ per competition entry).
+      building:
+        description: Answered on the building SpatialContext.
+      unit:
+        description: Answered per container room type via Selection.unit_type_answers.
+
+  SolutionStepEnum:
+    description: Generator step a solution-box dimension feeds.
+    permissible_values:
+      form: {}
+      access: {}
+      grid: {}
+      units: {}
+      spaces: {}
+
+  RuleKindEnum:
+    description: Whether a rule checks a model or a process deliverable.
+    permissible_values:
+      model: {}
+      process: {}
+
+  RuleSeverityEnum:
+    description: How a failed rule is reported.
+    permissible_values:
+      violation: {}
+      warning: {}
+
+  BuildingHeightCategoryEnum:
+    description: >-
+      Derived from spaces-gross-volume.Height: low ≤ 11 m, medium ≤ 30 m,
+      high_rise > 30 m (VKF).
+    permissible_values:
+      low: {}
+      medium: {}
+      high_rise: {}
+
+  FireProtectionConceptEnum:
+    description: Fire-protection concept named in a rule condition.
+    permissible_values:
+      structural: {}
+      sprinkler: {}
+      mixed: {}
 
   ProjectGoalGroupEnum:
     description: Section of the goals step in which a project goal is asked.
@@ -545,12 +358,25 @@ slots:
 
   jurisdiction:
     multivalued: true
-    range: JurisdictionEnum
+    range: string
+    pattern: "^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$"
     description: >-
-      Geographic applicability. Use [general] when not country-specific;
-      otherwise one or more ISO 3166-1 alpha-2 codes (lowercase), e.g.
-      [ch] or [ch, de, at]. Do not mix general with country codes. Omit
-      to mean [general].
+      Geographic applicability. Each entry is `general`, an ISO 3166-1
+      alpha-2 country code (lowercase), or an ISO 3166-2 subdivision
+      (`ch-zh`, `ch-be`). Uppercase is invalid. Use [general] (or omit)
+      for everywhere; do not mix general with codes. A project in ch-zh
+      matches general, ch and ch-zh, but not ch-be. On ValueSet an
+      explicit jurisdiction wins over the one inherited from the attribute.
+  edition:
+    range: string
+    description: >-
+      Norm edition this record follows, e.g. "VKF 2015" or "SIA 416:2003".
+  valid_from:
+    range: date
+    description: First day this record applies (inclusive).
+  valid_until:
+    range: date
+    description: Last day this record applies (inclusive). Omit when still valid.
   name:
     required: true
     range: LocalizedText
@@ -825,11 +651,49 @@ slots:
     inlined: false
     any_of:
       - range: ScenarioOption
+      - range: SolutionOption
       - range: RoomType
     description: >-
       Options or room types that cannot be chosen together with this
-      option, in any scenario or boundary condition. Symmetric: declare the
-      rule on one side only; the app reads it in both directions.
+      option, in any scenario, solution dimension or boundary condition.
+      Symmetric: declare the rule on one side only; the app reads it in
+      both directions.
+  solution_dimensions:
+    multivalued: true
+    range: SolutionDimension
+    inlined_as_list: true
+    description: >-
+      Rows of the solution box (strategic choices such as access typology
+      or grid). One catalog file per dimension under solution-dimensions/.
+  step:
+    range: SolutionStepEnum
+    description: Generator step this solution dimension feeds.
+  rules:
+    multivalued: true
+    range: Rule
+    inlined_as_list: true
+    description: >-
+      Conditional requirements (model or process) compiled to SHACL. One file
+      per rule under rules/.
+  derived_values:
+    multivalued: true
+    range: DerivedValue
+    inlined_as_list: true
+    description: How derived condition values (e.g. building_height_category) are computed.
+  rule_kind:
+    range: RuleKindEnum
+  severity:
+    range: RuleSeverityEnum
+  pattern:
+    range: string
+    description: SHACL pattern id (e.g. adjacent-space-attribute); omit when shacl is set.
+  applies_to:
+    range: Element
+    inlined: false
+    description: Element the rule constrains.
+  shacl:
+    range: string
+    description: Path to a hand-written SHACL shape when no pattern fits.
   allows_multiple:
     range: boolean
     description: >-
@@ -855,6 +719,45 @@ slots:
     description: >-
       Quantity a use is sized by (Bezugsgrösse), such as the number of
       workstations for Arbeit.
+  use_kind:
+    range: UseKindEnum
+    description: Whether a use is a main use or a support use.
+  uri:
+    range: uriorcurie
+    description: >-
+      Canonical URI/CURIE of the record's concept, e.g. an external
+      definition of a use. Distinct from classification_uri, which points to
+      a classification concept.
+  quantities:
+    multivalued: true
+    range: QuantityDefinition
+    inlined_as_list: true
+    description: >-
+      Quantities a boundary condition asks for (e.g. Anzahl Sitzplätze),
+      ordered via sort_order.
+  counted_room_type:
+    range: RoomType
+    inlined: false
+    description: >-
+      Container room type a boundary-condition quantity counts (e.g. the
+      number of single hotel rooms).
+  implied_levels:
+    multivalued: true
+    range: ProjectGoalLevel
+    inlined: false
+    description: >-
+      Levels of other project goals that choosing this level presets as
+      minimums (e.g. Minergie-ECO presets at least Minergie). The project may
+      raise an implied goal above its preset level, not below it.
+  performance_targets:
+    multivalued: true
+    range: PerformanceTarget
+    inlined_as_list: true
+    description: >-
+      Target attributes this goal level activates on elements, with the
+      default target value. Choosing the level presets each value; the
+      project may tighten it. A target without value is activated and set
+      in the project.
   sizes:
     multivalued: true
     range: OptionSize
@@ -1106,6 +1009,32 @@ slots:
     range: AttributeReference
     inlined: true
     description: Delivered attribute that proves a performance target.
+  product_sheets:
+    multivalued: true
+    range: ProductSheet
+    inlined_as_list: true
+    description: >-
+      Data sheets for abstract product classes. The class itself (notation,
+      label, definition, hierarchy, crosswalks) is named in the pragmatic BIM
+      data contract; the sheet adds name, tender text and application notes.
+  product_classification:
+    range: Classification
+    inlined: true
+    description: >-
+      Product class this sheet describes: classification_scheme is the
+      dcterms:identifier of the contract's product ConceptScheme (e.g.
+      AbstractWallSeparatorProduct), classification_code its skos:notation
+      (e.g. SWP-MASONRY).
+  tender_text:
+    range: LocalizedText
+    description: >-
+      Neutral tender text for the product class: build-up, execution and
+      typical application, written so it can seed a specification item.
+  application_notes:
+    range: LocalizedText
+    description: >-
+      Optional guidance on when to choose the product class and how it
+      combines with roles, materials or other classes.
   components:
     multivalued: true
     range: Component
@@ -1213,6 +1142,9 @@ classes:
       - uses
       - room_types
       - usage_scenarios
+      - solution_dimensions
+      - rules
+      - derived_values
       - workflows
       - valuesets
       - phase_schemes
@@ -1222,6 +1154,7 @@ classes:
       - custom_pset_entities
       - elements
       - components
+      - product_sheets
     slot_usage:
       uses:
         inlined: true
@@ -1392,6 +1325,8 @@ classes:
       suits; omit it when the configuration is independent of goal levels.
       equipment and openings list what the room contains and how it is reached
       and lit; both reference components and leave position to the generator.
+      A room type may have one configuration per jurisdiction; edition and
+      validity pin the norm edition used when the project was checked.
     slots:
       - id
       - sort_order
@@ -1403,12 +1338,20 @@ classes:
       - equipment
       - openings
       - status
+      - jurisdiction
+      - edition
+      - valid_from
+      - valid_until
     slot_usage:
       name:
         required: false
         description: Optional label of the configuration (e.g. Klein). Omit for the only one.
       attribute_presets:
         required: true
+      jurisdiction:
+        description: >-
+          National or cantonal applicability of this configuration (e.g. min
+          sizes from SIA 500 vs DIN 18040). Omit or [general] for everywhere.
 
   RoomTypeRestriction:
     description: >-
@@ -1450,6 +1393,8 @@ classes:
       satisfy; the component adds size, clearances, placement rules and
       connections so a generator can place it in a room. predefined_type,
       object_type and ifc_name must be allowed values of that element.
+      jurisdiction distinguishes national module sizes (e.g. 55 cm SMS kitchen
+      modules in ch vs 60 cm EU).
     slots:
       - id
       - code
@@ -1459,6 +1404,10 @@ classes:
       - element
       - comment
       - status
+      - jurisdiction
+      - edition
+      - valid_from
+      - valid_until
     slot_usage:
       element:
         required: true
@@ -1505,6 +1454,34 @@ classes:
       representation:
         range: ComponentRepresentation
         inlined: true
+        required: true
+
+  ProductSheet:
+    description: >-
+      Data sheet for one abstract product class. The pragmatic BIM data
+      contract identifies the class (notation, short definition, hierarchy,
+      crosswalks to KBOB, BKP and materials); the Reference describes it with
+      a name in all catalog languages, a tender text, application notes and
+      media. The German and English name match the contract prefLabel; the
+      definition is not repeated. One sheet per top concept; LCA layer
+      concepts (narrower *-INS, *-MEM, ...) get none.
+    slots:
+      - id
+      - sort_order
+      - status
+      - name
+      - product_classification
+      - tender_text
+      - application_notes
+      - picture_link
+      - attachment_link
+      - comment
+    slot_usage:
+      id:
+        pattern: "^pragmaticbim:product/[a-z0-9-]+$"
+      product_classification:
+        required: true
+      tender_text:
         required: true
 
   ComponentParameter:
@@ -1856,6 +1833,240 @@ classes:
       - description
       - size_restrictions
 
+  RuleSource:
+    description: Norm citation for a rule.
+    attributes:
+      norm:
+        range: string
+        required: true
+      clause:
+        range: string
+      edition:
+        range: string
+
+  RuleCondition:
+    description: >-
+      Shared or per-case conditions for a rule. Attribute matches on the
+      element itself use attributes (e.g. LoadBearing: true).
+    attributes:
+      building_height_category:
+        range: BuildingHeightCategoryEnum
+      fire_protection_concept:
+        range: FireProtectionConceptEnum
+      adjacent_room_types:
+        range: RoomType
+        multivalued: true
+        inlined: false
+      adjacent_activities:
+        range: string
+        multivalued: true
+      separates_units:
+        range: boolean
+      below_terrain:
+        range: boolean
+      top_storey:
+        range: boolean
+      attributes:
+        range: Any
+        description: >-
+          Attribute name to required value on the element itself
+          (e.g. LoadBearing -> true).
+
+  RuleCase:
+    description: >-
+      One case of a rule with additional when conditions and required
+      attribute values.
+    attributes:
+      when:
+        range: RuleCondition
+        inlined: true
+      requires:
+        range: Any
+        required: true
+        description: >-
+          Attribute name to required value, e.g. FireRating -> REI 30.
+
+  DerivedValue:
+    description: >-
+      How a derived condition value is computed from the model. The first
+      entry defines building_height_category from spaces-gross-volume.Height.
+    attributes:
+      id:
+        identifier: true
+        required: true
+      name:
+        range: string
+        required: true
+      source_attribute:
+        range: string
+        required: true
+        description: Attribute that supplies the input (e.g. spaces-gross-volume.Height).
+      thresholds:
+        range: Any
+        description: >-
+          Named thresholds, e.g. {low: 11, medium: 30} with high_rise above medium.
+
+  Rule:
+    description: >-
+      Conditional requirement linked to uses and compiled to SHACL. Values live
+      only in the YAML; a small set of patterns covers most logic. Escape hatch:
+      set shacl to a hand-written .ttl and omit pattern. The same pattern can
+      emit a validation shape and a SHACL-AF rule (check and aufinformieren).
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - definition
+      - status
+      - jurisdiction
+      - edition
+      - valid_from
+      - valid_until
+      - rule_kind
+      - pattern
+      - uses
+      - applies_to
+      - severity
+      - needed_for_workflows
+      - shacl
+    attributes:
+      source:
+        range: RuleSource
+        inlined: true
+      when:
+        range: RuleCondition
+        inlined: true
+        description: Conditions shared by all cases.
+      cases:
+        range: RuleCase
+        multivalued: true
+        inlined_as_list: true
+      milestone:
+        range: string
+        description: Process rules only — by when the proof must exist.
+    slot_usage:
+      rule_kind:
+        required: true
+      severity:
+        required: true
+      applies_to:
+        required: true
+    rules:
+      - description: pattern or shacl must be set, not both omitted.
+        preconditions:
+          slot_conditions:
+            pattern:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            shacl:
+              required: true
+
+  SolutionParameter:
+    description: >-
+      One generator parameter of a solution option, keyed by name. Values are
+      in metres (e.g. min_depth, max_escape_distance, axis_x, module).
+    attributes:
+      key:
+        identifier: true
+        range: string
+        pattern: "^[a-z][a-z0-9_]*$"
+      value:
+        range: float
+        required: true
+
+  SolutionParameterSet:
+    description: >-
+      Generator parameters for one jurisdiction. Generators take the most
+      specific match (ch-zh before ch before general). A key used in any set
+      must exist in the general set or in every country set of that option.
+    attributes:
+      jurisdiction:
+        range: string
+        pattern: "^(general|[a-z]{2}(-[a-z0-9]{1,3})?)$"
+        description: Omit or general for the base set.
+      values:
+        range: SolutionParameter
+        multivalued: true
+        inlined: true
+        required: true
+
+  SolutionOption:
+    description: >-
+      One cell of a solution-box dimension. exclusive marks "Keine". excludes
+      names incompatible options of other dimensions (symmetric, declare on
+      one side). parameters are jurisdiction-keyed sets of numbers in metres.
+    attributes:
+      id:
+        identifier: true
+        required: true
+      code:
+        range: string
+      sort_order:
+        range: integer
+      name:
+        range: LocalizedText
+        required: true
+      description:
+        range: LocalizedText
+      picture_link:
+        range: string
+      status:
+        range: StatusEnum
+      comment:
+        range: string
+      exclusive:
+        range: boolean
+        description: True for "Keine"; never combined with another option of its dimension.
+      excludes:
+        range: SolutionOption
+        multivalued: true
+        inlined: false
+        description: >-
+          Options of other dimensions that cannot be combined with this one.
+          Symmetric; declare on one side only.
+      parameters:
+        range: SolutionParameterSet
+        multivalued: true
+        inlined_as_list: true
+        description: >-
+          Parameter sets by jurisdiction. Generators pick the most specific
+          match for the project.
+
+  SolutionDimension:
+    description: >-
+      One row of the solution box. scope is the tree node it is answered on
+      (project, site, building, or unit). uses limits the dimension to those
+      uses; omit for every use. step names the generator step it feeds.
+      options are the cells of the row.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - description
+      - picture_link
+      - status
+      - comment
+      - uses
+      - allows_multiple
+      - step
+    attributes:
+      scope:
+        range: SolutionScopeEnum
+        required: true
+      options:
+        range: SolutionOption
+        multivalued: true
+        inlined_as_list: true
+    slot_usage:
+      allows_multiple:
+        ifabsent: "false"
+        description: >-
+          True when several options of this dimension can be chosen together.
+          Exclusive options still exclude the others.
+
   ScenarioOption:
     description: >-
       One way to meet a scenario's need. adds names the room or container
@@ -1939,11 +2150,13 @@ classes:
   Use:
     description: >-
       Nutzung (e.g. Wohnen, Arbeit): the middle level of the functional
-      requirements hierarchy Project → Use → Unit type. A project picks its
-      uses; each unit type (container room type) belongs to exactly one use,
-      and usage scenarios name the uses they apply to. reference_quantity is
-      the quantity the use is sized by; typical_levels suggests the goal
-      levels a project with this use usually chooses.
+      requirements hierarchy Project → Use → Unit type. Main uses are picked
+      by the project at setup and filter goals, scenarios, and workflows;
+      support uses are always present and name shared volumes in the massing.
+      reference_quantity is the quantity the use is sized by; typical_levels
+      suggests the goal levels a project with this use usually chooses.
+      classifications link to external schemes; uri links an external
+      definition of the use.
     slots:
       - id
       - code
@@ -1953,6 +2166,13 @@ classes:
       - status
       - reference_quantity
       - typical_levels
+      - use_kind
+      - classifications
+      - uri
+      - jurisdiction
+    slot_usage:
+      use_kind:
+        required: true
 
   ReferenceQuantity:
     description: >-
@@ -1966,6 +2186,46 @@ classes:
       - unit
       - status
 
+  QuantityDefinition:
+    description: >-
+      A quantity the project fills in: a boundary-condition count (Anzahl
+      Sitzplätze) or share. counted_room_type names the container the
+      quantity counts; a value above zero activates it.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - description
+      - unit
+      - counted_room_type
+      - status
+      - comment
+    slot_usage:
+      unit:
+        description: Unit of the value (e.g. %). Omit for plain counts.
+
+  PerformanceTarget:
+    description: >-
+      Default value a project goal level sets for one target attribute of an
+      element (requirement_kind performance). element + name (+ pset)
+      identify the attribute like on AttributePreset. value is optional: when
+      omitted, the level activates the target and the project sets the value.
+    slots:
+      - element
+      - name
+      - pset
+      - value
+    slot_usage:
+      element:
+        required: true
+      name:
+        required: true
+        range: string
+        description: >-
+          IFC property name of the target attribute on the referenced element
+          (e.g. ThermalTransmittanceMax).
+
   ProjectGoal:
     description: >-
       Why information is needed, with ordered levels (Ausprägungen).
@@ -1976,8 +2236,9 @@ classes:
       names the uses the goal applies to; omit it for a general goal asked
       in every project. One level is chosen unless allows_multiple is true;
       an exclusive level (e.g. "Keine") is never combined with another. A
-      goal whose levels set activated_room_types defines unit types and is
-      answered in Functional requirements, not in the goals step.
+      boundary condition may ask for quantities instead of, or besides,
+      levels. A goal whose levels set activated_room_types defines unit
+      types and is answered in Functional requirements, not in the goals step.
     slots:
       - id
       - code
@@ -1992,6 +2253,7 @@ classes:
       - is_boundary_condition
       - allows_multiple
       - levels
+      - quantities
     slot_usage:
       uses:
         description: >-
@@ -2011,7 +2273,11 @@ classes:
       boundary-condition goal, activated_room_types is the complete set of
       container room types the level activates; activated_workflows may then
       be empty. exclusive marks a level (e.g. "Keine") that cannot be chosen
-      together with any other level of its goal.
+      together with any other level of its goal. jurisdiction scopes a level
+      (e.g. SNBS and Minergie are ch, DGNB de, LEED general); the goal itself
+      stays general. implied_levels presets minimums on other goals;
+      performance_targets presets target attribute values for checking
+      workflows.
     slots:
       - id
       - code
@@ -2022,7 +2288,10 @@ classes:
       - exclusive
       - activated_workflows
       - activated_room_types
+      - implied_levels
+      - performance_targets
       - comment
+      - jurisdiction
     slot_usage:
       exclusive:
         description: >-
@@ -2055,6 +2324,11 @@ classes:
       - comment
 
   ValueSet:
+    description: >-
+      Controlled vocabulary for an attribute. Optional jurisdiction (e.g. ch
+      for SIA 416 / eBKP-H / KBOB) wins over the jurisdiction inherited from
+      the attribute when both are set. edition and validity pin the norm
+      edition for reproducible checks.
     slots:
       - id
       - code
@@ -2064,6 +2338,10 @@ classes:
       - norm_reference
       - status
       - values
+      - jurisdiction
+      - edition
+      - valid_from
+      - valid_until
     slot_usage:
       values:
         range: LocalizedStringList

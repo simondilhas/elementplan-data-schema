@@ -57,7 +57,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcBuildingStorey
 entity_ifc4_3: null
-picture_link: geschoss-stockwerk.jpg
+picture_link: geschoss-stockwerk.png
+picture_print_link: geschoss-stockwerk-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcBuildingStorey
 attributes:

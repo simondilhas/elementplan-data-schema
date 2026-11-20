@@ -36,6 +36,8 @@ levels:
     de: Minergie mit zusätzlichen Anforderungen an Gesundheit und Bauökologie.
     en: Minergie with additional requirements for health and building ecology.
   status: active
+  jurisdiction:
+  - ch
 - id: pragmaticbim:project-goal-level/zertifizierung-snbs
   code: ZER-03
   sort_order: 3
@@ -46,3 +48,5 @@ levels:
     de: Standard Nachhaltiges Bauen Schweiz.
     en: Swiss Sustainable Building Standard.
   status: active
+  jurisdiction:
+  - ch

@@ -1,0 +1,12 @@
+id: unit/2.1
+label: Wohnung 2.1
+room_type: pragmaticbim:room-type/wohnung-3-5
+configuration: pragmaticbim:room-type-configuration/wohnung-3-5
+fulfils: [programme/wohnung-3-5]
+parent_building: building/a
+origin: {kind: requirement}
+outline_kind: axis
+outlines:
+- level: level/02
+  outline: [[0.0, 0.0], [10.0, 0.0], [10.0, 8.0], [0.0, 8.0]]
+  outline_kind: axis

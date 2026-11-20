@@ -1,0 +1,5 @@
+{
+  "id": "adjacent-space-attribute",
+  "description": "Require attribute values on an element when it is adjacent to given room types, with cases by building height category.",
+  "template": "adjacent-space-attribute.ttl.j2"
+}

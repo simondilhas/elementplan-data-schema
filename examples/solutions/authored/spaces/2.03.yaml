@@ -1,0 +1,15 @@
+id: space/2.03
+label: "2.03"
+room_type: pragmaticbim:room-type/badezimmer
+configuration: pragmaticbim:room-type-configuration/badezimmer-medium
+parent_level: level/02
+parent_unit: unit/2.1
+origin: {kind: requirement}
+bubble:
+  x: 5.2
+  y: 1.05
+  area: 5.04
+  review_status: proposed
+height: 2.4
+values:
+  FloorCovering: Naturstein allgemein

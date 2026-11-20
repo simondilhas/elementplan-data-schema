@@ -1,0 +1,14 @@
+id: pragmaticbim:use/flughafen
+code: USE-FH
+sort_order: 3
+name:
+  de: Flughafen
+  en: Airport
+definition:
+  de: Abfertigung von Fluggästen, Gepäck und Flugzeugen.
+  en: Handling of passengers, baggage, and aircraft.
+use_kind: main
+status: active
+jurisdiction:
+- general
+

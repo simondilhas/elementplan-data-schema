@@ -15,4 +15,7 @@ reference_quantity:
     de: Reisende pro Jahr
     en: Travellers per year
   status: active
+use_kind: main
 status: active
+jurisdiction:
+- general

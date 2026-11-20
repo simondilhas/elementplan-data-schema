@@ -32,6 +32,7 @@ entity_ifc2x3: null
 entity_ifc4: IfcSpace
 entity_ifc4_3: null
 picture_link: luftraum.png
+picture_print_link: luftraum-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcSpace
 attributes:

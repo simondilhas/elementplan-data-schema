@@ -16,7 +16,8 @@ definition:
 entity_ifc2x3: null
 entity_ifc4: IfcController
 entity_ifc4_3: null
-picture_link: null
+picture_link: regler.png
+picture_print_link: regler-print.tif
 attachment_link: null
 applicability: entity_ifc4=IfcController
 attributes:

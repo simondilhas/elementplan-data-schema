@@ -5,11 +5,12 @@ Usage: python scripts/validate_reference.py PATH/TO/pragmaticBIM-reference [coll
 Assembles an ElementplanDataset from the reference folders and validates it
 with the JSON Schema generated from schema/elementplan.linkml.yaml (closed
 classes, so unknown fields are reported). Components are also checked for
-lengths that name a parameter the component does not define. Collections default to the ones this
-schema models field by field: room_types, usage_scenarios, components.
-Container room types (unit types) must list exactly one use. The schema
-requires uses on containers; the generated JSON Schema cannot cap it at one,
-so more than one use is checked here.
+lengths that name a parameter the component does not define. Collections
+default to the ones this schema models field by field: room_types,
+usage_scenarios, components, product_sheets. Container room types (unit types)
+must list exactly one use. The schema requires uses on containers; the
+generated JSON Schema cannot cap it at one, so more than one use is checked
+here.
 
 goal_level_errors checks the levels a project picked: one per goal unless the
 goal allows_multiple, and an exclusive level never together with another.
@@ -36,8 +37,11 @@ FOLDERS = {
     "usage_scenarios": "usage_scenarios",
     "components": "components",
     "elements": "elements",
+    "product_sheets": "products",
+    "rules": "rules",
+    "workflows": "workflows",
 }
-DEFAULT = ("room_types", "usage_scenarios", "components")
+DEFAULT = ("room_types", "usage_scenarios", "components", "product_sheets")
 
 
 def load_dataset(reference: Path, collections: tuple[str, ...]) -> dict:
@@ -45,7 +49,9 @@ def load_dataset(reference: Path, collections: tuple[str, ...]) -> dict:
     for slot in collections:
         folder = reference / FOLDERS[slot]
         dataset[slot] = [
-            yaml.safe_load(path.read_text(encoding="utf-8")) for path in sorted(folder.glob("*.yaml"))
+            yaml.safe_load(path.read_text(encoding="utf-8"))
+            for path in sorted(folder.glob("*.yaml"))
+            if not path.name.startswith("_")  # generated indexes and config, not records
         ]
     return dataset
 
@@ -72,16 +78,49 @@ def goal_level_errors(project_goals: list[dict], picked_levels: list[str]) -> li
     return errors
 
 
+def rule_reference_errors(dataset: dict) -> list[str]:
+    """Resolve uses, applies_to, adjacent room types and workflows on rules."""
+    errors: list[str] = []
+    use_ids = {r["id"] for r in dataset.get("uses") or []}
+    element_ids = {r["id"] for r in dataset.get("elements") or []}
+    room_type_ids = {r["id"] for r in dataset.get("room_types") or []}
+    workflow_ids = {r["id"] for r in dataset.get("workflows") or []}
+    for rule in dataset.get("rules") or []:
+        rid = rule.get("id", "?")
+        for use in rule.get("uses") or []:
+            if use_ids and use not in use_ids:
+                errors.append(f"{rid}: unknown use {use}")
+        applies = rule.get("applies_to")
+        if applies and element_ids and applies not in element_ids:
+            errors.append(f"{rid}: unknown applies_to {applies}")
+        when = rule.get("when") or {}
+        for rt in when.get("adjacent_room_types") or []:
+            if room_type_ids and rt not in room_type_ids:
+                errors.append(f"{rid}: unknown adjacent_room_type {rt}")
+        for wf in rule.get("needed_for_workflows") or []:
+            if workflow_ids and wf not in workflow_ids:
+                errors.append(f"{rid}: unknown workflow {wf}")
+        if not rule.get("pattern") and not rule.get("shacl"):
+            errors.append(f"{rid}: set pattern or shacl")
+    return errors
+
+
 def main(argv: list[str]) -> int:
     if not argv:
         print(__doc__)
         return 2
     reference = Path(argv[0])
     collections = tuple(argv[1:]) or DEFAULT
+    # Rules resolve against uses / elements / room_types / workflows when present.
+    needed = set(collections)
+    if "rules" in needed:
+        needed.update(("uses", "elements", "room_types", "workflows"))
     schema = json.loads(JsonSchemaGenerator(str(SCHEMA), not_closed=False, top_class="ElementplanDataset").serialize())
     validator = jsonschema.validators.validator_for(schema)(schema)
-    dataset = load_dataset(reference, collections)
-    errors = list(validator.iter_errors(dataset))
+    dataset = load_dataset(reference, tuple(sorted(needed)))
+    # Validate only the collections the caller asked for.
+    validate_dataset = {slot: dataset[slot] for slot in collections if slot in dataset}
+    errors = list(validator.iter_errors(validate_dataset))
     for error in errors:
         where = "/".join(str(p) for p in list(error.absolute_path)[:2])
         print(f"{where}: {error.message[:200]}")
@@ -89,13 +128,17 @@ def main(argv: list[str]) -> int:
         for message in parameter_reference_errors(component):
             errors.append(message)
             print(message)
-    rule_errors = container_use_errors(dataset.get("room_types", []))
-    for message in rule_errors:
+    extra = container_use_errors(dataset.get("room_types", []))
+    for message in extra:
         print(f"room_types: {message}")
+    if "rules" in collections:
+        for message in rule_reference_errors(dataset):
+            print(f"rules: {message}")
+            extra.append(message)
     print()
     for slot in collections:
-        print(f"{slot}: {len(dataset[slot])} records")
-    total = len(errors) + len(rule_errors)
+        print(f"{slot}: {len(dataset.get(slot, []))} records")
+    total = len(errors) + len(extra)
     print(f"{total} error(s)")
     return 1 if total else 0
 

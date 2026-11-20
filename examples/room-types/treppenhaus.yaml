@@ -1,0 +1,23 @@
+id: pragmaticbim:room-type/treppenhaus
+code: RT-TH
+sort_order: 40
+name:
+  de: Treppenhaus
+  en: Stairwell
+definition:
+  de: Vertikale Erschliessung über Treppen.
+  en: Vertical access by stairs.
+room_type_kind: room
+default_scope: building
+configurations:
+- id: pragmaticbim:room-type-configuration/treppenhaus-standard
+  sort_order: 1
+  name:
+    de: Standard
+    en: Standard
+  attribute_presets:
+  - element: armasuisse:element/innenraum
+    name: PredefinedType
+    value: INTERNAL
+  status: active
+status: active
