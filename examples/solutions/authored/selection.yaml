@@ -1,0 +1,13 @@
+goal_levels:
+- pragmaticbim:project-goal-level/kosten-mittel
+options:
+- pragmaticbim:option/balkon-terrasse
+sizes:
+- pragmaticbim:option-size/balkon-terrasse-mittel
+counts:
+- subject: pragmaticbim:room-type/wohnung-3-5
+  count: 12
+unit_type_answers:
+- room_type: pragmaticbim:room-type/wohnung-3-5
+  solution_options:
+  - pragmaticbim:solution-option/bad-innenliegend

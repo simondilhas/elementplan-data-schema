@@ -356,6 +356,29 @@ enums:
         description: Deprecated alias of unit; read as unit.
         deprecated: Use unit.
 
+  SolutionScopeEnum:
+    description: >-
+      Tree node a solution-box dimension is answered on. Distinct from
+      ScopeLevel (usage scenarios): site and building replace use.
+    permissible_values:
+      project:
+        description: Answered once per solution on Selection.
+      site:
+        description: Answered once per solution on Selection (may differ per competition entry).
+      building:
+        description: Answered on the building SpatialContext.
+      unit:
+        description: Answered per container room type via Selection.unit_type_answers.
+
+  SolutionStepEnum:
+    description: Generator step a solution-box dimension feeds.
+    permissible_values:
+      form: {}
+      access: {}
+      grid: {}
+      units: {}
+      spaces: {}
+
   ProjectGoalGroupEnum:
     description: Section of the goals step in which a project goal is asked.
     permissible_values:
@@ -825,11 +848,23 @@ slots:
     inlined: false
     any_of:
       - range: ScenarioOption
+      - range: SolutionOption
       - range: RoomType
     description: >-
       Options or room types that cannot be chosen together with this
-      option, in any scenario or boundary condition. Symmetric: declare the
-      rule on one side only; the app reads it in both directions.
+      option, in any scenario, solution dimension or boundary condition.
+      Symmetric: declare the rule on one side only; the app reads it in
+      both directions.
+  solution_dimensions:
+    multivalued: true
+    range: SolutionDimension
+    inlined_as_list: true
+    description: >-
+      Rows of the solution box (strategic choices such as access typology
+      or grid). One catalog file per dimension under solution-dimensions/.
+  step:
+    range: SolutionStepEnum
+    description: Generator step this solution dimension feeds.
   allows_multiple:
     range: boolean
     description: >-
@@ -1252,6 +1287,7 @@ classes:
       - uses
       - room_types
       - usage_scenarios
+      - solution_dimensions
       - workflows
       - valuesets
       - phase_schemes
@@ -1837,6 +1873,92 @@ classes:
       - name
       - description
       - size_restrictions
+
+  SolutionParameter:
+    description: >-
+      One generator parameter of a solution option, keyed by name. Values are
+      in metres (e.g. min_depth, max_escape_distance, axis_x, module).
+    attributes:
+      key:
+        identifier: true
+        range: string
+        pattern: "^[a-z][a-z0-9_]*$"
+      value:
+        range: float
+        required: true
+
+  SolutionOption:
+    description: >-
+      One cell of a solution-box dimension. exclusive marks "Keine". excludes
+      names incompatible options of other dimensions (symmetric, declare on
+      one side). parameters are numbers in metres read by generators.
+    attributes:
+      id:
+        identifier: true
+        required: true
+      code:
+        range: string
+      sort_order:
+        range: integer
+      name:
+        range: LocalizedText
+        required: true
+      description:
+        range: LocalizedText
+      picture_link:
+        range: string
+      status:
+        range: StatusEnum
+      comment:
+        range: string
+      exclusive:
+        range: boolean
+        description: True for "Keine"; never combined with another option of its dimension.
+      excludes:
+        range: SolutionOption
+        multivalued: true
+        inlined: false
+        description: >-
+          Options of other dimensions that cannot be combined with this one.
+          Symmetric; declare on one side only.
+      parameters:
+        range: SolutionParameter
+        multivalued: true
+        inlined: true
+        description: Generator parameters in metres, keyed by name.
+
+  SolutionDimension:
+    description: >-
+      One row of the solution box. scope is the tree node it is answered on
+      (project, site, building, or unit). uses limits the dimension to those
+      uses; omit for every use. step names the generator step it feeds.
+      options are the cells of the row.
+    slots:
+      - id
+      - code
+      - sort_order
+      - name
+      - description
+      - picture_link
+      - status
+      - comment
+      - uses
+      - allows_multiple
+      - step
+    attributes:
+      scope:
+        range: SolutionScopeEnum
+        required: true
+      options:
+        range: SolutionOption
+        multivalued: true
+        inlined_as_list: true
+    slot_usage:
+      allows_multiple:
+        ifabsent: "false"
+        description: >-
+          True when several options of this dimension can be chosen together.
+          Exclusive options still exclude the others.
 
   ScenarioOption:
     description: >-

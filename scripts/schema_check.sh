@@ -513,12 +513,12 @@ if not exclusive_slot or exclusive_slot.get("range") != "boolean":
 excludes_slot = schema["slots"].get("excludes") or {}
 excludes_ranges = {item.get("range") for item in excludes_slot.get("any_of") or []}
 if (
-    excludes_ranges != {"ScenarioOption", "RoomType"}
+    excludes_ranges != {"ScenarioOption", "SolutionOption", "RoomType"}
     or not excludes_slot.get("multivalued")
     or excludes_slot.get("inlined") is not False
 ):
     raise SystemExit(
-        "excludes slot must be multivalued, inlined: false, any_of ScenarioOption / RoomType."
+        "excludes slot must be multivalued, inlined: false, any_of ScenarioOption / SolutionOption / RoomType."
     )
 
 require_class_slots("ProjectGoal", ("is_boundary_condition",))
@@ -1466,7 +1466,8 @@ print("Schema contract OK: Component, Equipment, Opening")
 folders = {
     "domains": "domains", "models": "models", "documents": "documents",
     "project_goals": "project-goals", "uses": "uses", "room_types": "room-types",
-    "usage_scenarios": "usage-scenarios", "workflows": "workflows", "valuesets": "values",
+    "usage_scenarios": "usage-scenarios", "solution_dimensions": "solution-dimensions",
+    "workflows": "workflows", "valuesets": "values",
     "elements": "elements", "components": "components",
 }
 dataset = {
@@ -1622,20 +1623,59 @@ rules = solution["classes"]["SpatialContext"].get("rules") or []
 if not any("envelope" in (r.get("description") or "").lower() for r in rules):
     raise SystemExit("SpatialContext needs a rule that an envelope requires parent_site, outline and height.")
 
-envelope_example = Path("examples/solution/demo-wohnhaus/contexts/envelope-a.yaml")
+envelope_example = Path("examples/solutions/site/contexts/envelope-a.yaml")
 if not envelope_example.exists():
     raise SystemExit(f"missing {envelope_example}")
 building = yaml.safe_load(
-    Path("examples/solution/demo-wohnhaus/contexts/building-a.yaml").read_text(encoding="utf-8")
+    Path("examples/solutions/authored/contexts/building-a.yaml").read_text(encoding="utf-8")
 )
 if building.get("parent_envelope") != "envelope/a":
     raise SystemExit("building-a.yaml must point parent_envelope at envelope/a.")
 
+# Solution box + bubbles / multi-solution layout
+elementplan = yaml.safe_load(Path("schema/elementplan.linkml.yaml").read_text(encoding="utf-8"))
+for enum_name, values in (
+    ("SolutionScopeEnum", {"project", "site", "building", "unit"}),
+    ("SolutionStepEnum", {"form", "access", "grid", "units", "spaces"}),
+):
+    got = set(elementplan["enums"][enum_name]["permissible_values"])
+    if got != values:
+        raise SystemExit(f"{enum_name} must permit exactly {sorted(values)}.")
+for class_name in ("SolutionDimension", "SolutionOption", "SolutionParameter"):
+    if class_name not in elementplan["classes"]:
+        raise SystemExit(f"missing {class_name}")
+if "solution_dimensions" not in elementplan["classes"]["ElementplanDataset"]["slots"]:
+    raise SystemExit("ElementplanDataset is missing solution_dimensions.")
+if not list(Path("examples/solution-dimensions").glob("*.yaml")):
+    raise SystemExit("examples/solution-dimensions must contain catalog records.")
+
+for class_name in ("Bubble", "LevelOutline", "UnitTypeAnswer", "SolutionInfo"):
+    if class_name not in solution["classes"]:
+        raise SystemExit(f"solution schema missing {class_name}")
+for enum_name in ("OutlineKindEnum", "SolutionSourceEnum", "SolutionStatusEnum"):
+    if enum_name not in solution["enums"]:
+        raise SystemExit(f"solution schema missing {enum_name}")
+
+for required in ("authored", "entry-01", "site", "bestand"):
+    if not (Path("examples/solutions") / required).is_dir():
+        raise SystemExit(f"missing examples/solutions/{required}/")
+for slug in ("authored", "entry-01", "bestand"):
+    if not (Path("examples/solutions") / slug / "solution.yaml").exists():
+        raise SystemExit(f"missing examples/solutions/{slug}/solution.yaml")
+if (Path("examples/solutions/site/solution.yaml")).exists():
+    raise SystemExit("site must not have solution.yaml")
+
 print("Schema contract OK: envelope context kind and slots")
+print("Schema contract OK: solution box, bubbles, multi-solution layout")
 PY
 gen-json-schema schema/solution.linkml.yaml > /dev/null
 echo "Solution schema OK: compiles to JSON Schema"
-for project in examples/solution/*/; do
+python scripts/check_solution.py examples/solutions/site
+for project in examples/solutions/*/; do
+  name="$(basename "$project")"
+  if [[ "$name" == "site" ]]; then
+    continue
+  fi
   python scripts/check_solution.py "$project"
 done
 
