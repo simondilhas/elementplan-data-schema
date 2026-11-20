@@ -4,11 +4,13 @@ Usage: python scripts/validate_reference.py PATH/TO/pragmaticBIM-reference [coll
 
 Assembles an ElementplanDataset from the reference folders and validates it
 with the JSON Schema generated from schema/elementplan.linkml.yaml (closed
-classes, so unknown fields are reported). Collections default to the ones this
-schema models field by field: room_types, usage_scenarios, components,
-product_sheets. Container room types (unit types) must list exactly one use.
-The schema requires uses on containers; the generated JSON Schema cannot cap
-it at one, so more than one use is checked here.
+classes, so unknown fields are reported). Components are also checked for
+lengths that name a parameter the component does not define. Collections
+default to the ones this schema models field by field: room_types,
+usage_scenarios, components, product_sheets. Container room types (unit types)
+must list exactly one use. The schema requires uses on containers; the
+generated JSON Schema cannot cap it at one, so more than one use is checked
+here.
 
 goal_level_errors checks the levels a project picked: one per goal unless the
 goal allows_multiple, and an exclusive level never together with another.
@@ -23,6 +25,8 @@ from pathlib import Path
 import jsonschema
 import yaml
 from linkml.generators.jsonschemagen import JsonSchemaGenerator
+
+from component_checks import parameter_reference_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "schema" / "elementplan.linkml.yaml"
@@ -120,6 +124,10 @@ def main(argv: list[str]) -> int:
     for error in errors:
         where = "/".join(str(p) for p in list(error.absolute_path)[:2])
         print(f"{where}: {error.message[:200]}")
+    for component in dataset.get("components") or []:
+        for message in parameter_reference_errors(component):
+            errors.append(message)
+            print(message)
     extra = container_use_errors(dataset.get("room_types", []))
     for message in extra:
         print(f"room_types: {message}")
