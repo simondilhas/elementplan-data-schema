@@ -111,9 +111,10 @@ requirements (Elementplan)  →  solution (decisions)  →  generators  →  IFC
 - **Programme items** have stable ids that are the same for every variant and competition entry, so entries can be compared item by item.
 - **IFC data as delivered.** Imported records keep all IFC properties in an `ifc` bucket (`global_id`, `entity`, `psets`). `values` holds the mapped attributes.
 - **Local geometry.** Outlines are in metres in the level frame; placements chain up to LV95 at the project.
-- **One record per file**, stable ids (`space/2.03`, `door/2.01-2.03`), references pointing one way (child to parent, instance to type, zone and system to what they group or serve).
+- **Envelope context.** `kind: envelope` is the max building volume (Bauenvelope) on a parcel or perimeter. It carries `parent_site`, `outline`, `base_elevation`, `height`, optional `storeys` and `basement_levels` (default 0). Id pattern `envelope/<slug>`, file `contexts/envelope-<slug>.yaml`. A building may point at it with `parent_envelope`. Element defaults to `pragmaticbim:element/architecture-planning-constraint` with `values.Name: Bauenvelope`. A volume that steps back by storey is several envelope records.
+- **One record per file**, stable ids (`space/2.03`, `door/2.01-2.03`, `envelope/a`), references pointing one way (child to parent, instance to type, zone and system to what they group or serve).
 
-A project is a folder: `selection.yaml`, `project.yaml`, `programme/`, `contexts/`, `units/`, `spaces/`, `openings/`, `equipment/`, `zones/`, `systems/`, `overrides/`. `scripts/check_solution.py` loads the folder, validates it against the schema and checks what JSON Schema cannot: references resolve, configurations belong to their room type and suit the selected goal levels, openings fit on their edge, and the programme is met.
+A project is a folder: `selection.yaml`, `project.yaml`, `programme/`, `contexts/`, `units/`, `spaces/`, `openings/`, `equipment/`, `zones/`, `systems/`, `overrides/`. `scripts/check_solution.py` loads the folder, validates it against the schema and checks what JSON Schema cannot: references resolve, configurations belong to their room type and suit the selected goal levels, openings fit on their edge, envelopes have site/outline/height, and the programme is met.
 
 ```bash
 python scripts/check_solution.py examples/solution/demo-wohnhaus

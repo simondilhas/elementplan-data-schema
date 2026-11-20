@@ -1589,6 +1589,50 @@ print("Example references OK: components, equipment, openings")
 PY
 
 # Solution schema: compiles, and every example project passes its checks.
+python - <<'PY'
+from pathlib import Path
+
+import yaml
+
+solution = yaml.safe_load(Path("schema/solution.linkml.yaml").read_text(encoding="utf-8"))
+kinds = set(solution["enums"]["ContextKindEnum"]["permissible_values"])
+for required in ("perimeter", "parcel", "envelope", "building", "level"):
+    if required not in kinds:
+        raise SystemExit(f"ContextKindEnum must include {required}.")
+envelope = solution["enums"]["ContextKindEnum"]["permissible_values"]["envelope"]
+if envelope.get("meaning"):
+    raise SystemExit("envelope meaning must stay unset until the data-contract class is confirmed.")
+
+attrs = solution["classes"]["SpatialContext"]["attributes"]
+for required in (
+    "parent_site",
+    "parent_envelope",
+    "outline",
+    "base_elevation",
+    "height",
+    "storeys",
+    "basement_levels",
+):
+    if required not in attrs:
+        raise SystemExit(f"SpatialContext is missing {required}.")
+if attrs["basement_levels"].get("ifabsent") != "int(0)":
+    raise SystemExit("basement_levels must default to 0.")
+
+rules = solution["classes"]["SpatialContext"].get("rules") or []
+if not any("envelope" in (r.get("description") or "").lower() for r in rules):
+    raise SystemExit("SpatialContext needs a rule that an envelope requires parent_site, outline and height.")
+
+envelope_example = Path("examples/solution/demo-wohnhaus/contexts/envelope-a.yaml")
+if not envelope_example.exists():
+    raise SystemExit(f"missing {envelope_example}")
+building = yaml.safe_load(
+    Path("examples/solution/demo-wohnhaus/contexts/building-a.yaml").read_text(encoding="utf-8")
+)
+if building.get("parent_envelope") != "envelope/a":
+    raise SystemExit("building-a.yaml must point parent_envelope at envelope/a.")
+
+print("Schema contract OK: envelope context kind and slots")
+PY
 gen-json-schema schema/solution.linkml.yaml > /dev/null
 echo "Solution schema OK: compiles to JSON Schema"
 for project in examples/solution/*/; do
