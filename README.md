@@ -105,7 +105,7 @@ requirements (Elementplan)  →  solution (decisions)  →  generators  →  IFC
           authoring · IFC import (ifc2yaml) · plan scans
 ```
 
-- **Decisions only.** A space stores its room type, configuration, outline and edge kinds. Equipment positions, walls and ducts are derived; a hand change to a derived item is an `Override` with a reason.
+- **Decisions only.** A space stores its room type, configuration, outline or bubble and edge kinds. Equipment positions, walls and ducts are derived; a hand change to a derived item is an `Override` with a reason.
 - **Three links to Elementplan.** `room_type` + `configuration` say what a record is, `fulfils` names the programme item it meets, `origin.option` names the scenario option that required it.
 - **One format for every source.** `origin.kind` is `requirement`, `authored`, `survey`, `plan_scan` or `ifc_import`. `review_status` (`proposed`, `confirmed`, `rejected`, `superseded`) applies to a record or a single value. A bare value means confirmed; the long form `{value, source, review_status}` is for imported or uncertain values.
 - **Programme items** have stable ids that are the same for every variant and competition entry, so entries can be compared item by item.
@@ -114,22 +114,51 @@ requirements (Elementplan)  →  solution (decisions)  →  generators  →  IFC
 - **Envelope context.** `kind: envelope` is the max building volume (Bauenvelope) on a parcel or perimeter. It carries `parent_site`, `outline`, `base_elevation`, `height`, optional `storeys` and `basement_levels` (default 0). Id pattern `envelope/<slug>`, file `contexts/envelope-<slug>.yaml`. A building may point at it with `parent_envelope`. Element defaults to `pragmaticbim:element/architecture-planning-constraint` with `values.Name: Bauenvelope`. A volume that steps back by storey is several envelope records.
 - **One record per file**, stable ids (`space/2.03`, `door/2.01-2.03`, `envelope/a`), references pointing one way (child to parent, instance to type, zone and system to what they group or serve).
 
-A project is a folder: `selection.yaml`, `project.yaml`, `programme/`, `contexts/`, `units/`, `spaces/`, `openings/`, `equipment/`, `zones/`, `systems/`, `overrides/`. `scripts/check_solution.py` loads the folder, validates it against the schema and checks what JSON Schema cannot: references resolve, configurations belong to their room type and suit the selected goal levels, openings fit on their edge, envelopes have site/outline/height, and the programme is met.
+### Solution box
 
-```bash
-python scripts/check_solution.py examples/solution/demo-wohnhaus
+Strategic choices (access typology, grid, …) follow the same pattern as project-goal levels. Catalog rows live under `examples/solution-dimensions/`:
+
+- **`SolutionDimension`**: one row (`scope` `project` | `site` | `building` | `unit`, optional `uses`, `step` for the generator, inline `options`).
+- **`SolutionOption`**: one cell (`exclusive` for "Keine", `excludes` for cross-dimension conflicts, `parameters` as metres keyed by name).
+
+Answers use `solution_options` (chosen option ids) and `open_dimensions` (left open on purpose). Project- and site-scope answers sit on `Selection`; building-scope on the building `SpatialContext`; unit-scope on `Selection.unit_type_answers` (one entry per container room type). A dimension with neither is unanswered.
+
+### Bubbles and outlines
+
+The Solution step works in two phases: topology then exact shapes.
+
+- **`Bubble`**: centre (`x`, `y`) and target `area` in the level frame. A space or unit with a bubble and no outline is valid.
+- **`Unit.outlines` / building `outlines`**: list of `{level, outline, outline_kind}` — one footprint per occupied level.
+- **`outline_kind`**: `axis` (wall centre line; default for authored/generated) or `net` (usable interior edge; typical for IFC imports).
+- **Net area of an axis outline**: inset every edge by half the wall thickness from the building's Bauweise answer (catalog in the reference). Bauweise option `parameters` are keyed by `EdgeKindEnum` values such as `wall_exterior`, `wall_party_wall`, `wall_interior`, `wall_shaft` (metres). If Bauweise is unanswered or open, net area is the min/max range over that row's options. Gross floor area comes from building `outlines`, never from spaces.
+- **`adjacent_to`**: project-specific neighbours on spaces and units, on top of catalog `room_relationships`.
+
+### Several solutions per project
+
+```text
+examples/solutions/site/       shared givens (Project, parcel, envelope); slug reserved
+examples/solutions/<slug>/     one design or entry; must include solution.yaml
 ```
 
-Examples: `demo-wohnhaus` (new design), `demo-bestand` (plan scan), `demo-ifc-import` (IFC delivery with `ifc` bucket).
+`SolutionInfo` (`solution.yaml`) carries `source` (`authored` | `generated` | `ifc_import` | `plan_scan`), optional `author` / `submitted_at` / `based_on`, and `status` (`draft` | `submitted` | `checked`). Records in a solution may reference the site folder, never another solution slug.
+
+`scripts/check_solution.py` loads a folder (merging sibling `site/` when present), validates against the schema, and checks references, solution-box rules, envelopes, openings and programme coverage.
+
+```bash
+python scripts/check_solution.py examples/solutions/authored
+```
+
+Examples: `site` (shared givens), `authored` (new design), `entry-01` (IFC delivery), `bestand` (plan scan, self-contained).
 
 Open: zone and system kinds are placeholder enums until Elementplan has zone and system types; the data contract namespace (`pbdc:`) needs confirming.
 
 ## What Is Included
 
-- `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema
+- `schema/elementplan.linkml.yaml`: main Elementplan LinkML schema (including solution-box dimensions)
 - `schema/solution.linkml.yaml`: solution (authoring) schema, see above
 - `scripts/check_solution.py`: checks a solution project folder
-- `examples/solution/`: three solution example projects
+- `examples/solution-dimensions/`: solution-box catalog rows
+- `examples/solutions/`: shared `site/` plus per-solution folders
 - `schema/ifc/`: generated IFC vocabulary modules used alongside the schema
 - `examples/`: sample uses, usage scenarios and a unified room/container type graph with explicit configurations (Wohnen, Flughafen), project goals, workflows, elements, values, domains, models, documents, and phases
 - `scripts/schema_check.sh`: local schema validation entry point

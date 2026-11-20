@@ -1,7 +1,7 @@
 id: level/02
 kind: level
 label: 2. OG
-parent_project: project/demo-ifc
+parent_project: project/demo-wohnhaus
 elevation: 6.0
 origin: {kind: ifc_import, document: deliveries/arc/ARC_Demo_2026-11-12.ifc, region: 1kTvXnbbzCWw8lcMd1dR4o}
 ifc:
